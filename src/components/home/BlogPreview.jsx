@@ -9,7 +9,7 @@ const blogPosts = [
     title: "Understanding the Principles of Homeopathy",
     excerpt:
       "Learn about the core principles that make homeopathic treatment effective for a wide range of conditions.",
-    image: "./public/images/blog-1.jpg",
+    image: "/images/blog-1.jpg", // Fixed path
     category: "Homeopathy Basics",
     date: "April 5, 2025",
     slug: "understanding-principles-homeopathy",
