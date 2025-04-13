@@ -18,28 +18,6 @@ const Header = () => {
             </span>
           </Link>
 
-          {/* Contact Info */}
-          <div className="hidden md:flex items-center space-x-6">
-            <div className="flex flex-col text-sm">
-              <span className="font-medium text-dark">India</span>
-              <a
-                href="tel:+919876543210"
-                className="text-primary hover:text-dark transition"
-              >
-                +91 98765 43210
-              </a>
-            </div>
-            <div className="flex flex-col text-sm">
-              <span className="font-medium text-dark">UAE</span>
-              <a
-                href="tel:+971501234567"
-                className="text-primary hover:text-dark transition"
-              >
-                +971 50 123 4567
-              </a>
-            </div>
-          </div>
-
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             <div className="relative group">
@@ -147,45 +125,28 @@ const Header = () => {
           </nav>
 
           {/* Appointment Button */}
-          <div className="hidden md:block relative">
+          {/* Appointment Button */}
+          <div className="hidden md:block">
             <Link
               href="/appointment"
-              className="bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-primary-dark transition"
+              className="bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-primary-dark transition flex items-center"
             >
-              Book Appointment
+              <span>Book Appointment</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 ml-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
             </Link>
-
-            {/* Annotation Arrow */}
-            <motion.div
-              className="absolute -top-12 right-0"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.5 }}
-            >
-              <div className="relative">
-                <svg
-                  width="100"
-                  height="50"
-                  viewBox="0 0 100 50"
-                  className="fill-none stroke-primary"
-                >
-                  <path
-                    d="M10,40 Q30,10 90,30"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M85,30 L95,35 L90,25"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <span className="absolute -top-4 left-2 text-primary font-handwritten text-sm transform -rotate-6">
-                  Your path to natural healing starts here!
-                </span>
-              </div>
-            </motion.div>
           </div>
 
           {/* Mobile menu button */}
@@ -255,31 +216,24 @@ const Header = () => {
             </Link>
             <Link
               href="/appointment"
-              className="block px-3 py-2 text-base font-medium bg-primary text-white hover:bg-primary-dark rounded-md"
+              className="bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-primary-dark transition flex items-center"
             >
-              Book Appointment
+              <span>Book Appointment</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 ml-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
             </Link>
-          </div>
-          <div className="pt-4 pb-3 border-t border-gray-200">
-            <div className="flex items-center px-5">
-              <div className="flex-shrink-0">
-                <span className="text-primary">Contact Us</span>
-              </div>
-            </div>
-            <div className="mt-3 px-2 space-y-1">
-              <a
-                href="tel:+919876543210"
-                className="block px-3 py-2 text-base font-medium text-dark hover:bg-accent rounded-md"
-              >
-                India: +91 98765 43210
-              </a>
-              <a
-                href="tel:+971501234567"
-                className="block px-3 py-2 text-base font-medium text-dark hover:bg-accent rounded-md"
-              >
-                UAE: +971 50 123 4567
-              </a>
-            </div>
           </div>
         </div>
       )}

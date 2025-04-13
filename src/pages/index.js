@@ -1,9 +1,9 @@
 // pages/index.js
-import { useState } from "react";
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import { motion } from "framer-motion";
+// import { useState } from "react";
+// import Head from "next/head";
+// import Image from "next/image";
+// import Link from "next/link";
+// import { motion } from "framer-motion";
 import Layout from "../components/layout/Layout";
 import HeroSection from "../components/home/HeroSection";
 import BenefitsSection from "../components/home/BenefitsSection";

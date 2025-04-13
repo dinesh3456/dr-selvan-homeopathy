@@ -1,7 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{js,ts,jsx,tsx,mdx}", // This covers all files in src directory
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
@@ -10,6 +12,7 @@ module.exports = {
         secondary: "#A9D6B5",
         accent: "#E8F3E9",
         dark: "#333333",
+        "primary-dark": "#3a7c46", // Added this for hover states
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
