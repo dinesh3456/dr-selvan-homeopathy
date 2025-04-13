@@ -7,13 +7,16 @@
  * https://github.com/sanity-io/next-sanity
  */
 
-import { NextStudio } from "next-sanity/studio";
-import config from "../../../sanity.config";
+// Replace with this:
+import { Metadata } from "next";
 
-export const dynamic = "force-static";
+export const metadata: Metadata = {
+  title: "Sanity Studio",
+  description: "Content management for Dr. Selvan's Homeopathy",
+};
 
-export { metadata, viewport } from "next-sanity/studio";
-
-export default function StudioPage() {
-  return <NextStudio config={config} />;
-}
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
