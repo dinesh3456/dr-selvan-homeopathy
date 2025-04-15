@@ -1,21 +1,65 @@
 // components/layout/Footer.jsx
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 const Footer = () => {
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+      },
+    },
+  };
+
+  const linkHoverVariants = {
+    hover: {
+      x: 5,
+      transition: { duration: 0.2 },
+    },
+  };
+
   return (
     <footer className="bg-dark text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
           {/* Column 1 - About */}
-          <div>
+          <motion.div variants={itemVariants}>
             <h3 className="text-lg font-bold mb-4">Dr. Selvan's Homeopathy</h3>
             <p className="text-gray-300 mb-4">
               Providing natural healing solutions and homeopathic treatments for
               over two decades.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-white">
+              <motion.a
+                href="#"
+                className="text-gray-300 hover:text-white"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+              >
                 <span className="sr-only">Facebook</span>
                 <svg
                   className="h-6 w-6"
@@ -29,8 +73,13 @@ const Footer = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white">
+              </motion.a>
+              <motion.a
+                href="#"
+                className="text-gray-300 hover:text-white"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+              >
                 <span className="sr-only">Instagram</span>
                 <svg
                   className="h-6 w-6"
@@ -44,8 +93,13 @@ const Footer = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </a>
-              <a href="#" className="text-gray-300 hover:text-white">
+              </motion.a>
+              <motion.a
+                href="#"
+                className="text-gray-300 hover:text-white"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+              >
                 <span className="sr-only">Twitter</span>
                 <svg
                   className="h-6 w-6"
@@ -55,61 +109,38 @@ const Footer = () => {
                 >
                   <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
                 </svg>
-              </a>
+              </motion.a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Column 2 - Quick Links */}
-          <div>
+          <motion.div variants={itemVariants}>
             <h3 className="text-lg font-bold mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li>
-                <Link href="/" className="text-gray-300 hover:text-white">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/homeopathy"
-                  className="text-gray-300 hover:text-white"
-                >
-                  Homeopathy
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/natural-treatment"
-                  className="text-gray-300 hover:text-white"
-                >
-                  Natural Treatment
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/products"
-                  className="text-gray-300 hover:text-white"
-                >
-                  Our Products
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-gray-300 hover:text-white">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-gray-300 hover:text-white"
-                >
-                  Contact Us
-                </Link>
-              </li>
+              {[
+                { href: "/", label: "Home" },
+                { href: "/homeopathy", label: "Homeopathy" },
+                { href: "/natural-treatment", label: "Natural Treatment" },
+                { href: "/products", label: "Our Products" },
+                { href: "/about", label: "About Us" },
+                { href: "/contact", label: "Contact Us" },
+              ].map((link, i) => (
+                <li key={i}>
+                  <motion.div whileHover="hover" variants={linkHoverVariants}>
+                    <Link
+                      href={link.href}
+                      className="text-gray-300 hover:text-white"
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                </li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Column 3 - Contact */}
-          <div>
+          <motion.div variants={itemVariants}>
             <h3 className="text-lg font-bold mb-4">Contact Us</h3>
 
             <div className="mb-4">
@@ -121,12 +152,14 @@ const Footer = () => {
                 <br />
                 India 600001
               </address>
-              <a
+              <motion.a
                 href="tel:+919876543210"
                 className="text-gray-300 hover:text-white block mt-1"
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.2 }}
               >
                 +91 98765 43210
-              </a>
+              </motion.a>
             </div>
 
             <div>
@@ -138,17 +171,19 @@ const Footer = () => {
                 <br />
                 UAE
               </address>
-              <a
+              <motion.a
                 href="tel:+971501234567"
                 className="text-gray-300 hover:text-white block mt-1"
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.2 }}
               >
                 +971 50 123 4567
-              </a>
+              </motion.a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Column 4 - Newsletter */}
-          <div>
+          <motion.div variants={itemVariants}>
             <h3 className="text-lg font-bold mb-4">Newsletter</h3>
             <p className="text-gray-300 mb-4">
               Subscribe to our newsletter for the latest updates on homeopathic
@@ -163,23 +198,31 @@ const Footer = () => {
                   className="min-w-0 flex-auto rounded-l-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
                   placeholder="Enter your email"
                 />
-                <button
+                <motion.button
                   type="submit"
                   className="flex-none rounded-r-md bg-primary py-2 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   Subscribe
-                </button>
+                </motion.button>
               </div>
             </form>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
+        <motion.div
+          className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          viewport={{ once: true }}
+        >
           <p>
             © {new Date().getFullYear()} Dr. Selvan's Homeopathy. All rights
             reserved.
           </p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

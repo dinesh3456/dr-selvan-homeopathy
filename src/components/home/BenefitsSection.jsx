@@ -90,10 +90,65 @@ const benefits = [
 ];
 
 const BenefitsSection = () => {
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12,
+      },
+    },
+    hover: {
+      y: -10,
+      boxShadow:
+        "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10,
+      },
+    },
+    tap: { scale: 0.98 },
+  };
+
+  // Animated SVG stroke and fill
+  const iconVariants = {
+    hidden: { pathLength: 0, opacity: 0 },
+    visible: {
+      pathLength: 1,
+      opacity: 1,
+      transition: {
+        duration: 1,
+        ease: "easeInOut",
+      },
+    },
+  };
+
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4">
             Why Choose Homeopathy?
           </h2>
@@ -101,28 +156,83 @@ const BenefitsSection = () => {
             Dr. Selvan's homeopathic approach offers numerous advantages over
             conventional medicine.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
-              className="bg-accent rounded-xl p-6 shadow-md hover:shadow-lg transition"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              className="bg-accent rounded-xl p-6 shadow-md transition cursor-pointer relative overflow-hidden"
+              variants={cardVariants}
+              whileHover="hover"
+              whileTap="tap"
             >
-              <div className="mb-4">{benefit.icon}</div>
-              <h3 className="text-xl font-bold text-dark mb-2">
+              {/* Background decorative shape */}
+              <motion.div
+                className="absolute -right-12 -bottom-12 w-40 h-40 rounded-full bg-primary opacity-5"
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
+                viewport={{ once: true }}
+              />
+
+              {/* Icon with animation */}
+              <motion.div
+                className="mb-4 relative z-10"
+                initial={{ rotateY: 0 }}
+                whileHover={{
+                  rotateY: 180,
+                  transition: { duration: 0.6 },
+                }}
+              >
+                {benefit.icon}
+              </motion.div>
+
+              <motion.h3
+                className="text-xl font-bold text-dark mb-2 relative z-10"
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{
+                  delay: 0.4 + index * 0.1,
+                  duration: 0.4,
+                }}
+                viewport={{ once: true }}
+              >
                 {benefit.title}
-              </h3>
-              <p className="text-gray-600">{benefit.description}</p>
+              </motion.h3>
+
+              <motion.p
+                className="text-gray-600 relative z-10"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{
+                  delay: 0.5 + index * 0.1,
+                  duration: 0.4,
+                }}
+                viewport={{ once: true }}
+              >
+                {benefit.description}
+              </motion.p>
+
+              {/* Highlight effect on hover */}
+              <motion.div
+                className="absolute inset-0 bg-primary opacity-0"
+                whileHover={{
+                  opacity: 0.05,
+                  transition: { duration: 0.3 },
+                }}
+              />
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Annotation */}
+        {/* Fixed Annotation with path animation */}
         <motion.div
           className="relative mt-12 text-center"
           initial={{ opacity: 0 }}
@@ -130,28 +240,46 @@ const BenefitsSection = () => {
           transition={{ delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="inline-block relative">
-            <p className="font-handwritten text-lg text-primary transform rotate-2">
-              Healing that treats you as a whole person, not just symptoms!
-            </p>
-            <svg
-              width="80"
-              height="40"
-              viewBox="0 0 80 40"
-              className="absolute -top-8 -right-20 fill-none stroke-primary"
+          <div className="flex items-center justify-center">
+            <motion.p
+              className="font-handwritten text-lg text-primary mr-2"
+              animate={{
+                y: [0, -3, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
             >
-              <path
-                d="M0,20 C20,0 60,40 80,20"
+              Healing that treats you as a whole person, not just symptoms!
+            </motion.p>
+            <motion.svg
+              width="40"
+              height="25"
+              viewBox="0 0 40 25"
+              className="fill-none stroke-primary"
+            >
+              <motion.path
+                d="M5,12 Q15,5 35,12"
                 strokeWidth="2"
                 strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
+                viewport={{ once: true }}
               />
-              <path
-                d="M75,20 L80,25 L80,15"
+              <motion.path
+                d="M30,12 L37,15 L33,7"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 1.5 }}
+                viewport={{ once: true }}
               />
-            </svg>
+            </motion.svg>
           </div>
         </motion.div>
       </div>

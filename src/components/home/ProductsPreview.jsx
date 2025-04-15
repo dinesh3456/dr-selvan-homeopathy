@@ -105,36 +105,55 @@ const ProductsPreview = () => {
           ))}
         </div>
 
-        {/* Annotation */}
+        {/* Fixed Annotation */}
         <motion.div
-          className="relative mt-12 ml-8"
+          className="relative mt-12"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="relative">
-            <svg
-              width="100"
-              height="60"
-              viewBox="0 0 100 60"
-              className="absolute -top-16 -left-20 fill-none stroke-primary"
+          <div className="flex items-center justify-center">
+            <motion.svg
+              width="40"
+              height="30"
+              viewBox="0 0 40 30"
+              className="fill-none stroke-primary mr-2"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{ duration: 1, delay: 0.7 }}
             >
-              <path
-                d="M10,40 Q40,10 90,30"
+              <motion.path
+                d="M5,15 Q15,5 35,15"
                 strokeWidth="2"
                 strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 1.2, delay: 0.7 }}
               />
-              <path
-                d="M85,30 L95,35 L90,25"
+              <motion.path
+                d="M30,15 L37,18 L33,10"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 0.6, delay: 1.9 }}
               />
-            </svg>
-            <p className="font-handwritten text-lg text-primary transform -rotate-3">
+            </motion.svg>
+            <motion.p
+              className="font-handwritten text-lg text-primary"
+              animate={{
+                y: [0, -3, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
               Nature's remedies, curated by Dr. Selvan!
-            </p>
+            </motion.p>
           </div>
         </motion.div>
       </div>

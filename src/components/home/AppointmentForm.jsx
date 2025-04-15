@@ -36,8 +36,30 @@ const AppointmentForm = () => {
   return (
     <section className="py-16 bg-gradient-to-br from-primary/10 to-white relative overflow-hidden">
       {/* Background decorative elements */}
-      <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-primary opacity-5 -z-10" />
-      <div className="absolute bottom-10 right-10 w-48 h-48 rounded-full bg-secondary opacity-10 -z-10" />
+      <motion.div
+        className="absolute top-20 left-10 w-64 h-64 rounded-full bg-primary opacity-5 -z-10"
+        animate={{
+          scale: [1, 1.1, 1],
+          rotate: [0, 10, 0],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div
+        className="absolute bottom-10 right-10 w-48 h-48 rounded-full bg-secondary opacity-10 -z-10"
+        animate={{
+          y: [0, -15, 0],
+          scale: [1, 1.05, 1],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -135,36 +157,55 @@ const AppointmentForm = () => {
               </ul>
             </div>
 
-            {/* Annotation */}
+            {/* Fixed Annotation */}
             <motion.div
-              className="relative ml-12 mt-8"
+              className="relative mt-8"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ delay: 0.7 }}
               viewport={{ once: true }}
             >
-              <div className="relative">
-                <svg
-                  width="100"
-                  height="60"
-                  viewBox="0 0 100 60"
-                  className="absolute -top-16 -left-20 fill-none stroke-primary"
+              <div className="flex items-center">
+                <motion.svg
+                  width="40"
+                  height="25"
+                  viewBox="0 0 40 25"
+                  className="fill-none stroke-primary mr-2"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: 1 }}
+                  transition={{ duration: 1, delay: 0.7 }}
                 >
-                  <path
-                    d="M10,30 Q40,10 90,30"
+                  <motion.path
+                    d="M5,12 Q15,5 35,12"
                     strokeWidth="2"
                     strokeLinecap="round"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 1.2, delay: 0.7 }}
                   />
-                  <path
-                    d="M85,30 L95,35 L90,25"
+                  <motion.path
+                    d="M30,12 L37,15 L33,7"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 0.6, delay: 1.9 }}
                   />
-                </svg>
-                <p className="font-handwritten text-lg text-primary transform -rotate-3">
+                </motion.svg>
+                <motion.p
+                  className="font-handwritten text-lg text-primary"
+                  animate={{
+                    y: [0, -3, 0],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
                   We're just one message away from helping you feel better!
-                </p>
+                </motion.p>
               </div>
             </motion.div>
           </motion.div>
@@ -303,9 +344,11 @@ const AppointmentForm = () => {
                   </div>
                 </div>
 
-                <button
+                <motion.button
                   type="submit"
                   className="w-full bg-primary text-white py-3 px-6 rounded-md hover:bg-primary-dark transition flex items-center justify-center"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   <span>Request Appointment</span>
                   <svg
@@ -322,7 +365,7 @@ const AppointmentForm = () => {
                       d="M13 5l7 7-7 7M5 5l7 7-7 7"
                     />
                   </svg>
-                </button>
+                </motion.button>
               </form>
             </div>
           </motion.div>
