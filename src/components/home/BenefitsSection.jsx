@@ -1,91 +1,32 @@
 // components/home/BenefitsSection.jsx
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const benefits = [
   {
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-12 w-12 text-primary"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-        />
-      </svg>
-    ),
+    title: "Holistic Approach",
+    description:
+      "Our holistic approach embraces your mind, body, and spirit, fostering a balanced and thriving you.",
+    image: "/images/benefit-holistic.jpg",
+  },
+  {
+    title: "Unlock Your Potential",
+    description:
+      "Discover the power within as we blend evidence-based techniques with creative self-expression.",
+    image: "/images/benefit-potential.jpg",
+  },
+  {
     title: "Natural & Safe",
     description:
       "Our homeopathic treatments have no side effects and are safe for patients of all ages.",
+    image: "/images/benefit-safe.jpg",
   },
   {
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-12 w-12 text-primary"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"
-        />
-      </svg>
-    ),
     title: "Personalized Care",
     description:
       "We develop customized treatment plans based on your unique symptoms and constitution.",
-  },
-  {
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-12 w-12 text-primary"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M13 10V3L4 14h7v7l9-11h-7z"
-        />
-      </svg>
-    ),
-    title: "Root Cause Treatment",
-    description:
-      "Instead of just alleviating symptoms, we address the underlying causes of your health issues.",
-  },
-  {
-    icon: (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-12 w-12 text-primary"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </svg>
-    ),
-    title: "Long-lasting Results",
-    description:
-      "Our treatments provide sustained relief and improvement, not just temporary fixes.",
+    image: "/images/benefit-personalized.jpg",
   },
 ];
 
@@ -102,147 +43,156 @@ const BenefitsSection = () => {
     },
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         type: "spring",
         stiffness: 100,
-        damping: 12,
-      },
-    },
-    hover: {
-      y: -10,
-      boxShadow:
-        "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10,
-      },
-    },
-    tap: { scale: 0.98 },
-  };
-
-  // Animated SVG stroke and fill
-  const iconVariants = {
-    hidden: { pathLength: 0, opacity: 0 },
-    visible: {
-      pathLength: 1,
-      opacity: 1,
-      transition: {
-        duration: 1,
-        ease: "easeInOut",
+        damping: 15,
       },
     },
   };
 
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 relative overflow-hidden bg-white">
+      <div className="absolute inset-0 bg-gradient-to-tr from-blue-50/50 to-white z-0"></div>
+
+      <div className="absolute inset-0 z-0">
+        {/* Decorative element - similar to the robotic hand in the design */}
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 opacity-20">
+          <Image
+            src="/images/decorative-element.png"
+            alt="Decorative element"
+            fill
+            className="object-contain object-right-top"
+          />
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          className="mb-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4">
-            Why Choose Homeopathy?
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Dr. Selvan's homeopathic approach offers numerous advantages over
-            conventional medicine.
-          </p>
+          {/* Blue tag similar to the design */}
+          <motion.div
+            className="inline-block bg-primary text-white py-1 px-3 text-sm mb-6"
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            / OUR APPROACH
+          </motion.div>
+
+          <motion.h2
+            className="text-4xl md:text-5xl font-bold text-slate-900 mt-2 mb-6"
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            Art and science of homeopathic wellness
+          </motion.h2>
+
+          {/* Decorative line */}
+          <motion.div
+            className="h-0.5 w-64 md:w-96 bg-gradient-to-r from-primary to-transparent rounded-full"
+            initial={{ scaleX: 0, transformOrigin: "left" }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            viewport={{ once: true }}
+          />
         </motion.div>
 
-        <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
+        <div className="grid md:grid-cols-2 gap-8">
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
-              className="bg-accent rounded-xl p-6 shadow-md transition cursor-pointer relative overflow-hidden"
-              variants={cardVariants}
-              whileHover="hover"
-              whileTap="tap"
+              className="bg-white rounded-xl overflow-hidden shadow-md"
+              variants={itemVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{
+                y: -10,
+                x: index % 2 === 0 ? -5 : 5,
+                rotate: index % 2 === 0 ? -1 : 1,
+                transition: {
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 10,
+                  duration: 0.3,
+                },
+                boxShadow:
+                  "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+              }}
             >
-              {/* Background decorative shape */}
-              <motion.div
-                className="absolute -right-12 -bottom-12 w-40 h-40 rounded-full bg-primary opacity-5"
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
-                viewport={{ once: true }}
-              />
+              <div className="flex flex-col sm:flex-row">
+                {/* Image */}
+                <div className="relative h-48 sm:h-auto sm:w-1/3">
+                  <Image
+                    src={benefit.image}
+                    alt={benefit.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
 
-              {/* Icon with animation */}
-              <motion.div
-                className="mb-4 relative z-10"
-                initial={{ rotateY: 0 }}
-                whileHover={{
-                  rotateY: 180,
-                  transition: { duration: 0.6 },
-                }}
-              >
-                {benefit.icon}
-              </motion.div>
+                {/* Content */}
+                <div className="p-6 sm:w-2/3">
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    {benefit.title}
+                  </h3>
+                  <p className="text-slate-600 text-sm">
+                    {benefit.description}
+                  </p>
 
-              <motion.h3
-                className="text-xl font-bold text-dark mb-2 relative z-10"
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{
-                  delay: 0.4 + index * 0.1,
-                  duration: 0.4,
-                }}
-                viewport={{ once: true }}
-              >
-                {benefit.title}
-              </motion.h3>
-
-              <motion.p
-                className="text-gray-600 relative z-10"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{
-                  delay: 0.5 + index * 0.1,
-                  duration: 0.4,
-                }}
-                viewport={{ once: true }}
-              >
-                {benefit.description}
-              </motion.p>
-
-              {/* Highlight effect on hover */}
-              <motion.div
-                className="absolute inset-0 bg-primary opacity-0"
-                whileHover={{
-                  opacity: 0.05,
-                  transition: { duration: 0.3 },
-                }}
-              />
+                  <div className="mt-6 flex items-center">
+                    <span className="text-primary text-sm font-medium">
+                      More details
+                    </span>
+                    <div className="ml-2 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-4 w-4 text-primary"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Fixed Annotation with path animation */}
+        {/* Arrow annotation */}
         <motion.div
-          className="relative mt-12 text-center"
+          className="mt-12 relative flex justify-end"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.7 }}
           viewport={{ once: true }}
         >
-          <div className="flex items-center justify-center">
-            <motion.p
-              className="font-handwritten text-lg text-primary mr-2"
+          <div className="relative">
+            <motion.span
+              className="absolute bottom-16 right-16 text-primary font-handwritten text-lg"
               animate={{
                 y: [0, -3, 0],
               }}
@@ -252,32 +202,30 @@ const BenefitsSection = () => {
                 ease: "easeInOut",
               }}
             >
-              Healing that treats you as a whole person, not just symptoms!
-            </motion.p>
+              Discover our unique approach!
+            </motion.span>
             <motion.svg
-              width="40"
-              height="25"
-              viewBox="0 0 40 25"
+              width="180"
+              height="80"
+              viewBox="0 0 180 80"
               className="fill-none stroke-primary"
             >
               <motion.path
-                d="M5,12 Q15,5 35,12"
+                d="M160,40 Q110,70 60,40"
                 strokeWidth="2"
                 strokeLinecap="round"
                 initial={{ pathLength: 0 }}
-                whileInView={{ pathLength: 1 }}
-                transition={{ duration: 1, delay: 0.5 }}
-                viewport={{ once: true }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 1.2, delay: 0.7 }}
               />
               <motion.path
-                d="M30,12 L37,15 L33,7"
+                d="M65,45 L55,35 L50,50"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 1.5 }}
-                viewport={{ once: true }}
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 0.6, delay: 1.9 }}
               />
             </motion.svg>
           </div>

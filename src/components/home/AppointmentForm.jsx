@@ -33,8 +33,36 @@ const AppointmentForm = () => {
     });
   };
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+      },
+    },
+  };
+
   return (
-    <section className="py-16 bg-gradient-to-br from-primary/10 to-white relative overflow-hidden">
+    <section className="py-20 relative overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-sand/50 to-white z-0"></div>
+
       {/* Background decorative elements */}
       <motion.div
         className="absolute top-20 left-10 w-64 h-64 rounded-full bg-primary opacity-5 -z-10"
@@ -49,7 +77,7 @@ const AppointmentForm = () => {
         }}
       />
       <motion.div
-        className="absolute bottom-10 right-10 w-48 h-48 rounded-full bg-secondary opacity-10 -z-10"
+        className="absolute bottom-10 right-10 w-48 h-48 rounded-full bg-primary opacity-10 -z-10"
         animate={{
           y: [0, -15, 0],
           scale: [1, 1.05, 1],
@@ -61,24 +89,41 @@ const AppointmentForm = () => {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-dark mb-6">
+            <motion.span
+              className="inline-block py-1 px-3 rounded-full bg-primary/20 text-primary text-sm font-medium mb-3"
+              variants={itemVariants}
+            >
+              GET IN TOUCH
+            </motion.span>
+
+            <motion.h2
+              className="text-3xl md:text-4xl font-bold text-slate-900 mb-4"
+              variants={itemVariants}
+            >
               Schedule Your Consultation
-            </h2>
-            <p className="text-lg text-gray-600 mb-8">
+            </motion.h2>
+
+            <motion.p
+              className="text-lg text-slate-600 mb-8"
+              variants={itemVariants}
+            >
               Take the first step towards natural healing. Fill out the form to
               request an appointment with Dr. Selvan.
-            </p>
+            </motion.p>
 
-            <div className="bg-white p-6 rounded-xl shadow-lg mb-6">
-              <h3 className="text-xl font-bold text-dark mb-4">
+            <motion.div
+              className="bg-white p-6 rounded-xl shadow-lg mb-6"
+              variants={itemVariants}
+            >
+              <h3 className="text-xl font-bold text-slate-900 mb-4">
                 What to Expect
               </h3>
               <ul className="space-y-3">
@@ -155,9 +200,9 @@ const AppointmentForm = () => {
                   <span>Follow-up consultations to monitor your progress</span>
                 </li>
               </ul>
-            </div>
+            </motion.div>
 
-            {/* Fixed Annotation */}
+            {/* Arrow annotation */}
             <motion.div
               className="relative mt-8"
               initial={{ opacity: 0 }}
@@ -165,18 +210,29 @@ const AppointmentForm = () => {
               transition={{ delay: 0.7 }}
               viewport={{ once: true }}
             >
-              <div className="flex items-center">
+              <div className="relative">
+                <motion.div className="absolute -top-16 left-0 text-primary font-handwritten text-lg transform -rotate-6">
+                  <motion.span
+                    animate={{
+                      y: [0, -3, 0],
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    We're just one message away from helping you feel better!
+                  </motion.span>
+                </motion.div>
                 <motion.svg
-                  width="40"
-                  height="25"
-                  viewBox="0 0 40 25"
-                  className="fill-none stroke-primary mr-2"
-                  initial={{ pathLength: 0, opacity: 0 }}
-                  animate={{ pathLength: 1, opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.7 }}
+                  width="180"
+                  height="80"
+                  viewBox="0 0 180 80"
+                  className="fill-none stroke-primary"
                 >
                   <motion.path
-                    d="M5,12 Q15,5 35,12"
+                    d="M160,15 Q120,40 80,30 Q40,20 20,40"
                     strokeWidth="2"
                     strokeLinecap="round"
                     initial={{ pathLength: 0 }}
@@ -184,7 +240,7 @@ const AppointmentForm = () => {
                     transition={{ duration: 1.2, delay: 0.7 }}
                   />
                   <motion.path
-                    d="M30,12 L37,15 L33,7"
+                    d="M25,35 L15,45 L10,30"
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -193,19 +249,6 @@ const AppointmentForm = () => {
                     transition={{ duration: 0.6, delay: 1.9 }}
                   />
                 </motion.svg>
-                <motion.p
-                  className="font-handwritten text-lg text-primary"
-                  animate={{
-                    y: [0, -3, 0],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
-                  We're just one message away from helping you feel better!
-                </motion.p>
               </div>
             </motion.div>
           </motion.div>
@@ -347,7 +390,10 @@ const AppointmentForm = () => {
                 <motion.button
                   type="submit"
                   className="w-full bg-primary text-white py-3 px-6 rounded-md hover:bg-primary-dark transition flex items-center justify-center"
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{
+                    scale: 1.02,
+                    boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.4)",
+                  }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <span>Request Appointment</span>
@@ -362,7 +408,7 @@ const AppointmentForm = () => {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
-                      d="M13 5l7 7-7 7M5 5l7 7-7 7"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
                     />
                   </svg>
                 </motion.button>

@@ -1,7 +1,6 @@
 // components/layout/Header.jsx
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
@@ -85,8 +84,7 @@ const Header = () => {
   const buttonVariants = {
     hover: {
       scale: 1.05,
-      boxShadow:
-        "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+      boxShadow: "0 10px 15px -3px rgba(59, 130, 246, 0.3)",
       transition: {
         type: "spring",
         stiffness: 400,
@@ -99,14 +97,14 @@ const Header = () => {
   // Link hover animation
   const linkHoverVariants = {
     hover: {
-      color: "#3B82F6", // primary color
+      color: "#3B82F6", // primary blue color
       transition: { duration: 0.2 },
     },
   };
 
   return (
     <header
-      className={`bg-white sticky top-0 z-50 transition-all duration-300 ${
+      className={`bg-white/90 backdrop-blur-md sticky top-0 z-50 transition-all duration-300 ${
         scrolled ? "shadow-md py-2" : "shadow-sm py-4"
       }`}
     >
@@ -175,7 +173,7 @@ const Header = () => {
                       key={i}
                       variants={menuItemVariants}
                       whileHover={{
-                        backgroundColor: "#EFF6FF", // accent color
+                        backgroundColor: "#EFF6FF", // blue-sand color
                         x: 5,
                       }}
                       transition={{ duration: 0.2 }}
@@ -240,7 +238,7 @@ const Header = () => {
                       key={i}
                       variants={menuItemVariants}
                       whileHover={{
-                        backgroundColor: "#EFF6FF", // accent color
+                        backgroundColor: "#EFF6FF", // blue-sand color
                         x: 5,
                       }}
                       transition={{ duration: 0.2 }}
@@ -291,7 +289,7 @@ const Header = () => {
               </Link>
             </motion.div>
 
-            {/* Annotation Arrow with path animation - Properly aligned */}
+            {/* Annotation Arrow with path animation */}
             <motion.div
               className="absolute -top-16 right-0"
               initial={{ opacity: 0 }}
@@ -311,7 +309,7 @@ const Header = () => {
                       ease: "easeInOut",
                     }}
                   >
-                    Starts here!
+                    Ready to help!
                   </motion.span>
                 </motion.div>
                 <motion.svg
@@ -409,13 +407,14 @@ const Header = () => {
                   key={i}
                   variants={menuItemVariants}
                   whileHover={{
-                    backgroundColor: "#EFF6FF", // accent color
+                    backgroundColor: "#EFF6FF", // blue-sand color
                     x: 5,
                   }}
                 >
                   <Link
                     href={item.href}
                     className="block px-3 py-2 text-base font-medium text-dark hover:text-primary rounded-md"
+                    onClick={() => setIsOpen(false)}
                   >
                     {item.label}
                   </Link>
@@ -431,6 +430,7 @@ const Header = () => {
                 <Link
                   href="/appointment"
                   className="block px-3 py-2 text-base font-medium bg-primary text-white hover:bg-primary-dark rounded-md"
+                  onClick={() => setIsOpen(false)}
                 >
                   Book Appointment
                 </Link>

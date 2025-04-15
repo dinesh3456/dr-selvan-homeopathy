@@ -155,20 +155,6 @@ const FloatingChat = () => {
     },
   };
 
-  const pulseAnimation = {
-    scale: [1, 1.05, 1],
-    boxShadow: [
-      "0 0 0 0 rgba(59, 130, 246, 0.4)",
-      "0 0 0 10px rgba(59, 130, 246, 0)",
-      "0 0 0 0 rgba(59, 130, 246, 0)",
-    ],
-    transition: {
-      duration: 2,
-      repeat: Infinity,
-      repeatType: "loop",
-    },
-  };
-
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
       {/* Chat window */}
@@ -246,7 +232,7 @@ const FloatingChat = () => {
                       {msg.text}
                     </div>
                     <div className="text-xs text-gray-500 mt-1">
-                      {msg.sender === "bot" ? "Dr. Selvans team" : "You"}
+                      {msg.sender === "bot" ? "Dr. Selvan's team" : "You"}
                     </div>
                   </motion.div>
                 ))}

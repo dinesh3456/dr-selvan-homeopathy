@@ -32,12 +32,13 @@ const Footer = () => {
   const linkHoverVariants = {
     hover: {
       x: 5,
+      color: "#93C5FD",
       transition: { duration: 0.2 },
     },
   };
 
   return (
-    <footer className="bg-dark text-white">
+    <footer className="bg-primary-dark text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
@@ -48,7 +49,9 @@ const Footer = () => {
         >
           {/* Column 1 - About */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-bold mb-4">Dr. Selvan's Homeopathy</h3>
+            <h3 className="text-lg font-bold mb-4 text-primary-light">
+              Dr. Selvan's Homeopathy
+            </h3>
             <p className="text-gray-300 mb-4">
               Providing natural healing solutions and homeopathic treatments for
               over two decades.
@@ -115,7 +118,9 @@ const Footer = () => {
 
           {/* Column 2 - Quick Links */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-bold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-bold mb-4 text-primary-light">
+              Quick Links
+            </h3>
             <ul className="space-y-2">
               {[
                 { href: "/", label: "Home" },
@@ -129,7 +134,7 @@ const Footer = () => {
                   <motion.div whileHover="hover" variants={linkHoverVariants}>
                     <Link
                       href={link.href}
-                      className="text-gray-300 hover:text-white"
+                      className="text-gray-300 hover:text-white transition-all duration-200"
                     >
                       {link.label}
                     </Link>
@@ -141,7 +146,9 @@ const Footer = () => {
 
           {/* Column 3 - Contact */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-bold mb-4">Contact Us</h3>
+            <h3 className="text-lg font-bold mb-4 text-primary-light">
+              Contact Us
+            </h3>
 
             <div className="mb-4">
               <h4 className="font-semibold mb-1">India</h4>
@@ -184,7 +191,9 @@ const Footer = () => {
 
           {/* Column 4 - Newsletter */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-bold mb-4">Newsletter</h3>
+            <h3 className="text-lg font-bold mb-4 text-primary-light">
+              Newsletter
+            </h3>
             <p className="text-gray-300 mb-4">
               Subscribe to our newsletter for the latest updates on homeopathic
               treatments and health tips.

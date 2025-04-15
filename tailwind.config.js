@@ -8,11 +8,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#3B82F6", // Blue instead of green
+        primary: "#3B82F6", // Blue color (replacing lavender)
         "primary-dark": "#2563EB", // Darker blue for hover states
-        secondary: "#93C5FD", // Light blue instead of light green
-        accent: "#EFF6FF", // Very light blue background
-        dark: "#1E293B", // Slightly bluer dark color
+        "primary-light": "#93C5FD", // Light blue
+        "blue-sand": "#EFF6FF", // Light blue/sand background color
+        "blue-50": "#F0F9FF",
+        "blue-100": "#E0F2FE",
+        cream: "#FFFAF0", // Light cream background color (secondary)
+        dark: "#171717", // Dark text
+        "slate-600": "#4B5563", // Medium gray text
+        "slate-700": "#374151", // Darker gray text
+        "slate-900": "#111827", // Very dark text
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
@@ -48,6 +54,10 @@ module.exports = {
           "60%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(0deg)" },
         },
+      },
+      boxShadow: {
+        soft: "0 4px 20px -2px rgba(0, 0, 0, 0.06)",
+        "soft-lg": "0 10px 30px -3px rgba(0, 0, 0, 0.08)",
       },
     },
   },

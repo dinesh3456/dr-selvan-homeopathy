@@ -1,8 +1,8 @@
 // components/home/FeaturedTreatments.jsx
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import TreatmentCard from "../common/TreatmentCard";
 
 const treatments = [
   {
@@ -26,78 +26,204 @@ const treatments = [
     image: "/images/treatment-digestive.jpg",
     link: "/treatments/digestive-health",
   },
+  {
+    title: "Pediatric Care",
+    description:
+      "Gentle and effective treatments for children's health issues, from colic to behavioral problems.",
+    image: "/images/treatment-pediatric.jpg",
+    link: "/treatments/pediatric-care",
+  },
 ];
 
 const FeaturedTreatments = () => {
-  return (
-    <section className="py-16 bg-gradient-to-br from-accent to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-dark mb-4">
-            Our Specialized Treatments
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            At Dr. Selvan's Homeopathy, we offer effective treatments for a wide
-            range of health conditions.
-          </p>
-        </div>
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
+    },
+  };
 
-        <div className="grid md:grid-cols-3 gap-8">
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+      },
+    },
+  };
+
+  return (
+    <section className="py-20 relative overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-blue-sand/50 z-0"></div>
+
+      {/* Background decorative elements */}
+      <motion.div
+        className="absolute top-40 left-20 w-64 h-64 rounded-full bg-primary/5"
+        animate={{
+          scale: [1, 1.1, 1],
+          rotate: [0, 10, 0],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div
+        className="absolute bottom-20 right-20 w-96 h-96 rounded-full bg-primary/10"
+        animate={{
+          y: [0, -15, 0],
+          scale: [1, 1.05, 1],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
+          className="mb-16 max-w-2xl"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.span
+            className="inline-block py-1 px-3 rounded-full bg-primary/20 text-primary text-sm font-medium mb-4"
+            variants={itemVariants}
+          >
+            Our Treatments
+          </motion.span>
+
+          <motion.h2
+            className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+            variants={itemVariants}
+          >
+            Art and science of homeopathic wellness
+          </motion.h2>
+
+          <motion.p className="text-lg text-slate-600" variants={itemVariants}>
+            At Dr. Selvan's Homeopathy, we offer effective natural treatments
+            for a wide range of health conditions.
+          </motion.p>
+
+          {/* Decorative line */}
+          <motion.div
+            className="mt-6 h-1 w-40 bg-gradient-to-r from-primary to-primary/30 rounded-full"
+            variants={itemVariants}
+            transition={{ delay: 0.4 }}
+          />
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {treatments.map((treatment, index) => (
-            <motion.div
+            <TreatmentCard
               key={index}
-              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <div className="relative h-48 w-full">
-                <Image
-                  src={treatment.image}
-                  alt={treatment.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-dark mb-2">
-                  {treatment.title}
-                </h3>
-                <p className="text-gray-600 mb-4">{treatment.description}</p>
-                <Link
-                  href={treatment.link}
-                  className="text-primary font-medium hover:text-primary-dark flex items-center"
-                >
-                  Learn more
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5 ml-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                </Link>
-              </div>
-            </motion.div>
+              index={index}
+              title={treatment.title}
+              description={treatment.description}
+              image={treatment.image}
+              link={treatment.link}
+            />
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <Link
-            href="/treatments"
-            className="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-full font-medium hover:bg-primary-dark transition shadow-md"
+        {/* View all button with arrow */}
+        <motion.div
+          className="mt-16 flex justify-center relative"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <motion.div
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.4)",
+            }}
+            whileTap={{ scale: 0.98 }}
           >
-            View All Treatments
-          </Link>
-        </div>
+            <Link
+              href="/treatments"
+              className="inline-flex items-center justify-center space-x-2 bg-primary text-white px-8 py-3 rounded-full shadow-md hover:bg-primary-dark transition-all"
+            >
+              <span>View All Treatments</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </Link>
+          </motion.div>
+
+          {/* Arrow annotation */}
+          <motion.div
+            className="absolute -bottom-16 -right-24"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative">
+              <motion.p
+                className="absolute -top-8 right-16 text-primary font-handwritten text-lg transform -rotate-6"
+                animate={{
+                  y: [0, -3, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                Discover all our specialized treatments!
+              </motion.p>
+              <motion.svg
+                width="120"
+                height="60"
+                viewBox="0 0 120 60"
+                className="fill-none stroke-primary"
+              >
+                <motion.path
+                  d="M10,20 Q40,40 100,20"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 1.2, delay: 0.7 }}
+                />
+                <motion.path
+                  d="M95,20 L105,15 L100,30"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.6, delay: 1.9 }}
+                />
+              </motion.svg>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

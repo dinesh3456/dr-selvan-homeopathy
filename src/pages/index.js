@@ -4,17 +4,17 @@ import Head from "next/head";
 import { motion } from "framer-motion";
 import Layout from "../components/layout/Layout";
 import HeroSection from "../components/home/HeroSection";
-import BenefitsSection from "../components/home/BenefitsSection";
+import WhyChooseSection from "../components/home/WhyChooseSection";
 import FeaturedTreatments from "../components/home/FeaturedTreatments";
-import TestimonialsSection from "../components/home/TestimonialsSection";
+import TransformationsSection from "../components/home/TransformationsSection";
 import ProductsPreview from "../components/home/ProductsPreview";
 import BlogPreview from "../components/home/BlogPreview";
 import AppointmentForm from "../components/home/AppointmentForm";
-import FeaturedServices from "../components/home/FeaturedServices";
+import BenefitsSection from "../components/home/BenefitsSection";
 import "../styles/globals.css";
 
 export default function Home() {
-  // Staggered animation for page sections
+  // Animation for page loading
   const sectionVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -39,35 +39,42 @@ export default function Home() {
   return (
     <Layout title="Dr. Selvan's Homeopathy - Natural Healing Solutions">
       <motion.div variants={sectionVariants} initial="hidden" animate="visible">
+        {/* Hero Section - Updated with new design */}
         <motion.section variants={sectionItemVariants}>
           <HeroSection />
         </motion.section>
 
+        {/* Why Choose Us Section - New section from the design */}
         <motion.section variants={sectionItemVariants}>
-          <BenefitsSection />
+          <WhyChooseSection />
         </motion.section>
 
-        {/* New FeaturedServices section */}
-        <motion.section variants={sectionItemVariants}>
-          <FeaturedServices />
-        </motion.section>
-
+        {/* Featured Treatments - Using card-based layout from design */}
         <motion.section variants={sectionItemVariants}>
           <FeaturedTreatments />
         </motion.section>
 
+        {/* Benefits Section - Showing the art & science of homeopathy */}
         <motion.section variants={sectionItemVariants}>
-          <TestimonialsSection />
+          <BenefitsSection />
         </motion.section>
 
+        {/* Testimonials/Transformations Section - New design */}
+        <motion.section variants={sectionItemVariants}>
+          <TransformationsSection />
+        </motion.section>
+
+        {/* Products Preview */}
         <motion.section variants={sectionItemVariants}>
           <ProductsPreview />
         </motion.section>
 
+        {/* Blog Preview */}
         <motion.section variants={sectionItemVariants}>
           <BlogPreview />
         </motion.section>
 
+        {/* Appointment Form */}
         <motion.section variants={sectionItemVariants}>
           <AppointmentForm />
         </motion.section>

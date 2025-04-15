@@ -64,9 +64,9 @@ const Layout = ({ children, title = "Dr. Selvan's Homeopathy" }) => {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      {/* Page loading progress bar (top of page) */}
+      {/* Page loading progress bar (top of page) - Now in lavender color */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-primary z-50"
+        className="fixed top-0 left-0 right-0 h-1 bg-lavender z-50"
         initial={{ scaleX: 0, transformOrigin: "left" }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 0.5 }}
@@ -99,7 +99,7 @@ const Layout = ({ children, title = "Dr. Selvan's Homeopathy" }) => {
   );
 };
 
-// Back to top button component with animation
+// Back to top button component with animation - now styled to match new design
 const BackToTopButton = () => {
   const [isVisible, setIsVisible] = React.useState(false);
 
@@ -140,8 +140,7 @@ const BackToTopButton = () => {
     },
     hover: {
       scale: 1.1,
-      boxShadow:
-        "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+      boxShadow: "0 10px 25px -3px rgba(139, 92, 246, 0.3)",
     },
     tap: { scale: 0.95 },
   };
@@ -151,7 +150,7 @@ const BackToTopButton = () => {
       {isVisible && (
         <motion.button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 p-3 rounded-full bg-primary text-white shadow-lg z-40"
+          className="fixed bottom-6 right-6 p-3 rounded-full bg-lavender text-white shadow-lg z-40"
           style={{ marginRight: "5rem" }} // Make space for the chat button
           variants={buttonVariants}
           initial="hidden"
