@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
-import FloatingChat from "../common/FloatingChat";
 import { AnimatePresence, motion } from "framer-motion";
 
 const Layout = ({ children, title = "Dr. Selvan's Homeopathy" }) => {
@@ -89,9 +88,6 @@ const Layout = ({ children, title = "Dr. Selvan's Homeopathy" }) => {
       </AnimatePresence>
 
       <Footer />
-
-      {/* Floating chat component */}
-      <FloatingChat />
 
       {/* Back to top button */}
       <BackToTopButton />

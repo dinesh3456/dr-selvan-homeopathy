@@ -1,8 +1,11 @@
 // components/home/FeaturedTreatments.jsx
 import React from "react";
-import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import TreatmentCard from "../common/TreatmentCard";
+import AnimatedButton from "../ui/AnimatedButton";
+import SectionTitle from "../ui/SectionTitle";
+import BlobShape from "../ui/BlobShape";
+import SectionDivider from "../ui/SectionDivider";
 
 const treatments = [
   {
@@ -11,6 +14,7 @@ const treatments = [
       "Long-term relief from conditions like arthritis, asthma, and allergies with natural remedies.",
     image: "/images/treatment-chronic.jpg",
     link: "/treatments/chronic-diseases",
+    color: "primary",
   },
   {
     title: "Skin Disorders",
@@ -18,6 +22,7 @@ const treatments = [
       "Effective solutions for eczema, psoriasis, acne, and other persistent skin conditions.",
     image: "/images/treatment-skin.jpg",
     link: "/treatments/skin-disorders",
+    color: "teal",
   },
   {
     title: "Digestive Health",
@@ -25,6 +30,7 @@ const treatments = [
       "Address IBS, acid reflux, and other digestive issues with targeted homeopathic treatments.",
     image: "/images/treatment-digestive.jpg",
     link: "/treatments/digestive-health",
+    color: "amber",
   },
   {
     title: "Pediatric Care",
@@ -32,134 +38,57 @@ const treatments = [
       "Gentle and effective treatments for children's health issues, from colic to behavioral problems.",
     image: "/images/treatment-pediatric.jpg",
     link: "/treatments/pediatric-care",
+    color: "lavender",
   },
 ];
 
 const FeaturedTreatments = () => {
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-      },
-    },
-  };
-
   return (
-    <section className="py-20 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-blue-sand/50 z-0"></div>
+    <section className="pt-24 pb-32 relative overflow-hidden bg-white">
+      {/* Top wave divider */}
+      <SectionDivider type="gentle-top" position="top" color="white" />
 
-      {/* Background decorative elements */}
-      <motion.div
-        className="absolute top-40 left-20 w-64 h-64 rounded-full bg-primary/5"
-        animate={{
-          scale: [1, 1.1, 1],
-          rotate: [0, 10, 0],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div
-        className="absolute bottom-20 right-20 w-96 h-96 rounded-full bg-primary/10"
-        animate={{
-          y: [0, -15, 0],
-          scale: [1, 1.05, 1],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
+      {/* Background pattern */}
+      <div className="absolute inset-0 pattern-grid opacity-[0.07] z-0"></div>
+
+      {/* Decorative blobs */}
+      <BlobShape
+        color="primary"
+        position="top-right"
+        size="lg"
+        opacity={0.02}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          className="mb-16 max-w-2xl"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <motion.span
-            className="inline-block py-1 px-3 rounded-full bg-primary/20 text-primary text-sm font-medium mb-4"
-            variants={itemVariants}
-          >
-            Our Treatments
-          </motion.span>
+      <BlobShape color="teal" position="bottom-left" size="lg" opacity={0.02} />
 
-          <motion.h2
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
-            variants={itemVariants}
-          >
-            Art and science of homeopathic wellness
-          </motion.h2>
+      <div className="container-lg relative z-10">
+        <SectionTitle
+          pretitle="Our Treatments"
+          title="Art and science of homeopathic wellness"
+          subtitle="At Dr. Selvan's Homeopathy, we offer effective natural treatments for a wide range of health conditions."
+          alignment="center"
+          withLine={true}
+          lineColor="primary"
+        />
 
-          <motion.p className="text-lg text-slate-600" variants={itemVariants}>
-            At Dr. Selvan's Homeopathy, we offer effective natural treatments
-            for a wide range of health conditions.
-          </motion.p>
-
-          {/* Decorative line */}
-          <motion.div
-            className="mt-6 h-1 w-40 bg-gradient-to-r from-primary to-primary/30 rounded-full"
-            variants={itemVariants}
-            transition={{ delay: 0.4 }}
-          />
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Treatments grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
           {treatments.map((treatment, index) => (
-            <TreatmentCard
+            <EnhancedTreatmentCard
               key={index}
+              treatment={treatment}
               index={index}
-              title={treatment.title}
-              description={treatment.description}
-              image={treatment.image}
-              link={treatment.link}
             />
           ))}
         </div>
 
         {/* View all button with arrow */}
-        <motion.div
-          className="mt-16 flex justify-center relative"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <motion.div
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.4)",
-            }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <Link
-              href="/treatments"
-              className="inline-flex items-center justify-center space-x-2 bg-primary text-white px-8 py-3 rounded-full shadow-md hover:bg-primary-dark transition-all"
-            >
-              <span>View All Treatments</span>
+        <div className="mt-16 flex justify-center">
+          <AnimatedButton
+            href="/treatments"
+            variant="primary"
+            size="lg"
+            icon={
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -172,60 +101,184 @@ const FeaturedTreatments = () => {
                   clipRule="evenodd"
                 />
               </svg>
-            </Link>
-          </motion.div>
-
-          {/* Arrow annotation */}
-          <motion.div
-            className="absolute -bottom-16 -right-24"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-            viewport={{ once: true }}
+            }
           >
-            <div className="relative">
-              <motion.p
-                className="absolute -top-8 right-16 text-primary font-handwritten text-lg transform -rotate-6"
-                animate={{
-                  y: [0, -3, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                Discover all our specialized treatments!
-              </motion.p>
-              <motion.svg
-                width="120"
-                height="60"
-                viewBox="0 0 120 60"
-                className="fill-none stroke-primary"
-              >
-                <motion.path
-                  d="M10,20 Q40,40 100,20"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 1.2, delay: 0.7 }}
-                />
-                <motion.path
-                  d="M95,20 L105,15 L100,30"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 0.6, delay: 1.9 }}
-                />
-              </motion.svg>
-            </div>
-          </motion.div>
+            View All Treatments
+          </AnimatedButton>
+        </div>
+
+        {/* Annotation */}
+        <motion.div
+          className="absolute bottom-4 right-8 hidden md:block"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <div className="relative">
+            <motion.p
+              className="absolute -top-12 right-0 text-primary font-handwritten text-lg transform -rotate-3"
+              animate={{ y: [0, -3, 0] }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              Discover our specialized treatments!
+            </motion.p>
+            <motion.svg
+              width="120"
+              height="50"
+              viewBox="0 0 120 50"
+              className="fill-none stroke-primary"
+            >
+              <motion.path
+                d="M10,20 Q40,40 100,20"
+                strokeWidth="2"
+                strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 1.2, delay: 0.7 }}
+              />
+              <motion.path
+                d="M95,20 L105,15 L100,30"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 0.6, delay: 1.9 }}
+              />
+            </motion.svg>
+          </div>
         </motion.div>
       </div>
     </section>
+  );
+};
+
+// Individual treatment card with 3D tilt effect
+const EnhancedTreatmentCard = ({ treatment, index }) => {
+  const [tiltValues, setTiltValues] = React.useState({ tiltX: 0, tiltY: 0 });
+  const cardRef = React.useRef(null);
+
+  // Handle mousemove for 3D tilt effect
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+
+    const card = cardRef.current;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left; // x position within the card
+    const y = e.clientY - rect.top; // y position within the card
+
+    // Calculate tilt values (maximum tilt of 10 degrees)
+    const tiltX = (y / rect.height - 0.5) * 10;
+    const tiltY = -(x / rect.width - 0.5) * 10;
+
+    setTiltValues({ tiltX, tiltY });
+  };
+
+  // Reset tilt on mouse leave
+  const handleMouseLeave = () => {
+    setTiltValues({ tiltX: 0, tiltY: 0 });
+  };
+
+  // Animation variants
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        delay: index * 0.1,
+        ease: [0.25, 0.1, 0.25, 1],
+      },
+    },
+    hover: {
+      y: -10,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  return (
+    <motion.div
+      ref={cardRef}
+      className="bg-white rounded-2xl overflow-hidden shadow-md group cursor-pointer"
+      style={{
+        perspective: "1000px",
+        transform: `perspective(1000px) rotateX(${tiltValues.tiltX}deg) rotateY(${tiltValues.tiltY}deg) scale3d(1, 1, 1)`,
+        transition: "transform 0.2s ease-out",
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      whileHover="hover"
+      viewport={{ once: true, amount: 0.1 }}
+    >
+      <div className="relative h-56 w-full overflow-hidden">
+        {/* Index number */}
+        <div className="absolute top-0 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-b-lg z-10 shadow-sm">
+          <span className="text-xs text-slate-500 font-medium">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+        </div>
+
+        {/* Gradient overlay */}
+        <div
+          className={`absolute inset-0 bg-gradient-to-b from-transparent to-${treatment.color}/70 z-10 opacity-80`}
+        ></div>
+
+        {/* Image */}
+        <Image
+          src={treatment.image}
+          alt={treatment.title}
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+
+        {/* Treatment title overlay */}
+        <div className="absolute bottom-0 left-0 p-4 z-20">
+          <h3 className="text-white font-bold text-xl mb-1 drop-shadow-sm">
+            {treatment.title}
+          </h3>
+        </div>
+      </div>
+
+      <div className="p-6">
+        <p className="text-slate-600 text-sm mb-6">{treatment.description}</p>
+
+        <AnimatedButton
+          href={treatment.link}
+          variant="outline"
+          size="sm"
+          icon={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          }
+        >
+          Learn more
+        </AnimatedButton>
+      </div>
+    </motion.div>
   );
 };
 

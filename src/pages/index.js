@@ -1,17 +1,15 @@
-// pages/index.js
+// src/pages/index.js
 import React from "react";
-import Head from "next/head";
 import { motion } from "framer-motion";
 import Layout from "../components/layout/Layout";
 import HeroSection from "../components/home/HeroSection";
 import WhyChooseSection from "../components/home/WhyChooseSection";
 import FeaturedTreatments from "../components/home/FeaturedTreatments";
-import TransformationsSection from "../components/home/TransformationsSection";
+import TestimonialsSection from "../components/home/TestimonialsSection";
+import BenefitsSection from "../components/home/BenefitsSection";
 import ProductsPreview from "../components/home/ProductsPreview";
 import BlogPreview from "../components/home/BlogPreview";
 import AppointmentForm from "../components/home/AppointmentForm";
-import BenefitsSection from "../components/home/BenefitsSection";
-import "../styles/globals.css";
 
 export default function Home() {
   // Animation for page loading
@@ -39,29 +37,29 @@ export default function Home() {
   return (
     <Layout title="Dr. Selvan's Homeopathy - Natural Healing Solutions">
       <motion.div variants={sectionVariants} initial="hidden" animate="visible">
-        {/* Hero Section - Updated with new design */}
+        {/* Hero Section */}
         <motion.section variants={sectionItemVariants}>
           <HeroSection />
         </motion.section>
 
-        {/* Why Choose Us Section - New section from the design */}
+        {/* Why Choose Us Section */}
         <motion.section variants={sectionItemVariants}>
           <WhyChooseSection />
         </motion.section>
 
-        {/* Featured Treatments - Using card-based layout from design */}
+        {/* Featured Treatments */}
         <motion.section variants={sectionItemVariants}>
           <FeaturedTreatments />
         </motion.section>
 
-        {/* Benefits Section - Showing the art & science of homeopathy */}
+        {/* Benefits Section */}
         <motion.section variants={sectionItemVariants}>
           <BenefitsSection />
         </motion.section>
 
-        {/* Testimonials/Transformations Section - New design */}
+        {/* Testimonials Section */}
         <motion.section variants={sectionItemVariants}>
-          <TransformationsSection />
+          <TestimonialsSection />
         </motion.section>
 
         {/* Products Preview */}

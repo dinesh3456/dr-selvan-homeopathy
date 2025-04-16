@@ -1,39 +1,55 @@
-// components/home/ProductsPreview.jsx
-import React from "react";
-import Image from "next/image";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-
-const products = [
-  {
-    name: "Immunity Booster",
-    image: "/images/product-1.jpg",
-    price: "₹599",
-    description:
-      "Natural homeopathic formula to strengthen your immune system.",
-  },
-  {
-    name: "Stress Relief Drops",
-    image: "/images/product-2.jpg",
-    price: "₹499",
-    description: "Calming remedy to help manage anxiety and daily stress.",
-  },
-  {
-    name: "Joint Care Formula",
-    image: "/images/product-3.jpg",
-    price: "₹649",
-    description:
-      "Support for joint health and mobility with natural ingredients.",
-  },
-  {
-    name: "Digestive Wellness",
-    image: "/images/product-4.jpg",
-    price: "₹549",
-    description: "Relief from digestive issues and improved gut health.",
-  },
-];
+import { motion, useInView } from "framer-motion";
 
 const ProductsPreview = () => {
+  // State for hover effects
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+
+  // Sample product data - using the same data shown in the screenshot
+  const products = [
+    {
+      name: "Immunity Booster",
+      image: "/images/product-1.jpg", // Replace with actual image path
+      price: "₹599",
+      description:
+        "Natural homeopathic formula to strengthen your immune system.",
+      attributes: ["100% Natural", "No Side Effects", "Clinically Tested"],
+      badges: ["Bestseller"],
+      id: "01",
+    },
+    {
+      name: "Stress Relief Drops",
+      image: "/images/product-2.jpg", // Replace with actual image path
+      price: "₹499",
+      description: "Calming remedy to help manage anxiety and daily stress.",
+      attributes: ["Alcohol-Free", "Safe for Children", "Regular Use"],
+      badges: ["New"],
+      id: "02",
+    },
+    {
+      name: "Joint Care Formula",
+      image: "/images/product-3.jpg", // Replace with actual image path
+      price: "₹649",
+      description:
+        "Support for joint health and mobility with natural ingredients.",
+      attributes: ["Anti-inflammatory", "Pain Relief", "Improved Mobility"],
+      badges: [],
+      id: "03",
+    },
+    {
+      name: "Digestive Wellness",
+      image: "/images/product-4.jpg", // Replace with actual image path
+      price: "₹549",
+      description: "Relief from digestive issues and improved gut health.",
+      attributes: ["Gut Health", "Acid Reflux Relief", "IBS Support"],
+      badges: ["Popular"],
+      id: "04",
+    },
+  ];
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -41,7 +57,7 @@ const ProductsPreview = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.3,
+        delayChildren: 0.2,
       },
     },
   };
@@ -54,124 +70,141 @@ const ProductsPreview = () => {
       transition: {
         type: "spring",
         stiffness: 100,
-        damping: 15,
+        damping: 20,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (index) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.2 + index * 0.1,
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    }),
+    hover: {
+      y: -5,
+      boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)",
+      transition: {
+        duration: 0.2,
       },
     },
   };
 
   return (
-    <section className="py-20 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-blue-50 z-0"></div>
+    <section className="py-16 bg-white" ref={sectionRef}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-8">
+          <p className="text-lg text-gray-600 max-w-3xl">
+            Discover our range of homeopathic remedies carefully formulated by
+            Dr. Selvan.
+          </p>
+        </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div
-          className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <div>
-            <motion.span
-              className="inline-block py-1 px-3 rounded-full bg-primary/20 text-primary text-sm font-medium mb-3"
-              variants={itemVariants}
-            >
-              OUR PRODUCTS
-            </motion.span>
-
-            <motion.h2
-              className="text-3xl md:text-4xl font-bold text-slate-900 mb-2"
-              variants={itemVariants}
-            >
-              Natural remedies for balanced health
-            </motion.h2>
-
-            <motion.p
-              className="text-lg text-slate-600 max-w-2xl"
-              variants={itemVariants}
-            >
-              Discover our range of homeopathic remedies carefully formulated by
-              Dr. Selvan.
-            </motion.p>
-          </div>
-
-          <motion.div variants={itemVariants} className="mt-4 md:mt-0">
-            <Link
-              href="/products"
-              className="inline-flex items-center text-primary font-medium hover:text-primary-dark"
-            >
-              <span>View all products</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 ml-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </svg>
-            </Link>
-          </motion.div>
-        </motion.div>
-
-        {/* Products grid */}
+        {/* Products grid - Matching the design in the screenshot */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((product, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition group"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -5 }}
+              className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
+              custom={index}
+              variants={cardVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              whileHover="hover"
+              onHoverStart={() => setHoveredIndex(index)}
+              onHoverEnd={() => setHoveredIndex(null)}
             >
               <div className="relative">
-                {/* Tab indicator */}
-                <div className="absolute top-0 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-b-lg z-10 shadow-sm">
-                  <span className="text-xs text-slate-500 font-medium">
-                    / {String(index + 1).padStart(2, "0")}
-                  </span>
+                {/* ID tag */}
+                <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg text-xs text-gray-500 font-medium">
+                  / {product.id}
+                </div>
+
+                {/* Product badges */}
+                {product.badges.map((badge, i) => (
+                  <div
+                    key={i}
+                    className={`absolute top-3 ${i === 0 ? "ml-16" : "ml-24"} ${
+                      badge === "Bestseller"
+                        ? "bg-blue-100 text-blue-600"
+                        : badge === "New"
+                          ? "bg-purple-100 text-purple-600"
+                          : badge === "Popular"
+                            ? "bg-green-100 text-green-600"
+                            : "bg-gray-100 text-gray-600"
+                    } px-2 py-1 rounded-lg text-xs font-medium`}
+                  >
+                    {badge}
+                  </div>
+                ))}
+
+                {/* Price tag */}
+                <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg text-blue-600 font-bold text-sm">
+                  {product.price}
                 </div>
 
                 {/* Image section */}
-                <div className="relative h-48 w-full overflow-hidden">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition duration-300"
-                  />
+                <div
+                  className="h-48 w-full bg-gray-100 flex items-center justify-center"
+                  style={{
+                    backgroundImage: `url(${product.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                >
+                  {/* Image placeholder if needed */}
                 </div>
               </div>
 
               <div className="p-5">
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-lg font-bold text-slate-900">
-                    {product.name}
-                  </h3>
-                  <span className="text-primary font-bold">
-                    {product.price}
-                  </span>
-                </div>
-                <p className="text-slate-600 text-sm mb-4">
+                <h3 className="text-lg font-bold text-gray-900 mb-1">
+                  {product.name}
+                </h3>
+
+                <p className="text-gray-600 text-sm mb-4">
                   {product.description}
                 </p>
-                <Link
-                  href={`/products/${product.name.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="inline-flex items-center text-primary font-medium hover:text-primary-dark"
-                >
-                  <span>View Details</span>
-                  <div className="ml-2 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+
+                {/* Product attributes */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {product.attributes.map((attr, i) => (
+                    <span
+                      key={i}
+                      className="inline-flex items-center text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded"
+                    >
+                      <svg
+                        className="w-3 h-3 mr-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M5 13l4 4L19 7"
+                        ></path>
+                      </svg>
+                      {attr}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex justify-between items-center">
+                  <Link
+                    href={`#product-${product.id}`}
+                    className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors group"
+                  >
+                    <span>View Details</span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4"
+                      className="h-5 w-5 ml-1 group-hover:transform group-hover:translate-x-1 transition-transform"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -183,62 +216,48 @@ const ProductsPreview = () => {
                         d="M14 5l7 7m0 0l-7 7m7-7H3"
                       />
                     </svg>
-                  </div>
-                </Link>
+                  </Link>
+
+                  <button
+                    className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                      product.id === "01"
+                        ? "bg-blue-100 text-blue-600"
+                        : product.id === "02"
+                          ? "bg-purple-100 text-purple-600"
+                          : product.id === "03"
+                            ? "bg-blue-100 text-blue-600"
+                            : "bg-green-100 text-green-600"
+                    }`}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Arrow annotation */}
-        <motion.div
-          className="mt-12 relative flex justify-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          viewport={{ once: true }}
-        >
+        {/* Annotation */}
+        <div className="mt-12 relative flex justify-end">
           <div className="relative">
-            <motion.div className="absolute -top-16 left-1/2 transform -translate-x-1/2 text-primary font-handwritten text-xl">
-              <motion.span
-                animate={{
-                  y: [0, -3, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                Nature's remedies, curated by Dr. Selvan!
-              </motion.span>
-            </motion.div>
-            <motion.svg
-              width="180"
-              height="80"
-              viewBox="0 0 180 80"
-              className="fill-none stroke-primary"
-            >
-              <motion.path
-                d="M90,10 Q60,40 40,65"
-                strokeWidth="2"
-                strokeLinecap="round"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 1.2, delay: 0.7 }}
-              />
-              <motion.path
-                d="M45,60 L35,70 L30,55"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                initial={{ pathLength: 0 }}
-                animate={{ pathLength: 1 }}
-                transition={{ duration: 0.6, delay: 1.9 }}
-              />
-            </motion.svg>
+            <p className="absolute -top-12 right-0 text-primary font-handwritten text-lg transform -rotate-3">
+              Nature's remedies, curated by Dr. Selvan!
+            </p>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

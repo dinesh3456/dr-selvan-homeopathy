@@ -1,9 +1,10 @@
-// components/layout/Footer.jsx
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -29,41 +30,25 @@ const Footer = () => {
     },
   };
 
-  const linkHoverVariants = {
-    hover: {
-      x: 5,
-      color: "#93C5FD",
-      transition: { duration: 0.2 },
-    },
-  };
-
   return (
-    <footer className="bg-primary-dark text-white">
+    <footer className="bg-white text-gray-800 border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {/* Column 1 - About */}
-          <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-bold mb-4 text-primary-light">
+          <div>
+            <h3 className="text-lg font-bold mb-4 text-blue-600">
               Dr. Selvan's Homeopathy
             </h3>
-            <p className="text-gray-300 mb-4">
+            <p className="text-gray-600 mb-4">
               Providing natural healing solutions and homeopathic treatments for
               over two decades.
             </p>
             <div className="flex space-x-4">
-              <motion.a
+              <a
                 href="#"
-                className="text-gray-300 hover:text-white"
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
+                className="text-gray-500 hover:text-blue-600 transition-colors"
+                aria-label="Facebook"
               >
-                <span className="sr-only">Facebook</span>
                 <svg
                   className="h-6 w-6"
                   fill="currentColor"
@@ -76,14 +61,12 @@ const Footer = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </motion.a>
-              <motion.a
+              </a>
+              <a
                 href="#"
-                className="text-gray-300 hover:text-white"
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
+                className="text-gray-500 hover:text-blue-600 transition-colors"
+                aria-label="Instagram"
               >
-                <span className="sr-only">Instagram</span>
                 <svg
                   className="h-6 w-6"
                   fill="currentColor"
@@ -96,14 +79,12 @@ const Footer = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-              </motion.a>
-              <motion.a
+              </a>
+              <a
                 href="#"
-                className="text-gray-300 hover:text-white"
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
+                className="text-gray-500 hover:text-blue-600 transition-colors"
+                aria-label="Twitter"
               >
-                <span className="sr-only">Twitter</span>
                 <svg
                   className="h-6 w-6"
                   fill="currentColor"
@@ -112,13 +93,13 @@ const Footer = () => {
                 >
                   <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
                 </svg>
-              </motion.a>
+              </a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Column 2 - Quick Links */}
-          <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-bold mb-4 text-primary-light">
+          <div>
+            <h3 className="text-lg font-bold mb-4 text-blue-600">
               Quick Links
             </h3>
             <ul className="space-y-2">
@@ -131,70 +112,60 @@ const Footer = () => {
                 { href: "/contact", label: "Contact Us" },
               ].map((link, i) => (
                 <li key={i}>
-                  <motion.div whileHover="hover" variants={linkHoverVariants}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-300 hover:text-white transition-all duration-200"
-                    >
-                      {link.label}
-                    </Link>
-                  </motion.div>
+                  <Link
+                    href={link.href}
+                    className="text-gray-600 hover:text-blue-600 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Column 3 - Contact */}
-          <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-bold mb-4 text-primary-light">
-              Contact Us
-            </h3>
+          <div>
+            <h3 className="text-lg font-bold mb-4 text-blue-600">Contact Us</h3>
 
             <div className="mb-4">
               <h4 className="font-semibold mb-1">India</h4>
-              <address className="text-gray-300 not-italic">
+              <address className="text-gray-600 not-italic">
                 123 Healing Street
                 <br />
                 Chennai, Tamil Nadu
                 <br />
                 India 600001
               </address>
-              <motion.a
+              <a
                 href="tel:+919876543210"
-                className="text-gray-300 hover:text-white block mt-1"
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
+                className="text-gray-600 hover:text-blue-600 block mt-1"
               >
                 +91 98765 43210
-              </motion.a>
+              </a>
             </div>
 
             <div>
               <h4 className="font-semibold mb-1">UAE</h4>
-              <address className="text-gray-300 not-italic">
+              <address className="text-gray-600 not-italic">
                 456 Wellness Avenue
                 <br />
                 Dubai Healthcare City
                 <br />
                 UAE
               </address>
-              <motion.a
+              <a
                 href="tel:+971501234567"
-                className="text-gray-300 hover:text-white block mt-1"
-                whileHover={{ x: 5 }}
-                transition={{ duration: 0.2 }}
+                className="text-gray-600 hover:text-blue-600 block mt-1"
               >
                 +971 50 123 4567
-              </motion.a>
+              </a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Column 4 - Newsletter */}
-          <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-bold mb-4 text-primary-light">
-              Newsletter
-            </h3>
-            <p className="text-gray-300 mb-4">
+          <div>
+            <h3 className="text-lg font-bold mb-4 text-blue-600">Newsletter</h3>
+            <p className="text-gray-600 mb-4">
               Subscribe to our newsletter for the latest updates on homeopathic
               treatments and health tips.
             </p>
@@ -204,34 +175,54 @@ const Footer = () => {
                 <input
                   type="email"
                   required
-                  className="min-w-0 flex-auto rounded-l-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6"
+                  className="min-w-0 flex-auto rounded-l-md border border-gray-300 px-3.5 py-2 text-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                   placeholder="Enter your email"
                 />
-                <motion.button
+                <button
                   type="submit"
-                  className="flex-none rounded-r-md bg-primary py-2 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  className="flex-none rounded-r-md bg-blue-600 py-2 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   Subscribe
-                </motion.button>
+                </button>
               </div>
             </form>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
-        <motion.div
-          className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          viewport={{ once: true }}
-        >
-          <p>
-            © {new Date().getFullYear()} Dr. Selvan's Homeopathy. All rights
-            reserved.
-          </p>
-        </motion.div>
+        <div className="mt-12 pt-8 border-t border-gray-200 text-center text-gray-500">
+          <p>© {currentYear} Dr. Selvan's Homeopathy. All rights reserved.</p>
+        </div>
+
+        {/* Scroll to top button with correct arrow annotation position */}
+        <div className="fixed bottom-6 right-6 z-40 group">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="bg-blue-600 text-white p-3 rounded-full shadow-lg"
+            aria-label="Scroll to top"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 11l7-7 7 7M5 19l7-7 7 7"
+              />
+            </svg>
+          </button>
+
+          {/* Annotation with correct positioning */}
+          <div className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <p className="absolute -top-12 right-0 text-blue-600 font-serif italic text-lg transform -rotate-3">
+              Back to top!
+            </p>
+          </div>
+        </div>
       </div>
     </footer>
   );

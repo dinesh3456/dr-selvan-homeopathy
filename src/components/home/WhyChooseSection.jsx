@@ -1,32 +1,31 @@
-// components/home/WhyChooseSection.jsx
 import React from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
-const features = [
-  {
-    title: "> 20 Years",
-    description:
-      "Two decades of expertise in providing effective homeopathic treatments for a wide range of conditions.",
-  },
-  {
-    title: "2 Locations",
-    description:
-      "With clinics in Chennai, India and Dubai, UAE, we're committed to making homeopathic care accessible.",
-  },
-  {
-    title: "> 10k Clients",
-    description:
-      "We've had the privilege of assisting over 10,000 clients in their natural healing journeys.",
-  },
-  {
-    title: "100% Natural",
-    description:
-      "Our treatments utilize only natural remedies with no side effects, safe for patients of all ages.",
-  },
-];
+const WhyChooseSectionLight = () => {
+  const features = [
+    {
+      title: "> 20 Years",
+      description:
+        "Two decades of expertise in providing effective homeopathic treatments for a wide range of conditions.",
+    },
+    {
+      title: "2 Locations",
+      description:
+        "With clinics in Chennai, India and Dubai, UAE, we're committed to making homeopathic care accessible.",
+    },
+    {
+      title: "> 10k Clients",
+      description:
+        "We've had the privilege of assisting over 10,000 clients in their natural healing journeys.",
+    },
+    {
+      title: "100% Natural",
+      description:
+        "Our treatments utilize only natural remedies with no side effects, safe for patients of all ages.",
+    },
+  ];
 
-const WhyChooseSection = () => {
   // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -53,7 +52,7 @@ const WhyChooseSection = () => {
   };
 
   return (
-    <section className="py-20 relative">
+    <section className="py-20 bg-white relative">
       {/* Light background with blue gradient instead of dark */}
       <div className="absolute inset-0 bg-blue-50 bg-opacity-70 z-0"></div>
 
@@ -66,7 +65,7 @@ const WhyChooseSection = () => {
           viewport={{ once: true }}
         >
           <motion.span
-            className="text-primary font-medium text-sm uppercase tracking-wider"
+            className="text-blue-600 font-medium text-sm uppercase tracking-wider"
             variants={itemVariants}
           >
             OUR CLINIC
@@ -81,7 +80,7 @@ const WhyChooseSection = () => {
 
           {/* Decorative line - similar to the one in the design */}
           <motion.div
-            className="h-0.5 w-3/4 bg-gradient-to-r from-primary/70 to-primary/10 rounded-full"
+            className="h-0.5 w-3/4 bg-gradient-to-r from-blue-500/70 to-blue-100 rounded-full"
             variants={itemVariants}
             transition={{ delay: 0.4 }}
           />
@@ -103,7 +102,7 @@ const WhyChooseSection = () => {
                 transition: { duration: 0.2 },
               }}
             >
-              <h3 className="text-2xl font-bold text-primary mb-3">
+              <h3 className="text-2xl font-bold text-blue-600 mb-3">
                 {feature.title}
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed">
@@ -121,9 +120,9 @@ const WhyChooseSection = () => {
           transition={{ delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <Link href="/appointment">
+          <Link href="/appointment" className="group">
             <motion.div
-              className="bg-primary text-white w-full max-w-xl py-4 px-6 rounded-full flex items-center justify-center group cursor-pointer"
+              className="bg-blue-600 text-white w-full max-w-xl py-4 px-6 rounded-full flex items-center justify-center group-hover:bg-blue-700 cursor-pointer transition-colors"
               whileHover={{
                 scale: 1.02,
                 boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.4)",
@@ -169,7 +168,7 @@ const WhyChooseSection = () => {
           >
             <div className="relative">
               <motion.p
-                className="absolute -top-2 right-16 text-primary font-handwritten text-lg transform -rotate-6"
+                className="absolute -top-12 right-0 text-primary font-handwritten text-lg transform -rotate-3"
                 animate={{
                   y: [0, -3, 0],
                 }}
@@ -185,7 +184,7 @@ const WhyChooseSection = () => {
                 width="120"
                 height="60"
                 viewBox="0 0 120 60"
-                className="fill-none stroke-primary"
+                className="fill-none stroke-blue-500"
               >
                 <motion.path
                   d="M10,30 Q40,10 100,30"
@@ -213,4 +212,4 @@ const WhyChooseSection = () => {
   );
 };
 
-export default WhyChooseSection;
+export default WhyChooseSectionLight;
