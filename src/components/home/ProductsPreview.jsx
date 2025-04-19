@@ -98,12 +98,35 @@ const ProductsPreview = () => {
   return (
     <section className="py-16 bg-white" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <p className="text-lg text-gray-600 max-w-3xl">
+        <motion.div
+          className="mb-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.span
+            className="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-sm font-medium mb-3"
+            variants={itemVariants}
+          >
+            OUR PRODUCTS
+          </motion.span>
+
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold text-slate-900 mb-4"
+            variants={itemVariants}
+          >
+            Homeopathic Remedies
+          </motion.h2>
+
+          <motion.p
+            className="text-lg text-gray-600 max-w-3xl"
+            variants={itemVariants}
+          >
             Discover our range of homeopathic remedies carefully formulated by
             Dr. Selvan.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Products grid - Matching the design in the screenshot */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -250,14 +273,84 @@ const ProductsPreview = () => {
           ))}
         </div>
 
-        {/* Annotation */}
-        <div className="mt-12 relative flex justify-end">
-          <div className="relative">
-            <p className="absolute -top-12 right-0 text-primary font-handwritten text-lg transform -rotate-3">
-              Nature's remedies, curated by Dr. Selvan!
-            </p>
-          </div>
-        </div>
+        {/* View all products button */}
+        <motion.div
+          className="mt-12 text-center relative"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <Link
+            href="/products"
+            className="inline-flex items-center justify-center border border-blue-500 text-blue-600 bg-white px-6 py-3 rounded-full font-medium hover:bg-blue-50 transition"
+          >
+            <span>View All Products</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 ml-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </Link>
+
+          {/* Arrow annotation - moved more to the right */}
+          <motion.div
+            className="absolute -top--1 left-1/4 hidden md:block"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative">
+              <motion.p
+                className="absolute -top-12 left-0 text-primary font-handwritten text-lg transform rotate-3"
+                animate={{
+                  y: [0, -3, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                Nature's remedies, curated by Dr. Selvan!
+              </motion.p>
+              <motion.svg
+                width="120"
+                height="60"
+                viewBox="0 0 120 60"
+                className="fill-none stroke-primary"
+              >
+                <motion.path
+                  d="M10,30 Q80,50 100,30"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 1.2, delay: 0.7 }}
+                />
+                <motion.path
+                  d="M95,30 L105,25 L100,35"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.6, delay: 1.9 }}
+                />
+              </motion.svg>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
