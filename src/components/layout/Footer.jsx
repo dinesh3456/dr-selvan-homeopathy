@@ -215,13 +215,6 @@ const Footer = () => {
               />
             </svg>
           </button>
-
-          {/* Annotation with correct positioning */}
-          <div className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <p className="absolute -top-12 right-0 text-blue-600 font-serif italic text-lg transform -rotate-3">
-              Back to top!
-            </p>
-          </div>
         </div>
       </div>
     </footer>

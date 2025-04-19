@@ -95,7 +95,7 @@ const Layout = ({ children, title = "Dr. Selvan's Homeopathy" }) => {
   );
 };
 
-// Back to top button component with animation - now styled to match new design
+// BackToTopButton component with fixed styling - updated to blue color
 const BackToTopButton = () => {
   const [isVisible, setIsVisible] = React.useState(false);
 
@@ -136,7 +136,7 @@ const BackToTopButton = () => {
     },
     hover: {
       scale: 1.1,
-      boxShadow: "0 10px 25px -3px rgba(139, 92, 246, 0.3)",
+      boxShadow: "0 10px 25px -3px rgba(59, 130, 246, 0.3)",
     },
     tap: { scale: 0.95 },
   };
@@ -146,8 +146,7 @@ const BackToTopButton = () => {
       {isVisible && (
         <motion.button
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 p-3 rounded-full bg-lavender text-white shadow-lg z-40"
-          style={{ marginRight: "5rem" }} // Make space for the chat button
+          className="fixed bottom-6 right-6 p-3 rounded-full bg-primary text-white shadow-lg z-40"
           variants={buttonVariants}
           initial="hidden"
           animate="visible"
