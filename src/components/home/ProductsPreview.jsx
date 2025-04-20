@@ -304,7 +304,7 @@ const ProductsPreview = () => {
 
           {/* Arrow annotation - moved more to the right */}
           <motion.div
-            className="absolute -top--1 left-1/4 hidden md:block"
+            className="absolute -top-[-16px] left-[30%] hidden md:block"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.7 }}

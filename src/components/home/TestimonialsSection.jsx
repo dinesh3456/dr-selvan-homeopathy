@@ -144,6 +144,7 @@ const TestimonialsSection = () => {
           onMouseLeave={handleMouseLeave}
         >
           {/* Handwritten annotation with arrow */}
+          {/* Handwritten annotation with arrow */}
           <motion.div
             className="absolute -top-16 right-0 md:right-20 z-10 hidden md:block"
             initial={{ opacity: 0 }}
@@ -168,7 +169,7 @@ const TestimonialsSection = () => {
                 width="40"
                 height="30"
                 viewBox="0 0 40 30"
-                className="fill-none stroke-primary"
+                className="fill-none stroke-primary transform scale-x-[-1] -translate-x-12" // Added -translate-x-8 to move arrow left
               >
                 <motion.path
                   d="M5,15 Q15,5 35,15"

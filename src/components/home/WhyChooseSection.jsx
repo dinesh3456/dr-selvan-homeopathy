@@ -159,16 +159,15 @@ const WhyChooseSectionLight = () => {
             </motion.div>
           </Link>
 
-          {/* Arrow annotation */}
           <motion.div
-            className="absolute -top-16 -right-8"
+            className="absolute top-[10px] left-0 md:left-[700px]"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
           >
             <div className="relative">
               <motion.p
-                className="absolute -top-12 right-0 text-primary font-handwritten text-lg transform -rotate-3"
+                className="absolute -top-12 left-0 text-primary font-handwritten text-lg transform rotate-3"
                 animate={{
                   y: [0, -3, 0],
                 }}
@@ -184,7 +183,7 @@ const WhyChooseSectionLight = () => {
                 width="120"
                 height="60"
                 viewBox="0 0 120 60"
-                className="fill-none stroke-blue-500"
+                className="fill-none stroke-blue-500 transform scale-x-[-1]" // Added scale-x-[-1] to mirror the arrow
               >
                 <motion.path
                   d="M10,30 Q40,10 100,30"
@@ -195,7 +194,7 @@ const WhyChooseSectionLight = () => {
                   transition={{ duration: 1.2, delay: 0.7 }}
                 />
                 <motion.path
-                  d="M95,30 L110,35 L100,20"
+                  d="M95,35 L105,35 L100,20"
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"

@@ -192,13 +192,55 @@ const AppointmentFormLight = () => {
               </motion.div>
 
               {/* Arrow annotation */}
-              <div className="relative mt-8">
+              <motion.div
+                className="absolute -top--11 left-[45%] hidden md:block"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.7 }}
+                viewport={{ once: true }}
+              >
                 <div className="relative">
-                  <p className="absolute -top-12 right-0 text-primary font-handwritten text-lg transform -rotate-3">
+                  <motion.p
+                    className="absolute -top-12 left--[10%] text-primary font-handwritten text-lg transform rotate-3"
+                    animate={{
+                      y: [0, -3, 0],
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
                     We're just one message away from helping you feel better!
-                  </p>
+                  </motion.p>
+
+                  {/* Modified SVG with translated position */}
+                  <motion.svg
+                    width="120"
+                    height="60"
+                    viewBox="0 0 120 60"
+                    className="fill-none stroke-primary transform translate-x-20"
+                  >
+                    <motion.path
+                      d="M10,30 Q80,50 100,30"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 1.2, delay: 0.7 }}
+                    />
+                    <motion.path
+                      d="M95,30 L105,25 L100,35"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 0.6, delay: 1.9 }}
+                    />
+                  </motion.svg>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
 
             <motion.div

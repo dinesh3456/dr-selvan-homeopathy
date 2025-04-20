@@ -192,7 +192,7 @@ const BenefitsSection = () => {
         >
           <div className="relative">
             <motion.span
-              className="absolute bottom-16 right-16 text-primary font-handwritten text-lg"
+              className="absolute bottom-12 right-[10px] text-primary font-handwritten text-lg" // Changed from right-[-20px] to right-[-10px]
               animate={{
                 y: [0, -3, 0],
               }}
@@ -205,13 +205,13 @@ const BenefitsSection = () => {
               Discover our unique approach!
             </motion.span>
             <motion.svg
-              width="180"
-              height="80"
-              viewBox="0 0 180 80"
-              className="fill-none stroke-primary"
+              width="120"
+              height="60"
+              viewBox="0 0 120 60"
+              className="fill-none stroke-primary transform scale-x-[-1] -translate-x-4" // Changed from -translate-x-8 to -translate-x-4
             >
               <motion.path
-                d="M160,40 Q110,70 60,40"
+                d="M10,30 Q80,50 100,30"
                 strokeWidth="2"
                 strokeLinecap="round"
                 initial={{ pathLength: 0 }}
@@ -219,7 +219,7 @@ const BenefitsSection = () => {
                 transition={{ duration: 1.2, delay: 0.7 }}
               />
               <motion.path
-                d="M65,45 L55,35 L50,50"
+                d="M95,30 L105,25 L100,35"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"

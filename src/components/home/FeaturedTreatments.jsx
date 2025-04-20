@@ -109,32 +109,36 @@ const FeaturedTreatments = () => {
 
         {/* Annotation */}
         <motion.div
-          className="absolute bottom-4 right-8 hidden md:block"
+          className="absolute -top--11 left-[30%] hidden md:block" // Changed from left-[45%] to left-[30%]
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.7 }}
           viewport={{ once: true }}
         >
           <div className="relative">
             <motion.p
-              className="absolute -top-12 right-0 text-primary font-handwritten text-lg transform -rotate-3"
-              animate={{ y: [0, -3, 0] }}
+              className="absolute -top-12 left-[10%] text-primary font-handwritten text-lg transform rotate-3"
+              animate={{
+                y: [0, -3, 0],
+              }}
               transition={{
                 duration: 4,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
             >
-              Discover our specialized treatments!
+              Discover our specialized treatments!{" "}
             </motion.p>
+
+            {/* Modified SVG with translated position */}
             <motion.svg
               width="120"
-              height="50"
-              viewBox="0 0 120 50"
-              className="fill-none stroke-primary"
+              height="60"
+              viewBox="0 0 120 60"
+              className="fill-none stroke-primary transform translate-x-20"
             >
               <motion.path
-                d="M10,20 Q40,40 100,20"
+                d="M10,30 Q80,50 100,30"
                 strokeWidth="2"
                 strokeLinecap="round"
                 initial={{ pathLength: 0 }}
@@ -142,7 +146,7 @@ const FeaturedTreatments = () => {
                 transition={{ duration: 1.2, delay: 0.7 }}
               />
               <motion.path
-                d="M95,20 L105,15 L100,30"
+                d="M95,30 L105,25 L100,35"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"

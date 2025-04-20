@@ -189,13 +189,55 @@ const BlogPreviewLight = () => {
               </Link>
 
               {/* Arrow annotation */}
-              <div className="absolute -top-16 -right-20">
+              <motion.div
+                className="absolute -top-[-30px] left-[-85%] hidden md:block" // Changed from left-[-75%] to bring the whole component closer
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.7 }}
+                viewport={{ once: true }}
+              >
                 <div className="relative">
-                  <p className="absolute -top-12 right-0 text-primary font-handwritten text-lg transform -rotate-3">
+                  <motion.p
+                    className="absolute -top-10 left-0 text-primary font-handwritten text-lg transform rotate-3" // Changed from -top-12 to -top-10 to reduce vertical spacing
+                    animate={{
+                      y: [0, -3, 0],
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
                     Explore our knowledge base!
-                  </p>
+                  </motion.p>
+
+                  {/* Modified SVG with adjusted position */}
+                  <motion.svg
+                    width="120"
+                    height="40" // Reduced height from 60 to 40 to bring arrow closer to text
+                    viewBox="0 0 120 40" // Adjusted viewBox to match new height
+                    className="fill-none stroke-primary transform translate-x-4" // Reduced translate-x from 8 to 4
+                  >
+                    <motion.path
+                      d="M10,15 Q60,30 100,15" // Modified path to start higher (15 instead of 30)
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 1.2, delay: 0.7 }}
+                    />
+                    <motion.path
+                      d="M95,15 L105,10 L100,20" // Modified arrowhead to align with new curve
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      initial={{ pathLength: 0 }}
+                      animate={{ pathLength: 1 }}
+                      transition={{ duration: 0.6, delay: 1.9 }}
+                    />
+                  </motion.svg>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
