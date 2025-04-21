@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [homeopathyOpen, setHomeopathyOpen] = useState(false);
 
   // Handle scroll effect for sticky header
   useEffect(() => {
@@ -102,12 +103,34 @@ const Header = () => {
     },
   };
 
+  useEffect(() => {
+    if (!homeopathyOpen) return;
+
+    const handleClickOutside = (event) => {
+      if (!event.target.closest(".relative.group")) {
+        setHomeopathyOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [homeopathyOpen]);
+
   return (
     <header
       className={`bg-white/90 backdrop-blur-md sticky top-0 z-50 transition-all duration-300 ${
         scrolled ? "shadow-md py-2" : "shadow-sm py-4"
       }`}
     >
+      <style jsx>{`
+        .relative.group.hovered + .relative.group .absolute,
+        .relative.group:hover .absolute {
+          opacity: 1;
+          visibility: visible;
+        }
+      `}</style>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo with subtle animation */}
@@ -130,66 +153,78 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
             <div className="relative group">
-              <motion.div whileHover="hover" variants={linkHoverVariants}>
-                <Link
-                  href="/homeopathy"
-                  className="text-dark hover:text-primary font-medium transition"
-                >
+              <motion.div
+                whileHover="hover"
+                variants={linkHoverVariants}
+                onClick={() => setHomeopathyOpen(!homeopathyOpen)}
+              >
+                <span className="text-dark hover:text-primary font-medium transition cursor-pointer">
                   Homeopathy
-                </Link>
+                </span>
               </motion.div>
-              <AnimatePresence>
-                <motion.div
-                  className="absolute left-0 mt-2 w-56 origin-top-left bg-white shadow-lg rounded-md py-2 z-50 overflow-hidden"
-                  initial="hidden"
-                  variants={dropdownVariants}
-                  animate="hidden"
-                  whileHover="visible"
-                >
-                  {[
-                    {
-                      href: "/homeopathy/what-is-homeopathy",
-                      label: "What is Homeopathy",
-                    },
-                    {
-                      href: "/homeopathy/scope-of-homeopathy",
-                      label: "Scope of Homeopathy",
-                    },
-                    {
-                      href: "/homeopathy/methodology",
-                      label: "Homeopathy Methodology",
-                    },
-                    {
-                      href: "/homeopathy/myths-and-facts",
-                      label: "Myths and Facts",
-                    },
-                    {
-                      href: "/homeopathy/dr-selvan-treatment",
-                      label: "Dr. Selvan's Treatment",
-                    },
-                    { href: "/homeopathy/faq", label: "FAQ about Disease" },
-                  ].map((item, i) => (
-                    <motion.div
-                      key={i}
-                      variants={menuItemVariants}
-                      whileHover={{
-                        backgroundColor: "#EFF6FF", // blue-sand color
-                        x: 5,
-                      }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <Link
-                        href={item.href}
-                        className="block px-4 py-2 text-sm text-dark hover:text-primary"
-                      >
-                        {item.label}
-                      </Link>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </AnimatePresence>
-            </div>
 
+              {/* Update the dropdown to stay visible when hovered */}
+              <div
+                className={`absolute left-0 mt-2 w-56 origin-top-left bg-white shadow-lg rounded-md py-2 z-50 overflow-hidden transition-all duration-300
+      ${homeopathyOpen ? "opacity-100 visible" : "opacity-0 invisible group-hover:opacity-100 group-hover:visible"}
+    `}
+                onMouseEnter={() =>
+                  document
+                    .querySelector(".relative.group")
+                    .classList.add("hovered")
+                }
+                onMouseLeave={() =>
+                  !homeopathyOpen &&
+                  document
+                    .querySelector(".relative.group")
+                    .classList.remove("hovered")
+                }
+              >
+                {[
+                  {
+                    href: "/homeopathy/overview",
+                    label: "Homeopathy: Overview",
+                  },
+                  {
+                    href: "/homeopathy/scope-of-homeopathy",
+                    label: "Scope of Homeopathy",
+                  },
+                  {
+                    href: "/homeopathy/safest-method",
+                    label: "Safest Method",
+                  },
+                  {
+                    href: "/homeopathy/treatment-methodology",
+                    label: "Homeopathic Treatment Methodology",
+                  },
+                  {
+                    href: "/homeopathy/history",
+                    label: "History of Homeopathy",
+                  },
+                  {
+                    href: "/homeopathy/principles",
+                    label: "Principles of Homeopathy",
+                  },
+                  {
+                    href: "/homeopathy/myths-and-facts",
+                    label: "Myths and Facts of Homeopathy",
+                  },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="hover:bg-blue-100 px-4 py-2 transition-transform duration-200 transform hover:translate-x-1"
+                  >
+                    <Link
+                      href={item.href}
+                      className="block text-sm text-dark hover:text-primary"
+                      onClick={() => setHomeopathyOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
             <motion.div whileHover="hover" variants={linkHoverVariants}>
               <Link
                 href="/natural-treatment"

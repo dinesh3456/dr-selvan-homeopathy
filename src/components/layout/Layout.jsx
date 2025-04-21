@@ -5,7 +5,11 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { AnimatePresence, motion } from "framer-motion";
 
-const Layout = ({ children, title = "Dr. Selvan's Homeopathy" }) => {
+const Layout = ({
+  children,
+  title = "Dr. Selvan's Homeopathy",
+  hideFooter = false,
+}) => {
   // Page transition animation
   const pageVariants = {
     initial: {
@@ -74,20 +78,21 @@ const Layout = ({ children, title = "Dr. Selvan's Homeopathy" }) => {
 
       <Header />
 
-      <AnimatePresence mode="wait">
-        <motion.main
-          className="flex-grow"
-          key={title}
-          variants={pageVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-        >
-          {children}
-        </motion.main>
-      </AnimatePresence>
+      <main className="flex-grow">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={title}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            variants={pageVariants}
+          >
+            {children}
+          </motion.div>
+        </AnimatePresence>
+      </main>
 
-      <Footer />
+      {!hideFooter && <Footer />}
 
       {/* Back to top button */}
       <BackToTopButton />
