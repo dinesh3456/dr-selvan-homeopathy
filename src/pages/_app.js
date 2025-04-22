@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import "../styles/globals.css";
+import { AppointmentProvider } from "../context/AppointmentContext";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -24,9 +25,11 @@ function MyApp({ Component, pageProps }) {
   }, [router.events]);
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      <Component {...pageProps} key={router.asPath} />
-    </AnimatePresence>
+    <AppointmentProvider>
+      <AnimatePresence mode="wait" initial={false}>
+        <Component {...pageProps} key={router.asPath} />
+      </AnimatePresence>
+    </AppointmentProvider>
   );
 }
 
