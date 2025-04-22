@@ -8,7 +8,6 @@ import FeaturedTreatments from "../components/home/FeaturedTreatments";
 import TestimonialsSection from "../components/home/TestimonialsSection";
 import BenefitsSection from "../components/home/BenefitsSection";
 import ProductsPreview from "../components/home/ProductsPreview";
-import BlogPreview from "../components/home/BlogPreview";
 import AppointmentForm from "../components/home/AppointmentForm";
 
 export default function Home() {
@@ -65,11 +64,6 @@ export default function Home() {
         {/* Products Preview */}
         <motion.section variants={sectionItemVariants}>
           <ProductsPreview />
-        </motion.section>
-
-        {/* Blog Preview */}
-        <motion.section variants={sectionItemVariants}>
-          <BlogPreview />
         </motion.section>
 
         {/* Appointment Form */}
