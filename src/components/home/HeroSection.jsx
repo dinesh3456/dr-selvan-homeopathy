@@ -90,7 +90,7 @@ const HeroSection = () => {
       y: [0, -15, 0],
       transition: {
         delay: i * 0.1,
-        duration: 10 + i, // Increased from 3 + i for slower animation
+        duration: 10 + i, 
         repeat: Infinity,
         ease: "easeInOut",
       },
@@ -124,7 +124,7 @@ const HeroSection = () => {
       <div className="absolute w-full h-full overflow-hidden z-0">
         {/* Primary background bubble */}
         <motion.div
-          className="absolute top-40 right-10 rounded-full bg-blue-400 opacity-5"
+          className="absolute top-30 right-10 rounded-full bg-blue-400 opacity-5"
           style={{ width: "40rem", height: "40rem" }}
           animate={{
             y: [0, -15, 0],
@@ -138,20 +138,28 @@ const HeroSection = () => {
         />
 
         {/* Secondary background bubble */}
-        <motion.div
-          className="absolute -bottom-20 -left-20 rounded-full bg-accent opacity-10"
-          style={{ width: "35rem", height: "35rem" }}
-          animate={{
-            x: [0, 10, 0],
-            scale: [1, 1.03, 1],
-          }}
-          transition={{
-            duration: 14, // Increased from 7 for slower animation
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 0.5,
-          }}
-        />
+<motion.div
+  className="absolute -bottom-[-5%] -left-[-10%]"
+  style={{ width: "35rem", height: "35rem" }}
+  animate={{
+    x: [0, 10, 0],
+    scale: [1, 1.03, 1],
+  }}
+  transition={{
+    duration: 14, 
+    repeat: Infinity,
+    ease: "easeInOut",
+    delay: 0.5,
+  }}
+>
+  <Image
+    src="/images/Dr. Selvan Logo-symbol.png"
+    alt="Dr. Selvan Symbol"
+    fill
+    className="object-contain opacity-20"
+    priority
+  />
+</motion.div>
 
         {/* Floating bubbles with SLOW animation */}
         {decorativeBubbles.map((bubble) => (
@@ -187,7 +195,7 @@ const HeroSection = () => {
       </AnimatePresence>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-10 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
             variants={containerVariants}

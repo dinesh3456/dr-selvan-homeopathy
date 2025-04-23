@@ -1,6 +1,7 @@
 // components/layout/Header.jsx
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image"; 
 import { motion, AnimatePresence } from "framer-motion";
 import AppointmentButton from "../common/AppointmentButton";
 
@@ -122,7 +123,7 @@ const Header = () => {
   return (
     <header
       className={`bg-white/90 backdrop-blur-md sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? "shadow-md py-2" : "shadow-sm py-4"
+        scrolled ? "shadow-md py-1" : "shadow-sm py-2"
       }`}
     >
       <style jsx>{`
@@ -137,21 +138,27 @@ const Header = () => {
         <div className="flex justify-between items-center">
           {/* Logo with subtle animation */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Link href="/" className="flex items-center">
-              <motion.span
-                className="text-2xl font-bold"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className="text-primary">Dr. Selvan's</span>
-                <span className="text-accent"> Homeopathy</span>
-              </motion.span>
-            </Link>
-          </motion.div>
+  initial={{ opacity: 0, x: -20 }}
+  animate={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.5 }}
+>
+  <Link href="/" className="flex items-center">
+    <motion.div
+      className="h-16 w-auto flex items-center" 
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+    >
+      <Image
+        src="/images/Dr. Selvan Logo.png"
+        alt="Dr. Selvan's Homeopathy"
+        width={220}  
+        height={60}  
+        priority
+        className="object-contain"
+      />
+    </motion.div>
+  </Link>
+</motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
@@ -324,54 +331,7 @@ const Header = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.5 }}
             >
-              <div className="relative">
-                <motion.div className="absolute -top-2 right-16 text-accent font-handwritten text-sm transform -rotate-6 whitespace-nowrap">
-                  <motion.span
-                    animate={{
-                      y: [0, -2, 0],
-                      rotate: [-6, -4, -6],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  >
-                    Ready to help!
-                  </motion.span>
-                </motion.div>
-                <motion.svg
-                  width="100"
-                  height="50"
-                  viewBox="0 0 100 50"
-                  className="fill-none stroke-accent"
-                >
-                  <motion.path
-                    d="M10,40 Q30,10 90,30"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={{
-                      duration: 0.8,
-                      delay: 1.7,
-                      ease: "easeOut",
-                    }}
-                  />
-                  <motion.path
-                    d="M85,30 L95,35 L90,25"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    initial={{ pathLength: 0, opacity: 0 }}
-                    animate={{ pathLength: 1, opacity: 1 }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 2.5,
-                    }}
-                  />
-                </motion.svg>
-              </div>
+             
             </motion.div>
           </motion.div>
 

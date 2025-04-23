@@ -67,7 +67,7 @@ const Layout = ({
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      {/* Page loading progress bar (top of page) - Now in lavender color */}
+      {/* Page loading progress bar (top of page)  */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-lavender z-50"
         initial={{ scaleX: 0, transformOrigin: "left" }}
