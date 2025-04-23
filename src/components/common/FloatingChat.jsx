@@ -82,7 +82,7 @@ const FloatingChat = () => {
     },
     hover: {
       scale: 1.1,
-      boxShadow: "0 10px 25px -5px rgba(51, 102, 204, 0.4)",
+      boxShadow: "0 10px 25px -5px rgba(255, 107, 53, 0.4)",
       transition: {
         type: "spring",
         stiffness: 400,
@@ -180,14 +180,14 @@ const FloatingChat = () => {
             exit="exit"
           >
             <GlassCard className="overflow-hidden p-0 shadow-lg">
-              {/* Header */}
-              <div className="bg-primary p-4 text-white">
+              {/* Header - Using orange accent */}
+              <div className="bg-gradient-to-r from-primary to-accent p-4 text-white">
                 <div className="flex items-center">
                   <div className="relative">
                     <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 text-primary"
+                        className="h-6 w-6 text-accent"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -244,7 +244,7 @@ const FloatingChat = () => {
                       <div
                         className={`rounded-2xl px-4 py-2 inline-block shadow-sm ${
                           msg.sender === "bot"
-                            ? "bg-primary text-white rounded-bl-none"
+                            ? "bg-gradient-to-r from-primary to-primary-dark text-white rounded-bl-none"
                             : "bg-white text-slate-800 rounded-br-none border border-slate-100"
                         }`}
                       >
@@ -270,7 +270,7 @@ const FloatingChat = () => {
                   />
                   <motion.button
                     type="submit"
-                    className="ml-2 bg-primary text-white rounded-full w-10 h-10 flex items-center justify-center disabled:opacity-50"
+                    className="ml-2 bg-accent text-white rounded-full w-10 h-10 flex items-center justify-center disabled:opacity-50"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     disabled={!message.trim()}
@@ -303,7 +303,7 @@ const FloatingChat = () => {
           >
             <GlassCard className="p-3 shadow-md">
               <div className="flex items-start">
-                <div className="bg-primary rounded-full p-2 text-white mr-2 flex-shrink-0">
+                <div className="bg-accent rounded-full p-2 text-white mr-2 flex-shrink-0">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"
@@ -349,9 +349,9 @@ const FloatingChat = () => {
         )}
       </AnimatePresence>
 
-      {/* Chat button */}
+      {/* Chat button - using orange accent */}
       <motion.button
-        className="bg-primary text-white rounded-full w-14 h-14 flex items-center justify-center shadow-blue-glow"
+        className="bg-accent text-white rounded-full w-14 h-14 flex items-center justify-center shadow-orange-glow"
         variants={buttonVariants}
         initial="initial"
         animate="animate"

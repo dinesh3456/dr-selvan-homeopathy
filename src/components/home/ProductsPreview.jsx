@@ -116,7 +116,8 @@ const ProductsPreview = () => {
             className="text-3xl md:text-4xl font-bold text-slate-900 mb-4"
             variants={itemVariants}
           >
-            Homeopathic Remedies
+            <span className="text-primary">Homeopathic</span>{" "}
+            <span className="text-accent">Remedies</span>
           </motion.h2>
 
           <motion.p
@@ -127,7 +128,6 @@ const ProductsPreview = () => {
             Dr. Selvan.
           </motion.p>
         </motion.div>
-
         {/* Products grid - Matching the design in the screenshot */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((product, index) => (
@@ -272,8 +272,6 @@ const ProductsPreview = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* View all products button */}
         <motion.div
           className="mt-12 text-center relative"
           initial={{ opacity: 0, y: 20 }}
@@ -283,7 +281,7 @@ const ProductsPreview = () => {
         >
           <Link
             href="/products"
-            className="inline-flex items-center justify-center border border-blue-500 text-blue-600 bg-white px-6 py-3 rounded-full font-medium hover:bg-blue-50 transition"
+            className="inline-flex items-center justify-center bg-blue-500 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-600 transition"
           >
             <span>View All Products</span>
             <svg

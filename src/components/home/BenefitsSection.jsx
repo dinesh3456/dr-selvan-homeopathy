@@ -9,24 +9,28 @@ const benefits = [
     description:
       "Our holistic approach embraces your mind, body, and spirit, fostering a balanced and thriving you.",
     image: "/images/benefit-holistic.jpg",
+    color: "primary",
   },
   {
     title: "Unlock Your Potential",
     description:
       "Discover the power within as we blend evidence-based techniques with creative self-expression.",
     image: "/images/benefit-potential.jpg",
+    color: "primary",
   },
   {
     title: "Natural & Safe",
     description:
       "Our homeopathic treatments have no side effects and are safe for patients of all ages.",
     image: "/images/benefit-safe.jpg",
+    color: "primary",
   },
   {
     title: "Personalized Care",
     description:
       "We develop customized treatment plans based on your unique symptoms and constitution.",
     image: "/images/benefit-personalized.jpg",
+    color: "primary",
   },
 ];
 
@@ -58,17 +62,37 @@ const BenefitsSection = () => {
 
   return (
     <section className="py-20 relative overflow-hidden bg-white">
-      <div className="absolute inset-0 bg-gradient-to-tr from-blue-50/50 to-white z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-tr from-blue-50/50 via-white to-orange-50/50 z-0"></div>
 
       <div className="absolute inset-0 z-0">
-        {/* Decorative element - similar to the robotic hand in the design */}
+        {/* Decorative element - blue circle */}
         <div className="absolute top-0 right-0 w-1/3 h-1/3 opacity-20">
-          <Image
-            src="/images/decorative-element.png"
-            alt="Decorative element"
-            fill
-            className="object-contain object-right-top"
-          />
+          <svg
+            viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-full text-primary"
+          >
+            <path
+              fill="currentColor"
+              d="M46.5,-71.2C59.2,-62.3,68.4,-47.6,74.5,-31.5C80.7,-15.5,84,2,80.5,17.8C77.1,33.6,67,47.8,53.9,57.4C40.8,67,24.7,72.1,8.3,76.1C-8.1,80.1,-24.8,82.9,-39.6,77.9C-54.3,72.8,-67.1,59.9,-74.8,44.3C-82.5,28.7,-84.9,10.4,-82.1,-6.9C-79.3,-24.2,-71.2,-40.5,-59.3,-50.7C-47.3,-61,-31.6,-65.2,-16.1,-69.3C-0.6,-73.4,14.8,-77.4,29.4,-76.7C44,-76,57.9,-70.6,46.5,-71.2Z"
+              transform="translate(100 100)"
+            />
+          </svg>
+        </div>
+
+        {/* Decorative element - orange asymmetric shape */}
+        <div className="absolute bottom-0 left-0 w-1/3 h-1/3 opacity-20">
+          <svg
+            viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-full text-accent"
+          >
+            <path
+              fill="currentColor"
+              d="M35.9,-59.6C45.7,-51.9,52.3,-40.2,59.3,-28.2C66.3,-16.2,73.7,-3.9,71.8,7.1C69.8,18.1,58.5,27.9,48.4,38.5C38.3,49.1,29.3,60.6,17.8,65.8C6.3,71,-7.8,69.8,-22.6,67.2C-37.4,64.5,-53,60.3,-60.2,49.7C-67.4,39.1,-66.2,22.1,-69.4,4.6C-72.6,-13,-80.2,-31.1,-75.8,-43.6C-71.4,-56.1,-55,-63,-39.7,-68.8C-24.5,-74.7,-10.3,-79.5,1.8,-82.3C13.8,-85.2,26.1,-67.3,35.9,-59.6Z"
+              transform="translate(100 100)"
+            />
+          </svg>
         </div>
       </div>
 
@@ -80,9 +104,9 @@ const BenefitsSection = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          {/* Blue tag similar to the design */}
+          {/* Blue tag with orange accent */}
           <motion.div
-            className="inline-block bg-primary text-white py-1 px-3 text-sm mb-6"
+            className="inline-block bg-gradient-to-r from-primary to-accent text-white py-1 px-3 text-sm mb-6"
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -98,12 +122,13 @@ const BenefitsSection = () => {
             transition={{ delay: 0.3 }}
             viewport={{ once: true }}
           >
-            Art and science of homeopathic wellness
+            Art and science of <span className="text-primary">homeopathic</span>{" "}
+            <span className="text-accent">wellness</span>
           </motion.h2>
 
-          {/* Decorative line */}
+          {/* Decorative line - now with gradient */}
           <motion.div
-            className="h-0.5 w-64 md:w-96 bg-gradient-to-r from-primary to-transparent rounded-full"
+            className="h-0.5 w-64 md:w-96 bg-gradient-to-r from-primary to-accent rounded-full"
             initial={{ scaleX: 0, transformOrigin: "left" }}
             whileInView={{ scaleX: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
@@ -144,11 +169,17 @@ const BenefitsSection = () => {
                     fill
                     className="object-cover"
                   />
+                  {/* Gradient overlay using the benefit's color */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-tr from-${benefit.color}/40 to-transparent`}
+                  ></div>
                 </div>
 
                 {/* Content */}
                 <div className="p-6 sm:w-2/3">
-                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                  <h3
+                    className={`text-xl font-bold text-${benefit.color} mb-2`}
+                  >
                     {benefit.title}
                   </h3>
                   <p className="text-slate-600 text-sm">
@@ -156,13 +187,17 @@ const BenefitsSection = () => {
                   </p>
 
                   <div className="mt-6 flex items-center">
-                    <span className="text-primary text-sm font-medium">
+                    <span
+                      className={`text-${benefit.color} text-sm font-medium`}
+                    >
                       More details
                     </span>
-                    <div className="ml-2 w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
+                    <div
+                      className={`ml-2 w-6 h-6 rounded-full bg-${benefit.color}/10 flex items-center justify-center`}
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4 text-primary"
+                        className={`h-4 w-4 text-${benefit.color}`}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -182,7 +217,7 @@ const BenefitsSection = () => {
           ))}
         </div>
 
-        {/* Arrow annotation */}
+        {/* Arrow annotation with orange accent */}
         <motion.div
           className="mt-12 relative flex justify-end"
           initial={{ opacity: 0 }}
@@ -192,7 +227,7 @@ const BenefitsSection = () => {
         >
           <div className="relative">
             <motion.span
-              className="absolute bottom-12 right-[10px] text-primary font-handwritten text-lg" // Changed from right-[-20px] to right-[-10px]
+              className="absolute bottom-12 right-[10px] text-primary font-handwritten text-lg"
               animate={{
                 y: [0, -3, 0],
               }}
@@ -208,7 +243,7 @@ const BenefitsSection = () => {
               width="120"
               height="60"
               viewBox="0 0 120 60"
-              className="fill-none stroke-primary transform scale-x-[-1] -translate-x-4" // Changed from -translate-x-8 to -translate-x-4
+              className="fill-none stroke-primary transform scale-x-[-1] -translate-x-4"
             >
               <motion.path
                 d="M10,30 Q80,50 100,30"

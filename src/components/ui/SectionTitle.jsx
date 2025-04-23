@@ -84,6 +84,17 @@ const SectionTitle = ({
     },
   };
 
+  // Handle gradient line color
+  const getLineClass = () => {
+    if (lineColor === "gradient-blue-orange") {
+      return "bg-gradient-to-r from-primary to-accent";
+    } else if (lineColor === "accent") {
+      return "bg-accent";
+    } else {
+      return `bg-gradient-to-r from-${lineColor} to-${lineColor}/30`;
+    }
+  };
+
   return (
     <motion.div
       className={`${sizeClasses[size].maxWidth} ${alignmentClasses[alignment]} ${containerClassName}`}
@@ -110,7 +121,7 @@ const SectionTitle = ({
 
       {withLine && (
         <motion.div
-          className={`h-1 w-24 bg-gradient-to-r from-${lineColor} to-${lineColor}/30 rounded-full mb-6 ${
+          className={`h-1 w-24 ${getLineClass()} rounded-full mb-6 ${
             alignment === "center"
               ? "mx-auto"
               : alignment === "right"

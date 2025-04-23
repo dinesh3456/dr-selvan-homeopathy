@@ -1,4 +1,3 @@
-// components/home/FeaturedTreatments.jsx
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -22,7 +21,7 @@ const treatments = [
       "Effective solutions for eczema, psoriasis, acne, and other persistent skin conditions.",
     image: "/images/treatment-skin.jpg",
     link: "/treatments/skin-disorders",
-    color: "teal",
+    color: "accent", // Changed to accent (orange)
   },
   {
     title: "Digestive Health",
@@ -30,7 +29,7 @@ const treatments = [
       "Address IBS, acid reflux, and other digestive issues with targeted homeopathic treatments.",
     image: "/images/treatment-digestive.jpg",
     link: "/treatments/digestive-health",
-    color: "amber",
+    color: "primary",
   },
   {
     title: "Pediatric Care",
@@ -38,7 +37,7 @@ const treatments = [
       "Gentle and effective treatments for children's health issues, from colic to behavioral problems.",
     image: "/images/treatment-pediatric.jpg",
     link: "/treatments/pediatric-care",
-    color: "lavender",
+    color: "accent", // Changed to accent (orange)
   },
 ];
 
@@ -48,10 +47,10 @@ const FeaturedTreatments = () => {
       {/* Top wave divider */}
       <SectionDivider type="gentle-top" position="top" color="white" />
 
-      {/* Background pattern */}
+      {/* Background pattern with orange accent */}
       <div className="absolute inset-0 pattern-grid opacity-[0.07] z-0"></div>
 
-      {/* Decorative blobs */}
+      {/* Decorative blobs - one orange, one blue */}
       <BlobShape
         color="primary"
         position="top-right"
@@ -59,16 +58,27 @@ const FeaturedTreatments = () => {
         opacity={0.02}
       />
 
-      <BlobShape color="teal" position="bottom-left" size="lg" opacity={0.02} />
+      <BlobShape
+        color="accent"
+        position="bottom-left"
+        size="lg"
+        opacity={0.02}
+      />
 
       <div className="container-lg relative z-10">
         <SectionTitle
           pretitle="Our Treatments"
-          title="Art and science of homeopathic wellness"
+          title={
+            <>
+              Art and science of{" "}
+              <span className="text-primary">homeopathic</span>{" "}
+              <span className="text-accent">wellness</span>
+            </>
+          }
           subtitle="At Dr. Selvan's Homeopathy, we offer effective natural treatments for a wide range of health conditions."
           alignment="center"
           withLine={true}
-          lineColor="primary"
+          lineColor="gradient-blue-orange"
         />
 
         {/* Treatments grid */}
@@ -82,11 +92,11 @@ const FeaturedTreatments = () => {
           ))}
         </div>
 
-        {/* View all button with arrow */}
+        {/* View all button with arrow - using orange */}
         <div className="mt-16 flex justify-center">
           <AnimatedButton
             href="/treatments"
-            variant="primary"
+            variant="primaty" // Changed to accent color
             size="lg"
             icon={
               <svg
@@ -109,7 +119,7 @@ const FeaturedTreatments = () => {
 
         {/* Annotation */}
         <motion.div
-          className="absolute -top--11 left-[30%] hidden md:block" // Changed from left-[45%] to left-[30%]
+          className="absolute -top--11 left-[30%] hidden md:block"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.7 }}
@@ -261,6 +271,7 @@ const EnhancedTreatmentCard = ({ treatment, index }) => {
         <AnimatedButton
           href={treatment.link}
           variant="outline"
+          color={treatment.color === "primary" ? "primary" : "accent"}
           size="sm"
           icon={
             <svg

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import AppointmentButton from "../common/AppointmentButton";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -85,7 +86,7 @@ const Header = () => {
   const buttonVariants = {
     hover: {
       scale: 1.05,
-      boxShadow: "0 10px 15px -3px rgba(59, 130, 246, 0.3)",
+      boxShadow: "0 10px 15px -3px rgba(255, 107, 53, 0.4)",
       transition: {
         type: "spring",
         stiffness: 400,
@@ -131,6 +132,7 @@ const Header = () => {
           visibility: visible;
         }
       `}</style>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo with subtle animation */}
@@ -141,11 +143,12 @@ const Header = () => {
           >
             <Link href="/" className="flex items-center">
               <motion.span
-                className="text-2xl font-bold text-primary"
+                className="text-2xl font-bold"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Dr. Selvan's Homeopathy
+                <span className="text-primary">Dr. Selvan's</span>
+                <span className="text-accent"> Homeopathy</span>
               </motion.span>
             </Link>
           </motion.div>
@@ -300,7 +303,7 @@ const Header = () => {
             </motion.div>
           </nav>
 
-          {/* Appointment Button */}
+          {/* Appointment Button - Using the dedicated component */}
           <motion.div
             className="hidden md:block relative"
             initial={{ opacity: 0, scale: 0.9 }}
@@ -311,18 +314,8 @@ const Header = () => {
               stiffness: 200,
             }}
           >
-            <motion.div
-              whileHover="hover"
-              whileTap="tap"
-              variants={buttonVariants}
-            >
-              <Link
-                href="/appointment"
-                className="bg-primary text-white px-6 py-2 rounded-full font-medium hover:bg-primary-dark transition shadow-sm"
-              >
-                Book Appointment
-              </Link>
-            </motion.div>
+            {/* Use our AppointmentButton component with the accent variant */}
+            <AppointmentButton variant="accent" />
 
             {/* Annotation Arrow with path animation */}
             <motion.div
@@ -332,7 +325,7 @@ const Header = () => {
               transition={{ delay: 1.5 }}
             >
               <div className="relative">
-                <motion.div className="absolute -top-2 right-16 text-primary font-handwritten text-sm transform -rotate-6 whitespace-nowrap">
+                <motion.div className="absolute -top-2 right-16 text-accent font-handwritten text-sm transform -rotate-6 whitespace-nowrap">
                   <motion.span
                     animate={{
                       y: [0, -2, 0],
@@ -351,7 +344,7 @@ const Header = () => {
                   width="100"
                   height="50"
                   viewBox="0 0 100 50"
-                  className="fill-none stroke-primary"
+                  className="fill-none stroke-accent"
                 >
                   <motion.path
                     d="M10,40 Q30,10 90,30"
@@ -458,13 +451,13 @@ const Header = () => {
               <motion.div
                 variants={menuItemVariants}
                 whileHover={{
-                  backgroundColor: "#2563EB", // primary-dark color
+                  backgroundColor: "#FF6B35", // accent color
                   x: 5,
                 }}
               >
                 <Link
                   href="/appointment"
-                  className="block px-3 py-2 text-base font-medium bg-primary text-white hover:bg-primary-dark rounded-md"
+                  className="block px-3 py-2 text-base font-medium bg-accent text-white hover:bg-accent-dark rounded-md"
                   onClick={() => setIsOpen(false)}
                 >
                   Book Appointment

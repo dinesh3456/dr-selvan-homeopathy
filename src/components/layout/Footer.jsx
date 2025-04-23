@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import AppointmentButton from "../common/AppointmentButton";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -32,12 +33,16 @@ const Footer = () => {
 
   return (
     <footer className="bg-white text-gray-800 border-t border-gray-200">
+      {/* Orange accent border at top of footer */}
+      <div className="h-1 w-full bg-gradient-to-r from-primary via-accent to-primary"></div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {/* Column 1 - About */}
           <div>
-            <h3 className="text-lg font-bold mb-4 text-blue-600">
-              Dr. Selvan's Homeopathy
+            <h3 className="text-lg font-bold mb-4">
+              <span className="text-primary">Dr. Selvan's</span>
+              <span className="text-accent"> Homeopathy</span>
             </h3>
             <p className="text-gray-600 mb-4">
               Providing natural healing solutions and homeopathic treatments for
@@ -46,7 +51,7 @@ const Footer = () => {
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="text-gray-500 hover:text-blue-600 transition-colors"
+                className="text-gray-500 hover:text-accent transition-colors"
                 aria-label="Facebook"
               >
                 <svg
@@ -64,7 +69,7 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="text-gray-500 hover:text-blue-600 transition-colors"
+                className="text-gray-500 hover:text-accent transition-colors"
                 aria-label="Instagram"
               >
                 <svg
@@ -82,7 +87,7 @@ const Footer = () => {
               </a>
               <a
                 href="#"
-                className="text-gray-500 hover:text-blue-600 transition-colors"
+                className="text-gray-500 hover:text-accent transition-colors"
                 aria-label="Twitter"
               >
                 <svg
@@ -99,9 +104,7 @@ const Footer = () => {
 
           {/* Column 2 - Quick Links */}
           <div>
-            <h3 className="text-lg font-bold mb-4 text-blue-600">
-              Quick Links
-            </h3>
+            <h3 className="text-lg font-bold mb-4 text-primary">Quick Links</h3>
             <ul className="space-y-2">
               {[
                 { href: "/", label: "Home" },
@@ -114,7 +117,7 @@ const Footer = () => {
                 <li key={i}>
                   <Link
                     href={link.href}
-                    className="text-gray-600 hover:text-blue-600 transition-colors"
+                    className="text-gray-600 hover:text-accent transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -125,7 +128,7 @@ const Footer = () => {
 
           {/* Column 3 - Contact */}
           <div>
-            <h3 className="text-lg font-bold mb-4 text-blue-600">Contact Us</h3>
+            <h3 className="text-lg font-bold mb-4 text-primary">Contact Us</h3>
 
             <div className="mb-4">
               <h4 className="font-semibold mb-1">India</h4>
@@ -138,7 +141,7 @@ const Footer = () => {
               </address>
               <a
                 href="tel:+919876543210"
-                className="text-gray-600 hover:text-blue-600 block mt-1"
+                className="text-gray-600 hover:text-accent block mt-1"
               >
                 +91 98765 43210
               </a>
@@ -155,7 +158,7 @@ const Footer = () => {
               </address>
               <a
                 href="tel:+971501234567"
-                className="text-gray-600 hover:text-blue-600 block mt-1"
+                className="text-gray-600 hover:text-accent block mt-1"
               >
                 +971 50 123 4567
               </a>
@@ -164,7 +167,7 @@ const Footer = () => {
 
           {/* Column 4 - Newsletter */}
           <div>
-            <h3 className="text-lg font-bold mb-4 text-blue-600">Newsletter</h3>
+            <h3 className="text-lg font-bold mb-4 text-primary">Newsletter</h3>
             <p className="text-gray-600 mb-4">
               Subscribe to our newsletter for the latest updates on homeopathic
               treatments and health tips.
@@ -175,12 +178,12 @@ const Footer = () => {
                 <input
                   type="email"
                   required
-                  className="min-w-0 flex-auto rounded-l-md border border-gray-300 px-3.5 py-2 text-gray-700 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  className="min-w-0 flex-auto rounded-l-md border border-gray-300 px-3.5 py-2 text-gray-700 shadow-sm focus:border-primary focus:ring-primary"
                   placeholder="Enter your email"
                 />
                 <button
                   type="submit"
-                  className="flex-none rounded-r-md bg-blue-600 py-2 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="flex-none rounded-r-md bg-accent py-2 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-accent"
                 >
                   Subscribe
                 </button>
@@ -193,11 +196,11 @@ const Footer = () => {
           <p>© {currentYear} Dr. Selvan's Homeopathy. All rights reserved.</p>
         </div>
 
-        {/* Scroll to top button with correct arrow annotation position */}
+        {/* Scroll to top button with orange accent */}
         <div className="fixed bottom-6 right-6 z-40 group">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="bg-blue-600 text-white p-3 rounded-full shadow-lg"
+            className="bg-accent text-white p-3 rounded-full shadow-lg hover:bg-accent-dark transition-colors"
             aria-label="Scroll to top"
           >
             <svg

@@ -85,7 +85,8 @@ const AppointmentFormLight = () => {
                 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4"
                 variants={itemVariants}
               >
-                Schedule Your Consultation
+                <span className="text-primary">Schedule Your</span>{" "}
+                <span className="text-accent">Consultation</span>
               </motion.h2>
 
               <motion.p

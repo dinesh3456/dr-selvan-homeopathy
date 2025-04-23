@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#3B82F6", // Blue color (replacing lavender)
+        primary: "#3B82F6", // Blue color (primary)
         "primary-dark": "#2563EB", // Darker blue for hover states
         "primary-light": "#93C5FD", // Light blue
         "blue-sand": "#EFF6FF", // Light blue/sand background color
@@ -19,6 +19,13 @@ module.exports = {
         "slate-600": "#4B5563", // Medium gray text
         "slate-700": "#374151", // Darker gray text
         "slate-900": "#111827", // Very dark text
+
+        // New orange accent colors
+        accent: "#FF6B35", // Primary orange accent
+        "accent-dark": "#E64A19", // Darker orange for hover states
+        "accent-light": "#FFAB91", // Light orange
+        "orange-50": "#FFF3E0", // Very light orange background
+        "orange-100": "#FFE0B2", // Light orange background
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
@@ -58,6 +65,13 @@ module.exports = {
       boxShadow: {
         soft: "0 4px 20px -2px rgba(0, 0, 0, 0.06)",
         "soft-lg": "0 10px 30px -3px rgba(0, 0, 0, 0.08)",
+        "orange-glow": "0 10px 25px -5px rgba(255, 107, 53, 0.4)",
+      },
+      backgroundImage: {
+        "gradient-blue-orange":
+          "linear-gradient(135deg, #3B82F6 0%, #FF6B35 100%)",
+        "gradient-orange-light":
+          "linear-gradient(135deg, #FF6B35 0%, #FFF3E0 100%)",
       },
     },
   },

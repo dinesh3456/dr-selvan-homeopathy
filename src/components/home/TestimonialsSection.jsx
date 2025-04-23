@@ -89,10 +89,10 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="py-20 relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-blue-50">
+    <section className="py-20 relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-orange-50">
       {/* Decorative blob shapes - these are simplified without the BlobShape component */}
-      <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-primary opacity-[0.05] -z-10"></div>
-      <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-lavender opacity-[0.05] -z-10"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-accent opacity-[0.05] -z-10"></div>
+      <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-primary opacity-[0.05] -z-10"></div>
 
       <div
         className="absolute inset-0 opacity-[0.02] -z-10"
@@ -106,7 +106,7 @@ const TestimonialsSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-12">
           <motion.span
-            className="inline-block py-1 px-3 rounded-full bg-primary/20 text-primary text-sm font-medium mb-3"
+            className="inline-block py-1 px-3 rounded-full bg-orange-50 text-accent text-sm font-medium mb-3"
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -122,7 +122,7 @@ const TestimonialsSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Transformations that <span className="text-primary">inspire</span>
+            Transformations that <span className="text-accent">inspire</span>
             <span className="inline-block ml-1 animate-pulse">.</span>
           </motion.h2>
 
@@ -143,7 +143,6 @@ const TestimonialsSection = () => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          {/* Handwritten annotation with arrow */}
           {/* Handwritten annotation with arrow */}
           <motion.div
             className="absolute -top-16 right-0 md:right-20 z-10 hidden md:block"
@@ -169,7 +168,7 @@ const TestimonialsSection = () => {
                 width="40"
                 height="30"
                 viewBox="0 0 40 30"
-                className="fill-none stroke-primary transform scale-x-[-1] -translate-x-12" // Added -translate-x-8 to move arrow left
+                className="fill-none stroke-primary transform scale-x-[-1] -translate-x-12"
               >
                 <motion.path
                   d="M5,15 Q15,5 35,15"
@@ -214,7 +213,7 @@ const TestimonialsSection = () => {
                             fill
                             className="object-cover"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent"></div>
+                          <div className="absolute inset-0 bg-gradient-to-t from-accent/50 to-primary/20 opacity-50"></div>
 
                           <div className="absolute bottom-0 left-0 p-4 text-white">
                             <h3 className="font-bold text-lg">
@@ -227,7 +226,7 @@ const TestimonialsSection = () => {
                         </div>
 
                         <motion.div
-                          className="inline-block bg-primary/20 text-primary text-sm py-1 px-3 rounded-full"
+                          className="inline-block bg-orange-50 text-accent text-xs font-medium py-1 px-3 rounded-full"
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.3 }}
@@ -238,12 +237,17 @@ const TestimonialsSection = () => {
 
                       <div className="md:w-3/5 flex flex-col justify-between">
                         <motion.blockquote
-                          className="text-xl italic text-slate-700 mb-6 leading-relaxed"
+                          className="text-xl italic text-slate-700 mb-6 leading-relaxed relative"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.2 }}
                         >
-                          "{testimonials[activeIndex].quote}"
+                          <span className="absolute -top-2 -left-2 text-6xl text-orange-100 font-serif">
+                            "
+                          </span>
+                          <div className="relative z-10">
+                            "{testimonials[activeIndex].quote}"
+                          </div>
                         </motion.blockquote>
 
                         <div>
@@ -293,7 +297,7 @@ const TestimonialsSection = () => {
               >
                 <motion.span
                   className={`absolute inset-0 rounded-full ${
-                    index === activeIndex ? "bg-primary" : "bg-primary/30"
+                    index === activeIndex ? "bg-accent" : "bg-primary/30"
                   }`}
                   layoutId="testimonialIndicator"
                   transition={{
@@ -324,7 +328,7 @@ const TestimonialsSection = () => {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-primary"
+                className="h-5 w-5 text-accent"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
@@ -349,7 +353,7 @@ const TestimonialsSection = () => {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-primary"
+                className="h-5 w-5 text-accent"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >

@@ -20,9 +20,13 @@ const AnimatedButton = ({
 }) => {
   // Define button variants
   const variants = {
-    primary: "btn-primary",
-    secondary: "btn-secondary",
-    outline: "btn-outline",
+    primary: "btn-primary bg-primary text-white hover:bg-primary-dark",
+    secondary: "btn-secondary bg-blue-100 text-primary hover:bg-blue-200",
+    accent: "btn-accent bg-accent text-white hover:bg-accent-dark", // New orange variant
+    outline:
+      "btn-outline border-2 border-primary text-primary bg-white hover:bg-blue-50",
+    "outline-accent":
+      "btn-outline-accent border-2 border-accent text-accent bg-white hover:bg-orange-50", // New orange outline variant
     teal: "btn-teal",
     glass: "glass-button",
   };
@@ -48,8 +52,7 @@ const AnimatedButton = ({
     hover: animate
       ? {
           y: -5,
-          boxShadow:
-            "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+          boxShadow: "0 10px 15px -3px rgba(59, 130, 246, 0.3)", // Blue shadow for others
           transition: {
             type: "spring",
             stiffness: 400,
@@ -84,6 +87,7 @@ const AnimatedButton = ({
     ${sizeClasses[size]} 
     ${fullWidth ? "w-full" : ""} 
     ${disabled ? "opacity-70 cursor-not-allowed" : ""} 
+    rounded-full font-medium shadow-md
     ${className}
   `;
 

@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import AppointmentButton from "../common/AppointmentButton";
 
 const WhyChooseSectionLight = () => {
   const features = [
@@ -8,21 +9,25 @@ const WhyChooseSectionLight = () => {
       title: "> 20 Years",
       description:
         "Two decades of expertise in providing effective homeopathic treatments for a wide range of conditions.",
+      color: "primary",
     },
     {
       title: "2 Locations",
       description:
         "With clinics in Chennai, India and Dubai, UAE, we're committed to making homeopathic care accessible.",
+      color: "primary",
     },
     {
       title: "> 10k Clients",
       description:
         "We've had the privilege of assisting over 10,000 clients in their natural healing journeys.",
+      color: "primary",
     },
     {
       title: "100% Natural",
       description:
         "Our treatments utilize only natural remedies with no side effects, safe for patients of all ages.",
+      color: "primary",
     },
   ];
 
@@ -53,8 +58,12 @@ const WhyChooseSectionLight = () => {
 
   return (
     <section className="py-20 bg-white relative">
-      {/* Light background with blue gradient instead of dark */}
-      <div className="absolute inset-0 bg-blue-50 bg-opacity-70 z-0"></div>
+      {/* Light background with blue-orange gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-orange-50 z-0"></div>
+
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-accent opacity-[0.03] transform translate-x-1/3 -translate-y-1/3"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-primary opacity-[0.03] transform -translate-x-1/3 translate-y-1/3"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -65,7 +74,7 @@ const WhyChooseSectionLight = () => {
           viewport={{ once: true }}
         >
           <motion.span
-            className="text-blue-600 font-medium text-sm uppercase tracking-wider"
+            className="text-accent font-medium text-sm uppercase tracking-wider"
             variants={itemVariants}
           >
             OUR CLINIC
@@ -75,12 +84,13 @@ const WhyChooseSectionLight = () => {
             className="text-4xl md:text-5xl font-bold text-slate-900 mt-2 mb-6"
             variants={itemVariants}
           >
-            Why we are chosen
+            Why <span className="text-primary">we are</span>{" "}
+            <span className="text-accent">chosen</span>
           </motion.h2>
 
-          {/* Decorative line - similar to the one in the design */}
+          {/* Decorative line - blue to orange gradient */}
           <motion.div
-            className="h-0.5 w-3/4 bg-gradient-to-r from-blue-500/70 to-blue-100 rounded-full"
+            className="h-0.5 w-3/4 bg-gradient-to-r from-primary to-accent rounded-full"
             variants={itemVariants}
             transition={{ delay: 0.4 }}
           />
@@ -90,7 +100,9 @@ const WhyChooseSectionLight = () => {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className="bg-white shadow-md p-6 rounded-lg"
+              className={`bg-white shadow-md p-6 rounded-lg border-t-4 ${
+                feature.color === "primary" ? "border-primary" : "border-accent"
+              }`}
               variants={itemVariants}
               initial="hidden"
               whileInView="visible"
@@ -102,7 +114,11 @@ const WhyChooseSectionLight = () => {
                 transition: { duration: 0.2 },
               }}
             >
-              <h3 className="text-2xl font-bold text-blue-600 mb-3">
+              <h3
+                className={`text-2xl font-bold ${
+                  feature.color === "primary" ? "text-primary" : "text-accent"
+                } mb-3`}
+              >
                 {feature.title}
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed">
@@ -120,44 +136,7 @@ const WhyChooseSectionLight = () => {
           transition={{ delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <Link href="/appointment" className="group">
-            <motion.div
-              className="bg-blue-600 text-white w-full max-w-xl py-4 px-6 rounded-full flex items-center justify-center group-hover:bg-blue-700 cursor-pointer transition-colors"
-              whileHover={{
-                scale: 1.02,
-                boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.4)",
-              }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <span className="font-medium">Start Cure</span>
-              <motion.div
-                className="ml-2 w-6 h-6 rounded-full bg-white/20 flex items-center justify-center"
-                initial={{ x: 0 }}
-                animate={{ x: [0, 5, 0] }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 1.5,
-                  repeatType: "loop",
-                  ease: "easeInOut",
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              </motion.div>
-            </motion.div>
-          </Link>
+          <AppointmentButton text="Start Cure" variant="primary" size="lg" />
 
           <motion.div
             className="absolute top-[10px] left-0 md:left-[700px]"
@@ -183,7 +162,7 @@ const WhyChooseSectionLight = () => {
                 width="120"
                 height="60"
                 viewBox="0 0 120 60"
-                className="fill-none stroke-blue-500 transform scale-x-[-1]" // Added scale-x-[-1] to mirror the arrow
+                className="fill-none stroke-primary transform scale-x-[-1]" // Added scale-x-[-1] to mirror the arrow
               >
                 <motion.path
                   d="M10,30 Q40,10 100,30"

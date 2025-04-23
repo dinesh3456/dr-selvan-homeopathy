@@ -139,7 +139,7 @@ const HeroSection = () => {
 
         {/* Secondary background bubble */}
         <motion.div
-          className="absolute -bottom-20 -left-20 rounded-full bg-blue-200 opacity-10"
+          className="absolute -bottom-20 -left-20 rounded-full bg-accent opacity-10"
           style={{ width: "35rem", height: "35rem" }}
           animate={{
             x: [0, 10, 0],

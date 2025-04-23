@@ -5,7 +5,7 @@ import { useAppointment } from "../../context/AppointmentContext";
 
 const AppointmentButton = ({
   className = "",
-  variant = "primary",
+  variant = "accent", // Changed default to accent
   size = "md",
   text = "Book Appointment",
 }) => {
@@ -21,21 +21,34 @@ const AppointmentButton = ({
   // Button variant classes
   const variantClasses = {
     primary: "bg-primary text-white hover:bg-primary-dark shadow-md",
+    accent: "bg-accent text-white hover:bg-accent-dark shadow-md", // New orange variant
     outline: "border-2 border-primary text-primary bg-white hover:bg-blue-50",
+    "outline-accent":
+      "border-2 border-accent text-accent bg-white hover:bg-orange-50", // New orange outline
     secondary: "bg-blue-100 text-primary hover:bg-blue-200",
   };
 
-  // Animation variants
+  // Animation variants with updated shadow for accent
   const buttonVariants = {
-    hover: {
-      scale: 1.05,
-      boxShadow: "0 10px 15px -3px rgba(59, 130, 246, 0.3)",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10,
-      },
-    },
+    hover: variant.includes("accent")
+      ? {
+          scale: 1.05,
+          boxShadow: "0 10px 15px -3px rgba(255, 107, 53, 0.3)",
+          transition: {
+            type: "spring",
+            stiffness: 400,
+            damping: 10,
+          },
+        }
+      : {
+          scale: 1.05,
+          boxShadow: "0 10px 15px -3px rgba(59, 130, 246, 0.3)",
+          transition: {
+            type: "spring",
+            stiffness: 400,
+            damping: 10,
+          },
+        },
     tap: { scale: 0.95 },
   };
 
