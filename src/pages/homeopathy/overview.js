@@ -9,16 +9,16 @@ const HomeopathyOverview = () => {
   return (
     <Layout
       title="Homeopathy Overview | Dr. Selvan's Homeopathy"
-      hideFooter={true}
+      hideFooter={false}
     >
-      {/* Hero Section with Gradient Background */}
+      {/* Hero Section with Blue to White Gradient Background */}
       <div className="bg-gradient-to-b from-blue-50 to-white py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-dark mb-4">
-              Homeopathy: An Overview
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+              <span className="text-accent">Homeopathy</span>: An Overview
             </h1>
-            <p className="text-lg text-gray-600">
+            <p className="text-lg text-gray-600 italic">
               "Teach Homoeopathy lively and easily"
             </p>
           </div>
@@ -38,7 +38,7 @@ const HomeopathyOverview = () => {
               className="w-full h-auto"
             />
 
-            {/* Annotation */}
+            {/* Annotation with accent color */}
             <motion.div
               className="absolute -bottom-6 right-8"
               initial={{ opacity: 0 }}
@@ -50,7 +50,7 @@ const HomeopathyOverview = () => {
                   width="100"
                   height="60"
                   viewBox="0 0 100 60"
-                  className="fill-none stroke-primary"
+                  className="fill-none stroke-accent"
                 >
                   <path
                     d="M90,10 Q60,60 10,30"
@@ -64,7 +64,7 @@ const HomeopathyOverview = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <p className="absolute top-0 right-0 font-handwritten text-lg text-primary transform rotate-3">
+                <p className="absolute top-0 right-0 font-handwritten text-lg text-accent transform rotate-3">
                   A scientific approach to natural healing!
                 </p>
               </div>
@@ -73,13 +73,13 @@ const HomeopathyOverview = () => {
 
           {/* Introduction Section */}
           <section className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              What is Homeopathy?
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+              What is <span className="text-primary">Homeopathy</span>?
             </h2>
             <p className="text-gray-700 mb-4 leading-relaxed">
               Homeopathy is a medical science introduced and developed by German
               physician Dr. Samuel Hahnemann. It is based on the principle of
-              <strong className="text-gray-900"> 'like cures like'</strong>. In
+              <strong className="text-slate-900"> 'like cures like'</strong>. In
               simple words, it means that any substance that produces symptoms
               in a healthy person can cure similar symptoms in a person who is
               sick. This fundamental concept is referred to as the 'Law of
@@ -96,8 +96,8 @@ const HomeopathyOverview = () => {
 
           {/* Worldwide Popularity Section */}
           <section className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Worldwide Popularity
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+              Worldwide <span className="text-accent">Popularity</span>
             </h2>
             <p className="text-gray-700 mb-6 leading-relaxed">
               Homeopathy is known for its safe and gentle ways of healing.
@@ -109,14 +109,14 @@ const HomeopathyOverview = () => {
               World Health Organisation (WHO).
             </p>
 
-            {/* Highlighted Box */}
-            <div className="bg-blue-50 p-6 md:p-8 rounded-xl mb-6">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+            {/* Highlighted Box with blue background */}
+            <div className="bg-blue-50 p-6 md:p-8 rounded-xl mb-6 border-l-4 border-primary">
+              <h3 className="text-xl font-bold text-slate-900 mb-4">
                 Global Reach of Homeopathy
               </h3>
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start">
-                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center mr-3 mt-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-3 w-3 text-primary"
@@ -133,13 +133,13 @@ const HomeopathyOverview = () => {
                     </svg>
                   </div>
                   <span>
-                    <strong className="text-gray-900">France</strong> is the
+                    <strong className="text-primary">France</strong> is the
                     largest contributor to Homeopathy in the world, followed by
                     Germany.
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center mr-3 mt-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-3 w-3 text-primary"
@@ -156,13 +156,13 @@ const HomeopathyOverview = () => {
                     </svg>
                   </div>
                   <span>
-                    In <strong className="text-gray-900">England</strong>, 42%
-                    of British physicians refer patients to Homeopaths. The
-                    Royal family has used Homeopathy for 3 generations.
+                    In <strong className="text-primary">England</strong>, 42% of
+                    British physicians refer patients to Homeopaths. The Royal
+                    family has used Homeopathy for 3 generations.
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center mr-3 mt-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-3 w-3 text-primary"
@@ -180,13 +180,13 @@ const HomeopathyOverview = () => {
                   </div>
                   <span>
                     In the{" "}
-                    <strong className="text-gray-900">United States</strong>,
+                    <strong className="text-primary">United States</strong>,
                     over 6 million people use Homeopathy for self-care and
                     day-to-day health problems.
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center mr-3 mt-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-3 w-3 text-primary"
@@ -203,15 +203,15 @@ const HomeopathyOverview = () => {
                     </svg>
                   </div>
                   <span>
-                    In <strong className="text-gray-900">India</strong>, over
-                    100 million people depend on Homeopathy for health issues.
-                    There are around 200,000 registered Homeopathic doctors and
+                    In <strong className="text-primary">India</strong>, over 100
+                    million people depend on Homeopathy for health issues. There
+                    are around 200,000 registered Homeopathic doctors and
                     approximately 12,000 new Homeopathic doctors are registered
                     every year.
                   </span>
                 </li>
                 <li className="flex items-start">
-                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                  <div className="flex-shrink-0 h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center mr-3 mt-1">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-3 w-3 text-primary"
@@ -229,9 +229,7 @@ const HomeopathyOverview = () => {
                   </div>
                   <span>
                     Homeopathy is practiced in most{" "}
-                    <strong className="text-gray-900">
-                      European countries
-                    </strong>{" "}
+                    <strong className="text-primary">European countries</strong>{" "}
                     and is included in the national health systems of countries
                     like Brazil, Chile, Mexico, Switzerland, and the United
                     Kingdom.
@@ -251,8 +249,9 @@ const HomeopathyOverview = () => {
 
           {/* Scientific Basis Section */}
           <section className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              The Scientific Basis of Homeopathy
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+              The <span className="text-primary">Scientific</span> Basis of{" "}
+              <span className="text-accent">Homeopathy</span>
             </h2>
             <p className="text-gray-700 mb-4 leading-relaxed">
               The efficacy of homeopathic medicines has been demonstrated
@@ -274,7 +273,7 @@ const HomeopathyOverview = () => {
           <div className="flex justify-center my-12">
             <Link
               href="/appointment"
-              className="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-primary-dark transition shadow-md inline-flex items-center"
+              className="bg-gradient-to-r from-primary to-accent text-white px-8 py-3 rounded-full font-medium hover:from-primary-dark hover:to-accent-dark transition shadow-md inline-flex items-center"
             >
               Book a Consultation
               <svg
@@ -294,8 +293,8 @@ const HomeopathyOverview = () => {
 
           {/* Explore More Section */}
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Explore More About Homeopathy
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+              Explore More About <span className="text-accent">Homeopathy</span>
             </h2>
             <p className="text-gray-700 mb-6 leading-relaxed">
               Deepen your understanding of homeopathy through our comprehensive
@@ -306,7 +305,7 @@ const HomeopathyOverview = () => {
                 href="/homeopathy/scope-of-homeopathy"
                 className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition flex items-center group"
               >
-                <div className="bg-blue-100 p-2 rounded-full mr-3 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                <div className="bg-primary/10 p-2 rounded-full mr-3 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"
@@ -328,7 +327,7 @@ const HomeopathyOverview = () => {
                 href="/homeopathy/principles"
                 className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition flex items-center group"
               >
-                <div className="bg-blue-100 p-2 rounded-full mr-3 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                <div className="bg-primary/10 p-2 rounded-full mr-3 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"

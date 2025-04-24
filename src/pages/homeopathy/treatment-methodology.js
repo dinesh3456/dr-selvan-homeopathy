@@ -16,7 +16,8 @@ const TreatmentMethodology = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Homeopathic Treatment Methodology
+              Homeopathic <span className="text-accent">Treatment</span>{" "}
+              Methodology
             </h1>
             <p className="text-lg text-gray-600 italic">
               "Treating the disease doesn't cure the patient completely"
@@ -50,7 +51,7 @@ const TreatmentMethodology = () => {
                   width="100"
                   height="60"
                   viewBox="0 0 100 60"
-                  className="fill-none stroke-primary"
+                  className="fill-none stroke-accent"
                 >
                   <path
                     d="M90,10 Q60,60 10,30"
@@ -64,7 +65,7 @@ const TreatmentMethodology = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <p className="absolute top-0 right-0 font-handwritten text-lg text-primary transform rotate-3">
+                <p className="absolute top-0 right-0 font-handwritten text-lg text-accent transform rotate-3">
                   A holistic approach to healing!
                 </p>
               </div>
@@ -74,7 +75,8 @@ const TreatmentMethodology = () => {
           {/* Introduction Section */}
           <section className="mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              The Homeopathic Approach to Treatment
+              The Homeopathic Approach to{" "}
+              <span className="text-accent">Treatment</span>
             </h2>
             <p className="text-gray-700 mb-6 leading-relaxed">
               Homeopathy is known for its safe and gentle approach to healing.
@@ -220,7 +222,7 @@ const TreatmentMethodology = () => {
           {/* Treatment Process Section */}
           <section className="mb-12">
             <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">
-              Our Treatment Process
+              Our <span className="text-accent">Treatment</span> Process
             </h3>
             <p className="text-gray-700 mb-6 leading-relaxed">
               At Dr. Selvan's Homeopathy, we follow a systematic approach to
@@ -230,7 +232,7 @@ const TreatmentMethodology = () => {
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                 <div className="flex items-center mb-4">
-                  <div className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 font-bold flex-shrink-0">
+                  <div className="bg-accent text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 font-bold flex-shrink-0">
                     1
                   </div>
                   <h4 className="font-bold text-gray-900">
@@ -247,7 +249,7 @@ const TreatmentMethodology = () => {
 
               <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                 <div className="flex items-center mb-4">
-                  <div className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 font-bold flex-shrink-0">
+                  <div className="bg-accent text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 font-bold flex-shrink-0">
                     2
                   </div>
                   <h4 className="font-bold text-gray-900">Remedy Selection</h4>
@@ -261,7 +263,7 @@ const TreatmentMethodology = () => {
 
               <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                 <div className="flex items-center mb-4">
-                  <div className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 font-bold flex-shrink-0">
+                  <div className="bg-accent text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 font-bold flex-shrink-0">
                     3
                   </div>
                   <h4 className="font-bold text-gray-900">Treatment Plan</h4>
@@ -276,7 +278,7 @@ const TreatmentMethodology = () => {
 
               <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                 <div className="flex items-center mb-4">
-                  <div className="bg-primary text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 font-bold flex-shrink-0">
+                  <div className="bg-accent text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 font-bold flex-shrink-0">
                     4
                   </div>
                   <h4 className="font-bold text-gray-900">Follow-up Care</h4>
@@ -293,7 +295,8 @@ const TreatmentMethodology = () => {
           {/* Scientific Evidence Section */}
           <section className="mb-12">
             <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-              Scientific Evidence for Homeopathy
+              Scientific Evidence for{" "}
+              <span className="text-accent">Homeopathy</span>
             </h3>
             <p className="text-gray-700 mb-4 leading-relaxed">
               The efficacy of homeopathic medicines has been proven through
@@ -311,7 +314,7 @@ const TreatmentMethodology = () => {
             </p>
 
             <div className="bg-white border border-gray-200 p-6 rounded-xl shadow-sm mb-6">
-              <h3 className="text-xl font-bold text-primary mb-4">
+              <h3 className="text-xl font-bold text-accent mb-4">
                 The Difference in Our Approach
               </h3>
               <p className="text-gray-700 mb-3 leading-relaxed">
@@ -333,7 +336,7 @@ const TreatmentMethodology = () => {
           <div className="flex justify-center my-12">
             <Link
               href="/appointment"
-              className="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-primary-dark transition shadow-md inline-flex items-center"
+              className="bg-gradient-to-r from-primary to-accent text-white px-8 py-3 rounded-full font-medium hover:from-primary-dark hover:to-accent-dark transition shadow-md inline-flex items-center"
             >
               Experience Our Treatment Approach
               <svg
@@ -354,7 +357,7 @@ const TreatmentMethodology = () => {
           {/* Related Links Section */}
           <section>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Related Information
+              Related <span className="text-accent">Information</span>
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               <Link

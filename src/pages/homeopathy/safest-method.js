@@ -16,7 +16,7 @@ const SafestMethod = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Homeopathy: The Safest Method
+              Homeopathy: The <span className="text-accent">Safest</span> Method
             </h1>
             <p className="text-lg text-gray-600 italic">
               "Treat the person, not the disease"
@@ -50,7 +50,7 @@ const SafestMethod = () => {
                   width="100"
                   height="60"
                   viewBox="0 0 100 60"
-                  className="fill-none stroke-primary"
+                  className="fill-none stroke-accent"
                 >
                   <path
                     d="M90,10 Q60,60 10,30"
@@ -64,7 +64,7 @@ const SafestMethod = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <p className="absolute top-0 right-0 font-handwritten text-lg text-primary transform rotate-3">
+                <p className="absolute top-0 right-0 font-handwritten text-lg text-accent transform rotate-3">
                   Safe for all ages, from infants to the elderly!
                 </p>
               </div>
@@ -74,7 +74,8 @@ const SafestMethod = () => {
           {/* Introduction Section */}
           <section className="mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Safety First: The Homeopathic Advantage
+              Safety First: The Homeopathic{" "}
+              <span className="text-accent">Advantage</span>
             </h2>
             <p className="text-gray-700 mb-6 leading-relaxed">
               Homeopathy is widely regarded as one of the safest medical
@@ -87,7 +88,7 @@ const SafestMethod = () => {
           {/* Suitable for Everyone Section */}
           <section className="mb-12">
             <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-              Suitable for Everyone
+              Suitable for <span className="text-accent">Everyone</span>
             </h3>
             <p className="text-gray-700 mb-6 leading-relaxed">
               Homeopathy is suitable for people of all age groups, from
@@ -200,7 +201,8 @@ const SafestMethod = () => {
           {/* Understanding Safety Section */}
           <section className="mb-12">
             <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-              Understanding Homeopathic Safety
+              Understanding Homeopathic{" "}
+              <span className="text-accent">Safety</span>
             </h3>
             <p className="text-gray-700 mb-6 leading-relaxed">
               All homeopathic medicines are very safe to administer, but they
@@ -284,7 +286,8 @@ const SafestMethod = () => {
           {/* Benefits Section */}
           <section className="mb-12">
             <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-              The Benefits of Homeopathic Safety
+              The Benefits of Homeopathic{" "}
+              <span className="text-accent">Safety</span>
             </h3>
             <p className="text-gray-700 mb-4 leading-relaxed">
               The safety profile of homeopathy offers several advantages:
@@ -437,7 +440,7 @@ const SafestMethod = () => {
           <div className="flex justify-center my-12">
             <Link
               href="/appointment"
-              className="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-primary-dark transition shadow-md inline-flex items-center"
+              className="bg-gradient-to-r from-primary to-accent text-white px-8 py-3 rounded-full font-medium hover:from-primary-dark hover:to-accent-dark transition shadow-md inline-flex items-center"
             >
               Book a Safe & Effective Consultation
               <svg
@@ -458,7 +461,7 @@ const SafestMethod = () => {
           {/* Related Links Section */}
           <section>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Learn More About Homeopathy
+              Learn More About <span className="text-accent">Homeopathy</span>
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               <Link

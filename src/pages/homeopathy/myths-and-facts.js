@@ -52,7 +52,7 @@ const MythsAndFacts = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Myths and Facts of Homeopathy
+              Myths and <span className="text-accent">Facts</span> of Homeopathy{" "}
             </h1>
             <p className="text-lg text-gray-600 italic">
               "Separating misconceptions from reality in homeopathic medicine"
@@ -99,7 +99,7 @@ const MythsAndFacts = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <p className="absolute top-0 right-0 font-handwritten text-lg text-primary transform rotate-3">
+                <p className="absolute top-0 right-0 font-handwritten text-lg text-accent transform rotate-3">
                   Let's clear up the misconceptions!
                 </p>
               </div>
@@ -109,7 +109,8 @@ const MythsAndFacts = () => {
           {/* Introduction Section */}
           <section className="mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Understanding Homeopathy: Beyond the Myths
+              Understanding <span className="text-accent">Homeopathy</span>:
+              Beyond the Myths{" "}
             </h2>
             <p className="text-gray-700 mb-4 leading-relaxed">
               Despite its 200-year history and worldwide popularity, homeopathy
@@ -177,7 +178,8 @@ const MythsAndFacts = () => {
           {/* Scientific Basis Section */}
           <section className="mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              The Scientific Basis of Homeopathy
+              The <span className="text-accent">Scientific</span> Basis of
+              Homeopathy{" "}
             </h2>
             <p className="text-gray-700 mb-4 leading-relaxed">
               A common misconception is that homeopathy lacks scientific
@@ -228,7 +230,8 @@ const MythsAndFacts = () => {
           {/* Informed Choices Section */}
           <section className="mb-12">
             <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-              Making Informed Healthcare Choices
+              Making Informed <span className="text-accent">Healthcare</span>{" "}
+              Choices{" "}
             </h3>
             <p className="text-gray-700 mb-4 leading-relaxed">
               We encourage patients to approach all healthcare options with an
@@ -358,7 +361,7 @@ const MythsAndFacts = () => {
           <div className="flex justify-center my-12">
             <Link
               href="/appointment"
-              className="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-primary-dark transition shadow-md inline-flex items-center"
+              className="bg-gradient-to-r from-primary to-accent text-white px-8 py-3 rounded-full font-medium hover:from-primary-dark hover:to-accent-dark transition shadow-md inline-flex items-center"
             >
               Book a Consultation
               <svg
@@ -379,7 +382,8 @@ const MythsAndFacts = () => {
           {/* Video Section */}
           <section className="mb-12">
             <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">
-              Video: Myths and Facts of Homeopathy
+              Video: Myths and <span className="text-accent">Facts</span> of
+              Homeopathy{" "}
             </h3>
             <div className="relative pt-[56.25%] bg-gray-100 rounded-xl overflow-hidden shadow-md">
               <iframe

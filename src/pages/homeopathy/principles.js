@@ -29,6 +29,7 @@ const PrinciplesOfHomeopathy = () => {
           />
         </svg>
       ),
+      color: "primary",
     },
     {
       id: 2,
@@ -51,6 +52,7 @@ const PrinciplesOfHomeopathy = () => {
           />
         </svg>
       ),
+      color: "accent",
     },
     {
       id: 3,
@@ -73,6 +75,7 @@ const PrinciplesOfHomeopathy = () => {
           />
         </svg>
       ),
+      color: "primary",
     },
     {
       id: 4,
@@ -95,6 +98,7 @@ const PrinciplesOfHomeopathy = () => {
           />
         </svg>
       ),
+      color: "accent",
     },
     {
       id: 5,
@@ -117,6 +121,7 @@ const PrinciplesOfHomeopathy = () => {
           />
         </svg>
       ),
+      color: "primary",
     },
     {
       id: 6,
@@ -139,20 +144,21 @@ const PrinciplesOfHomeopathy = () => {
           />
         </svg>
       ),
+      color: "accent",
     },
   ];
 
   return (
     <Layout
       title="Principles of Homeopathy | Dr. Selvan's Homeopathy"
-      hideFooter={true}
+      hideFooter={false}
     >
       {/* Hero Section with Gradient Background */}
       <div className="bg-gradient-to-b from-blue-50 to-white py-12 md:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Principles of Homeopathy
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+              Principles of <span className="text-accent">Homeopathy</span>
             </h1>
             <p className="text-lg text-gray-600 italic">
               "Teach the student about Homeopathy, treat the patient without
@@ -175,7 +181,7 @@ const PrinciplesOfHomeopathy = () => {
               className="w-full h-auto"
             />
 
-            {/* Annotation */}
+            {/* Annotation with accent color */}
             <motion.div
               className="absolute -bottom-6 right-8"
               initial={{ opacity: 0 }}
@@ -187,7 +193,7 @@ const PrinciplesOfHomeopathy = () => {
                   width="100"
                   height="60"
                   viewBox="0 0 100 60"
-                  className="fill-none stroke-primary"
+                  className="fill-none stroke-accent"
                 >
                   <path
                     d="M90,10 Q60,60 10,30"
@@ -201,7 +207,7 @@ const PrinciplesOfHomeopathy = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <p className="absolute top-0 right-0 font-handwritten text-lg text-primary transform rotate-3">
+                <p className="absolute top-0 right-0 font-handwritten text-lg text-accent transform rotate-3">
                   Scientific principles that guide our practice!
                 </p>
               </div>
@@ -210,8 +216,9 @@ const PrinciplesOfHomeopathy = () => {
 
           {/* Introduction Section */}
           <section className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              The Foundation of Homeopathic Practice
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+              The Foundation of{" "}
+              <span className="text-primary">Homeopathic</span> Practice
             </h2>
             <p className="text-gray-700 mb-6 leading-relaxed">
               The idea of presenting the key principles of Homeopathy is to make
@@ -222,24 +229,28 @@ const PrinciplesOfHomeopathy = () => {
             </p>
           </section>
 
-          {/* Principles Cards Section */}
+          {/* Principles Cards Section with alternating primary/accent colors */}
           <section className="mb-12">
             <div className="space-y-6">
               {principles.map((principle) => (
                 <motion.div
                   key={principle.id}
-                  className="bg-white p-6 rounded-xl shadow-sm border border-blue-50 hover:shadow-md transition-shadow"
+                  className={`bg-white p-6 rounded-xl shadow-sm border border-${principle.color}/20 hover:shadow-md transition-shadow`}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: principle.id * 0.1 }}
                   viewport={{ once: true, margin: "-50px" }}
                 >
                   <div className="flex items-start">
-                    <div className="bg-blue-100 p-3 rounded-lg mr-4 text-primary flex-shrink-0">
+                    <div
+                      className={`bg-${principle.color}/10 p-3 rounded-lg mr-4 text-${principle.color} flex-shrink-0`}
+                    >
                       {principle.icon}
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      <h3
+                        className={`text-xl font-bold text-${principle.color} mb-2`}
+                      >
                         Principle {principle.id}: {principle.title}
                       </h3>
                       <p className="text-gray-700 leading-relaxed">
@@ -254,34 +265,14 @@ const PrinciplesOfHomeopathy = () => {
 
           {/* Understanding Core Principles Section */}
           <section className="mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Understanding the Core Principles
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+              Understanding the{" "}
+              <span className="text-accent">Core Principles</span>
             </h2>
 
-            <div className="mb-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                The Law of Similars: The Fundamental Principle
-              </h3>
-              <p className="text-gray-700 mb-4 leading-relaxed">
-                The cornerstone of homeopathic practice is the principle that
-                "like cures like." This means that a substance which can cause
-                symptoms in a healthy person can, in diluted form, treat those
-                same symptoms in a sick person. This principle was discovered by
-                Dr. Samuel Hahnemann through his experiments with cinchona bark.
-              </p>
-
-              <p className="text-gray-700 mb-4 leading-relaxed">
-                For example, when you chop onions, you may experience watery
-                eyes, a runny nose, and sneezing. The homeopathic remedy Allium
-                cepa, made from red onion, can help alleviate cold or allergy
-                symptoms that include similar symptoms—watery eyes, running
-                nose, sneezing, and throat irritation.
-              </p>
-            </div>
-
-            {/* Highlighted Box */}
-            <div className="bg-blue-50 p-6 md:p-8 rounded-xl mb-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+            {/* Highlighted Box with blue background */}
+            <div className="bg-blue-50 p-6 md:p-8 rounded-xl mb-8 border-l-4 border-primary">
+              <h3 className="text-xl font-bold text-primary mb-4">
                 The Holistic Approach
               </h3>
               <p className="text-gray-700 mb-4 leading-relaxed">
@@ -301,7 +292,7 @@ const PrinciplesOfHomeopathy = () => {
             </div>
 
             <div className="mb-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+              <h3 className="text-xl font-bold text-accent mb-4">
                 Individualization: Tailored Treatment
               </h3>
               <p className="text-gray-700 mb-4 leading-relaxed">
@@ -320,33 +311,13 @@ const PrinciplesOfHomeopathy = () => {
                 matches your unique symptom picture.
               </p>
             </div>
-
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                The Minimum Dose: Less is More
-              </h3>
-              <p className="text-gray-700 mb-4 leading-relaxed">
-                In homeopathy, remedies are prepared through a process of serial
-                dilution and succussion (vigorous shaking). This paradoxically
-                enhances the healing properties of the substance while
-                eliminating potential side effects. The principle of minimum
-                dose ensures that treatment is gentle yet effective.
-              </p>
-
-              <p className="text-gray-700 leading-relaxed">
-                This principle explains why homeopathic remedies are safe for
-                all age groups, from infants to the elderly, and can be used
-                during pregnancy and alongside conventional medications without
-                adverse interactions.
-              </p>
-            </div>
           </section>
 
-          {/* CTA Section */}
+          {/* CTA Section with accent orange */}
           <div className="flex justify-center my-12">
             <Link
               href="/appointment"
-              className="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-primary-dark transition shadow-md inline-flex items-center"
+              className="bg-gradient-to-r from-primary to-accent text-white px-8 py-3 rounded-full font-medium hover:from-primary-dark hover:to-accent-dark transition shadow-md inline-flex items-center"
             >
               Experience Principled Treatment
               <svg
@@ -364,10 +335,11 @@ const PrinciplesOfHomeopathy = () => {
             </Link>
           </div>
 
-          {/* Related Links Section */}
+          {/* Related Links Section - Alternating primary/accent colors */}
           <section>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Explore More About Homeopathy
+            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+              Explore <span className="text-primary">More</span> About
+              Homeopathy
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               <Link

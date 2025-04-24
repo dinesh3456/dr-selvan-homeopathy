@@ -80,7 +80,7 @@ const HistoryOfHomeopathy = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              History of Homeopathy
+              History of <span className="text-accent">Homeopathy</span>
             </h1>
             <p className="text-lg text-gray-600 italic">
               "Homeopathy is the safest method"
@@ -114,7 +114,7 @@ const HistoryOfHomeopathy = () => {
                   width="100"
                   height="60"
                   viewBox="0 0 100 60"
-                  className="fill-none stroke-primary"
+                  className="fill-none stroke-accent"
                 >
                   <path
                     d="M90,10 Q60,60 10,30"
@@ -128,7 +128,7 @@ const HistoryOfHomeopathy = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <p className="absolute top-0 right-0 font-handwritten text-lg text-primary transform rotate-3">
+                <p className="absolute top-0 right-0 font-handwritten text-lg text-accent transform rotate-3">
                   Over 200 years of healing wisdom!
                 </p>
               </div>
@@ -138,7 +138,8 @@ const HistoryOfHomeopathy = () => {
           {/* Introduction Section */}
           <section className="mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              The Birth of a Revolutionary Medical System
+              The Birth of a Revolutionary{" "}
+              <span className="text-accent">Medical System</span>
             </h2>
             <p className="text-gray-700 mb-4 leading-relaxed">
               The story of homeopathy begins with one remarkable man who dared
@@ -197,7 +198,7 @@ const HistoryOfHomeopathy = () => {
           {/* Development Section */}
           <section className="mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              The Development of Homeopathy
+              The Development of <span className="text-accent">Homeopathy</span>
             </h2>
             <p className="text-gray-700 mb-4 leading-relaxed">
               From this experiment, Dr. Hahnemann began systematically studying
@@ -217,7 +218,8 @@ const HistoryOfHomeopathy = () => {
             </p>
 
             <h3 className="text-xl font-bold text-gray-900 mb-4">
-              From Controversy to Global Recognition
+              From Controversy to{" "}
+              <span className="text-accent">Global Recognition</span>
             </h3>
             <p className="text-gray-700 mb-4 leading-relaxed">
               Homeopathy became widely popular during the 19th century,
@@ -239,7 +241,8 @@ const HistoryOfHomeopathy = () => {
           {/* Timeline Section */}
           <section className="mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Key Milestones in Homeopathy's History
+              Key <span className="text-accent">Milestones</span> in
+              Homeopathy's History
             </h2>
             <div className="relative my-8">
               <div className="absolute left-4 h-full w-0.5 bg-blue-200"></div>
@@ -269,7 +272,7 @@ const HistoryOfHomeopathy = () => {
           {/* Modern Homeopathy Section */}
           <section className="mb-12">
             <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-              Homeopathy Today
+              Homeopathy <span className="text-accent">Today</span>
             </h3>
             <p className="text-gray-700 mb-4 leading-relaxed">
               Today, homeopathy is practiced worldwide and is integrated into
@@ -291,7 +294,7 @@ const HistoryOfHomeopathy = () => {
           <div className="flex justify-center my-12">
             <Link
               href="/appointment"
-              className="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-primary-dark transition shadow-md inline-flex items-center"
+              className="bg-gradient-to-r from-primary to-accent text-white px-8 py-3 rounded-full font-medium hover:from-primary-dark hover:to-accent-dark transition shadow-md inline-flex items-center"
             >
               Experience Time-Tested Healing
               <svg
@@ -312,7 +315,7 @@ const HistoryOfHomeopathy = () => {
           {/* Explore More Section */}
           <section>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Explore More About Homeopathy
+              Explore More About <span className="text-accent">Homeopathy</span>
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               <Link

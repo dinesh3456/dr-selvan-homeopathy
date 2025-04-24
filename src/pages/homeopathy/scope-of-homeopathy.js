@@ -29,7 +29,7 @@ const ScopeOfHomeopathy = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Scope of Homeopathy
+              Scope of <span className="text-accent">Homeopathy</span>
             </h1>
             <p className="text-lg text-gray-600 italic">
               "Cure the disease, not suppress it"
@@ -63,7 +63,7 @@ const ScopeOfHomeopathy = () => {
                   width="100"
                   height="60"
                   viewBox="0 0 100 60"
-                  className="fill-none stroke-primary"
+                  className="fill-none stroke-accent"
                 >
                   <path
                     d="M90,10 Q60,60 10,30"
@@ -77,7 +77,7 @@ const ScopeOfHomeopathy = () => {
                     strokeLinejoin="round"
                   />
                 </svg>
-                <p className="absolute top-0 right-0 font-handwritten text-lg text-primary transform rotate-3">
+                <p className="absolute top-0 right-0 font-handwritten text-lg text-accent transform rotate-3">
                   Treating a wide range of conditions naturally!
                 </p>
               </div>
@@ -87,7 +87,8 @@ const ScopeOfHomeopathy = () => {
           {/* Introduction Section */}
           <section className="mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              The Extensive Range of Homeopathic Treatment
+              The Extensive Range of{" "}
+              <span className="text-accent">Homeopathic</span> Treatment
             </h2>
             <p className="text-gray-700 mb-6 leading-relaxed">
               Homeopathy is known to cure various types of chronic and acute
@@ -100,7 +101,8 @@ const ScopeOfHomeopathy = () => {
             {/* Common Conditions Grid */}
             <div className="bg-blue-50 p-6 md:p-8 rounded-xl mb-8">
               <h3 className="text-xl font-bold text-gray-900 mb-6">
-                Common Conditions Treated with Homeopathy
+                Common Conditions Treated with{" "}
+                <span className="text-accent">Homeopathy</span>
               </h3>
 
               <div className="grid md:grid-cols-2 gap-4">
@@ -129,7 +131,7 @@ const ScopeOfHomeopathy = () => {
           {/* Detailed Conditions Section */}
           <section className="mb-12">
             <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-              Detailed Range of Conditions
+              Detailed Range of <span className="text-accent">Conditions</span>
             </h3>
             <p className="text-gray-700 mb-4 leading-relaxed">
               The scope of homeopathy extends to numerous health challenges,
@@ -138,10 +140,10 @@ const ScopeOfHomeopathy = () => {
 
             <ul className="space-y-3 mb-6">
               <li className="flex items-start">
-                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-accent/20 flex items-center justify-center mr-3 mt-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-3 w-3 text-primary"
+                    className="h-3 w-3 text-accent"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -161,10 +163,10 @@ const ScopeOfHomeopathy = () => {
                 </span>
               </li>
               <li className="flex items-start">
-                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-accent/20 flex items-center justify-center mr-3 mt-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-3 w-3 text-primary"
+                    className="h-3 w-3 text-accent"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -183,10 +185,10 @@ const ScopeOfHomeopathy = () => {
                 </span>
               </li>
               <li className="flex items-start">
-                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-accent/20 flex items-center justify-center mr-3 mt-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-3 w-3 text-primary"
+                    className="h-3 w-3 text-accent"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -205,10 +207,10 @@ const ScopeOfHomeopathy = () => {
                 </span>
               </li>
               <li className="flex items-start">
-                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-accent/20 flex items-center justify-center mr-3 mt-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-3 w-3 text-primary"
+                    className="h-3 w-3 text-accent"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -228,10 +230,10 @@ const ScopeOfHomeopathy = () => {
                 </span>
               </li>
               <li className="flex items-start">
-                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-accent/20 flex items-center justify-center mr-3 mt-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-3 w-3 text-primary"
+                    className="h-3 w-3 text-accent"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -250,10 +252,10 @@ const ScopeOfHomeopathy = () => {
                 </span>
               </li>
               <li className="flex items-start">
-                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-accent/20 flex items-center justify-center mr-3 mt-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-3 w-3 text-primary"
+                    className="h-3 w-3 text-accent"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -272,10 +274,10 @@ const ScopeOfHomeopathy = () => {
                 </span>
               </li>
               <li className="flex items-start">
-                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-accent/20 flex items-center justify-center mr-3 mt-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-3 w-3 text-primary"
+                    className="h-3 w-3 text-accent"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -294,10 +296,10 @@ const ScopeOfHomeopathy = () => {
                 </span>
               </li>
               <li className="flex items-start">
-                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-accent/20 flex items-center justify-center mr-3 mt-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-3 w-3 text-primary"
+                    className="h-3 w-3 text-accent"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -316,10 +318,10 @@ const ScopeOfHomeopathy = () => {
                 </span>
               </li>
               <li className="flex items-start">
-                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                <div className="flex-shrink-0 h-5 w-5 rounded-full bg-accent/20 flex items-center justify-center mr-3 mt-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-3 w-3 text-primary"
+                    className="h-3 w-3 text-accent"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -343,7 +345,7 @@ const ScopeOfHomeopathy = () => {
           {/* Supportive Treatment Section */}
           <section className="mb-12">
             <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-              Supportive Treatment
+              Supportive <span className="text-accent">Treatment</span>
             </h3>
             <p className="text-gray-700 mb-6 leading-relaxed">
               Homeopathy can also be used as supportive treatment alongside
@@ -356,7 +358,7 @@ const ScopeOfHomeopathy = () => {
           {/* Consultation Process Section */}
           <section className="mb-12">
             <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-              The Consultation Process
+              The Consultation <span className="text-accent">Process</span>
             </h3>
             <p className="text-gray-700 mb-4 leading-relaxed">
               During your first consultation at Dr. Selvan's Homeopathy, our
@@ -383,7 +385,7 @@ const ScopeOfHomeopathy = () => {
             </div>
 
             <div className="bg-white border border-gray-200 p-6 rounded-xl shadow-sm mb-8">
-              <h3 className="text-xl font-bold text-primary mb-4">
+              <h3 className="text-xl font-bold text-accent mb-4">
                 Treatment Timeline
               </h3>
               <p className="text-gray-700 mb-3">
@@ -403,7 +405,7 @@ const ScopeOfHomeopathy = () => {
           <div className="flex justify-center mb-12">
             <Link
               href="/appointment"
-              className="bg-primary text-white px-8 py-3 rounded-full font-medium hover:bg-primary-dark transition shadow-md inline-flex items-center"
+              className="bg-gradient-to-r from-primary to-accent text-white px-8 py-3 rounded-full font-medium hover:from-primary-dark hover:to-accent-dark transition shadow-md inline-flex items-center"
             >
               Book a Consultation
               <svg
@@ -424,14 +426,14 @@ const ScopeOfHomeopathy = () => {
           {/* Related Information Section */}
           <section>
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
-              Related Information
+              Related <span className="text-accent">Information</span>
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               <Link
                 href="/homeopathy/treatment-methodology"
                 className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition group"
               >
-                <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-primary group-hover:bg-accent group-hover:text-white transition-colors">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"
@@ -447,7 +449,7 @@ const ScopeOfHomeopathy = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-accent transition-colors">
                   Treatment Methodology
                 </h3>
                 <p className="text-gray-600 text-sm">
@@ -455,12 +457,11 @@ const ScopeOfHomeopathy = () => {
                   homeopathic remedies work.
                 </p>
               </Link>
-
               <Link
                 href="/homeopathy/safest-method"
                 className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition group"
               >
-                <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-primary group-hover:bg-accent group-hover:text-white transition-colors">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"
@@ -476,7 +477,7 @@ const ScopeOfHomeopathy = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-accent transition-colors">
                   Safest Method
                 </h3>
                 <p className="text-gray-600 text-sm">
@@ -489,7 +490,7 @@ const ScopeOfHomeopathy = () => {
                 href="/homeopathy/principles"
                 className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition group"
               >
-                <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+                <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-primary group-hover:bg-accent group-hover:text-white transition-colors">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-6 w-6"
@@ -505,7 +506,7 @@ const ScopeOfHomeopathy = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-accent transition-colors">
                   Principles of Homeopathy
                 </h3>
                 <p className="text-gray-600 text-sm">
