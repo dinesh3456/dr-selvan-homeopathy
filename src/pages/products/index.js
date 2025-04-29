@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Layout from "../../components/layout/Layout";
+import AppointmentButton from "../../components/common/AppointmentButton";
 
 // Product data with updated image paths
 const products = [
