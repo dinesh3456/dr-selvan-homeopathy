@@ -364,12 +364,14 @@ const AboutDoctor = () => {
           </section>
 
           {/* CTA Section */}
-          <AppointmentButton
-            text="Book Consultation"
-            variant="accent"
-            size="md"
-            className="inline-flex items-center justify-center px-5 py-2.5 bg-accent text-white font-medium rounded-full hover:bg-accent-dark transition"
-          />
+          <div className="flex justify-center mt-8 mb-4">
+            <AppointmentButton
+              text="Book Consultation"
+              variant="accent"
+              size="md"
+              className="inline-flex items-center justify-center px-5 py-2.5 bg-accent text-white font-medium rounded-full hover:bg-accent-dark transition"
+            />
+          </div>
         </article>
       </div>
     </Layout>

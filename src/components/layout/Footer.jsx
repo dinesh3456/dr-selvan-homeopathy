@@ -32,7 +32,10 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-white text-gray-800 border-t border-gray-200">
+    <footer
+      id="contact"
+      className="bg-white text-gray-800 border-t border-gray-200"
+    >
       {/* Orange accent border at top of footer */}
       <div className="h-1 w-full bg-gradient-to-r from-primary via-accent to-primary"></div>
 

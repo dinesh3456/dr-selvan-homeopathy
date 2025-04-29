@@ -26,6 +26,18 @@ const Header = () => {
     };
   }, []);
 
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    const footer = document.querySelector("footer");
+    if (footer) {
+      setIsOpen(false); // Close mobile menu if open
+      window.scrollTo({
+        top: footer.offsetTop,
+        behavior: "smooth",
+      });
+    }
+  };
+
   // Menu animation variants
   const menuVariants = {
     closed: {
@@ -309,6 +321,7 @@ const Header = () => {
               <Link
                 href="/contact"
                 className="text-dark hover:text-primary font-medium transition"
+                onClick={handleContactClick}
               >
                 Contact Us
               </Link>
@@ -392,7 +405,11 @@ const Header = () => {
                 { href: "/natural-treatment", label: "Natural Treatment" },
                 { href: "/products", label: "Our Products" },
                 { href: "/about/doctor", label: "About Us" },
-                { href: "/contact", label: "Contact Us" },
+                {
+                  href: "#contact",
+                  label: "Contact Us",
+                  onClick: handleContactClick,
+                },
               ].map((item, i) => (
                 <motion.div
                   key={i}
@@ -405,7 +422,13 @@ const Header = () => {
                   <Link
                     href={item.href}
                     className="block px-3 py-2 text-base font-medium text-dark hover:text-primary rounded-md"
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e) => {
+                      if (item.onClick) {
+                        item.onClick(e);
+                      } else {
+                        setIsOpen(false);
+                      }
+                    }}
                   >
                     {item.label}
                   </Link>
