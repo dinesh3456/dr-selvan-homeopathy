@@ -115,7 +115,7 @@ const productData = [
     id: "03",
     name: "Home Remedy Cough Syrup",
     price: "₹349",
-    image: "/images/products/cough-syrup.jpg",
+    image: "/images/cough-syrup.jpg",
     gallery: ["/images/cough-syrup.jpg", "/images/cough-syrup.jpg"],
     shortDescription:
       "Natural cough syrup effective for all kinds of cough (dry, wet, spasmodic). Provides quick relief with immune support.",
