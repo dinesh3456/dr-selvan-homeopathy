@@ -1,5 +1,7 @@
+// src/components/home/ProductsPreview.jsx
 import React, { useState, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 
 const ProductsPreview = () => {
@@ -8,11 +10,11 @@ const ProductsPreview = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
-  // Sample product data - using the same data shown in the screenshot
+  // Sample product data
   const products = [
     {
-      name: "Immunity Booster",
-      image: "/images/product-1.jpg", // Replace with actual image path
+      name: "Vitamin D Plus",
+      image: "/images/vitamin-d-plus.jpg",
       price: "₹599",
       description:
         "Natural homeopathic formula to strengthen your immune system.",
@@ -21,8 +23,8 @@ const ProductsPreview = () => {
       id: "01",
     },
     {
-      name: "Stress Relief Drops",
-      image: "/images/product-2.jpg", // Replace with actual image path
+      name: "Ortho Grade",
+      image: "/images/ortho-grade.jpg",
       price: "₹499",
       description: "Calming remedy to help manage anxiety and daily stress.",
       attributes: ["Alcohol-Free", "Safe for Children", "Regular Use"],
@@ -30,23 +32,14 @@ const ProductsPreview = () => {
       id: "02",
     },
     {
-      name: "Joint Care Formula",
-      image: "/images/product-3.jpg", // Replace with actual image path
+      name: "Home Remedy Cough Syrup",
+      image: "/images/cough-syrup.jpg",
       price: "₹649",
       description:
         "Support for joint health and mobility with natural ingredients.",
       attributes: ["Anti-inflammatory", "Pain Relief", "Improved Mobility"],
       badges: [],
       id: "03",
-    },
-    {
-      name: "Digestive Wellness",
-      image: "/images/product-4.jpg", // Replace with actual image path
-      price: "₹549",
-      description: "Relief from digestive issues and improved gut health.",
-      attributes: ["Gut Health", "Acid Reflux Relief", "IBS Support"],
-      badges: ["Popular"],
-      id: "04",
     },
   ];
 
@@ -96,10 +89,11 @@ const ProductsPreview = () => {
   };
 
   return (
-    <section className="py-16 bg-white" ref={sectionRef}>
+    <section className="py-16 bg-white text-center" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section title - Centered */}
         <motion.div
-          className="mb-8"
+          className="mb-8 text-center"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -113,7 +107,7 @@ const ProductsPreview = () => {
           </motion.span>
 
           <motion.h2
-            className="text-3xl md:text-4xl font-bold text-slate-900 mb-4"
+            className="text-3xl md:text-4xl font-bold mb-4"
             variants={itemVariants}
           >
             <span className="text-primary">Homeopathic</span>{" "}
@@ -121,19 +115,20 @@ const ProductsPreview = () => {
           </motion.h2>
 
           <motion.p
-            className="text-lg text-gray-600 max-w-3xl"
+            className="text-lg text-gray-600 max-w-3xl mx-auto"
             variants={itemVariants}
           >
             Discover our range of homeopathic remedies carefully formulated by
             Dr. Selvan.
           </motion.p>
         </motion.div>
-        {/* Products grid - Matching the design in the screenshot */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        {/* Products grid - Centered with flex */}
+        <div className="flex flex-wrap justify-center gap-6 mb-12">
           {products.map((product, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
+              className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 w-full md:w-[300px]"
               custom={index}
               variants={cardVariants}
               initial="hidden"
@@ -149,22 +144,25 @@ const ProductsPreview = () => {
                 </div>
 
                 {/* Product badges */}
-                {product.badges.map((badge, i) => (
-                  <div
-                    key={i}
-                    className={`absolute top-3 ${i === 0 ? "ml-16" : "ml-24"} ${
-                      badge === "Bestseller"
-                        ? "bg-blue-100 text-blue-600"
-                        : badge === "New"
+                {product.badges &&
+                  product.badges.map((badge, i) => (
+                    <div
+                      key={i}
+                      className={`absolute top-3 ${
+                        i === 0 ? "ml-16" : "ml-24"
+                      } ${
+                        badge === "Bestseller"
+                          ? "bg-blue-100 text-blue-600"
+                          : badge === "New"
                           ? "bg-purple-100 text-purple-600"
                           : badge === "Popular"
-                            ? "bg-green-100 text-green-600"
-                            : "bg-gray-100 text-gray-600"
-                    } px-2 py-1 rounded-lg text-xs font-medium`}
-                  >
-                    {badge}
-                  </div>
-                ))}
+                          ? "bg-green-100 text-green-600"
+                          : "bg-gray-100 text-gray-600"
+                      } px-2 py-1 rounded-lg text-xs font-medium`}
+                    >
+                      {badge}
+                    </div>
+                  ))}
 
                 {/* Price tag */}
                 <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg text-blue-600 font-bold text-sm">
@@ -172,24 +170,27 @@ const ProductsPreview = () => {
                 </div>
 
                 {/* Image section */}
-                <div
-                  className="h-48 w-full bg-gray-100 flex items-center justify-center"
-                  style={{
-                    backgroundImage: `url(${product.image})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
-                >
-                  {/* Image placeholder if needed */}
+                <div className="relative h-48 w-full overflow-hidden">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    width={400}
+                    height={200}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    onError={(e) => {
+                      console.error(`Error loading image for ${product.name}`);
+                      e.target.src = "/images/placeholder-product.jpg"; // Fallback image
+                    }}
+                  />
                 </div>
               </div>
 
-              <div className="p-5">
-                <h3 className="text-lg font-bold text-gray-900 mb-1">
+              <div className="p-5 text-left">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">
                   {product.name}
                 </h3>
 
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-slate-600 text-sm mb-6">
                   {product.description}
                 </p>
 
@@ -210,7 +211,7 @@ const ProductsPreview = () => {
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          strokeWidth="2"
+                          strokeWidth={2}
                           d="M5 13l4 4L19 7"
                         ></path>
                       </svg>
@@ -221,7 +222,7 @@ const ProductsPreview = () => {
 
                 <div className="flex justify-between items-center">
                   <Link
-                    href={`#product-${product.id}`}
+                    href={`/products/${product.id}`}
                     className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors group"
                   >
                     <span>View Details</span>
@@ -246,10 +247,10 @@ const ProductsPreview = () => {
                       product.id === "01"
                         ? "bg-blue-100 text-blue-600"
                         : product.id === "02"
-                          ? "bg-purple-100 text-purple-600"
-                          : product.id === "03"
-                            ? "bg-blue-100 text-blue-600"
-                            : "bg-green-100 text-green-600"
+                        ? "bg-purple-100 text-purple-600"
+                        : product.id === "03"
+                        ? "bg-green-100 text-green-600"
+                        : "bg-blue-100 text-blue-600"
                     }`}
                   >
                     <svg
@@ -272,8 +273,9 @@ const ProductsPreview = () => {
             </motion.div>
           ))}
         </div>
+
         <motion.div
-          className="mt-12 text-center relative"
+          className="mt-12 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
@@ -300,9 +302,9 @@ const ProductsPreview = () => {
             </svg>
           </Link>
 
-          {/* Arrow annotation - moved more to the right */}
+          {/* Arrow annotation */}
           <motion.div
-            className="absolute -top-[-16px] left-[30%] hidden md:block"
+            className="absolute -top--11 left-[35%] hidden md:block"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
@@ -310,7 +312,7 @@ const ProductsPreview = () => {
           >
             <div className="relative">
               <motion.p
-                className="absolute -top-12 left-0 text-primary font-handwritten text-lg transform rotate-3"
+                className="absolute -top-12 left-[-10%] text-primary font-handwritten text-lg transform rotate-3"
                 animate={{
                   y: [0, -3, 0],
                 }}
@@ -322,11 +324,13 @@ const ProductsPreview = () => {
               >
                 Nature's remedies, curated by Dr. Selvan!
               </motion.p>
+
+              {/* Modified SVG with translated position */}
               <motion.svg
                 width="120"
                 height="60"
                 viewBox="0 0 120 60"
-                className="fill-none stroke-primary"
+                className="fill-none stroke-primary transform translate-x-20"
               >
                 <motion.path
                   d="M10,30 Q80,50 100,30"

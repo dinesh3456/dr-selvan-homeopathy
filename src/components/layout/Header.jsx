@@ -1,7 +1,6 @@
-// components/layout/Header.jsx
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image"; 
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import AppointmentButton from "../common/AppointmentButton";
 
@@ -109,7 +108,7 @@ const Header = () => {
     if (!homeopathyOpen) return;
 
     const handleClickOutside = (event) => {
-      if (!event.target.closest(".relative.group")) {
+      if (!event.target.closest(".relative.group.homeopathy")) {
         setHomeopathyOpen(false);
       }
     };
@@ -138,31 +137,31 @@ const Header = () => {
         <div className="flex justify-between items-center">
           {/* Logo with subtle animation */}
           <motion.div
-  initial={{ opacity: 0, x: -20 }}
-  animate={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.5 }}
->
-  <Link href="/" className="flex items-center">
-    <motion.div
-      className="h-16 w-auto flex items-center" 
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
-    >
-      <Image
-        src="/images/Dr. Selvan Logo.png"
-        alt="Dr. Selvan's Homeopathy"
-        width={220}  
-        height={60}  
-        priority
-        className="object-contain"
-      />
-    </motion.div>
-  </Link>
-</motion.div>
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link href="/" className="flex items-center">
+              <motion.div
+                className="h-16 w-auto flex items-center"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Image
+                  src="/images/Dr. Selvan Logo.png"
+                  alt="Dr. Selvan's Homeopathy"
+                  width={220}
+                  height={60}
+                  priority
+                  className="object-contain"
+                />
+              </motion.div>
+            </Link>
+          </motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            <div className="relative group">
+            <div className="relative group homeopathy">
               <motion.div
                 whileHover="hover"
                 variants={linkHoverVariants}
@@ -176,17 +175,21 @@ const Header = () => {
               {/* Update the dropdown to stay visible when hovered */}
               <div
                 className={`absolute left-0 mt-2 w-56 origin-top-left bg-white shadow-lg rounded-md py-2 z-50 overflow-hidden transition-all duration-300
-      ${homeopathyOpen ? "opacity-100 visible" : "opacity-0 invisible group-hover:opacity-100 group-hover:visible"}
+      ${
+        homeopathyOpen
+          ? "opacity-100 visible"
+          : "opacity-0 invisible group-hover:opacity-100 group-hover:visible"
+      }
     `}
                 onMouseEnter={() =>
                   document
-                    .querySelector(".relative.group")
+                    .querySelector(".relative.group.homeopathy")
                     .classList.add("hovered")
                 }
                 onMouseLeave={() =>
                   !homeopathyOpen &&
                   document
-                    .querySelector(".relative.group")
+                    .querySelector(".relative.group.homeopathy")
                     .classList.remove("hovered")
                 }
               >
@@ -235,6 +238,7 @@ const Header = () => {
                 ))}
               </div>
             </div>
+
             <motion.div whileHover="hover" variants={linkHoverVariants}>
               <Link
                 href="/natural-treatment"
@@ -244,6 +248,7 @@ const Header = () => {
               </Link>
             </motion.div>
 
+            {/* Products link without dropdown */}
             <motion.div whileHover="hover" variants={linkHoverVariants}>
               <Link
                 href="/products"
@@ -256,7 +261,7 @@ const Header = () => {
             <div className="relative group">
               <motion.div whileHover="hover" variants={linkHoverVariants}>
                 <Link
-                  href="/about"
+                  href="/about/doctor"
                   className="text-dark hover:text-primary font-medium transition"
                 >
                   About Us
@@ -330,9 +335,7 @@ const Header = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.5 }}
-            >
-             
-            </motion.div>
+            ></motion.div>
           </motion.div>
 
           {/* Mobile menu button */}
@@ -388,7 +391,7 @@ const Header = () => {
                 { href: "/homeopathy", label: "Homeopathy" },
                 { href: "/natural-treatment", label: "Natural Treatment" },
                 { href: "/products", label: "Our Products" },
-                { href: "/about", label: "About Us" },
+                { href: "/about/doctor", label: "About Us" },
                 { href: "/contact", label: "Contact Us" },
               ].map((item, i) => (
                 <motion.div
