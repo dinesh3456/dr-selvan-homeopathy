@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Layout from "../../../components/layout/Layout";
+import AppointmentButton from "../../../components/common/AppointmentButton";
 
 // Video data with titles, descriptions, and YouTube IDs
 const videoData = [
@@ -307,24 +308,26 @@ const VideoDetailPage = () => {
               help with your specific health concerns, schedule a consultation
               with Dr. Selvan.
             </p>
-            <Link
-              href="/appointment"
-              className="inline-flex items-center bg-gradient-to-r from-primary to-accent text-white px-6 py-2 rounded-full font-medium hover:from-primary-dark hover:to-accent-dark transition shadow-md"
-            >
-              Book an Appointment
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 ml-2"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </Link>
+            <AppointmentButton
+              text="Book an Appointment"
+              variant="primary"
+              size="md"
+              className="inline-flex items-center bg-gradient-to-r from-primary to-accent text-white px-6 py-2.5 rounded-full font-medium hover:from-primary-dark hover:to-accent-dark transition shadow-md"
+              icon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 ml-2"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              }
+            />
           </div>
         </div>
       </div>

@@ -317,26 +317,26 @@ const ProductsPage = () => {
               health concerns. Book a consultation with Dr. Selvan for
               personalized guidance.
             </p>
-            <Link
-              href="/appointment"
-              className="inline-flex items-center justify-center bg-primary text-white px-6 py-3 rounded-full font-medium hover:bg-primary-dark transition shadow-md"
-            >
-              <span>Book a Consultation</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 ml-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                />
-              </svg>
-            </Link>
+            <AppointmentButton
+              text="Book a Consultation"
+              variant="primary"
+              size="md"
+              className="inline-flex items-center justify-center bg-primary text-white px-6 py-2.5 rounded-full font-medium hover:bg-primary-dark transition shadow-md"
+              icon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 ml-2"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              }
+            />
           </div>
         </div>
       </div>

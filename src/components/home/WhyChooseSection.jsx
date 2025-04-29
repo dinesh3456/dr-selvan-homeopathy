@@ -136,7 +136,7 @@ const WhyChooseSectionLight = () => {
           transition={{ delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <AppointmentButton text="Start Cure" variant="primary" size="lg" />
+          <AppointmentButton text="Start Cure" variant="primary" size="md" />
 
           <motion.div
             className="absolute top-[10px] left-0 md:left-[700px]"

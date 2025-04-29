@@ -418,13 +418,13 @@ const Header = () => {
                   x: 5,
                 }}
               >
-                <Link
-                  href="/appointment"
-                  className="block px-3 py-2 text-base font-medium bg-accent text-white hover:bg-accent-dark rounded-md"
+                <AppointmentButton
+                  text="Book Appointment"
+                  variant="accent"
+                  size="md"
+                  className="block w-full px-3 py-2 text-base font-medium bg-accent text-white hover:bg-accent-dark rounded-md text-left"
                   onClick={() => setIsOpen(false)}
-                >
-                  Book Appointment
-                </Link>
+                />
               </motion.div>
             </div>
           </motion.div>

@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import AppointmentButton from "../common/AppointmentButton";
 
 const FeaturedVideo = () => {
   const featuredVideo = {
@@ -70,12 +71,12 @@ const FeaturedVideo = () => {
                     </svg>
                   </motion.div>
                 </Link>
-                <a
-                  href="/appointment"
+                <AppointmentButton
+                  text="Book Consultation"
+                  variant="accent"
+                  size="md"
                   className="inline-flex items-center justify-center px-5 py-2.5 bg-accent text-white font-medium rounded-full hover:bg-accent-dark transition"
-                >
-                  Book Consultation
-                </a>
+                />
               </div>
             </motion.div>
           </div>

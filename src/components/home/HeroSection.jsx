@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import AppointmentButton from "../common/AppointmentButton";
 
 const HeroSection = () => {
   // Use state to control animation timing
@@ -90,7 +91,7 @@ const HeroSection = () => {
       y: [0, -15, 0],
       transition: {
         delay: i * 0.1,
-        duration: 10 + i, 
+        duration: 10 + i,
         repeat: Infinity,
         ease: "easeInOut",
       },
@@ -138,28 +139,28 @@ const HeroSection = () => {
         />
 
         {/* Secondary background bubble */}
-<motion.div
-  className="absolute -bottom-[-5%] -left-[-10%]"
-  style={{ width: "35rem", height: "35rem" }}
-  animate={{
-    x: [0, 10, 0],
-    scale: [1, 1.03, 1],
-  }}
-  transition={{
-    duration: 14, 
-    repeat: Infinity,
-    ease: "easeInOut",
-    delay: 0.5,
-  }}
->
-  <Image
-    src="/images/Dr. Selvan Logo-symbol.png"
-    alt="Dr. Selvan Symbol"
-    fill
-    className="object-contain opacity-20"
-    priority
-  />
-</motion.div>
+        <motion.div
+          className="absolute -bottom-[-5%] -left-[-10%]"
+          style={{ width: "35rem", height: "35rem" }}
+          animate={{
+            x: [0, 10, 0],
+            scale: [1, 1.03, 1],
+          }}
+          transition={{
+            duration: 14,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.5,
+          }}
+        >
+          <Image
+            src="/images/Dr. Selvan Logo-symbol.png"
+            alt="Dr. Selvan Symbol"
+            fill
+            className="object-contain opacity-20"
+            priority
+          />
+        </motion.div>
 
         {/* Floating bubbles with SLOW animation */}
         {decorativeBubbles.map((bubble) => (
@@ -232,27 +233,25 @@ const HeroSection = () => {
               className="flex flex-wrap gap-4"
               variants={itemVariants}
             >
-              <motion.button
-                className="bg-blue-600 text-white px-8 py-3 rounded-full font-medium hover:bg-blue-700 transition shadow-md inline-flex items-center cursor-pointer"
-                whileHover="hover"
-                whileTap="tap"
-                variants={buttonVariants}
-                onClick={() => (window.location.href = "/appointment")}
-              >
-                Start Cure
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 ml-2"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </motion.button>
+              <AppointmentButton
+                text="Start Cure"
+                variant="primary"
+                size="md"
+                icon={
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 ml-2"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                }
+              />
 
               <motion.button
                 className="border-2 border-blue-500 text-blue-600 bg-white px-8 py-3 rounded-full font-medium hover:bg-blue-50 transition inline-block cursor-pointer"
@@ -455,7 +454,6 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </div>
-      {/* Add an id here for the learn-more section */}
       <div id="learn-more"></div>
     </section>
   );
