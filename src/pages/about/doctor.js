@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Layout from "../../components/layout/Layout";
+import AppointmentButton from "../../components/common/AppointmentButton";
 
 const AboutDoctor = () => {
   return (
