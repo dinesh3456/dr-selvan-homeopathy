@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 const benefits = [
   {
@@ -10,6 +11,7 @@ const benefits = [
       "Our holistic approach embraces your mind, body, and spirit, fostering a balanced and thriving you.",
     image: "/images/benefit-holistic.jpg",
     color: "primary",
+    link: "/benefits/holistic-approach",
   },
   {
     title: "Unlock Your Potential",
@@ -17,6 +19,7 @@ const benefits = [
       "Discover the power within as we blend evidence-based techniques with creative self-expression.",
     image: "/images/benefit-potential.jpg",
     color: "primary",
+    link: "/benefits/unlock-potential",
   },
   {
     title: "Natural & Safe",
@@ -24,6 +27,7 @@ const benefits = [
       "Our homeopathic treatments have no side effects and are safe for patients of all ages.",
     image: "/images/benefit-safe.jpg",
     color: "primary",
+    link: "/benefits/natural-safe",
   },
   {
     title: "Personalized Care",
@@ -31,6 +35,7 @@ const benefits = [
       "We develop customized treatment plans based on your unique symptoms and constitution.",
     image: "/images/benefit-personalized.jpg",
     color: "primary",
+    link: "/benefits/personalized-care",
   },
 ];
 
@@ -186,18 +191,21 @@ const BenefitsSection = () => {
                     {benefit.description}
                   </p>
 
-                  <div className="mt-6 flex items-center">
+                  <Link
+                    href={benefit.link}
+                    className="mt-6 flex items-center group"
+                  >
                     <span
-                      className={`text-${benefit.color} text-sm font-medium`}
+                      className={`text-${benefit.color} text-sm font-medium group-hover:underline`}
                     >
                       More details
                     </span>
                     <div
-                      className={`ml-2 w-6 h-6 rounded-full bg-${benefit.color}/10 flex items-center justify-center`}
+                      className={`ml-2 w-6 h-6 rounded-full bg-${benefit.color}/10 flex items-center justify-center group-hover:bg-${benefit.color} group-hover:text-white transition-colors`}
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className={`h-4 w-4 text-${benefit.color}`}
+                        className={`h-4 w-4 text-${benefit.color} group-hover:text-white`}
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -210,7 +218,7 @@ const BenefitsSection = () => {
                         />
                       </svg>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               </div>
             </motion.div>
