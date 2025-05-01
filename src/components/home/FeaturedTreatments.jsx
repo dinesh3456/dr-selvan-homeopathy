@@ -70,9 +70,9 @@ const FeaturedTreatments = () => {
           pretitle="Our Treatments"
           title={
             <>
-              Art and science of{" "}
-              <span className="text-primary">homeopathic</span>{" "}
-              <span className="text-accent">wellness</span>
+              Specialized{" "}
+              <span className="text-primary">Homeopathic Solutions</span> for{" "}
+              <span className="text-accent">Better Health</span>
             </>
           }
           subtitle="At Dr. Selvan's Homeopathy, we offer effective natural treatments for a wide range of health conditions."
