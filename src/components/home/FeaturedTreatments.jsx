@@ -96,8 +96,8 @@ const FeaturedTreatments = () => {
         <div className="mt-16 flex justify-center">
           <AnimatedButton
             href="/treatments"
-            variant="primaty" // Changed to accent color
-            size="lg"
+            variant="primaty"
+            size="md"
             icon={
               <svg
                 xmlns="http://www.w3.org/2000/svg"
