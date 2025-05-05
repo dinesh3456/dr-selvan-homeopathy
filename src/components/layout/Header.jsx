@@ -8,6 +8,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [homeopathyOpen, setHomeopathyOpen] = useState(false);
+  const [mobileHomeopathyOpen, setMobileHomeopathyOpen] = useState(false);
 
   // Handle scroll effect for sticky header
   useEffect(() => {
@@ -400,8 +401,94 @@ const Header = () => {
             exit="closed"
           >
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              {/* Homeopathy Menu Item with Dropdown */}
+              <motion.div
+                variants={menuItemVariants}
+                whileHover={{
+                  backgroundColor: "#EFF6FF", // blue-sand color
+                  x: 5,
+                }}
+                onClick={() => setMobileHomeopathyOpen(!mobileHomeopathyOpen)}
+              >
+                <div className="flex items-center justify-between px-3 py-2 text-base font-medium text-dark rounded-md cursor-pointer">
+                  <span>Homeopathy</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className={`h-5 w-5 transition-transform ${
+                      mobileHomeopathyOpen ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </motion.div>
+
+              {/* Homeopathy Dropdown */}
+              {mobileHomeopathyOpen && (
+                <div className="pl-4">
+                  {[
+                    {
+                      href: "/homeopathy/overview",
+                      label: "Homeopathy: Overview",
+                    },
+                    {
+                      href: "/homeopathy/scope-of-homeopathy",
+                      label: "Scope of Homeopathy",
+                    },
+                    {
+                      href: "/homeopathy/safest-method",
+                      label: "Safest Method",
+                    },
+                    {
+                      href: "/homeopathy/treatment-methodology",
+                      label: "Homeopathic Treatment Methodology",
+                    },
+                    {
+                      href: "/homeopathy/history",
+                      label: "History of Homeopathy",
+                    },
+                    {
+                      href: "/homeopathy/principles",
+                      label: "Principles of Homeopathy",
+                    },
+                    {
+                      href: "/homeopathy/myths-and-facts",
+                      label: "Myths and Facts of Homeopathy",
+                    },
+                  ].map((item, i) => (
+                    <motion.div
+                      key={i}
+                      variants={menuItemVariants}
+                      whileHover={{
+                        backgroundColor: "#EFF6FF",
+                        x: 5,
+                      }}
+                    >
+                      <Link
+                        href={item.href}
+                        className="block px-3 py-2 text-sm text-dark hover:text-primary rounded-md"
+                        onClick={() => {
+                          setIsOpen(false);
+                          setMobileHomeopathyOpen(false);
+                        }}
+                      >
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+
+              {/* Other Menu Items */}
               {[
-                { href: "/homeopathy", label: "Homeopathy" },
                 { href: "/natural-treatment", label: "Natural Treatment" },
                 { href: "/products", label: "Our Products" },
                 { href: "/about/doctor", label: "About Us" },

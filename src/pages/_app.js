@@ -15,7 +15,6 @@ function MyApp({ Component, pageProps }) {
       window.scrollTo(0, 0);
 
       // Close any open modals or menus if needed
-      // Add logic here if needed
     };
 
     router.events.on("routeChangeComplete", handleRouteChange);

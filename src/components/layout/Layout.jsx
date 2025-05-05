@@ -43,7 +43,7 @@ const Layout = ({
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen overflow-x-hidden">
       <Head>
         <title>{title}</title>
         <meta
@@ -78,7 +78,7 @@ const Layout = ({
 
       <Header />
 
-      <main className="flex-grow">
+      <main className="flex-grow overflow-x-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={title}
