@@ -124,7 +124,7 @@ const TestimonialsSection = () => {
           </motion.span>
 
           <motion.h2
-            className="text-4xl md:text-5xl font-bold text-slate-900 mb-4"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4"
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -135,7 +135,7 @@ const TestimonialsSection = () => {
           </motion.h2>
 
           <motion.p
-            className="text-lg text-slate-600 max-w-3xl mx-auto"
+            className="text-base md:text-lg text-slate-600 max-w-3xl mx-auto"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
@@ -201,7 +201,7 @@ const TestimonialsSection = () => {
 
           {/* Testimonial cards */}
           <div className="flex justify-center">
-            <div className="relative w-full max-w-4xl h-[400px]">
+            <div className="relative w-full max-w-4xl min-h-[600px] md:min-h-[400px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
@@ -211,7 +211,7 @@ const TestimonialsSection = () => {
                   animate="animate"
                   exit="exit"
                 >
-                  <GlassCard className="p-8 h-full" animate={false}>
+                  <GlassCard className="p-6 md:p-8 h-full" animate={false}>
                     <div className="flex flex-col md:flex-row h-full">
                       <div className="md:w-2/5 mb-6 md:mb-0 md:pr-6">
                         <div className="relative rounded-2xl overflow-hidden mb-4 h-48 md:h-64 shadow-md border border-white/30">
@@ -224,7 +224,7 @@ const TestimonialsSection = () => {
                           <div className="absolute inset-0 bg-gradient-to-t from-accent/50 to-primary/20 opacity-50"></div>
 
                           <div className="absolute bottom-0 left-0 p-4 text-white">
-                            <h3 className="font-bold text-lg">
+                            <h3 className="font-bold text-base md:text-lg">
                               {testimonials[activeIndex].name}
                             </h3>
                             <p className="text-sm text-white/80">
@@ -239,7 +239,7 @@ const TestimonialsSection = () => {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.3 }}
                         >
-                          <div className="bg-orange-50 text-accent text-xs font-medium py-1 px-3 rounded-full">
+                          <div className="bg-orange-50 text-accent text-xs font-medium py-1 px-3 rounded-full inline-block">
                             {testimonials[activeIndex].condition}
                           </div>
                           <div className="text-sm text-slate-600">
@@ -259,15 +259,15 @@ const TestimonialsSection = () => {
 
                       <div className="md:w-3/5 flex flex-col justify-between">
                         <motion.blockquote
-                          className="text-xl italic text-slate-700 mb-6 leading-relaxed relative"
+                          className="text-lg md:text-xl italic text-slate-700 mb-6 leading-relaxed relative"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.2 }}
                         >
-                          <span className="absolute -top-2 -left-2 text-6xl text-orange-100 font-serif">
+                          <span className="absolute -top-2 -left-2 text-4xl md:text-6xl text-orange-100 font-serif">
                             "
                           </span>
-                          <div className="relative z-10">
+                          <div className="relative z-10 pl-2">
                             "{testimonials[activeIndex].quote}"
                           </div>
                         </motion.blockquote>
@@ -278,7 +278,7 @@ const TestimonialsSection = () => {
                               <motion.svg
                                 key={i}
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="h-6 w-6 text-amber-400"
+                                className="h-5 w-5 md:h-6 md:w-6 text-amber-400"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 custom={i}
