@@ -1,4 +1,3 @@
-// components/home/TestimonialsSection.jsx
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -6,28 +5,37 @@ import GlassCard from "../ui/GlassCard";
 
 const testimonials = [
   {
-    name: "Priya Sharma",
+    name: "Mrs. Chitra Roy",
     avatar: "/images/testimonial-1.jpg",
-    condition: "Chronic Migraine",
+    condition: "Type 2 Diabetes",
+    before: "HbA1c: 8.3% (Prediabetic)",
+    after: "HbA1c: 6.9% (Good Control)",
+    duration: "6 months treatment",
     quote:
-      "After years of suffering from debilitating migraines, Dr. Selvan's homeopathic treatment gave me my life back. The personalized approach made all the difference.",
-    location: "Chennai, India",
+      "I was devastated when diagnosed with diabetes. Dr. Selvan's homeopathic treatment not only improved my HbA1c levels from 8.3 to 6.9 within 6 months but also helped me avoid insulin dependency. I feel healthier than I have in years.",
+    location: "Mumbai, India",
   },
   {
-    name: "Mohammed Al-Farsi",
+    name: "Mr. Sebastian",
     avatar: "/images/testimonial-2.jpg",
-    condition: "Eczema",
+    condition: "Diabetic Management",
+    before: "Blood Sugar (Fasting): 294 mg/dl",
+    after: "Improved control with homeopathy",
+    duration: "Under treatment",
     quote:
-      "My son struggled with severe eczema for years. Within three months of Dr. Selvan's treatment, his skin cleared up completely. We're so grateful!",
-    location: "Dubai, UAE",
+      "As a senior patient dealing with multiple health issues including diabetes and anemia, finding Dr. Selvan was a blessing. His holistic approach treats all my conditions without the side effects of conventional medicines.",
+    location: "Dharavi, Mumbai",
   },
   {
-    name: "Rebecca Johnson",
+    name: "Anonymous Patient",
     avatar: "/images/testimonial-3.jpg",
-    condition: "Digestive Issues",
+    condition: "Varicose Ulcer",
+    before: "Infected varicose ulcer",
+    after: "Complete healing",
+    duration: "2 days treatment",
     quote:
-      "I had been dealing with IBS for over a decade. Dr. Selvan took the time to understand my symptoms and created a treatment plan that finally brought relief.",
-    location: "London, UK",
+      "I couldn't believe my eyes when my painful varicose ulcer completely healed in just two days after applying Dr. Selvan's homeopathic remedy. This was after suffering for months with conventional treatments.",
+    location: "Mumbai, India",
   },
 ];
 
@@ -90,7 +98,7 @@ const TestimonialsSection = () => {
 
   return (
     <section className="py-20 relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-orange-50">
-      {/* Decorative blob shapes - these are simplified without the BlobShape component */}
+      {/* Decorative blob shapes */}
       <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-accent opacity-[0.05] -z-10"></div>
       <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-primary opacity-[0.05] -z-10"></div>
 
@@ -162,7 +170,7 @@ const TestimonialsSection = () => {
                   ease: "easeInOut",
                 }}
               >
-                Real stories from real patients!
+                Real stories with medical proof!
               </motion.p>
               <motion.svg
                 width="40"
@@ -226,12 +234,26 @@ const TestimonialsSection = () => {
                         </div>
 
                         <motion.div
-                          className="inline-block bg-orange-50 text-accent text-xs font-medium py-1 px-3 rounded-full"
+                          className="space-y-2"
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.3 }}
                         >
-                          {testimonials[activeIndex].condition}
+                          <div className="bg-orange-50 text-accent text-xs font-medium py-1 px-3 rounded-full">
+                            {testimonials[activeIndex].condition}
+                          </div>
+                          <div className="text-sm text-slate-600">
+                            <strong>Before:</strong>{" "}
+                            {testimonials[activeIndex].before}
+                          </div>
+                          <div className="text-sm text-slate-600">
+                            <strong>After:</strong>{" "}
+                            {testimonials[activeIndex].after}
+                          </div>
+                          <div className="text-sm text-slate-600">
+                            <strong>Duration:</strong>{" "}
+                            {testimonials[activeIndex].duration}
+                          </div>
                         </motion.div>
                       </div>
 
