@@ -139,14 +139,14 @@ const WhyChooseSectionLight = () => {
           <AppointmentButton text="Start Cure" variant="primary" size="md" />
 
           <motion.div
-            className="absolute top-[10px] left-0 md:left-[700px]"
+            className="absolute top-[10px] left-[70%] sm:left-0 md:left-[700px]"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
           >
             <div className="relative">
               <motion.p
-                className="absolute -top-12 left-0 text-primary font-handwritten text-lg transform rotate-3"
+                className="absolute -top-12 left-0 right-0 text-primary font-handwritten text-lg transform rotate-3 text-center md:text-left"
                 animate={{
                   y: [0, -3, 0],
                 }}
@@ -162,7 +162,7 @@ const WhyChooseSectionLight = () => {
                 width="120"
                 height="60"
                 viewBox="0 0 120 60"
-                className="fill-none stroke-primary transform scale-x-[-1]" // Added scale-x-[-1] to mirror the arrow
+                className="fill-none stroke-primary transform scale-x-[-1] mx-auto md:mx-0" // Added mx-auto for center alignment on mobile
               >
                 <motion.path
                   d="M10,30 Q40,10 100,30"
