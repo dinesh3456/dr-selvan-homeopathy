@@ -112,7 +112,7 @@ const Footer = () => {
               {[
                 { href: "/", label: "Home" },
                 { href: "/homeopathy", label: "Homeopathy" },
-                { href: "/natural-treatment", label: "Natural Treatment" },
+                { href: "/natural-treatment", label: "Medic Talk" },
                 { href: "/products", label: "Our Products" },
                 { href: "/about", label: "About Us" },
                 { href: "/contact", label: "Contact Us" },

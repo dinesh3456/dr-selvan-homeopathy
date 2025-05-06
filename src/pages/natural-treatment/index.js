@@ -1,4 +1,4 @@
-// src/pages/natural-treatment/index.js
+// src/pages/natural-treatment/index.js (modified version)
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
@@ -269,7 +269,7 @@ const NaturalTreatmentPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              Natural <span className="text-accent">Treatment</span> Videos
+              Dr Selvan's <span className="text-accent">Medic Talks</span>
             </motion.h1>
             <motion.p
               className="text-lg text-gray-600 italic"
@@ -277,8 +277,8 @@ const NaturalTreatmentPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              "Watch and learn about our homeopathic approach to natural
-              healing"
+              "Dr. Selvan's Medic Talks: Watch and learn about natural healing
+              approaches"
             </motion.p>
           </div>
         </div>
@@ -300,10 +300,12 @@ const NaturalTreatmentPage = () => {
               <span className="text-accent"> - {selectedCategory}</span>
             )}
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl">
-            Discover a wealth of knowledge about homeopathic treatments, patient
-            success stories, and natural approaches to health and wellness
-            through our comprehensive video library.
+          <p className="text-lg text-gray-600 max-w-10xl">
+            Dr. Selvan's Medic Talks features engaging, educational videos on
+            various health conditions. Each video explains symptoms, causes, and
+            pathology, with an emphasis on dietary guidelines—what to eat and
+            what to avoid. Learn how to approach healing naturally first, before
+            considering medication.
           </p>
         </motion.div>
 

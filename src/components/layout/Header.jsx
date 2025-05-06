@@ -257,7 +257,7 @@ const Header = () => {
                 href="/natural-treatment"
                 className="text-dark hover:text-primary font-medium transition"
               >
-                Natural Treatment
+                Medic Talk
               </Link>
             </motion.div>
 
@@ -489,7 +489,7 @@ const Header = () => {
 
               {/* Other Menu Items */}
               {[
-                { href: "/natural-treatment", label: "Natural Treatment" },
+                { href: "/natural-treatment", label: "Medic Talk" },
                 { href: "/products", label: "Our Products" },
                 { href: "/about/doctor", label: "About Us" },
                 {

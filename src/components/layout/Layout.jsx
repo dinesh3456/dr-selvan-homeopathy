@@ -1,5 +1,5 @@
-// components/layout/Layout.jsx
-import React, { useEffect } from "react";
+// components/layout/Layout.jsx (modified)
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -10,6 +10,8 @@ const Layout = ({
   title = "Dr. Selvan's Homeopathy",
   hideFooter = false,
 }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
   // Page transition animation
   const pageVariants = {
     initial: {
@@ -34,16 +36,33 @@ const Layout = ({
     },
   };
 
-  // Smooth scroll to top on page load
+  // Add loading state management
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }, []);
+    // Apply 'loading' class to body to prevent scroll
+    if (isLoading) {
+      document.body.classList.add("loading");
+    }
+
+    // Once everything is loaded, remove the loading class
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      document.body.classList.remove("loading");
+
+      // Smooth scroll to top (only after loading completes)
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }, 100); // Short timeout to ensure all elements are in place
+
+    return () => {
+      clearTimeout(timer);
+      document.body.classList.remove("loading");
+    };
+  }, [isLoading]);
 
   return (
-    <div className="flex flex-col min-h-screen overflow-x-hidden">
+    <div className={`flex flex-col min-h-screen ${isLoading ? "loading" : ""}`}>
       <Head>
         <title>{title}</title>
         <meta
@@ -78,7 +97,7 @@ const Layout = ({
 
       <Header />
 
-      <main className="flex-grow overflow-x-hidden">
+      <main className="flex-grow overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={title}
