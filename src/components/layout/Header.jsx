@@ -235,6 +235,10 @@ const Header = () => {
                     href: "/homeopathy/myths-and-facts",
                     label: "Myths and Facts of Homeopathy",
                   },
+                  {
+                    href: "/homeopathy/faq",
+                    label: "FAQ",
+                  },
                 ].map((item, i) => (
                   <div
                     key={i}
@@ -462,6 +466,10 @@ const Header = () => {
                     {
                       href: "/homeopathy/myths-and-facts",
                       label: "Myths and Facts of Homeopathy",
+                    },
+                    {
+                      href: "/homeopathy/faq",
+                      label: "FAQ",
                     },
                   ].map((item, i) => (
                     <motion.div
