@@ -6,19 +6,19 @@ import AppointmentButton from "../common/AppointmentButton";
 const WhyChooseSectionLight = () => {
   const features = [
     {
-      title: "> 20 Years",
+      title: "> 8 Years",
       description:
         "Two decades of expertise in providing effective homeopathic treatments for a wide range of conditions.",
       color: "primary",
     },
     {
-      title: "2 Locations",
+      title: "Hon. Physician & Consultant at",
       description:
-        "With clinics in Chennai, India and Dubai, UAE, we're committed to making homeopathic care accessible.",
+        "Lions Tarachand Bapa Hospital (Sion), Daughters of St. Paul (Bandra), Shailesh Health Care Centre (Mazgaon), Sai Multi Speciality Hospital (Dharavi).",
       color: "primary",
     },
     {
-      title: "> 10k Clients",
+      title: "> 7k Clients",
       description:
         "We've had the privilege of assisting over 10,000 clients in their natural healing journeys.",
       color: "primary",
