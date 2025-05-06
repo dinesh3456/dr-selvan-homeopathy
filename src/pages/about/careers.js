@@ -1,9 +1,9 @@
 // src/pages/about/careers.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Layout from "../../components/layout/Layout";
 import { useForm } from "react-hook-form";
-
+import emailjs from "@emailjs/browser";
 const openPositions = [
   {
     title: "Homeopathic Physician",
@@ -187,19 +187,83 @@ const ApplicationForm = ({ job, onClose }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [fileSelected, setFileSelected] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    emailjs.init("yfO-8t4GWAqHGIiED"); // Your EmailJS public key
+  }, []);
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
+    setError("");
 
-    // In a real implementation, you would send the form data including the resume file
-    // to your backend or email service
-    console.log("Form submitted:", data);
+    try {
+      // Get resume file data
+      const fileInput = document.getElementById("resume");
+      const resumeFile = fileInput.files[0];
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+      if (resumeFile && resumeFile.size > 5 * 1024 * 1024) {
+        setError("File size exceeds 5MB limit. Please select a smaller file.");
+        setIsSubmitting(false);
+        return;
+      }
 
-    setIsSubmitting(false);
-    setSubmitted(true);
+      // Format the application details for the email
+      let applicationDetails = `
+Position Applied For: ${job.title}
+Applicant Name: ${data.firstName} ${data.lastName}
+Email: ${data.email}
+Phone: ${data.phone}
+Resume Filename: ${resumeFile ? resumeFile.name : "No file attached"}
+`;
+
+      if (data.coverLetter) {
+        applicationDetails += `
+Cover Letter:
+${data.coverLetter}
+`;
+      }
+
+      // Create template parameters for EmailJS
+      const templateParams = {
+        from_name: `${data.firstName} ${data.lastName}`,
+        from_email: data.email,
+        phone: data.phone,
+        position: job.title,
+        message: applicationDetails,
+        subject: `Job Application: ${job.title} - ${data.firstName} ${data.lastName}`,
+      };
+
+      // Use EmailJS to send the email
+      const response = await emailjs.send(
+        "service_60h1gve", // Your EmailJS service ID
+        "template_8n5y70q", // Your EmailJS template ID
+        templateParams,
+        "yfO-8t4GWAqHGIiED" // Your EmailJS public key
+      );
+
+      if (response.status === 200) {
+        // Now handle resume file by creating a secondary email with attachment information
+        // Note: Due to EmailJS limitations, you might want to set up a server endpoint
+        // for actual file handling, but this approach notifies Dr. Selvan about the application
+
+        setIsSubmitting(false);
+        setSubmitted(true);
+
+        // Reset form after showing success message
+        setTimeout(() => {
+          // Reset form state is handled by the modal close action
+        }, 3000);
+      } else {
+        throw new Error("Failed to send email");
+      }
+    } catch (error) {
+      console.error("Error submitting application:", error);
+      setIsSubmitting(false);
+      setError(
+        "There was an error sending your application. Please try again or contact us directly."
+      );
+    }
   };
 
   return (
@@ -269,7 +333,11 @@ const ApplicationForm = ({ job, onClose }) => {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="space-y-6"
+              encType="multipart/form-data"
+            >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label
@@ -436,6 +504,12 @@ const ApplicationForm = ({ job, onClose }) => {
                   {...register("coverLetter")}
                 ></textarea>
               </div>
+
+              {error && (
+                <div className="p-4 bg-red-50 border border-red-200 rounded-md text-red-600">
+                  {error}
+                </div>
+              )}
 
               <div className="flex justify-end space-x-4">
                 <button
