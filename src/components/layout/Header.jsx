@@ -1,3 +1,4 @@
+// src/components/layout/Header.jsx (Updated)
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,7 +9,9 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [homeopathyOpen, setHomeopathyOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false); // New state for About dropdown
   const [mobileHomeopathyOpen, setMobileHomeopathyOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false); // New state for mobile About dropdown
 
   // Handle scroll effect for sticky header
   useEffect(() => {
@@ -132,6 +135,22 @@ const Header = () => {
     };
   }, [homeopathyOpen]);
 
+  // Handle click outside for About dropdown
+  useEffect(() => {
+    if (!aboutOpen) return;
+
+    const handleClickOutside = (event) => {
+      if (!event.target.closest(".relative.group.about")) {
+        setAboutOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [aboutOpen]);
+
   return (
     <header
       className={`bg-white/90 backdrop-blur-md sticky top-0 z-50 transition-all duration-300 ${
@@ -174,6 +193,7 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
+            {/* Homeopathy Dropdown */}
             <div className="relative group homeopathy">
               <motion.div
                 whileHover="hover"
@@ -275,51 +295,64 @@ const Header = () => {
               </Link>
             </motion.div>
 
-            <div className="relative group">
-              <motion.div whileHover="hover" variants={linkHoverVariants}>
-                <Link
-                  href="/about/doctor"
-                  className="text-dark hover:text-primary font-medium transition"
-                >
+            {/* About Us Dropdown - Updated */}
+            <div className="relative group about">
+              <motion.div
+                whileHover="hover"
+                variants={linkHoverVariants}
+                onClick={() => setAboutOpen(!aboutOpen)}
+              >
+                <span className="text-dark hover:text-primary font-medium transition cursor-pointer">
                   About Us
-                </Link>
+                </span>
               </motion.div>
-              <AnimatePresence>
-                <motion.div
-                  className="absolute left-0 mt-2 w-56 origin-top-left bg-white shadow-lg rounded-md py-2 z-50 overflow-hidden"
-                  initial="hidden"
-                  variants={dropdownVariants}
-                  animate="hidden"
-                  whileHover="visible"
-                >
-                  {[
-                    {
-                      href: "/about/clinic",
-                      label: "About Dr. Selvan Homeopathy",
-                    },
-                    { href: "/about/doctor", label: "About Dr. Selvan" },
-                    { href: "/about/cures", label: "Cures @ Dr. Selvan" },
-                    { href: "/about/csr", label: "CSR - Homeopathy Trust" },
-                  ].map((item, i) => (
-                    <motion.div
-                      key={i}
-                      variants={menuItemVariants}
-                      whileHover={{
-                        backgroundColor: "#EFF6FF", // blue-sand color
-                        x: 5,
-                      }}
-                      transition={{ duration: 0.2 }}
+
+              <div
+                className={`absolute left-0 mt-2 w-56 origin-top-left bg-white shadow-lg rounded-md py-2 z-50 overflow-hidden transition-all duration-300
+      ${
+        aboutOpen
+          ? "opacity-100 visible"
+          : "opacity-0 invisible group-hover:opacity-100 group-hover:visible"
+      }
+    `}
+                onMouseEnter={() =>
+                  document
+                    .querySelector(".relative.group.about")
+                    .classList.add("hovered")
+                }
+                onMouseLeave={() =>
+                  !aboutOpen &&
+                  document
+                    .querySelector(".relative.group.about")
+                    .classList.remove("hovered")
+                }
+              >
+                {[
+                  { href: "/about/doctor", label: "About Dr. Selvan" },
+                  { href: "/about/team", label: "About Dr. Selvan's Team" },
+                  {
+                    href: "/about/careers",
+                    label: "Careers @ Dr. Selvan's Homeopathy",
+                  },
+                  {
+                    href: "/about/foundation",
+                    label: "CSR - Dr. Selvan Foundation",
+                  },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="hover:bg-blue-100 px-4 py-2 transition-transform duration-200 transform hover:translate-x-1"
+                  >
+                    <Link
+                      href={item.href}
+                      className="block text-sm text-dark hover:text-primary"
+                      onClick={() => setAboutOpen(false)}
                     >
-                      <Link
-                        href={item.href}
-                        className="block px-4 py-2 text-sm text-dark hover:text-primary"
-                      >
-                        {item.label}
-                      </Link>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </AnimatePresence>
+                      {item.label}
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <motion.div whileHover="hover" variants={linkHoverVariants}>
@@ -495,44 +528,130 @@ const Header = () => {
                 </div>
               )}
 
-              {/* Other Menu Items */}
-              {[
-                { href: "/natural-treatment", label: "Medic Talk" },
-                { href: "/products", label: "Our Products" },
-                { href: "/about/doctor", label: "About Us" },
-                {
-                  href: "#contact",
-                  label: "Contact Us",
-                  onClick: handleContactClick,
-                },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={menuItemVariants}
-                  whileHover={{
-                    backgroundColor: "#EFF6FF", // blue-sand color
-                    x: 5,
-                  }}
-                >
-                  <Link
-                    href={item.href}
-                    className="block px-3 py-2 text-base font-medium text-dark hover:text-primary rounded-md"
-                    onClick={(e) => {
-                      if (item.onClick) {
-                        item.onClick(e);
-                      } else {
-                        setIsOpen(false);
-                      }
-                    }}
-                  >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
+              {/* Medic Talk Menu Item */}
               <motion.div
                 variants={menuItemVariants}
                 whileHover={{
-                  backgroundColor: "#FF6B35", // accent color
+                  backgroundColor: "#EFF6FF",
+                  x: 5,
+                }}
+              >
+                <Link
+                  href="/natural-treatment"
+                  className="block px-3 py-2 text-base font-medium text-dark hover:text-primary rounded-md"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Medic Talk
+                </Link>
+              </motion.div>
+
+              {/* Products Menu Item */}
+              <motion.div
+                variants={menuItemVariants}
+                whileHover={{
+                  backgroundColor: "#EFF6FF",
+                  x: 5,
+                }}
+              >
+                <Link
+                  href="/products"
+                  className="block px-3 py-2 text-base font-medium text-dark hover:text-primary rounded-md"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Our Products
+                </Link>
+              </motion.div>
+
+              {/* About Us Menu Item with Dropdown - NEW */}
+              <motion.div
+                variants={menuItemVariants}
+                whileHover={{
+                  backgroundColor: "#EFF6FF",
+                  x: 5,
+                }}
+                onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+              >
+                <div className="flex items-center justify-between px-3 py-2 text-base font-medium text-dark rounded-md cursor-pointer">
+                  <span>About Us</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className={`h-5 w-5 transition-transform ${
+                      mobileAboutOpen ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </motion.div>
+
+              {/* About Us Dropdown - NEW */}
+              {mobileAboutOpen && (
+                <div className="pl-4">
+                  {[
+                    { href: "/about/doctor", label: "About Dr. Selvan" },
+                    { href: "/about/team", label: "About Dr. Selvan's Team" },
+                    {
+                      href: "/about/careers",
+                      label: "Careers @ Dr. Selvan's Homeopathy",
+                    },
+                    {
+                      href: "/about/foundation",
+                      label: "CSR - Dr. Selvan Foundation",
+                    },
+                  ].map((item, i) => (
+                    <motion.div
+                      key={i}
+                      variants={menuItemVariants}
+                      whileHover={{
+                        backgroundColor: "#EFF6FF",
+                        x: 5,
+                      }}
+                    >
+                      <Link
+                        href={item.href}
+                        className="block px-3 py-2 text-sm text-dark hover:text-primary rounded-md"
+                        onClick={() => {
+                          setIsOpen(false);
+                          setMobileAboutOpen(false);
+                        }}
+                      >
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+
+              {/* Contact Us Menu Item */}
+              <motion.div
+                variants={menuItemVariants}
+                whileHover={{
+                  backgroundColor: "#EFF6FF",
+                  x: 5,
+                }}
+              >
+                <Link
+                  href="#contact"
+                  className="block px-3 py-2 text-base font-medium text-dark hover:text-primary rounded-md"
+                  onClick={handleContactClick}
+                >
+                  Contact Us
+                </Link>
+              </motion.div>
+
+              {/* Appointment Button */}
+              <motion.div
+                variants={menuItemVariants}
+                whileHover={{
+                  backgroundColor: "#FF6B35",
                   x: 5,
                 }}
               >
