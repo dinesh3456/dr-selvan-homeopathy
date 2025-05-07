@@ -1,13 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import AppointmentButton from "../common/AppointmentButton";
 
+// Generate the bubbles outside the component to prevent re-generation on render
+const generateBubbles = (count) => {
+  return Array.from({ length: count }, (_, i) => ({
+    id: i,
+    size: 20 + Math.random() * 80,
+    left: Math.random() * 100,
+    top: Math.random() * 100,
+    opacity: 0.4 + Math.random() * 0.3,
+    delay: i * 0.2,
+  }));
+};
+
 const HeroSection = () => {
   // Use state to control animation timing
   const [isLoaded, setIsLoaded] = useState(false);
   const backgroundControls = useAnimation();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Array of doctor images
+  const doctorImages = [
+    "/images/doctor.jpg",
+    "/images/doctor-2.jpg",
+    "/images/doctor-3.jpg",
+    "/images/doctor-4.jpg",
+  ];
+
+  // Generate decorative bubbles only once using useMemo
+  const decorativeBubbles = useMemo(() => generateBubbles(6), []);
 
   // Slow background animation effect
   useEffect(() => {
@@ -23,6 +47,17 @@ const HeroSection = () => {
     // Simulate loading completion
     setTimeout(() => setIsLoaded(true), 500);
   }, [backgroundControls]);
+
+  // Image carousel effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex(
+        (prevIndex) => (prevIndex + 1) % doctorImages.length
+      );
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [doctorImages.length]);
 
   // Animation variants
   const containerVariants = {
@@ -75,6 +110,26 @@ const HeroSection = () => {
     },
   };
 
+  const imageVariants = {
+    enter: { opacity: 0, x: 20 },
+    center: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+    exit: {
+      opacity: 0,
+      x: -20,
+      transition: {
+        duration: 0.8,
+        ease: "easeIn",
+      },
+    },
+  };
+
   const bubbleVariants = {
     hidden: { scale: 0, opacity: 0 },
     visible: (i) => ({
@@ -97,15 +152,6 @@ const HeroSection = () => {
       },
     }),
   };
-
-  const decorativeBubbles = Array.from({ length: 6 }, (_, i) => ({
-    id: i,
-    size: 20 + Math.random() * 80,
-    left: Math.random() * 100,
-    top: Math.random() * 100,
-    opacity: 0.4 + Math.random() * 0.3,
-    delay: i * 0.2,
-  }));
 
   const glowVariants = {
     animate: {
@@ -346,7 +392,7 @@ const HeroSection = () => {
                 transition={{ delay: 0.5, duration: 0.5 }}
               />
 
-              {/* Main image container */}
+              {/* Image carousel container */}
               <motion.div
                 className="relative rounded-xl overflow-hidden shadow-2xl"
                 whileHover={{
@@ -355,14 +401,42 @@ const HeroSection = () => {
                 }}
               >
                 <div className="w-full h-72 md:h-96 lg:h-[450px] relative">
-                  <Image
-                    src="/images/doctor.jpg"
-                    alt="Dr. Selvan"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
+                  {/* Image carousel with AnimatePresence for smooth transitions */}
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={currentImageIndex}
+                      className="absolute inset-0"
+                      variants={imageVariants}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                    >
+                      <Image
+                        src={doctorImages[currentImageIndex]}
+                        alt={`Dr. Selvan - Image ${currentImageIndex + 1}`}
+                        fill
+                        className="object-cover"
+                        priority
+                      />
+                    </motion.div>
+                  </AnimatePresence>
                   <div className="absolute inset-0 bg-gradient-to-t from-blue-500/30 to-transparent opacity-50"></div>
+
+                  {/* Image navigation dots */}
+                  <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+                    {doctorImages.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentImageIndex(index)}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          currentImageIndex === index
+                            ? "bg-white w-4"
+                            : "bg-white/60"
+                        }`}
+                        aria-label={`Go to image ${index + 1}`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </motion.div>
 
