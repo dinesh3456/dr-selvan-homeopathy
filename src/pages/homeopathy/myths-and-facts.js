@@ -73,38 +73,6 @@ const MythsAndFacts = () => {
               height={600}
               className="w-full h-auto"
             />
-
-            {/* Annotation */}
-            <motion.div
-              className="absolute -bottom-6 right-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-            >
-              <div className="relative">
-                <svg
-                  width="100"
-                  height="60"
-                  viewBox="0 0 100 60"
-                  className="fill-none stroke-primary"
-                >
-                  <path
-                    d="M90,10 Q60,60 10,30"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M15,30 L5,35 L10,25"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <p className="absolute top-0 right-0 font-handwritten text-lg text-accent transform rotate-3">
-                  Let's clear up the misconceptions!
-                </p>
-              </div>
-            </motion.div>
           </div>
 
           {/* Introduction Section */}
