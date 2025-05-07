@@ -1,6 +1,5 @@
-// pages/_app.js (modified)
+// pages/_app.js - completely revised
 import { useEffect, useState } from "react";
-import { AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import "../styles/globals.css";
 import { AppointmentProvider } from "../context/AppointmentContext";
@@ -8,6 +7,7 @@ import { AppointmentProvider } from "../context/AppointmentContext";
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [isRouteChanging, setIsRouteChanging] = useState(false);
+  const [pageKey, setPageKey] = useState(router.asPath);
 
   // Handle page transitions
   useEffect(() => {
@@ -25,12 +25,15 @@ function MyApp({ Component, pageProps }) {
       document.body.classList.add("loading");
     };
 
-    const handleRouteChangeComplete = () => {
+    const handleRouteChangeComplete = (url) => {
       setIsRouteChanging(false);
       // Allow scroll again once complete
       document.body.classList.remove("loading");
 
-      // Scroll to top on route change
+      // Update the page key for transitions
+      setPageKey(url);
+
+      // Use non-animated scroll to top
       window.scrollTo(0, 0);
     };
 
@@ -45,11 +48,13 @@ function MyApp({ Component, pageProps }) {
     };
   }, [router.events]);
 
+  // A simple fade transition (no AnimatePresence)
   return (
     <AppointmentProvider>
-      <AnimatePresence mode="wait" initial={false}>
-        <Component {...pageProps} key={router.asPath} />
-      </AnimatePresence>
+      {/* No AnimatePresence - just use the key for react reconciliation */}
+      <div key={pageKey} className="page-transition">
+        <Component {...pageProps} />
+      </div>
     </AppointmentProvider>
   );
 }
