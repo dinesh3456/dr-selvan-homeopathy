@@ -40,7 +40,7 @@ const Footer = () => {
       <div className="h-1 w-full bg-gradient-to-r from-primary via-accent to-primary"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Column 1 - About */}
           <div>
             <h3 className="text-lg font-bold mb-4">
@@ -105,93 +105,150 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Column 2 - Quick Links */}
-          <div>
-            <h3 className="text-lg font-bold mb-4 text-primary">Quick Links</h3>
-            <ul className="space-y-2">
-              {[
-                { href: "/", label: "Home" },
-                { href: "/homeopathy", label: "Homeopathy" },
-                { href: "/natural-treatment", label: "Medic Talk" },
-                { href: "/products", label: "Our Products" },
-                { href: "/about", label: "About Us" },
-                { href: "/contact", label: "Contact Us" },
-              ].map((link, i) => (
-                <li key={i}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-600 hover:text-accent transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 3 - Contact */}
+          {/* Column 2 - Contact Information */}
           <div>
             <h3 className="text-lg font-bold mb-4 text-primary">Contact Us</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* Chennai Location */}
+              <div>
+                <h4 className="font-semibold mb-1">Chennai</h4>
+                <address className="text-gray-600 not-italic mb-3">
+                  123 Healing Street
+                  <br />
+                  Chennai, Tamil Nadu
+                  <br />
+                  India 600001
+                </address>
+                <div className="flex items-center mb-2">
+                  <svg
+                    className="h-4 w-4 text-primary mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
+                  </svg>
+                  <a
+                    href="tel:+919876543210"
+                    className="text-gray-600 hover:text-accent"
+                  >
+                    +91 98765 43210
+                  </a>
+                </div>
+              </div>
 
-            <div className="mb-4">
-              <h4 className="font-semibold mb-1">India</h4>
-              <address className="text-gray-600 not-italic">
-                123 Healing Street
-                <br />
-                Chennai, Tamil Nadu
-                <br />
-                India 600001
-              </address>
-              <a
-                href="tel:+919876543210"
-                className="text-gray-600 hover:text-accent block mt-1"
-              >
-                +91 98765 43210
-              </a>
+              {/* Mumbai Location */}
+              <div>
+                <h4 className="font-semibold mb-1">Mumbai</h4>
+                <address className="text-gray-600 not-italic mb-3">
+                  456 Wellness Avenue
+                  <br />
+                  Dharavi, Mumbai
+                  <br />
+                  India 400017
+                </address>
+                <div className="flex items-center mb-2">
+                  <svg
+                    className="h-4 w-4 text-primary mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                    />
+                  </svg>
+                  <a
+                    href="tel:+917208719646"
+                    className="text-gray-600 hover:text-accent"
+                  >
+                    +91 72087 19646
+                  </a>
+                </div>
+              </div>
             </div>
 
-            <div>
-              <h4 className="font-semibold mb-1">UAE</h4>
-              <address className="text-gray-600 not-italic">
-                456 Wellness Avenue
-                <br />
-                Dubai Healthcare City
-                <br />
-                UAE
-              </address>
-              <a
-                href="tel:+971501234567"
-                className="text-gray-600 hover:text-accent block mt-1"
-              >
-                +971 50 123 4567
-              </a>
+            {/* Common Contact Information */}
+            <div className="mt-4">
+              <div className="flex items-center mb-2">
+                <svg
+                  className="h-4 w-4 text-primary mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+                <a
+                  href="mailto:drselvanhomeopathy@gmail.com"
+                  className="text-gray-600 hover:text-accent"
+                >
+                  drselvanhomeopathy@gmail.com
+                </a>
+              </div>
+              <div className="flex items-center">
+                <svg
+                  className="h-4 w-4 text-primary mr-2"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <a
+                  href="https://www.drselvan.com"
+                  className="text-gray-600 hover:text-accent"
+                >
+                  www.drselvan.com
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* Column 4 - Newsletter */}
+          {/* Column 3 - Newsletter */}
           <div>
             <h3 className="text-lg font-bold mb-4 text-primary">Newsletter</h3>
-            <p className="text-gray-600 mb-4">
-              Subscribe to our newsletter for the latest updates on homeopathic
-              treatments and health tips.
-            </p>
+            <div>
+              <p className="text-gray-600 mb-4">
+                Subscribe to our newsletter for the latest updates on
+                homeopathic treatments and health tips.
+              </p>
 
-            <form className="mt-4">
-              <div className="flex max-w-md">
-                <input
-                  type="email"
-                  required
-                  className="min-w-0 flex-auto rounded-l-md border border-gray-300 px-3.5 py-2 text-gray-700 shadow-sm focus:border-primary focus:ring-primary"
-                  placeholder="Enter your email"
-                />
-                <button
-                  type="submit"
-                  className="flex-none rounded-r-md bg-accent py-2 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-accent"
-                >
-                  Subscribe
-                </button>
-              </div>
-            </form>
+              <form className="mt-4">
+                <div className="flex max-w-md">
+                  <input
+                    type="email"
+                    required
+                    className="min-w-0 flex-auto rounded-l-md border border-gray-300 px-3.5 py-2 text-gray-700 shadow-sm focus:border-primary focus:ring-primary"
+                    placeholder="Enter your email"
+                  />
+                  <button
+                    type="submit"
+                    className="flex-none rounded-r-md bg-accent py-2 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-accent"
+                  >
+                    Subscribe
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
 

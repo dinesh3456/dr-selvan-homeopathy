@@ -261,9 +261,9 @@ const HeroSection = () => {
               className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-tight mb-6"
               variants={itemVariants}
             >
-              <span className="block">Embark on your</span>
-              <span className="block text-blue-600">wellness journey</span>
-              <span className="block">with Dr. Selvan</span>
+              <span className="block">Gentle healing,</span>
+              <span className="block text-blue-600">profound results</span>
+              <span className="block">for your health</span>
             </motion.h1>
 
             <motion.p
