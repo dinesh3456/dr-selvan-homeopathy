@@ -227,13 +227,446 @@ const AboutDoctor = () => {
               the advancement of homeopathic medicine.
             </p>
 
-            <p className="text-gray-700 mb-4 leading-relaxed">
+            <p className="text-gray-700 mb-6 leading-relaxed">
               As a DG Approved Medical Examiner for Seafarers, Dr. Selvan brings
               his homeopathic expertise to yet another specialized field. His
               work across various hospitals in different Indian states has
               enriched his understanding of diverse health challenges and
               regional health patterns.
             </p>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                <div className="flex items-center mb-4">
+                  <div className="bg-blue-100 p-3 rounded-full text-primary mr-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                      />
+                    </svg>
+                  </div>
+                  <h4 className="font-bold text-gray-900">
+                    Free Medical Camps
+                  </h4>
+                </div>
+                <p className="text-gray-700 text-sm">
+                  Organizing free Homeopathic medical camps throughout
+                  Maharashtra, bringing healthcare to underserved communities.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition">
+                <div className="flex items-center mb-4">
+                  <div className="bg-blue-100 p-3 rounded-full text-primary mr-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
+                      />
+                    </svg>
+                  </div>
+                  <h4 className="font-bold text-gray-900">Pandemic Response</h4>
+                </div>
+                <p className="text-gray-700 text-sm">
+                  Recognized for dedicated efforts during the COVID-19 pandemic,
+                  particularly in Dharavi, Asia's largest slum.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Homeopathy Research Unit */}
+          <section className="mb-12">
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+              Dr. Selvan's{" "}
+              <span className="text-accent">Homeopathy Research Unit</span>
+            </h3>
+            <p className="text-gray-700 mb-4 leading-relaxed">
+              Dr. Selvan is an emerging researcher with active involvement in
+              various clinical trials, particularly in the field of Herbal
+              Medicines and Homeopathy. He has contributed to studies such as
+              the Homeopathic SARS-CoV-2 Nosode (BioSimCovex) trial conducted on
+              healthy individuals during the COVID-19 pandemic.
+            </p>
+            <p className="text-gray-700 mb-6 leading-relaxed">
+              His portfolio also includes foundational research studies on
+              anemia, gastro syrup formulations, and other homeopathic
+              interventions, with several of his works published in reputed
+              homeopathy journals. In addition, Dr. Selvan is currently engaged
+              in nutraceutical research and is collaborating with Schwabe India
+              on a drug-proving study.
+            </p>
+
+            <div className="bg-blue-50 p-6 md:p-8 rounded-xl mb-8 border-l-4 border-primary">
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                Research Team Members
+              </h3>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <ul className="space-y-3 text-gray-700">
+                    <li className="flex items-start">
+                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-3 w-3 text-primary"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      </div>
+                      <span className="text-gray-700">
+                        <strong>Dr. Selvan</strong> — Principal Investigator
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-3 w-3 text-primary"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      </div>
+                      <span className="text-gray-700">
+                        <strong>Dr. Vishnu Priya A</strong> — Co-Principal
+                        Investigator
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-3 w-3 text-primary"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      </div>
+                      <span className="text-gray-700">
+                        <strong>Dr. Nazia Shaikh</strong> — Clinical Research
+                        Co-ordinator
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-3 w-3 text-primary"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      </div>
+                      <span className="text-gray-700">
+                        <strong>Laxmi Murugan</strong> — Clinical Research
+                        Co-ordinator
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <ul className="space-y-3 text-gray-700">
+                    <li className="flex items-start">
+                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-3 w-3 text-primary"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      </div>
+                      <span className="text-gray-700">
+                        <strong>Hemant Kumar</strong> — Clinical Trial Assistant
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-3 w-3 text-primary"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      </div>
+                      <span className="text-gray-700">
+                        <strong>Aman Pal</strong> — Clinical Research
+                        Co-ordinator
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="flex-shrink-0 h-5 w-5 rounded-full bg-blue-100 flex items-center justify-center mr-3 mt-1">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-3 w-3 text-primary"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                      </div>
+                      <span className="text-gray-700">
+                        <strong>Anjali Yadav</strong> — Clinical Research
+                        Co-ordinator
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <motion.div
+              className="bg-gradient-to-r from-blue-50 to-orange-50 rounded-xl p-6 md:p-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                Specialist Doctors Associated with the Research Unit
+              </h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  {
+                    name: "Dr. Aaquib Khan",
+                    qualification: "MBBS, DCH",
+                    specialty: "Pediatrician",
+                  },
+                  {
+                    name: "Dr. Kavita Shirkende",
+                    qualification: "MBBS, DNB, DGO",
+                    specialty: "Gynecologist",
+                  },
+                  {
+                    name: "Dr. Uddhaos Zembare",
+                    qualification: "MBBS, DNB, MD",
+                    specialty: "Dermatologist",
+                  },
+                  {
+                    name: "Dr. Maya Shankar Vishwakarma",
+                    qualification: "MBBS, MS",
+                    specialty: "ENT",
+                  },
+                  {
+                    name: "Dr. Ashvini Kumar Pound",
+                    qualification: "MBBS, MS",
+                    specialty: "Ophthalmologist",
+                  },
+                  {
+                    name: "Dr. Dinesh Vikram Chandra",
+                    qualification: "MBBS, MD",
+                    specialty: "Psychiatrist",
+                  },
+                  {
+                    name: "Dr. Abinaya Kamaraj",
+                    qualification: "BHMS, MD",
+                    specialty: "Medicine",
+                  },
+                  {
+                    name: "Dr. P.T. Poovai",
+                    qualification: "BHMS, MD",
+                    specialty: "Psychiatrist",
+                  },
+                ].map((doctor, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-white p-3 rounded-lg shadow-sm"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                    viewport={{ once: true }}
+                  >
+                    <h4 className="font-bold text-gray-900 text-sm">
+                      {doctor.name}
+                    </h4>
+                    <p className="text-gray-600 text-xs">
+                      {doctor.qualification}{" "}
+                      <span className="text-primary">({doctor.specialty})</span>
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </section>
+
+          {/* Academic Role */}
+          <section className="mb-12">
+            <div className="grid md:grid-cols-2 gap-8">
+              <motion.div
+                className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <div className="p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="bg-primary/10 p-3 rounded-full text-primary mr-4">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                        />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900">
+                      Assistant Professor
+                    </h3>
+                  </div>
+                  <p className="text-gray-700 mb-4">
+                    Dr. Selvan currently serves as an Assistant Professor in the
+                    Department of Medicine at Sharad Chandra Pawar Homeopathic
+                    Medical College and Hospital, Shrirampur.
+                  </p>
+                  <p className="text-gray-700 mb-4">
+                    With a deep passion for teaching and a strong foundation in
+                    clinical practice, he plays a pivotal role in shaping the
+                    academic and professional growth of aspiring homeopathic
+                    physicians.
+                  </p>
+                  <p className="text-gray-700">
+                    Dr. Selvan is highly regarded by both students and peers for
+                    his dynamic teaching style, clarity of concepts, and
+                    commitment to academic excellence. While his core
+                    specialization lies in medicine, his proficiency extends
+                    impressively into Materia Medica and Organon of Medicine,
+                    making him a versatile and inspiring educator across key
+                    homeopathic subjects.
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                viewport={{ once: true }}
+              >
+                <div className="p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="bg-accent/10 p-3 rounded-full text-accent mr-4">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900">
+                      International Speaker
+                    </h3>
+                  </div>
+                  <p className="text-gray-700 mb-4">
+                    Dr. Selvan is an esteemed international speaker known for
+                    his expertise in presenting evidence-based clinical cases
+                    successfully treated through homeopathy. With a strong
+                    commitment to scientific validation and patient-centered
+                    care, his presentations emphasize the effectiveness of
+                    homeopathy through real-world case studies and outcomes.
+                  </p>
+                  <p className="text-gray-700 mb-4">
+                    He has had the honor of being a featured speaker at several
+                    prestigious international conferences, including the TCAM
+                    International Congress and the 3rd Edition of the Sheikh
+                    Zayed International Awards for Traditional, Complementary,
+                    and Alternative Medicine (TCAM) held in Abu Dhabi.
+                  </p>
+                  <p className="text-gray-700">
+                    Dr. Selvan was also a distinguished speaker at The Tamil
+                    Nadu Dr. M.G.R. Medical University's International
+                    Homeopathic Conference in Chennai, and is regularly invited
+                    by renowned institutions as a guest speaker, where he
+                    continues to educate, inspire, and advocate for the
+                    integration of homeopathy in modern healthcare systems.
+                  </p>
+                </div>
+              </motion.div>
+            </div>
           </section>
 
           {/* Dr. Selvan Foundation Section - NEW */}

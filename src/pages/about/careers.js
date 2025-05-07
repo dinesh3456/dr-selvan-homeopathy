@@ -190,7 +190,7 @@ const ApplicationForm = ({ job, onClose }) => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    emailjs.init("yfO-8t4GWAqHGIiED"); // Your EmailJS public key
+    emailjs.init("yfO-8t4GWAqHGIiED");
   }, []);
 
   const onSubmit = async (data) => {
@@ -236,17 +236,13 @@ ${data.coverLetter}
 
       // Use EmailJS to send the email
       const response = await emailjs.send(
-        "service_60h1gve", // Your EmailJS service ID
-        "template_8n5y70q", // Your EmailJS template ID
+        "service_60h1gve",
+        "template_8n5y70q",
         templateParams,
-        "yfO-8t4GWAqHGIiED" // Your EmailJS public key
+        "yfO-8t4GWAqHGIiED"
       );
 
       if (response.status === 200) {
-        // Now handle resume file by creating a secondary email with attachment information
-        // Note: Due to EmailJS limitations, you might want to set up a server endpoint
-        // for actual file handling, but this approach notifies Dr. Selvan about the application
-
         setIsSubmitting(false);
         setSubmitted(true);
 
