@@ -1,9 +1,9 @@
-// components/layout/Layout.jsx - simplified
+// components/layout/Layout.jsx (modified)
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Layout = ({
   children,
@@ -12,7 +12,30 @@ const Layout = ({
 }) => {
   const [isLoading, setIsLoading] = useState(true);
 
-  // Very simple fade animation - no position changes
+  // // Page transition animation
+  // const pageVariants = {
+  //   initial: {
+  //     opacity: 0,
+  //     y: 20,
+  //   },
+  //   animate: {
+  //     opacity: 1,
+  //     y: 0,
+  //     transition: {
+  //       duration: 0.5,
+  //       ease: "easeInOut",
+  //       staggerChildren: 0.1,
+  //     },
+  //   },
+  //   exit: {
+  //     opacity: 0,
+  //     y: -20,
+  //     transition: {
+  //       duration: 0.3,
+  //     },
+  //   },
+  // };
+
   const fadeIn = {
     opacity: 0,
     animate: {
@@ -21,15 +44,18 @@ const Layout = ({
     },
   };
 
+  // Add loading state management
   useEffect(() => {
+    // Apply 'loading' class to body to prevent scroll
     if (isLoading) {
       document.body.classList.add("loading");
     }
 
+    // Once everything is loaded, remove the loading class
     const timer = setTimeout(() => {
       setIsLoading(false);
       document.body.classList.remove("loading");
-    }, 100);
+    }, 100); // Short timeout to ensure all elements are in place
 
     return () => {
       clearTimeout(timer);
@@ -50,6 +76,8 @@ const Layout = ({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;600&display=swap"
           rel="stylesheet"
         />
+
+        {/* Meta tags for better SEO and sharing */}
         <meta property="og:title" content={title} />
         <meta
           property="og:description"
@@ -60,22 +88,19 @@ const Layout = ({
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      {/* Loading progress bar */}
+      {/* Page loading progress bar (top of page)  */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-lavender z-50"
         initial={{ scaleX: 0, transformOrigin: "left" }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 0.5 }}
+        exit={{ opacity: 0 }}
       />
 
       <Header />
 
-      <main className="flex-grow">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.4 }}
-        >
+      <main className="flex-grow overflow-hidden">
+        <motion.div key={title} initial="initial" animate="animate">
           {children}
         </motion.div>
       </main>
@@ -88,10 +113,11 @@ const Layout = ({
   );
 };
 
-// BackToTopButton component
+// BackToTopButton component with fixed styling - updated to blue color
 const BackToTopButton = () => {
   const [isVisible, setIsVisible] = React.useState(false);
 
+  // Show button when page is scrolled down
   const toggleVisibility = () => {
     if (window.pageYOffset > 300) {
       setIsVisible(true);
@@ -100,11 +126,13 @@ const BackToTopButton = () => {
     }
   };
 
+  // Set up scroll event listener
   useEffect(() => {
     window.addEventListener("scroll", toggleVisibility);
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
+  // Scroll to top handler
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -112,17 +140,37 @@ const BackToTopButton = () => {
     });
   };
 
-  // Simple button with no exit animations
+  // Button animations
+  const buttonVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 15,
+      },
+    },
+    hover: {
+      scale: 1.1,
+      boxShadow: "0 10px 25px -3px rgba(59, 130, 246, 0.3)",
+    },
+    tap: { scale: 0.95 },
+  };
+
   return (
-    <>
+    <AnimatePresence mode="wait">
       {isVisible && (
         <motion.button
           onClick={scrollToTop}
           className="fixed bottom-6 right-6 p-3 rounded-full bg-primary text-white shadow-lg z-40"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          variants={buttonVariants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          whileHover="hover"
+          whileTap="tap"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +188,7 @@ const BackToTopButton = () => {
           </svg>
         </motion.button>
       )}
-    </>
+    </AnimatePresence>
   );
 };
 

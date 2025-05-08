@@ -1,5 +1,6 @@
-// pages/_app.js - completely revised
+// pages/_app.js (modified)
 import { useEffect, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import { useRouter } from "next/router";
 import "../styles/globals.css";
 import { AppointmentProvider } from "../context/AppointmentContext";
@@ -48,10 +49,8 @@ function MyApp({ Component, pageProps }) {
     };
   }, [router.events]);
 
-  // A simple fade transition (no AnimatePresence)
   return (
     <AppointmentProvider>
-      {/* No AnimatePresence - just use the key for react reconciliation */}
       <div key={pageKey} className="page-transition">
         <Component {...pageProps} />
       </div>
