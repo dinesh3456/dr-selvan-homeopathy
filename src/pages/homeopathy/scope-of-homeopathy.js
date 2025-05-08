@@ -42,17 +42,6 @@ const ScopeOfHomeopathy = () => {
       {/* Main Content Section */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <article className="prose prose-lg max-w-none">
-          {/* Featured Image with Annotation */}
-          <div className="relative mb-10 rounded-xl overflow-hidden shadow-lg">
-            <Image
-              src="/images/scope-of-homeopathy.jpg"
-              alt="Doctor consulting with patient"
-              width={1000}
-              height={600}
-              className="w-full h-auto"
-            />
-          </div>
-
           {/* Introduction Section */}
           <section className="mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
