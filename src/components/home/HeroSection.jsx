@@ -199,9 +199,9 @@ const HeroSection = () => {
           }}
         />
 
-        {/* Secondary background bubble */}
+        {/* Secondary background bubble - hidden on mobile, shown on desktop */}
         <motion.div
-          className="absolute -bottom-[-5%] -left-[-10%]"
+          className="absolute -bottom-[-5%] -left-[-10%] hidden md:block"
           style={{ width: "35rem", height: "35rem" }}
           animate={{
             x: [0, 10, 0],
@@ -218,7 +218,7 @@ const HeroSection = () => {
             src="/images/Dr. Selvan Logo-symbol.png"
             alt="Dr. Selvan Symbol"
             fill
-            className="object-contain opacity-20"
+            className="object-contain opacity-25"
             priority
           />
         </motion.div>
@@ -263,17 +263,32 @@ const HeroSection = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="max-w-2xl"
+            className="max-w-2xl relative"
           >
+            {/* Mobile-only logo overlay that appears behind the heading */}
+            <div className="absolute inset-0 w-full h-full flex justify-center items-center md:hidden z-0">
+              <div className="relative w-96 h-96">
+                {" "}
+                {/* Increased from w-64 h-64 to w-80 h-80 */}
+                <Image
+                  src="/images/Dr. Selvan Logo-symbol.png"
+                  alt="Dr. Selvan Symbol"
+                  fill
+                  className="object-contain opacity-25"
+                  priority
+                />
+              </div>
+            </div>
+
             <motion.span
-              className="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-sm font-medium mb-4"
+              className="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-sm font-medium mb-4 relative z-10"
               variants={itemVariants}
             >
               Natural Healing Solutions
             </motion.span>
 
             <motion.h1
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-tight mb-6"
+              className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-tight mb-6 relative z-10"
               variants={itemVariants}
             >
               <span className="block">Gentle healing,</span>
@@ -282,7 +297,7 @@ const HeroSection = () => {
             </motion.h1>
 
             <motion.p
-              className="text-lg md:text-xl text-slate-600 mb-8 max-w-xl"
+              className="text-lg md:text-xl text-slate-600 mb-8 max-w-xl relative z-10"
               variants={itemVariants}
             >
               Experience the power of homeopathy with our personalized approach
@@ -291,7 +306,7 @@ const HeroSection = () => {
             </motion.p>
 
             <motion.div
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-4 relative z-10"
               variants={itemVariants}
             >
               <AppointmentButton
