@@ -10,15 +10,15 @@ const VideoCategories = ({
   return (
     <div className="mb-8">
       <h3 className="text-xl font-bold text-gray-900 mb-4">Video Categories</h3>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap items-center gap-3 border-b border-gray-200 pb-2">
         {categories.map((category, index) => (
           <motion.button
             key={category}
-            className={`px-4 py-2 rounded-full text-sm font-medium ${
+            className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
               selectedCategory === category
-                ? "bg-primary text-white"
+                ? "bg-primary text-white shadow-md"
                 : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-            } transition-colors`}
+            }`}
             onClick={() => onSelectCategory(category)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

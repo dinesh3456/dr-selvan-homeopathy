@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import AppointmentButton from "../common/AppointmentButton";
+import LazyYouTubeVideo from "../common/LazyYouTubeVideo";
 
 const FeaturedVideo = () => {
   const featuredVideo = {
@@ -22,14 +23,12 @@ const FeaturedVideo = () => {
       >
         <div className="grid md:grid-cols-2 gap-0">
           <div className="relative overflow-hidden aspect-video md:aspect-auto">
-            <iframe
-              className="absolute inset-0 w-full h-full"
-              src={`https://www.youtube.com/embed/${featuredVideo.id}?autoplay=0&rel=0`}
+            <LazyYouTubeVideo
+              videoId={featuredVideo.id}
               title={featuredVideo.title}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+              aspectRatio={false}
+              className="h-full"
+            />
           </div>
           <div className="p-6 md:p-8 flex flex-col justify-center">
             <motion.div

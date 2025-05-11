@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import Layout from "../../components/layout/Layout";
 import VideoGallery from "../../components/natural-treatment/VideoGallery";
 import VideoCategories from "../../components/natural-treatment/VideoCategories";
@@ -241,6 +242,8 @@ const NaturalTreatmentPage = () => {
   const router = useRouter();
   // State for selected category filtering
   const [selectedCategory, setSelectedCategory] = useState("All");
+  // State to track if data has loaded (for better UX)
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // Update selected category when URL query changes
   useEffect(() => {
@@ -249,6 +252,13 @@ const NaturalTreatmentPage = () => {
     } else {
       setSelectedCategory("All");
     }
+
+    // Simulate a delay to ensure proper hydration
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, [router.query.category]);
 
   // Filter videos based on selected category
@@ -257,35 +267,54 @@ const NaturalTreatmentPage = () => {
       ? videoData
       : videoData.filter((video) => video.category === selectedCategory);
 
+  // Get available categories from video data
+  const categories = [
+    "All",
+    ...new Set(videoData.map((video) => video.category)),
+  ];
+
   return (
     <Layout title="Natural Treatment Videos | Dr. Selvan's Homeopathy">
-      {/* Hero Section with Gradient Background */}
-      <div className="bg-gradient-to-b from-blue-50 to-white py-12 md:py-16">
+      {/* Hero Section with Gradient Background and Logo */}
+      <div className="bg-gradient-to-b from-blue-50 to-white py-12 md:py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <motion.h1
-              className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+            {/* Logo with animation */}
+            <motion.div
+              className="mb-6 flex justify-center"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
             >
-              Dr Selvan's <span className="text-accent">Medic Talks</span>
-            </motion.h1>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                className="relative w-64 h-64 md:w-80 md:h-80"
+              >
+                <Image
+                  src="/images/medic-talks-logo.jpg"
+                  alt="Dr. Selvan Medic Talks Logo"
+                  width={320}
+                  height={320}
+                  className="object-contain"
+                  priority
+                />
+              </motion.div>
+            </motion.div>
+
             <motion.p
               className="text-lg text-gray-600 italic"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
             >
-              "Dr. Selvan's Medic Talks: Watch and learn about natural healing
-              approaches"
+              "Watch and learn about natural healing approaches"
             </motion.p>
           </div>
         </div>
       </div>
 
-      {/* Sub-navigation */}
-      <SubNavigation />
+      {/* Sub-navigation removed */}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <motion.div
@@ -294,20 +323,54 @@ const NaturalTreatmentPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-            Explore Our <span className="text-accent">Video</span> Collection
+          <div className="flex flex-col md:flex-row md:items-end gap-3 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+              Explore Our <span style={{ color: "#37B34A" }}>Video</span>{" "}
+              Collection
+            </h2>
             {selectedCategory !== "All" && (
-              <span className="text-accent"> - {selectedCategory}</span>
+              <div className="px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium inline-flex items-center">
+                <span className="mr-1">Category:</span>
+                <span style={{ color: "#37B34A" }}>{selectedCategory}</span>
+              </div>
             )}
-          </h2>
-          <p className="text-lg text-gray-600 max-w-10xl">
-            Dr. Selvan's Medic Talks features engaging, educational videos on
-            various health conditions. Each video explains symptoms, causes, and
-            pathology, with an emphasis on dietary guidelines—what to eat and
-            what to avoid. Learn how to approach healing naturally first, before
-            considering medication.
-          </p>
+          </div>
+          <div
+            className="bg-white p-5 rounded-lg border-l-4"
+            style={{ borderColor: "#0080C8" }}
+          >
+            <p className="text-lg text-gray-600">
+              Dr. Selvan's Medic Talks features engaging, educational videos on
+              various health conditions. Each video explains symptoms, causes,
+              and pathology, with an emphasis on dietary guidelines—what to eat
+              and what to avoid. Learn how to approach healing naturally first,
+              before considering medication.
+            </p>
+          </div>
         </motion.div>
+
+        {/* Enhanced Category selection - now the primary navigation method */}
+        {isLoaded && (
+          <div className="mb-8">
+            <VideoCategories
+              categories={categories}
+              selectedCategory={selectedCategory}
+              onSelectCategory={(category) => {
+                if (category === "All") {
+                  router.push("/natural-treatment", undefined, {
+                    shallow: true,
+                  });
+                } else {
+                  router.push(
+                    `/natural-treatment?category=${category}`,
+                    undefined,
+                    { shallow: true }
+                  );
+                }
+              }}
+            />
+          </div>
+        )}
 
         {/* Featured Video Section - Only show on the main page (All category) */}
         {selectedCategory === "All" && <FeaturedVideo />}
@@ -316,7 +379,7 @@ const NaturalTreatmentPage = () => {
         {selectedCategory === "All" && <HowToUseGallery />}
 
         {/* Video Gallery */}
-        <VideoGallery videos={filteredVideos} />
+        {isLoaded && <VideoGallery videos={filteredVideos} />}
       </div>
     </Layout>
   );

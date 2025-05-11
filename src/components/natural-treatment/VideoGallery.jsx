@@ -1,114 +1,89 @@
 // src/components/natural-treatment/VideoGallery.jsx
-import React from "react";
-import Link from "next/link";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import VideoCard from "./VideoCard";
 
 const VideoGallery = ({ videos }) => {
-  // Animation variants for the gallery
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
+  const [visibleVideos, setVisibleVideos] = useState(6);
 
-  const videoCardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15,
-      },
-    },
+  // Load more videos
+  const loadMore = () => {
+    setVisibleVideos((prev) => Math.min(prev + 6, videos.length));
   };
 
   return (
-    <motion.div
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8"
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-    >
-      {videos.length === 0 ? (
-        <div className="col-span-full text-center py-12">
-          <p className="text-lg text-gray-500">
-            No videos found in this category.
+    <div>
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+          Videos ({videos.length})
+        </h2>
+        <p className="text-gray-600">
+          Explore our collection of informative videos about homeopathic
+          treatments and health topics
+        </p>
+      </div>
+
+      {/* Video grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        {videos.slice(0, visibleVideos).map((video, index) => (
+          <VideoCard key={video.id} video={video} index={index} />
+        ))}
+      </div>
+
+      {/* Load more button - only show if there are more videos to load */}
+      {visibleVideos < videos.length && (
+        <div className="flex justify-center">
+          <motion.button
+            onClick={loadMore}
+            className="px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition flex items-center"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Load More Videos
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 ml-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </motion.button>
+        </div>
+      )}
+
+      {/* Empty state */}
+      {videos.length === 0 && (
+        <div className="text-center py-12 bg-gray-50 rounded-xl">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-16 w-16 mx-auto text-gray-400 mb-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={1.5}
+              d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
+            />
+          </svg>
+          <h3 className="text-xl font-medium text-gray-900 mb-2">
+            No videos found
+          </h3>
+          <p className="text-gray-600">
+            There are no videos available in this category yet.
           </p>
         </div>
-      ) : (
-        videos.map((video, index) => (
-          <Link
-            href={`/natural-treatment/video/${video.id}`}
-            key={video.id}
-            passHref
-          >
-            <motion.div
-              className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow block"
-              variants={videoCardVariants}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
-            >
-              <div className="relative overflow-hidden pt-[56.25%]">
-                {/* 16:9 aspect ratio */}
-                <iframe
-                  className="absolute inset-0 w-full h-full"
-                  src={`https://www.youtube.com/embed/${video.id}`}
-                  title={video.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-              <div className="p-5">
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-lg font-bold text-gray-900">
-                    {video.title}
-                  </h3>
-                  {video.isShort && (
-                    <span className="bg-red-100 text-red-600 text-xs font-medium px-2 py-1 rounded-full">
-                      Short
-                    </span>
-                  )}
-                </div>
-                <p className="text-gray-600 text-sm h-12 overflow-hidden">
-                  {video.description}
-                </p>
-                <div className="mt-4 flex justify-between items-center">
-                  <span className="inline-block bg-blue-100 text-blue-600 text-xs font-medium px-2 py-1 rounded-full">
-                    {video.category}
-                  </span>
-                  <div className="flex items-center">
-                    <span className="text-sm text-primary mr-2">
-                      View Details
-                    </span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-4 w-4 text-primary"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M14 5l7 7m0 0l-7 7m7-7H3"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </Link>
-        ))
       )}
-    </motion.div>
+    </div>
   );
 };
 
