@@ -96,7 +96,7 @@ const WhyChooseSectionLight = () => {
           />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -139,7 +139,7 @@ const WhyChooseSectionLight = () => {
           <AppointmentButton text="Start Cure" variant="primary" size="md" />
 
           <motion.div
-            className="absolute top-[10px] left-[70%] sm:left-0 md:left-[700px]"
+            className="absolute top-[10px] left-[70%] sm:left-[65%] md:left-[60%] lg:left-[55%] xl:left-[60%] "
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
@@ -162,7 +162,7 @@ const WhyChooseSectionLight = () => {
                 width="120"
                 height="60"
                 viewBox="0 0 120 60"
-                className="fill-none stroke-primary transform scale-x-[-1] mx-auto md:mx-0" // Added mx-auto for center alignment on mobile
+                className="fill-none stroke-primary transform scale-x-[-1] mx-auto md:mx-0"
               >
                 <motion.path
                   d="M10,30 Q40,10 100,30"
