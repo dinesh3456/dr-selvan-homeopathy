@@ -163,7 +163,7 @@ const TestimonialsSection = () => {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          {/* Handwritten annotation with arrow */}
+          {/* Handwritten annotation with arrow - improved responsiveness */}
           <motion.div
             className="absolute -top-16 right-0 md:right-20 z-10 hidden md:block"
             initial={{ opacity: 0 }}
@@ -223,7 +223,10 @@ const TestimonialsSection = () => {
                   animate="animate"
                   exit="exit"
                 >
-                  <GlassCard className="p-6 md:p-8 h-full" animate={false}>
+                  <GlassCard
+                    className="p-4 sm:p-6 md:p-8 h-full"
+                    animate={false}
+                  >
                     <div className="flex flex-col md:flex-row h-full">
                       <div className="md:w-2/5 mb-6 md:mb-0 md:pr-6">
                         <div className="relative rounded-2xl overflow-hidden mb-4 h-48 md:h-64 shadow-md border border-white/30">
@@ -271,7 +274,7 @@ const TestimonialsSection = () => {
 
                       <div className="md:w-3/5 flex flex-col justify-between">
                         <motion.blockquote
-                          className="text-lg md:text-xl italic text-slate-700 mb-6 leading-relaxed relative"
+                          className="text-base sm:text-lg md:text-xl italic text-slate-700 mb-6 leading-relaxed relative"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.2 }}
