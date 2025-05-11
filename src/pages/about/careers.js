@@ -1,9 +1,8 @@
 // src/pages/about/careers.js
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Layout from "../../components/layout/Layout";
-import { useForm } from "react-hook-form";
-import emailjs from "@emailjs/browser";
+
 const openPositions = [
   {
     title: "Homeopathic Physician",
@@ -25,6 +24,7 @@ const openPositions = [
       "Collaborate with our multidisciplinary team",
       "Participate in research initiatives",
     ],
+    formUrl: "https://forms.gle/b7Qp33Z6JcMvis9w8",
   },
   {
     title: "Patient Care Coordinator",
@@ -46,6 +46,7 @@ const openPositions = [
       "Manage patient inquiries and follow-ups",
       "Maintain patient records and confidentiality",
     ],
+    formUrl: "https://forms.gle/b7Qp33Z6JcMvis9w8",
   },
   {
     title: "Homeopathic Research Assistant",
@@ -67,6 +68,7 @@ const openPositions = [
       "Help prepare reports and publications",
       "Support documentation of case studies",
     ],
+    formUrl: "https://forms.gle/b7Qp33Z6JcMvis9w8",
   },
 ];
 
@@ -178,379 +180,114 @@ const JobCard = ({ job, onApply }) => {
   );
 };
 
-const ApplicationForm = ({ job, onClose }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [fileSelected, setFileSelected] = useState(false);
-  const [error, setError] = useState("");
+// This component will open a new tab with the appropriate Google Form
+const GoogleFormRedirect = ({ job, onClose }) => {
+  React.useEffect(() => {
+    // Open the Google Form in a new tab
+    window.open(job.formUrl, "_blank");
 
-  useEffect(() => {
-    emailjs.init("yfO-8t4GWAqHGIiED");
-  }, []);
+    // Close the modal after a short delay
+    const timer = setTimeout(() => {
+      onClose();
+    }, 500);
 
-  const onSubmit = async (data) => {
-    setIsSubmitting(true);
-    setError("");
-
-    try {
-      // Get resume file data
-      const fileInput = document.getElementById("resume");
-      const resumeFile = fileInput.files[0];
-
-      if (resumeFile && resumeFile.size > 5 * 1024 * 1024) {
-        setError("File size exceeds 5MB limit. Please select a smaller file.");
-        setIsSubmitting(false);
-        return;
-      }
-
-      // Format the application details for the email
-      let applicationDetails = `
-Position Applied For: ${job.title}
-Applicant Name: ${data.firstName} ${data.lastName}
-Email: ${data.email}
-Phone: ${data.phone}
-Resume Filename: ${resumeFile ? resumeFile.name : "No file attached"}
-`;
-
-      if (data.coverLetter) {
-        applicationDetails += `
-Cover Letter:
-${data.coverLetter}
-`;
-      }
-
-      // Create template parameters for EmailJS
-      const templateParams = {
-        from_name: `${data.firstName} ${data.lastName}`,
-        from_email: data.email,
-        phone: data.phone,
-        position: job.title,
-        message: applicationDetails,
-        subject: `Job Application: ${job.title} - ${data.firstName} ${data.lastName}`,
-      };
-
-      // Use EmailJS to send the email
-      const response = await emailjs.send(
-        "service_60h1gve",
-        "template_8n5y70q",
-        templateParams,
-        "yfO-8t4GWAqHGIiED"
-      );
-
-      if (response.status === 200) {
-        setIsSubmitting(false);
-        setSubmitted(true);
-
-        // Reset form after showing success message
-        setTimeout(() => {
-          // Reset form state is handled by the modal close action
-        }, 3000);
-      } else {
-        throw new Error("Failed to send email");
-      }
-    } catch (error) {
-      console.error("Error submitting application:", error);
-      setIsSubmitting(false);
-      setError(
-        "There was an error sending your application. Please try again or contact us directly."
-      );
-    }
-  };
+    return () => clearTimeout(timer);
+  }, [job, onClose]);
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
       <motion.div
-        className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+        className="bg-white rounded-xl shadow-xl max-w-md w-full p-6 text-center"
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.9 }}
       >
-        <div className="p-6">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold text-gray-900">
-              Apply for {job.title}
-            </h2>
-            <button
-              onClick={onClose}
-              className="text-gray-400 hover:text-gray-600"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
+        <div className="mb-4 text-primary">
+          <svg
+            className="h-12 w-12 mx-auto"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </div>
+        <h3 className="text-xl font-bold mb-2">Application Form Opened</h3>
+        <p className="mb-4 text-gray-600">
+          We've opened the application form for {job.title} in a new tab. If it
+          didn't open, please check your pop-up blocker.
+        </p>
+        <div className="flex justify-center">
+          <button
+            onClick={onClose}
+            className="px-4 py-2 bg-gray-200 rounded-full text-gray-800 hover:bg-gray-300 transition"
+          >
+            Close
+          </button>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
 
-          {submitted ? (
-            <div className="text-center py-8">
-              <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-8 w-8 text-green-500"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                Application Submitted!
-              </h3>
-              <p className="text-gray-600 mb-6">
-                Thank you for applying to Dr. Selvan's Homeopathy. We'll review
-                your application and contact you soon.
-              </p>
-              <button
-                onClick={onClose}
-                className="px-6 py-2 bg-primary text-white rounded-full font-medium hover:bg-primary-dark transition"
-              >
-                Close
-              </button>
-            </div>
-          ) : (
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="space-y-6"
-              encType="multipart/form-data"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label
-                    htmlFor="firstName"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    First Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    className={`w-full px-3 py-2 border ${
-                      errors.firstName ? "border-red-500" : "border-gray-300"
-                    } rounded-md focus:outline-none focus:ring-primary focus:border-primary`}
-                    {...register("firstName", {
-                      required: "First name is required",
-                    })}
-                  />
-                  {errors.firstName && (
-                    <p className="mt-1 text-sm text-red-600">
-                      {errors.firstName.message}
-                    </p>
-                  )}
-                </div>
+// Generic application modal for the "Submit General Application" option
+const GenericApplicationModal = ({ onClose }) => {
+  const generalFormUrl = "https://forms.gle/b7Qp33Z6JcMvis9w8";
 
-                <div>
-                  <label
-                    htmlFor="lastName"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Last Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    className={`w-full px-3 py-2 border ${
-                      errors.lastName ? "border-red-500" : "border-gray-300"
-                    } rounded-md focus:outline-none focus:ring-primary focus:border-primary`}
-                    {...register("lastName", {
-                      required: "Last name is required",
-                    })}
-                  />
-                  {errors.lastName && (
-                    <p className="mt-1 text-sm text-red-600">
-                      {errors.lastName.message}
-                    </p>
-                  )}
-                </div>
-              </div>
+  React.useEffect(() => {
+    // Open the general application Google Form in a new tab
+    window.open(generalFormUrl, "_blank");
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className={`w-full px-3 py-2 border ${
-                      errors.email ? "border-red-500" : "border-gray-300"
-                    } rounded-md focus:outline-none focus:ring-primary focus:border-primary`}
-                    {...register("email", {
-                      required: "Email is required",
-                      pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: "Invalid email address",
-                      },
-                    })}
-                  />
-                  {errors.email && (
-                    <p className="mt-1 text-sm text-red-600">
-                      {errors.email.message}
-                    </p>
-                  )}
-                </div>
+    // Close the modal after a short delay
+    const timer = setTimeout(() => {
+      onClose();
+    }, 500);
 
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Phone Number *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    className={`w-full px-3 py-2 border ${
-                      errors.phone ? "border-red-500" : "border-gray-300"
-                    } rounded-md focus:outline-none focus:ring-primary focus:border-primary`}
-                    {...register("phone", {
-                      required: "Phone number is required",
-                    })}
-                  />
-                  {errors.phone && (
-                    <p className="mt-1 text-sm text-red-600">
-                      {errors.phone.message}
-                    </p>
-                  )}
-                </div>
-              </div>
+    return () => clearTimeout(timer);
+  }, [onClose]);
 
-              <div>
-                <label
-                  htmlFor="resume"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Resume/CV *
-                </label>
-                <div
-                  className={`w-full px-3 py-6 border ${
-                    errors.resume ? "border-red-500" : "border-gray-300"
-                  } border-dashed rounded-md focus:outline-none focus:ring-primary focus:border-primary text-center`}
-                >
-                  <input
-                    type="file"
-                    id="resume"
-                    className="hidden"
-                    accept=".pdf,.doc,.docx"
-                    {...register("resume", { required: "Resume is required" })}
-                    onChange={(e) => setFileSelected(e.target.files.length > 0)}
-                  />
-                  <label htmlFor="resume" className="cursor-pointer">
-                    {fileSelected ? (
-                      <span className="text-primary font-medium">
-                        File selected
-                      </span>
-                    ) : (
-                      <>
-                        <span className="text-gray-500">
-                          Drag and drop your resume here, or{" "}
-                        </span>
-                        <span className="text-primary font-medium">
-                          browse files
-                        </span>
-                      </>
-                    )}
-                    <p className="text-xs text-gray-500 mt-1">
-                      Supported formats: PDF, DOC, DOCX (Max 5MB)
-                    </p>
-                  </label>
-                </div>
-                {errors.resume && (
-                  <p className="mt-1 text-sm text-red-600">
-                    {errors.resume.message}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <label
-                  htmlFor="coverLetter"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Cover Letter
-                </label>
-                <textarea
-                  id="coverLetter"
-                  rows="4"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-primary focus:border-primary"
-                  placeholder="Tell us why you're interested in this position and what makes you a good fit..."
-                  {...register("coverLetter")}
-                ></textarea>
-              </div>
-
-              {error && (
-                <div className="p-4 bg-red-50 border border-red-200 rounded-md text-red-600">
-                  {error}
-                </div>
-              )}
-
-              <div className="flex justify-end space-x-4">
-                <button
-                  type="button"
-                  onClick={onClose}
-                  className="px-6 py-2 border border-gray-300 text-gray-700 rounded-full font-medium hover:bg-gray-50 transition"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-6 py-2 bg-primary text-white rounded-full font-medium hover:bg-primary-dark transition flex items-center"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <svg
-                        className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                        ></circle>
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        ></path>
-                      </svg>
-                      Submitting...
-                    </>
-                  ) : (
-                    "Submit Application"
-                  )}
-                </button>
-              </div>
-            </form>
-          )}
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+      <motion.div
+        className="bg-white rounded-xl shadow-xl max-w-md w-full p-6 text-center"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+      >
+        <div className="mb-4 text-accent">
+          <svg
+            className="h-12 w-12 mx-auto"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+        </div>
+        <h3 className="text-xl font-bold mb-2">
+          General Application Form Opened
+        </h3>
+        <p className="mb-4 text-gray-600">
+          We've opened the general application form in a new tab. If it didn't
+          open, please check your pop-up blocker.
+        </p>
+        <div className="flex justify-center">
+          <button
+            onClick={onClose}
+            className="px-4 py-2 bg-gray-200 rounded-full text-gray-800 hover:bg-gray-300 transition"
+          >
+            Close
+          </button>
         </div>
       </motion.div>
     </div>
@@ -559,6 +296,7 @@ ${data.coverLetter}
 
 const Careers = () => {
   const [selectedJob, setSelectedJob] = useState(null);
+  const [showGenericModal, setShowGenericModal] = useState(false);
 
   const handleApply = (job) => {
     setSelectedJob(job);
@@ -566,6 +304,14 @@ const Careers = () => {
 
   const closeApplicationForm = () => {
     setSelectedJob(null);
+  };
+
+  const handleGenericApplication = () => {
+    setShowGenericModal(true);
+  };
+
+  const closeGenericModal = () => {
+    setShowGenericModal(false);
   };
 
   return (
@@ -716,7 +462,7 @@ const Careers = () => {
                 className="px-6 py-3 bg-accent text-white rounded-full font-medium hover:bg-accent-dark transition flex items-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => handleApply({ title: "General Application" })}
+                onClick={handleGenericApplication}
               >
                 Submit General Application
                 <svg
@@ -788,9 +534,14 @@ const Careers = () => {
         </section>
       </div>
 
-      {/* Application Form Modal */}
+      {/* Google Form Redirect Modal */}
       {selectedJob && (
-        <ApplicationForm job={selectedJob} onClose={closeApplicationForm} />
+        <GoogleFormRedirect job={selectedJob} onClose={closeApplicationForm} />
+      )}
+
+      {/* Generic Application Modal */}
+      {showGenericModal && (
+        <GenericApplicationModal onClose={closeGenericModal} />
       )}
     </Layout>
   );
