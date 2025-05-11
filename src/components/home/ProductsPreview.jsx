@@ -123,12 +123,12 @@ const ProductsPreview = () => {
           </motion.p>
         </motion.div>
 
-        {/* Products grid - Centered with flex */}
-        <div className="flex flex-wrap justify-center gap-6 mb-12">
+        {/* Products grid - Improved responsive behavior */}
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-12">
           {products.map((product, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 w-full md:w-[300px]"
+              className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.333%-1rem)] lg:w-[300px]"
               custom={index}
               variants={cardVariants}
               initial="hidden"
@@ -274,8 +274,9 @@ const ProductsPreview = () => {
           ))}
         </div>
 
+        {/* Arrow annotation with improved positioning */}
         <motion.div
-          className="mt-12 text-center"
+          className="mt-12 text-center relative"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
@@ -302,9 +303,9 @@ const ProductsPreview = () => {
             </svg>
           </Link>
 
-          {/* Arrow annotation */}
+          {/* Arrow annotation - now responsive */}
           <motion.div
-            className="absolute -top--11 left-[35%] hidden md:block"
+            className="absolute -top--11 left-[35%] sm:left-[45%] md:left-[25%] hidden md:block"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
