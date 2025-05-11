@@ -178,7 +178,7 @@ _Sent from Dr. Selvan's Homeopathy website_
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="flex flex-col md:flex-row md:gap-12 gap-6">
+          <div className="flex flex-col md:flex-row md:gap-8 lg:gap-12 gap-6">
             <motion.div
               variants={containerVariants}
               initial="hidden"
@@ -303,10 +303,10 @@ _Sent from Dr. Selvan's Homeopathy website_
                 </ul>
               </motion.div>
 
-              {/* Arrow annotation - now with responsive positioning */}
+              {/* Arrow annotation - improved with responsive positioning */}
               <div className="relative hidden md:block">
                 <motion.div
-                  className="absolute -top-[-100px] -right-10"
+                  className="absolute top-[-100px] sm:top-[-75px] md:top-[70px] right-10 sm:right-5 md:right-0"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   transition={{ delay: 0.7 }}
@@ -314,7 +314,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                 >
                   <div className="relative">
                     <motion.p
-                      className="absolute -top-12 -left-30 text-primary font-handwritten text-lg transform rotate-3"
+                      className="absolute -top-12 -left-20 text-primary font-handwritten text-lg transform rotate-3 max-w-[200px]"
                       animate={{
                         y: [0, -3, 0],
                       }}
@@ -331,7 +331,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                       width="120"
                       height="60"
                       viewBox="0 0 120 60"
-                      className="fill-none stroke-primary transform translate-x-20"
+                      className="fill-none stroke-primary transform translate-x-10 sm:translate-x-16 md:translate-x-20"
                     >
                       <motion.path
                         d="M10,30 Q80,50 100,30"
@@ -456,7 +456,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                   )}
 
                   <form ref={formRef} onSubmit={handleSubmit}>
-                    <div className="space-y-4">
+                    <div className="space-y-3 sm:space-y-4">
                       {/* Full Name */}
                       <div className="w-full">
                         <label
@@ -478,7 +478,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                       </div>
 
                       {/* Email and Phone */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                         <div>
                           <label
                             htmlFor="email"
