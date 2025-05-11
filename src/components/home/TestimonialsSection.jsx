@@ -96,6 +96,18 @@ const TestimonialsSection = () => {
     }),
   };
 
+  // Function to navigate to previous testimonial
+  const goToPrev = () => {
+    setActiveIndex(
+      (current) => (current - 1 + testimonials.length) % testimonials.length
+    );
+  };
+
+  // Function to navigate to next testimonial
+  const goToNext = () => {
+    setActiveIndex((current) => (current + 1) % testimonials.length);
+  };
+
   return (
     <section className="py-20 relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-orange-50">
       {/* Decorative blob shapes */}
@@ -332,15 +344,59 @@ const TestimonialsSection = () => {
             ))}
           </div>
 
-          {/* Navigation arrows */}
-          <div className="flex justify-between absolute top-1/2 -translate-y-1/2 left-0 right-0 px-4 pointer-events-none">
+          {/* Mobile-friendly navigation buttons */}
+          <div className="flex justify-between mt-6 md:hidden">
             <motion.button
-              onClick={() =>
-                setActiveIndex(
-                  (current) =>
-                    (current - 1 + testimonials.length) % testimonials.length
-                )
-              }
+              onClick={goToPrev}
+              className="w-10 h-10 rounded-full bg-white/80 backdrop-blur shadow-md flex items-center justify-center focus:outline-none"
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "rgba(255, 255, 255, 0.9)",
+              }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-accent"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </motion.button>
+
+            <motion.button
+              onClick={goToNext}
+              className="w-10 h-10 rounded-full bg-white/80 backdrop-blur shadow-md flex items-center justify-center focus:outline-none"
+              whileHover={{
+                scale: 1.1,
+                backgroundColor: "rgba(255, 255, 255, 0.9)",
+              }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-accent"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </motion.button>
+          </div>
+
+          {/* Desktop navigation buttons - now hidden on mobile */}
+          <div className="hidden md:flex justify-between absolute top-1/2 -translate-y-1/2 left-0 right-0 px-4 pointer-events-none">
+            <motion.button
+              onClick={goToPrev}
               className="w-10 h-10 rounded-full bg-white/80 backdrop-blur shadow-md flex items-center justify-center pointer-events-auto focus:outline-none"
               whileHover={{
                 scale: 1.1,
@@ -363,9 +419,7 @@ const TestimonialsSection = () => {
             </motion.button>
 
             <motion.button
-              onClick={() =>
-                setActiveIndex((current) => (current + 1) % testimonials.length)
-              }
+              onClick={goToNext}
               className="w-10 h-10 rounded-full bg-white/80 backdrop-blur shadow-md flex items-center justify-center pointer-events-auto focus:outline-none"
               whileHover={{
                 scale: 1.1,

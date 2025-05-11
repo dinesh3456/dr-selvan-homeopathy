@@ -5,15 +5,30 @@ import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import AppointmentButton from "../common/AppointmentButton";
 
 // Generate the bubbles outside the component to prevent re-generation on render
-const generateBubbles = (count) => {
-  return Array.from({ length: count }, (_, i) => ({
-    id: i,
-    size: 20 + Math.random() * 80,
-    left: Math.random() * 100,
-    top: Math.random() * 100,
-    opacity: 0.4 + Math.random() * 0.3,
-    delay: i * 0.2,
-  }));
+const generateRandomSeed = () => {
+  return 123456; // Use a fixed seed instead of Math.random()
+};
+
+// Use a seeded random function
+const seededRandom = (seed) => {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+};
+
+// Generate the bubbles with seeded randomness
+const generateBubbles = (count, seed = generateRandomSeed()) => {
+  let currentSeed = seed;
+  return Array.from({ length: count }, (_, i) => {
+    currentSeed = seed + i;
+    return {
+      id: i,
+      size: 20 + seededRandom(currentSeed) * 80,
+      left: seededRandom(currentSeed + 1) * 100,
+      top: seededRandom(currentSeed + 2) * 100,
+      opacity: 0.4 + seededRandom(currentSeed + 3) * 0.3,
+      delay: i * 0.2,
+    };
+  });
 };
 
 const HeroSection = () => {
