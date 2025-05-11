@@ -45,7 +45,7 @@ const MythsAndFacts = () => {
   return (
     <Layout
       title="Myths and Facts of Homeopathy | Dr. Selvan's Homeopathy"
-      hideFooter={true}
+      hideFooter={false}
     >
       {" "}
       {/* Hero Section with Gradient Background */}
