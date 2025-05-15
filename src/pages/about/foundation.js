@@ -1,4 +1,3 @@
-// src/pages/about/foundation.js
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -166,22 +165,73 @@ const FoundationPage = () => {
 
   return (
     <Layout title="Dr. Selvan Foundation | Dr. Selvan's Homeopathy">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-b from-blue-50 to-white py-12 md:py-16">
+      {/* Hero Section with Foundation Logo - Styled similarly to Medic Talk */}
+      <div className="bg-gradient-to-b from-blue-50 to-white py-12 md:py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              <span className="text-accent">Dr. Selvan</span> Foundation
-            </h1>
-            <p className="text-lg text-gray-600 italic">
+            {/* Logo with animation - Similar to Medic Talk */}
+            <motion.div
+              className="mb-6 flex justify-center"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                className="relative w-64 h-64 md:w-80 md:h-80"
+              >
+                <Image
+                  src="/images/dr-selvan-foundation-logo.png"
+                  alt="Dr. Selvan Foundation Logo"
+                  width={320}
+                  height={320}
+                  className="object-contain"
+                  priority
+                />
+              </motion.div>
+            </motion.div>
+
+            <motion.p
+              className="text-lg text-gray-600 italic"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               "Serving society with compassion and purpose"
-            </p>
+            </motion.p>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <motion.div
+          className="mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="flex flex-col md:flex-row md:items-end gap-3 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+              5 Years of <span className="text-accent">Service</span> and{" "}
+              <span className="text-primary">Impact</span>
+            </h2>
+          </div>
+          <div
+            className="bg-white p-5 rounded-lg border-l-4"
+            style={{ borderColor: "#43A047" }}
+          >
+            <p className="text-lg text-gray-600">
+              It has been five remarkable years since the inception of the Dr.
+              Selvan Foundation. Throughout this journey, we have been deeply
+              committed to community service and improving public health across
+              various regions, bringing essential healthcare services to
+              underserved communities.
+            </p>
+          </div>
+        </motion.div>
+
         {/* Introduction */}
         <section className="mb-16">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -201,14 +251,8 @@ const FoundationPage = () => {
                 OUR MISSION
               </motion.span>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                5 Years of <span className="text-accent">Service</span> and{" "}
-                <span className="text-primary">Impact</span>
+                Making a <span className="text-accent">Difference</span>
               </h2>
-              <p className="text-gray-700 mb-4 leading-relaxed">
-                It has been five remarkable years since the inception of the Dr.
-                Selvan Foundation. Throughout this journey, we have been deeply
-                committed to community service and improving public health.
-              </p>
               <p className="text-gray-700 mb-4 leading-relaxed">
                 Since our establishment, we have organized numerous medical
                 camps across various regions, bringing essential healthcare
@@ -303,13 +347,32 @@ const FoundationPage = () => {
 
           <div className="grid md:grid-cols-2 gap-6">
             {initiatives.map((initiative, index) => (
-              <FoundationCard
+              <motion.div
                 key={index}
-                title={initiative.title}
-                description={initiative.description}
-                icon={initiative.icon}
-                index={index}
-              />
+                className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{
+                  y: -5,
+                  boxShadow: "0 10px 15px -5px rgba(0, 0, 0, 0.1)",
+                }}
+              >
+                <div className="p-6">
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 bg-blue-100 rounded-full p-3 text-primary mr-4">
+                      {initiative.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">
+                        {initiative.title}
+                      </h3>
+                      <p className="text-gray-600">{initiative.description}</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             ))}
           </div>
         </section>
@@ -536,81 +599,6 @@ const FoundationPage = () => {
           </div>
         </section>
 
-        {/* Testimonials */}
-        <section className="mb-16">
-          <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl p-8">
-            <motion.div
-              className="text-center mb-8"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">
-                Community Voices
-              </h2>
-              <p className="text-gray-600">
-                Hear from those whose lives have been touched by the Dr. Selvan
-                Foundation.
-              </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              <motion.div
-                className="bg-white rounded-xl p-6 shadow-sm"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-primary font-bold">RS</span>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900">Rajesh Singh</h3>
-                    <p className="text-sm text-gray-600">Dharavi, Mumbai</p>
-                  </div>
-                </div>
-                <blockquote className="text-gray-600 italic">
-                  "The medical camp organized by Dr. Selvan Foundation was a
-                  blessing for our community. Many of us cannot afford regular
-                  check-ups, and the free consultations and medicines provided
-                  much-needed relief. Thank you for your service to our
-                  community."
-                </blockquote>
-              </motion.div>
-
-              <motion.div
-                className="bg-white rounded-xl p-6 shadow-sm"
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                    <span className="text-primary font-bold">PM</span>
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-900">Priya Mohan</h3>
-                    <p className="text-sm text-gray-600">
-                      Hope Orphanage, Pune
-                    </p>
-                  </div>
-                </div>
-                <blockquote className="text-gray-600 italic">
-                  "The continuous support from Dr. Selvan Foundation has made a
-                  significant difference in the lives of our children. The
-                  regular provision of nutritious meals and health check-ups has
-                  improved their overall wellbeing. We are deeply grateful for
-                  this partnership."
-                </blockquote>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
         {/* Get Involved */}
         <section>
           <motion.div
@@ -641,8 +629,17 @@ const FoundationPage = () => {
                 y: -5,
                 boxShadow: "0 10px 15px -5px rgba(0, 0, 0, 0.1)",
               }}
+              onClick={() => {
+                const footer = document.querySelector("footer");
+                if (footer) {
+                  window.scrollTo({
+                    top: footer.offsetTop,
+                    behavior: "smooth",
+                  });
+                }
+              }}
             >
-              <div className="w-12 h-12 bg-primary/10 text-primary   rounded-full flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-6 w-6"
