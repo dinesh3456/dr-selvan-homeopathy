@@ -189,7 +189,7 @@ const Footer = () => {
                     href="tel:+917208719646"
                     className="text-gray-600 hover:text-accent"
                   >
-                    +91 72087 19646
+                    +91 7208719646
                   </a>
                 </div>
               </div>
@@ -233,10 +233,10 @@ const Footer = () => {
                   />
                 </svg>
                 <a
-                  href="https://www.drselvan.com"
+                  href="https://www.drselvanshomeopathy.com"
                   className="text-gray-600 hover:text-accent"
                 >
-                  www.drselvan.com
+                  www.drselvanshomeopathy.com
                 </a>
               </div>
             </div>
