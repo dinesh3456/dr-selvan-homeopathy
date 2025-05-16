@@ -87,7 +87,7 @@ const ProductsPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Discover our comprehensive range of homeopathic and natural
+              Discover our comprehensive range of Herbal and Nutraceutical
               products formulated by Dr. Selvan for various health conditions.
             </motion.p>
           </div>
