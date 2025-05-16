@@ -35,7 +35,7 @@ const treatments = [
     title: "Pediatric Care",
     description:
       "Gentle and effective treatments for children's health issues, from colic to behavioral problems.",
-    image: "/images/treatment-pediatric.jpg",
+    image: "/images/treatment-pediatric-care.jpg",
     link: "/treatments/pediatric-care",
     color: "accent", // Changed to accent (orange)
   },
