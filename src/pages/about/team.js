@@ -59,59 +59,117 @@ const TeamMember = ({
 };
 
 const AboutTeam = () => {
-  // Dummy team data
+  // Updated team data with actual team members
   const teamMembers = [
     {
-      name: "Dr. Jane Smith",
-      role: "Senior Homeopathic Physician",
-      image: "/images/team-member-1.jpg",
-      specialty: "Chronic Disease Management",
+      name: "Asst. Prof. Dr. Selvan Senthil Kumar",
+      role: "Founder Chairman",
+      image: "/images/team-member-1.jpg", // Replace with actual image path
+      specialty: "DG Approved Medical Examiner",
       description:
-        "With over 15 years of experience in homeopathic medicine, Dr. Smith specializes in treating chronic diseases with a focus on autoimmune conditions.",
-      education: [
-        "BHMS, Government Homeopathic Medical College",
-        "MD Homeopathy, National Institute of Homeopathy",
-        "Certificate in Advanced Clinical Homeopathy, London School of Homeopathy",
-      ],
+        "Founder and visionary leader of Dr. Selvan's Homeopathy, bringing expertise and innovation to homeopathic healthcare.",
+      education: ["BHMS", "PG-Hom (London)", "MD"],
     },
     {
-      name: "Dr. Rahul Patel",
-      role: "Pediatric Specialist",
-      image: "/images/team-member-2.jpg",
-      specialty: "Pediatric Homeopathy",
+      name: "Dr. Nazia Shaikh",
+      role: "Associate Doctor",
+      image: "/images/team-member-2.jpg", // Replace with actual image path
+      specialty: "Homeopathic Medicine",
       description:
-        "Dr. Patel has dedicated his career to treating children with gentle, effective homeopathic remedies. He brings a compassionate approach to pediatric care.",
-      education: [
-        "BHMS, Nehru Homeopathic Medical College",
-        "PG Diploma in Pediatric Homeopathy",
-        "Fellowship in Clinical Research",
-      ],
+        "An experienced associate doctor providing comprehensive homeopathic care to patients.",
+      education: ["BHMS"],
     },
     {
-      name: "Dr. Priya Sharma",
-      role: "Research Associate",
-      image: "/images/team-member-3.jpg",
-      specialty: "Clinical Research & Documentation",
+      name: "Dr. Subin Prabhu",
+      role: "Physiotherapist",
+      image: "/images/team-member-3.jpg", // Replace with actual image path
+      specialty: "Sports Physiotherapy",
       description:
-        "Leading our research initiatives, Dr. Sharma works tirelessly to document treatment outcomes and develop new homeopathic protocols.",
-      education: [
-        "BHMS, Mumbai University",
-        "PhD in Homeopathic Research Methodology",
-        "Certified in Medical Statistics",
-      ],
+        "Specialized in sports physiotherapy, providing rehabilitative care and physical therapy treatments.",
+      education: ["BPT", "MPT (Sports)"],
     },
     {
-      name: "Arun Kumar",
-      role: "Patient Care Coordinator",
-      image: "/images/team-member-4.jpg",
-      specialty: "Patient Relations & Counseling",
+      name: "Dr. Vishnu Priya. A",
+      role: "Associate Doctor",
+      image: "/images/team-member-4.jpg", // Replace with actual image path
+      specialty: "Homeopathic Medicine",
       description:
-        "Arun ensures that every patient receives personalized attention and guidance throughout their treatment journey.",
-      education: [
-        "Bachelor's in Healthcare Management",
-        "Diploma in Patient Counseling",
-        "Certification in Homeopathic Pharmacy Management",
-      ],
+        "Dedicated to providing quality homeopathic treatments with a patient-centered approach.",
+      education: ["BHMS"],
+    },
+    {
+      name: "Dr. Sunitha Asir",
+      role: "Content Creator",
+      image: "/images/team-member-5.jpg", // Replace with actual image path
+      specialty: "Homoeopathic Drug Shots",
+      description:
+        "Creates informative and educational content about homeopathic remedies and treatments.",
+      education: ["BHMS"],
+    },
+    {
+      name: "Dr. Rajesh Devendra",
+      role: "Research Advisor",
+      image: "/images/team-member-6.jpg", // Replace with actual image path
+      specialty: "Ayurvedic Medicine",
+      description:
+        "Provides valuable insights and guidance for research initiatives and medical protocols.",
+      education: ["BAMS"],
+    },
+    {
+      name: "Laxmi Murugan",
+      role: "Medical Administrator",
+      image: "/images/team-member-7.jpg", // Replace with actual image path
+      specialty: "Healthcare Administration",
+      description:
+        "Manages the administrative aspects of the clinic, ensuring smooth operations and excellent patient service.",
+    },
+    {
+      name: "Jessima Micheal",
+      role: "Head Nurse Department",
+      image: "/images/team-member-8.jpg", // Replace with actual image path
+      specialty: "Nursing Care",
+      description:
+        "Leads the nursing team with expertise and compassion, ensuring patients receive the best care possible.",
+    },
+    {
+      name: "Nikitha",
+      role: "Call Centre Team",
+      image: "/images/team-member-9.jpg", // Replace with actual image path
+      specialty: "Patient Communication",
+      description:
+        "Handles patient inquiries and appointment scheduling, providing friendly and efficient customer service.",
+    },
+    {
+      name: "Pooja",
+      role: "Call Centre Team",
+      image: "/images/team-member-10.jpg", // Replace with actual image path
+      specialty: "Patient Communication",
+      description:
+        "Assists patients with information and appointments, ensuring clear and helpful communication.",
+    },
+    {
+      name: "Sudan",
+      role: "Content Creator and Advisor",
+      image: "/images/team-member-11.jpg", // Replace with actual image path
+      specialty: "Homoeopathic Drug Shots",
+      description:
+        "Creates and oversees the development of educational content about homeopathic treatments and remedies.",
+    },
+    {
+      name: "Dinesh Ravishankar",
+      role: "IT Department Head",
+      image: "/images/team-member-12.jpg", // Replace with actual image path
+      specialty: "Web Design",
+      description:
+        "Leads the IT department and manages web design, ensuring a seamless digital experience for patients.",
+    },
+    {
+      name: "Jenith",
+      role: "IT Department",
+      image: "/images/team-member-13.jpg", // Replace with actual image path
+      specialty: "Social Media Advisor",
+      description:
+        "Manages social media strategy and provides IT support to enhance the clinic's online presence.",
     },
   ];
 
