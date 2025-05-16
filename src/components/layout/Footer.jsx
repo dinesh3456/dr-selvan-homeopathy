@@ -165,11 +165,11 @@ const Footer = () => {
               <div>
                 <h4 className="font-semibold mb-1">Mumbai</h4>
                 <address className="text-gray-600 not-italic mb-3">
-                  456 Wellness Avenue
+                  Dr. Selvan's Homeopathy
                   <br />
-                  Dharavi, Mumbai
+                  27 & 27 A, G - Floor, 1st Wadi,
                   <br />
-                  India 400017
+                  Mumbai - 400017
                 </address>
                 <div className="flex items-center mb-2">
                   <svg

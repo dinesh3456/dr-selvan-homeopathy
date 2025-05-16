@@ -517,7 +517,7 @@ const Careers = () => {
                 that truly makes a difference in patients' lives through natural
                 healing approaches."
                 <footer className="mt-3 text-gray-500 not-italic font-medium">
-                  — Dr. Meena R., Homeopathic Physician
+                  — Dr. Nazia Shaikh., Homeopathic Physician
                 </footer>
               </blockquote>
               <blockquote className="italic text-gray-600 border-l-4 border-primary pl-4 py-2">
@@ -526,7 +526,7 @@ const Careers = () => {
                 healthcare. Every day brings new opportunities to learn and
                 grow."
                 <footer className="mt-3 text-gray-500 not-italic font-medium">
-                  — Arun K., Patient Care Coordinator
+                  — Shanti Nadar., Patient Care Co ordinator
                 </footer>
               </blockquote>
             </div>
