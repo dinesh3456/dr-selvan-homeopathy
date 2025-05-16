@@ -13,8 +13,13 @@ const WhyChooseSectionLight = () => {
     },
     {
       title: "Hon. Physician & Consultant at",
-      description:
-        "Lions Tarachand Bapa Hospital (Sion), Daughters of St. Paul (Bandra), Shailesh Health Care Centre (Mazgaon), Sai Multi Speciality Hospital (Dharavi).",
+      description: (
+        <>
+          • Lions Tarachand Bapa Hospital (Sion), Daughters of St. Paul (Bandra)
+          <br />• Shailesh Health Care Centre (Mazgaon), Sai Multi Speciality
+          Hospital (Dharavi)
+        </>
+      ),
       color: "primary",
     },
     {
@@ -26,7 +31,7 @@ const WhyChooseSectionLight = () => {
     {
       title: "100% Natural",
       description:
-        "Our treatments utilize only natural remedies with no side effects, safe for patients of all ages.",
+        "Our Treatments utilize only natural Homeopathic remedies with no less side effects, safe for patients of all ages.",
       color: "primary",
     },
   ];

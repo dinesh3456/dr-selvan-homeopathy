@@ -372,7 +372,7 @@ const HeroSection = () => {
               </div>
               <div>
                 <p className="text-slate-700 font-medium">
-                  <span className="text-blue-600 font-bold">10,000+</span>{" "}
+                  <span className="text-blue-600 font-bold">7,000+</span>{" "}
                   satisfied patients
                 </p>
                 <div className="flex mt-1">
