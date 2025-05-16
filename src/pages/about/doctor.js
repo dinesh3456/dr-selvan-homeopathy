@@ -1040,7 +1040,9 @@ const AboutDoctor = () => {
                   <div className="text-gray-600">Community Camps</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-primary mb-1">3+</div>
+                  <div className="text-2xl font-bold text-primary mb-1">
+                    50+
+                  </div>
                   <div className="text-gray-600">Partner Organizations</div>
                 </div>
               </div>

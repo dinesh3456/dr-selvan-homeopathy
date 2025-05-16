@@ -141,27 +141,28 @@ const FoundationPage = () => {
     },
   ];
 
-  const upcomingEvents = [
-    {
-      date: "June 15, 2025",
-      title: "Mega Medical Camp - Mumbai",
-      location: "Dharavi Community Center",
-      description:
-        "Comprehensive health check-ups and homeopathic consultations",
-    },
-    {
-      date: "July 20, 2025",
-      title: "Children's Health Initiative",
-      location: "Hope Orphanage, Pune",
-      description: "Specialized pediatric care and nutrition program",
-    },
-    {
-      date: "August 10, 2025",
-      title: "Senior Citizens Wellness Camp",
-      location: "Aashirwad Retirement Home, Chennai",
-      description: "Focused on chronic disease management for the elderly",
-    },
-  ];
+  // Commented out upcoming events
+  // const upcomingEvents = [
+  //   {
+  //     date: "June 15, 2025",
+  //     title: "Mega Medical Camp - Mumbai",
+  //     location: "Dharavi Community Center",
+  //     description:
+  //       "Comprehensive health check-ups and homeopathic consultations",
+  //   },
+  //   {
+  //     date: "July 20, 2025",
+  //     title: "Children's Health Initiative",
+  //     location: "Hope Orphanage, Pune",
+  //     description: "Specialized pediatric care and nutrition program",
+  //   },
+  //   {
+  //     date: "August 10, 2025",
+  //     title: "Senior Citizens Wellness Camp",
+  //     location: "Aashirwad Retirement Home, Chennai",
+  //     description: "Focused on chronic disease management for the elderly",
+  //   },
+  // ];
 
   return (
     <Layout title="Dr. Selvan Foundation | Dr. Selvan's Homeopathy">
@@ -420,83 +421,6 @@ const FoundationPage = () => {
                 </motion.div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* Upcoming Events */}
-        <section className="mb-16">
-          <motion.div
-            className="mb-8"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Upcoming <span className="text-accent">Events</span>
-            </h2>
-            <p className="text-gray-600">
-              Join us in our upcoming community initiatives and be part of the
-              change.
-            </p>
-          </motion.div>
-
-          <div className="space-y-6">
-            {upcomingEvents.map((event, index) => (
-              <motion.div
-                key={index}
-                className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{
-                  y: -5,
-                  boxShadow: "0 10px 15px -5px rgba(0, 0, 0, 0.1)",
-                }}
-              >
-                <div className="md:flex">
-                  <div className="md:flex-shrink-0 bg-gradient-to-r from-blue-500 to-accent p-6 text-white flex items-center justify-center md:w-48">
-                    <div className="text-center">
-                      <div className="text-sm">Upcoming</div>
-                      <div className="text-2xl font-bold">
-                        {event.date.split(",")[0]}
-                      </div>
-                      <div>{event.date.split(",")[1]}</div>
-                    </div>
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-1">
-                      {event.title}
-                    </h3>
-                    <div className="flex items-center text-gray-600 text-sm mb-2">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4 mr-1"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                      {event.location}
-                    </div>
-                    <p className="text-gray-600">{event.description}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
           </div>
         </section>
 
