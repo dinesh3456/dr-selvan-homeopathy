@@ -281,7 +281,7 @@ const Header = () => {
                 href="/natural-treatment"
                 className="text-dark hover:text-primary font-medium transition"
               >
-                Medic Talk
+                Medic Talk's
               </Link>
             </motion.div>
 
