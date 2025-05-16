@@ -119,7 +119,8 @@ const AboutDoctor = () => {
               About <span className="text-accent">Dr. Selvan</span>
             </h1>
             <p className="text-lg text-gray-600 italic">
-              "Dedicated homeopathy practitioner, researcher, and author"
+              "Dedicated Homeopathy practitioner, Researcher of Natural
+              Medicines and Author"
             </p>
           </div>
         </div>
