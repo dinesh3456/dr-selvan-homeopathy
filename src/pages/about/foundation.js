@@ -5,31 +5,6 @@ import { motion } from "framer-motion";
 import Layout from "../../components/layout/Layout";
 import AppointmentButton from "../../components/common/AppointmentButton";
 
-const FoundationCard = ({ title, description, icon, index }) => {
-  return (
-    <motion.div
-      className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      viewport={{ once: true }}
-      whileHover={{ y: -5, boxShadow: "0 10px 15px -5px rgba(0, 0, 0, 0.1)" }}
-    >
-      <div className="p-6">
-        <div className="flex items-start">
-          <div className="flex-shrink-0 bg-blue-100 rounded-full p-3 text-primary mr-4">
-            {icon}
-          </div>
-          <div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
-            <p className="text-gray-600">{description}</p>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-};
-
 const FoundationPage = () => {
   const initiatives = [
     {
@@ -279,7 +254,7 @@ const FoundationPage = () => {
             >
               <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-lg">
                 <Image
-                  src="/images/foundation-work.jpg"
+                  src="/images/doctor-2.jpg"
                   alt="Dr. Selvan Foundation community work"
                   fill
                   className="object-cover"
