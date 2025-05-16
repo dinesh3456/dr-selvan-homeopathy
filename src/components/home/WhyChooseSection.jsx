@@ -20,7 +20,7 @@ const WhyChooseSectionLight = () => {
     {
       title: "> 7k Clients",
       description:
-        "We've had the privilege of assisting over 10,000 clients in their natural healing journeys.",
+        "We've had the privilege of assisting over 7,000 clients in their natural healing journeys.",
       color: "primary",
     },
     {

@@ -945,7 +945,7 @@ const AboutDoctor = () => {
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold text-primary mb-1">
-                    15+
+                    100+
                   </div>
                   <div className="text-gray-600">Community Camps</div>
                 </div>
