@@ -41,6 +41,8 @@ const HeroSection = () => {
   const doctorImages = [
     "/images/doctor.jpg",
     "/images/doctor-2.jpg",
+    "/images/doctor-conference-1.jpg",
+    "/images/doctor-conference-2.jpg",
     "/images/doctor-3.jpg",
     "/images/doctor-4.jpg",
   ];
