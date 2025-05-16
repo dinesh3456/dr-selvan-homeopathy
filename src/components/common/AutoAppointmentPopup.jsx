@@ -128,11 +128,10 @@ const AutoAppointmentPopup = ({ isOpen, onClose }) => {
 _Sent from Dr. Selvan's Homeopathy website_
       `;
 
-      // WhatsApp business number - replace with Dr. Selvan's actual WhatsApp business number
-      const whatsappNumber = "+919876543210"; // Example number
+      // WhatsApp business number
+      const whatsappNumber = "+917208719646";
 
       // Create WhatsApp link with API endpoint
-      // This is a more universal approach than using wa.me
       const whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(
         message
       )}`;
@@ -209,7 +208,7 @@ _Sent from Dr. Selvan's Homeopathy website_
     <AnimatePresence mode="wait">
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/50 backdrop-blur-sm overflow-y-auto"
           variants={backdropVariants}
           initial="hidden"
           animate="visible"
@@ -217,41 +216,18 @@ _Sent from Dr. Selvan's Homeopathy website_
           onClick={onClose}
         >
           <motion.div
-            className="relative w-full max-w-lg bg-white rounded-xl shadow-xl sm:overflow-hidden max-h-[90vh] overflow-y-auto sm:max-h-none sm:overflow-y-visible"
+            className="relative w-full max-w-lg bg-white rounded-xl shadow-xl overflow-hidden"
             variants={popupVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Fixed close button for mobile that's always visible */}
-            <div className="sm:hidden sticky top-0 z-10 flex justify-end p-3 bg-white/90 backdrop-blur-sm border-b border-gray-100">
-              <button
-                className="p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100 transition"
-                onClick={onClose}
-                aria-label="Close popup"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            {/* Regular close button for desktop */}
+            {/* Universal close button that works on all screen sizes */}
             <button
-              className="absolute top-3 right-3 p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100 transition hidden sm:block"
+              className="absolute top-3 right-3 p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100 transition z-10"
               onClick={onClose}
+              aria-label="Close popup"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -269,12 +245,13 @@ _Sent from Dr. Selvan's Homeopathy website_
               </svg>
             </button>
 
-            <div className="p-6">
+            {/* Content container with better padding for mobile */}
+            <div className="p-4 sm:p-6 max-h-[90vh] overflow-y-auto">
               {!isSubmitted ? (
                 <>
-                  <div className="text-center mb-6">
+                  <div className="text-center mb-4 sm:mb-6">
                     <motion.span
-                      className="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-sm font-medium mb-3"
+                      className="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-sm font-medium mb-2 sm:mb-3"
                       variants={formItemVariants}
                       custom={0}
                       initial="hidden"
@@ -283,7 +260,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                       Get Started
                     </motion.span>
                     <motion.h2
-                      className="text-2xl font-bold text-gray-900 mb-2"
+                      className="text-xl sm:text-2xl font-bold text-gray-900 mb-1 sm:mb-2"
                       variants={formItemVariants}
                       custom={1}
                       initial="hidden"
@@ -292,7 +269,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                       Book Your Appointment
                     </motion.h2>
                     <motion.p
-                      className="text-gray-600"
+                      className="text-sm sm:text-base text-gray-600"
                       variants={formItemVariants}
                       custom={2}
                       initial="hidden"
@@ -303,7 +280,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                     </motion.p>
                   </div>
 
-                  {/* Submit Method Selection */}
+                  {/* Submit Method Selection - Responsive buttons */}
                   <motion.div
                     className="mb-4"
                     variants={formItemVariants}
@@ -311,14 +288,14 @@ _Sent from Dr. Selvan's Homeopathy website_
                     initial="hidden"
                     animate="visible"
                   >
-                    <p className="text-sm font-medium text-gray-700 mb-2">
+                    <p className="text-xs sm:text-sm font-medium text-gray-700 mb-2">
                       Choose how to submit your request:
                     </p>
-                    <div className="flex space-x-4">
+                    <div className="flex space-x-2 sm:space-x-4">
                       <button
                         type="button"
                         onClick={() => handleSubmitMethod("email")}
-                        className={`flex-1 py-2 px-4 rounded-md border ${
+                        className={`flex-1 py-2 px-3 sm:px-4 rounded-md border text-xs sm:text-sm ${
                           submitMethod === "email"
                             ? "bg-blue-50 border-blue-300 text-blue-600"
                             : "border-gray-300 text-gray-700 hover:bg-gray-50"
@@ -326,7 +303,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                       >
                         <span className="flex items-center justify-center">
                           <svg
-                            className="w-5 h-5 mr-2"
+                            className="w-4 h-4 mr-1 sm:mr-2"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
@@ -340,7 +317,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                       <button
                         type="button"
                         onClick={() => handleSubmitMethod("whatsapp")}
-                        className={`flex-1 py-2 px-4 rounded-md border ${
+                        className={`flex-1 py-2 px-3 sm:px-4 rounded-md border text-xs sm:text-sm ${
                           submitMethod === "whatsapp"
                             ? "bg-green-50 border-green-300 text-green-600"
                             : "border-gray-300 text-gray-700 hover:bg-gray-50"
@@ -348,7 +325,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                       >
                         <span className="flex items-center justify-center">
                           <svg
-                            className="w-5 h-5 mr-2"
+                            className="w-4 h-4 mr-1 sm:mr-2"
                             fill="currentColor"
                             viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg"
@@ -362,7 +339,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                   </motion.div>
 
                   {error && (
-                    <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-md text-sm">
+                    <div className="mb-4 p-2 sm:p-3 bg-red-50 border border-red-200 text-red-700 rounded-md text-xs sm:text-sm">
                       {error}
                     </div>
                   )}
@@ -374,109 +351,113 @@ _Sent from Dr. Selvan's Homeopathy website_
                     custom={4}
                     initial="hidden"
                     animate="visible"
+                    className="space-y-3 sm:space-y-4"
                   >
-                    <div className="space-y-4">
+                    {/* Full Name */}
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="block text-xs sm:text-sm font-medium text-gray-700 mb-1"
+                      >
+                        Full Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                        className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                        placeholder="Your name"
+                      />
+                    </div>
+
+                    {/* Email and Phone - Stack on mobile, side by side on larger screens */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                       <div>
                         <label
-                          htmlFor="name"
-                          className="block text-sm font-medium text-gray-700 mb-1"
+                          htmlFor="email"
+                          className="block text-xs sm:text-sm font-medium text-gray-700 mb-1"
                         >
-                          Full Name *
+                          Email Address *
                         </label>
                         <input
-                          type="text"
-                          id="name"
-                          name="name"
+                          type="email"
+                          id="email"
+                          name="email"
                           required
-                          value={formData.name}
+                          value={formData.email}
                           onChange={handleChange}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
-                          placeholder="Your name"
-                        />
-                      </div>
-
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                          <label
-                            htmlFor="email"
-                            className="block text-sm font-medium text-gray-700 mb-1"
-                          >
-                            Email Address *
-                          </label>
-                          <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            required
-                            value={formData.email}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
-                            placeholder="Your email"
-                          />
-                        </div>
-
-                        <div>
-                          <label
-                            htmlFor="phone"
-                            className="block text-sm font-medium text-gray-700 mb-1"
-                          >
-                            Phone Number *
-                          </label>
-                          <input
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            required
-                            value={formData.phone}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
-                            placeholder="Your phone"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="col-span-2 md:col-span-1">
-                        <label
-                          htmlFor="location"
-                          className="block text-sm font-medium text-gray-700 mb-1"
-                        >
-                          Your Location *
-                        </label>
-                        <input
-                          type="text"
-                          id="location"
-                          name="location"
-                          required
-                          value={formData.location}
-                          onChange={handleChange}
-                          placeholder="City"
-                          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-accent focus:border-accent"
+                          className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                          placeholder="Your email"
                         />
                       </div>
 
                       <div>
                         <label
-                          htmlFor="message"
-                          className="block text-sm font-medium text-gray-700 mb-1"
+                          htmlFor="phone"
+                          className="block text-xs sm:text-sm font-medium text-gray-700 mb-1"
                         >
-                          Brief Description of Your Condition
+                          Phone Number *
                         </label>
-                        <textarea
-                          id="message"
-                          name="message"
-                          rows="3"
-                          value={formData.message}
+                        <input
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          required
+                          value={formData.phone}
                           onChange={handleChange}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
-                          placeholder="Please describe your condition briefly..."
-                        ></textarea>
+                          className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                          placeholder="Your phone"
+                        />
                       </div>
                     </div>
 
-                    <div className="mt-6">
+                    {/* Location */}
+                    <div>
+                      <label
+                        htmlFor="location"
+                        className="block text-xs sm:text-sm font-medium text-gray-700 mb-1"
+                      >
+                        Your Location *
+                      </label>
+                      <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        required
+                        value={formData.location}
+                        onChange={handleChange}
+                        placeholder="City"
+                        className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-accent focus:border-accent"
+                      />
+                    </div>
+
+                    {/* Message */}
+                    <div>
+                      <label
+                        htmlFor="message"
+                        className="block text-xs sm:text-sm font-medium text-gray-700 mb-1"
+                      >
+                        Brief Description of Your Condition
+                      </label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        rows="3"
+                        value={formData.message}
+                        onChange={handleChange}
+                        className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                        placeholder="Please describe your condition briefly..."
+                      ></textarea>
+                    </div>
+
+                    {/* Submit Button - Responsive sizing */}
+                    <div className="pt-2">
                       <motion.button
                         type="submit"
-                        className={`w-full py-3 px-6 rounded-md flex items-center justify-center text-white font-medium transition ${
+                        className={`w-full py-2 sm:py-3 px-4 sm:px-6 rounded-md flex items-center justify-center text-white font-medium text-sm transition ${
                           submitMethod === "whatsapp"
                             ? "bg-green-600 hover:bg-green-700"
                             : "bg-blue-600 hover:bg-blue-700"
@@ -488,7 +469,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                         {isSubmitting ? (
                           <>
                             <svg
-                              className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                              className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
                               xmlns="http://www.w3.org/2000/svg"
                               fill="none"
                               viewBox="0 0 24 24"
@@ -517,7 +498,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                               : "via Email"}
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
-                              className="h-5 w-5 ml-2"
+                              className="h-4 w-4 ml-1 sm:ml-2"
                               viewBox="0 0 20 20"
                               fill="currentColor"
                             >
@@ -535,15 +516,15 @@ _Sent from Dr. Selvan's Homeopathy website_
                 </>
               ) : (
                 <motion.div
-                  className="text-center py-8"
+                  className="text-center py-4 sm:py-8"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                  <div className="mx-auto w-12 h-12 sm:w-16 sm:h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-8 w-8 text-green-500"
+                      className="h-6 w-6 sm:h-8 sm:w-8 text-green-500"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -556,16 +537,16 @@ _Sent from Dr. Selvan's Homeopathy website_
                       />
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">
                     Thank You!
                   </h3>
-                  <p className="text-gray-600 mb-6">
+                  <p className="text-sm sm:text-base text-gray-600 mb-6">
                     Your appointment request has been submitted. We'll get in
                     touch with you shortly to confirm your appointment details.
                   </p>
                   <Link
                     href="/contact"
-                    className="text-primary hover:text-primary-dark font-medium"
+                    className="text-primary hover:text-primary-dark font-medium text-sm sm:text-base"
                   >
                     Contact us for any questions
                   </Link>
@@ -578,4 +559,5 @@ _Sent from Dr. Selvan's Homeopathy website_
     </AnimatePresence>
   );
 };
+
 export default AutoAppointmentPopup;
