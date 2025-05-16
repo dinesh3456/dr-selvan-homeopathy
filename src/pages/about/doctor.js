@@ -1,11 +1,111 @@
-// src/pages/about/doctor.js
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Layout from "../../components/layout/Layout";
 import AppointmentButton from "../../components/common/AppointmentButton";
+
 const AboutDoctor = () => {
+  // Add state for managing the image carousel
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  // Array of doctor images including the new ones
+  const doctorImages = [
+    "/images/doctor-selvan.jpg",
+    "/images/doctor-speaking-1.jpg",
+    "/images/doctor-speaking-2.jpg",
+    "/images/doctor-clinic-1.jpg",
+    "/images/doctor-clinic-2.jpg",
+  ];
+
+  // Auto-advance the slides every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex(
+        (prevIndex) => (prevIndex + 1) % doctorImages.length
+      );
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [doctorImages.length]);
+
+  const ImageCarousel = () => (
+    <div className="relative mb-10 mx-auto max-w-2xl">
+      <div className="rounded-xl overflow-hidden shadow-lg border border-gray-100">
+        <div className="relative h-80 md:h-96 w-full bg-gray-100">
+          {/* Decorative gradient overlay for enhanced visual appeal */}
+          <div className="absolute inset-0 bg-gradient-to-t from-blue-500/10 to-transparent z-10"></div>
+
+          <AnimatePresence initial={false} custom={direction} mode="wait">
+            <motion.div
+              key={currentImageIndex}
+              className="absolute inset-0"
+              custom={direction}
+              variants={doctorImages}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.5 }}
+            >
+              <Image
+                src={doctorImages[currentImageIndex]}
+                alt={`Dr. Selvan - Image ${currentImageIndex + 1}`}
+                fill
+                className="object-cover"
+                priority={currentImageIndex === 0}
+              />
+
+              {/* Subtle vignette effect to enhance depth */}
+              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(0,0,0,0.1)] z-10"></div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Improved navigation dots with animation */}
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-20">
+            {doctorImages.map((_, index) => (
+              <motion.button
+                key={index}
+                onClick={() => {
+                  setDirection(index > currentImageIndex ? 1 : -1);
+                  setCurrentImageIndex(index);
+                }}
+                className="group relative"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <span
+                  className={`block w-2 h-2 rounded-full transition-all duration-300 ${
+                    currentImageIndex === index
+                      ? "bg-white shadow-[0_0_6px_rgba(255,255,255,0.5)] w-5"
+                      : "bg-white/60 group-hover:bg-white/90"
+                  }`}
+                  aria-label={`Go to image ${index + 1}`}
+                />
+              </motion.button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Caption area with subtle text animation */}
+      <motion.div
+        className="mt-4 text-center"
+        key={`caption-${currentImageIndex}`}
+        initial={{ opacity: 0, y: 5 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.4 }}
+      >
+        <p className="text-sm text-gray-600">
+          {currentImageIndex === 0
+            ? "Dr. Selvan S. - Homeopathic Physician & Researcher"
+            : currentImageIndex === 1 || currentImageIndex === 2
+            ? "Dr. Selvan delivering educational presentations on homeopathic medicine"
+            : "Dr. Selvan with patients during consultations at his clinic"}
+        </p>
+      </motion.div>
+    </div>
+  );
   return (
     <Layout
       title="About Dr. Selvan | Dr. Selvan's Homeopathy"
@@ -24,71 +124,61 @@ const AboutDoctor = () => {
           </div>
         </div>
       </div>
+
       {/* Main Content Section */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <article className="prose prose-lg max-w-none">
-          {/* Featured Image with Annotation */}
-          <div className="relative mb-10 mx-auto max-w-2xl">
-            <div className="rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src="/images/doctor-selvan.jpg"
-                alt="Dr. Selvan S."
-                width={800}
-                height={480}
-                className="w-full h-auto object-cover"
-                priority
-              />
-            </div>
+          {/* Replace the existing Featured Image with the new Image Carousel */}
+          <ImageCarousel />
 
-            {/* Arrow Annotation - Adjusted positioning */}
-            <motion.div
-              className="mt-8 relative flex justify-end"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.7 }}
-              viewport={{ once: true }}
-            >
-              <div className="relative">
-                <motion.span
-                  className="absolute bottom-8 right-[-40px] text-primary font-handwritten text-lg"
-                  animate={{
-                    y: [0, -3, 0],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
-                  A pioneer in homeopathic medicine!
-                </motion.span>
-                <motion.svg
-                  width="120"
-                  height="60"
-                  viewBox="0 0 120 60"
-                  className="fill-none stroke-primary transform scale-x-[-1] translate-x-10"
-                >
-                  <motion.path
-                    d="M10,30 Q80,50 100,30"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={{ duration: 1.2, delay: 0.7 }}
-                  />
-                  <motion.path
-                    d="M95,30 L105,25 L100,35"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
-                    transition={{ duration: 0.6, delay: 1.9 }}
-                  />
-                </motion.svg>
-              </div>
-            </motion.div>
-          </div>
+          {/* Arrow Annotation - Adjusted positioning */}
+          <motion.div
+            className="mt-8 relative flex justify-end"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative">
+              <motion.span
+                className="absolute bottom-8 right-[-40px] text-primary font-handwritten text-lg"
+                animate={{
+                  y: [0, -3, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                A pioneer in homeopathic medicine!
+              </motion.span>
+              <motion.svg
+                width="120"
+                height="60"
+                viewBox="0 0 120 60"
+                className="fill-none stroke-primary transform scale-x-[-1] translate-x-10"
+              >
+                <motion.path
+                  d="M10,30 Q80,50 100,30"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 1.2, delay: 0.7 }}
+                />
+                <motion.path
+                  d="M95,30 L105,25 L100,35"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ duration: 0.6, delay: 1.9 }}
+                />
+              </motion.svg>
+            </div>
+          </motion.div>
 
           {/* Introduction Section */}
           <section className="mb-12">
@@ -106,7 +196,6 @@ const AboutDoctor = () => {
               certification from the National Examination Board in Occupational
               Safety and Health (NEBOSH).
             </p>
-
             <p className="text-gray-700 mb-4 leading-relaxed">
               He completed his MD (Paediatrics) in Homeopathy at Guru Mishri
               Homeopathic Medical College and Hospital in Jalna, Maharashtra.
