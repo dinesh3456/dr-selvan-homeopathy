@@ -7,6 +7,7 @@ import WhyChooseSection from "../components/home/WhyChooseSection";
 import FeaturedTreatments from "../components/home/FeaturedTreatments";
 import TestimonialsSection from "../components/home/TestimonialsSection";
 import BenefitsSection from "../components/home/BenefitsSection";
+import PalliativeCareSection from "../components/home/PalliativeCareSection";
 import ProductsPreview from "../components/home/ProductsPreview";
 import AppointmentForm from "../components/home/AppointmentForm";
 
@@ -54,6 +55,10 @@ export default function Home() {
         {/* Benefits Section */}
         <motion.section variants={sectionItemVariants}>
           <BenefitsSection />
+        </motion.section>
+
+        <motion.section variants={sectionItemVariants}>
+          <PalliativeCareSection />
         </motion.section>
 
         {/* Testimonials Section */}
