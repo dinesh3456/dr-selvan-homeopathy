@@ -105,12 +105,12 @@ const FoundationPage = () => {
       description: "Free healthcare services across multiple regions",
     },
     {
-      number: "5,000+",
+      number: "25,000+",
       text: "Patients Served",
       description: "Through our various community outreach programs",
     },
     {
-      number: "1,000+",
+      number: "20,000+",
       text: "COVID Relief Kits",
       description: "Distributed during the pandemic",
     },
