@@ -64,7 +64,7 @@ const AboutTeam = () => {
     {
       name: "Asst. Prof. Dr. Selvan Senthil Kumar",
       role: "Founder Chairman",
-      image: "/images/team-member-1.jpg", // Replace with actual image path
+      image: "/images/team-member-1.jpg",
       specialty: "DG Approved Medical Examiner",
       description:
         "Founder and visionary leader of Dr. Selvan's Homeopathy, bringing expertise and innovation to homeopathic healthcare.",
@@ -73,7 +73,7 @@ const AboutTeam = () => {
     {
       name: "Dr. Nazia Shaikh",
       role: "Associate Doctor",
-      image: "/images/team-member-2.jpg", // Replace with actual image path
+      image: "/images/team-member-2.jpg",
       specialty: "Homeopathic Medicine",
       description:
         "An experienced associate doctor providing comprehensive homeopathic care to patients.",
@@ -82,7 +82,7 @@ const AboutTeam = () => {
     {
       name: "Dr. Subin Prabhu",
       role: "Physiotherapist",
-      image: "/images/team-member-3.jpg", // Replace with actual image path
+      image: "/images/team-member-3.jpg",
       specialty: "Sports Physiotherapy",
       description:
         "Specialized in sports physiotherapy, providing rehabilitative care and physical therapy treatments.",
@@ -91,7 +91,7 @@ const AboutTeam = () => {
     {
       name: "Dr. Vishnu Priya. A",
       role: "Associate Doctor",
-      image: "/images/team-member-4.jpg", // Replace with actual image path
+      image: "/images/team-member-4.jpg",
       specialty: "Homeopathic Medicine",
       description:
         "Dedicated to providing quality homeopathic treatments with a patient-centered approach.",
@@ -100,7 +100,7 @@ const AboutTeam = () => {
     {
       name: "Dr. Sunitha Asir",
       role: "Content Creator",
-      image: "/images/team-member-5.jpg", // Replace with actual image path
+      image: "/images/team-member-5.jpg",
       specialty: "Homoeopathic Drug Shots",
       description:
         "Creates informative and educational content about homeopathic remedies and treatments.",
@@ -109,7 +109,7 @@ const AboutTeam = () => {
     {
       name: "Dr. Rajesh Devendra",
       role: "Research Advisor",
-      image: "/images/team-member-6.jpg", // Replace with actual image path
+      image: "/images/team-member-6.jpg",
       specialty: "Ayurvedic Medicine",
       description:
         "Provides valuable insights and guidance for research initiatives and medical protocols.",
@@ -118,7 +118,7 @@ const AboutTeam = () => {
     {
       name: "Laxmi Murugan",
       role: "Medical Administrator",
-      image: "/images/team-member-7.jpg", // Replace with actual image path
+      image: "/images/team-member-7.jpg",
       specialty: "Healthcare Administration",
       description:
         "Manages the administrative aspects of the clinic, ensuring smooth operations and excellent patient service.",
@@ -126,7 +126,7 @@ const AboutTeam = () => {
     {
       name: "Jessima Micheal",
       role: "Head Nurse Department",
-      image: "/images/team-member-8.jpg", // Replace with actual image path
+      image: "/images/team-member-8.jpg",
       specialty: "Nursing Care",
       description:
         "Leads the nursing team with expertise and compassion, ensuring patients receive the best care possible.",
@@ -134,7 +134,7 @@ const AboutTeam = () => {
     {
       name: "Nikitha",
       role: "Call Centre Team",
-      image: "/images/team-member-9.jpg", // Replace with actual image path
+      image: "/images/team-member-9.jpg",
       specialty: "Patient Communication",
       description:
         "Handles patient inquiries and appointment scheduling, providing friendly and efficient customer service.",
@@ -142,7 +142,7 @@ const AboutTeam = () => {
     {
       name: "Pooja",
       role: "Call Centre Team",
-      image: "/images/team-member-10.jpg", // Replace with actual image path
+      image: "/images/team-member-10.jpg",
       specialty: "Patient Communication",
       description:
         "Assists patients with information and appointments, ensuring clear and helpful communication.",
@@ -150,7 +150,7 @@ const AboutTeam = () => {
     {
       name: "Sudan",
       role: "Content Creator and Advisor",
-      image: "/images/team-member-11.jpg", // Replace with actual image path
+      image: "/images/team-member-11.jpg",
       specialty: "Homoeopathic Drug Shots",
       description:
         "Creates and oversees the development of educational content about homeopathic treatments and remedies.",
@@ -158,7 +158,7 @@ const AboutTeam = () => {
     {
       name: "Dinesh Ravishankar",
       role: "IT Department Head",
-      image: "/images/team-member-12.jpg", // Replace with actual image path
+      image: "/images/team-member-12.jpg",
       specialty: "Web Design",
       description:
         "Leads the IT department and manages web design, ensuring a seamless digital experience for patients.",
@@ -166,7 +166,7 @@ const AboutTeam = () => {
     {
       name: "Jenith",
       role: "IT Department",
-      image: "/images/team-member-13.jpg", // Replace with actual image path
+      image: "/images/team-member-13.jpg",
       specialty: "Social Media Advisor",
       description:
         "Manages social media strategy and provides IT support to enhance the clinic's online presence.",
