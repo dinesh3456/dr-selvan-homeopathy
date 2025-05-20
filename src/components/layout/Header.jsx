@@ -278,6 +278,15 @@ const Header = () => {
 
             <motion.div whileHover="hover" variants={linkHoverVariants}>
               <Link
+                href="/palliative-care"
+                className="text-dark hover:text-primary font-medium transition"
+              >
+                Palliative Care
+              </Link>
+            </motion.div>
+
+            <motion.div whileHover="hover" variants={linkHoverVariants}>
+              <Link
                 href="/natural-treatment"
                 className="text-dark hover:text-primary font-medium transition"
               >
@@ -527,6 +536,23 @@ const Header = () => {
                   ))}
                 </div>
               )}
+
+              {/* Palliative Care Menu Item */}
+              <motion.div
+                variants={menuItemVariants}
+                whileHover={{
+                  backgroundColor: "#EFF6FF",
+                  x: 5,
+                }}
+              >
+                <Link
+                  href="/palliative-care"
+                  className="block px-3 py-2 text-base font-medium text-dark hover:text-primary rounded-md"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Palliative Care
+                </Link>
+              </motion.div>
 
               {/* Medic Talk Menu Item */}
               <motion.div

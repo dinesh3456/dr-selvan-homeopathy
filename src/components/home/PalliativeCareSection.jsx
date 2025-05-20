@@ -200,6 +200,32 @@ const PalliativeCareSection = () => {
                   of conventional treatments, and improve overall quality of
                   life.
                 </p>
+                <p className="text-gray-600 mt-4">
+                  According to
+                  {" "}
+                  <a
+                    href="https://palliativeorg.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary underline"
+                  >
+                    palliativeorg.com
+                  </a>
+                  , palliative care focuses on relieving symptoms and stress so
+                  patients and families can enjoy the best possible quality of
+                  life during treatment.
+                </p>
+                <p className="text-gray-600 mt-4">
+                  The site explains that an interdisciplinary team of doctors,
+                  nurses, and other specialists works alongside a patient's
+                  regular physicians to provide an extra layer of support.
+                </p>
+                <p className="text-gray-600 mt-4 mb-6">
+                  Palliative care can be started at any stage of a serious
+                  illness and may include help with pain management, guidance on
+                  treatment choices, and emotional or spiritual support for both
+                  patient and family members.
+                </p>
 
                 <div className="mt-6">
                   <AppointmentButton
