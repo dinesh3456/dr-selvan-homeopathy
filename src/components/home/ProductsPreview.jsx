@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
+import ComingSoonOverlay from "../ui/ComingSoonOverlay";
 
 const ProductsPreview = () => {
   // State for hover effects
@@ -10,36 +11,51 @@ const ProductsPreview = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
-  // Sample product data
+  // Product data with updated image paths
   const products = [
     {
       name: "Vitamin D Plus",
       image: "/images/vitamin-d-plus.jpg",
       price: "₹599",
       description:
-        "Natural homeopathic formula to strengthen your immune system.",
-      attributes: ["100% Natural", "No Side Effects", "Clinically Tested"],
+        "Multivitamin, Multimineral & Calcium Tablets for all age groups. Helps with healthy bones, immunity boost and increased strength.",
+      attributes: ["All Age Groups", "Dietary Supplement", "No Side Effects"],
       badges: ["Bestseller"],
       id: "01",
+      category: "Dietary Supplement",
     },
     {
       name: "Ortho Grade",
       image: "/images/ortho-grade.jpg",
       price: "₹499",
-      description: "Calming remedy to help manage anxiety and daily stress.",
-      attributes: ["Alcohol-Free", "Safe for Children", "Regular Use"],
+      description:
+        "Ayurvedic Pain Relief Oil with powerful muscle relaxant and anti-inflammatory properties. Provides quick pain relief.",
+      attributes: ["External Use Only", "Ayurvedic", "Natural Ingredients"],
       badges: ["New"],
       id: "02",
+      category: "Ayurvedic Oil",
     },
     {
       name: "Home Remedy Cough Syrup",
       image: "/images/cough-syrup.jpg",
-      price: "₹649",
+      price: "₹349",
       description:
-        "Support for joint health and mobility with natural ingredients.",
-      attributes: ["Anti-inflammatory", "Pain Relief", "Improved Mobility"],
-      badges: [],
+        "Natural cough syrup effective for all kinds of cough (dry, wet, spasmodic). Provides quick relief with immune support.",
+      attributes: ["Non-Drowsy", "Natural Ingredients", "All Ages"],
+      badges: ["Popular"],
       id: "03",
+      category: "Cough Syrup",
+    },
+    {
+      name: "Gastrodigx Acidity Syrup",
+      image: "/images/gastrodigx-acidity-syrup.jpg",
+      price: "₹399",
+      description:
+        "Herbal Homeopathic Acidity Syrup formulated with natural ingredients to relieve gastric acidity, indigestion and acid reflux.",
+      attributes: ["Homeopathic", "Natural Ingredients", "All Ages"],
+      badges: ["New"],
+      id: "04",
+      category: "Homeopathic",
     },
   ];
 
@@ -124,11 +140,11 @@ const ProductsPreview = () => {
         </motion.div>
 
         {/* Products grid - Improved responsive behavior */}
-        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mb-12">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
           {products.map((product, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.333%-1rem)] lg:w-[300px]"
+              className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.333%-1rem)] lg:w-[300px] flex flex-col"
               custom={index}
               variants={cardVariants}
               initial="hidden"
@@ -182,10 +198,11 @@ const ProductsPreview = () => {
                       e.target.src = "/images/placeholder-product.jpg"; // Fallback image
                     }}
                   />
+                  <ComingSoonOverlay />
                 </div>
               </div>
 
-              <div className="p-5 text-left">
+              <div className="p-5 text-left flex flex-col flex-grow">
                 <h3 className="text-xl font-bold text-slate-900 mb-2">
                   {product.name}
                 </h3>
@@ -220,7 +237,7 @@ const ProductsPreview = () => {
                   ))}
                 </div>
 
-                <div className="flex justify-between items-center">
+                <div className="mt-auto flex justify-between items-center">
                   <Link
                     href={`/products/${product.id}`}
                     className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors group"

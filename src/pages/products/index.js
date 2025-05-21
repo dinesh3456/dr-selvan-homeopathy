@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Layout from "../../components/layout/Layout";
 import AppointmentButton from "../../components/common/AppointmentButton";
+import ComingSoonOverlay from "../../components/ui/ComingSoonOverlay";
 
 // Product data with updated image paths
 const products = [
@@ -40,6 +41,17 @@ const products = [
     badges: ["Popular"],
     id: "03",
     category: "Cough Syrup",
+  },
+  {
+    name: "Gastrodigx Acidity Syrup",
+    image: "/images/gastrodigx-acidity-syrup.jpg",
+    price: "₹399",
+    description:
+      "Herbal Homeopathic Acidity Syrup formulated with natural ingredients to relieve gastric acidity, indigestion and acid reflux.",
+    attributes: ["Homeopathic", "Natural Ingredients", "All Ages"],
+    badges: ["New"],
+    id: "04",
+    category: "Homeopathic",
   },
 ];
 
@@ -143,18 +155,21 @@ const ProductsPage = () => {
         </div>
 
         {/* Products grid - centered with flexbox */}
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product, index) => (
               <motion.div
                 key={product.id}
-                className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 w-full md:w-[300px]"
+                className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 w-full md:w-[300px] flex flex-col"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 whileHover={{ y: -5 }}
               >
-                <Link href={`/products/${product.id}`}>
+                <Link
+                  href={`/products/${product.id}`}
+                  className="flex flex-col h-full"
+                >
                   <div className="relative">
                     {/* Product badges */}
                     {product.badges &&
@@ -198,15 +213,18 @@ const ProductsPage = () => {
                           e.target.src = "/images/placeholder-product.jpg"; // Fallback image
                         }}
                       />
+
+                      {/* Coming Soon Overlay */}
+                      <ComingSoonOverlay />
                     </div>
                   </div>
 
-                  <div className="p-5 text-left">
+                  <div className="p-5 text-left flex flex-col flex-grow">
                     <h3 className="text-xl font-bold text-slate-900 mb-2">
                       {product.name}
                     </h3>
 
-                    <p className="text-slate-600 text-sm mb-6 h-12 overflow-hidden">
+                    <p className="text-slate-600 text-sm mb-6">
                       {product.description}
                     </p>
 
@@ -236,7 +254,7 @@ const ProductsPage = () => {
                       ))}
                     </div>
 
-                    <div className="flex justify-between items-center">
+                    <div className="mt-auto flex justify-between items-center">
                       <span className="text-primary font-medium hover:text-primary-dark hover:underline transition-colors">
                         View Details
                       </span>

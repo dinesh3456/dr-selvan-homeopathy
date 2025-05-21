@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Layout from "../../components/layout/Layout";
+import ComingSoonOverlay from "../../components/ui/ComingSoonOverlay";
 
 // Product database with detailed descriptions - only the three Dr. Selvan's Naturals products
 const productData = [
@@ -166,6 +167,64 @@ Acute conditions: Double the amount of medicine in some luke warm water should b
     badge: "Popular",
     attributes: ["Non-Drowsy", "Natural Ingredients", "All Ages"],
   },
+  {
+    id: "04",
+    name: "Gastrodigx Acidity Syrup",
+    price: "₹399",
+    image: "/images/gastrodigx-acidity-syrup.jpg",
+    gallery: [
+      "/images/gastrodigx-acidity-syrup.jpg",
+      "/images/gastrodigx-acidity-syrup.jpg",
+    ],
+    shortDescription:
+      "Herbal Homeopathic Acidity Syrup formulated with natural ingredients to relieve gastric acidity, indigestion and acid reflux.",
+    description: `Acidity is caused by an imbalance of acid secretion and protective mechanisms in the stomach. Gastrodigx helps neutralize excess stomach acid and soothe the digestive tract using a blend of traditional herbal ingredients such as Chitrak, Harad, Vidang, Saunf, and more.
+
+This homeopathic syrup is designed to relieve symptoms like heartburn, indigestion, gas, and bloating with natural ingredients that promote digestive health and comfort.`,
+    dosage: `Adults: As directed by the physician.
+Children (above 8 yrs.): As directed by the physician.
+Children (below 8 yrs.): As directed by the physician.
+Infants: Consult a doctor before use.`,
+    ingredients: [
+      "Chitrak",
+      "Harad",
+      "Vidang",
+      "Saunf",
+      "Bijora Nembu",
+      "Ajmoda",
+      "Jeera",
+      "Gaj-pippal",
+      "Kalanamak",
+      "Nishoth",
+      "Anar Dana",
+      "Suva Beej",
+      "Sounth",
+      "Pudina",
+      "Pippalmool",
+      "Sendha Namak",
+      "Ajwain",
+      "Nux moschata",
+      "Mentha piperta",
+      "Terminalia Arjuna",
+      "Carum carvi",
+      "Asaefodita",
+      "Zingiber off",
+      "Foeniculum vulgare",
+    ],
+    benefits: [
+      "Neutralizes excess stomach acid",
+      "Relieves heartburn and indigestion",
+      "Soothes acid reflux and gastric discomfort",
+      "Promotes digestive health",
+      "Made with natural and homeopathic ingredients",
+    ],
+    presentation: "100 ML",
+    storage:
+      "Replace cap immediately after use. Protect from heat, moisture and direct sunlight. Shake well before use.",
+    category: "Homeopathic",
+    badge: "New",
+    attributes: ["Homeopathic", "Natural Ingredients", "All Ages"],
+  },
 ];
 
 const ProductDetailPage = () => {
@@ -229,6 +288,9 @@ const ProductDetailPage = () => {
                   objectFit="contain"
                   className="rounded-lg"
                 />
+
+                {/* Main Coming Soon Overlay */}
+                <ComingSoonOverlay />
               </div>
             </div>
             <div className="flex gap-4">
@@ -248,6 +310,13 @@ const ProductDetailPage = () => {
                     layout="fill"
                     objectFit="cover"
                   />
+
+                  {/* Thumbnail Coming Soon Overlay - using a slightly different style for thumbnails */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-primary/50 to-accent/50 flex items-center justify-center">
+                    <span className="text-xs font-bold text-white px-1">
+                      COMING SOON
+                    </span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -598,6 +667,9 @@ const ProductDetailPage = () => {
                     <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-blue-600 font-bold text-sm">
                       {relatedProduct.price}
                     </div>
+
+                    {/* Coming Soon Overlay for related products */}
+                    <ComingSoonOverlay />
                   </div>
                   <div className="p-4">
                     <h3 className="text-lg font-bold text-gray-900">

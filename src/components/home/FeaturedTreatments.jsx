@@ -21,7 +21,7 @@ const treatments = [
       "Effective solutions for eczema, psoriasis, acne, and other persistent skin conditions.",
     image: "/images/treatment-skin.jpg",
     link: "/treatments/skin-disorders",
-    color: "accent", // Changed to accent (orange)
+    color: "primary",
   },
   {
     title: "Digestive Health",
@@ -37,7 +37,7 @@ const treatments = [
       "Gentle and effective treatments for children's health issues, from colic to behavioral problems.",
     image: "/images/treatment-pediatric-care.jpg",
     link: "/treatments/pediatric-care",
-    color: "accent", // Changed to accent (orange)
+    color: "primary",
   },
 ];
 
