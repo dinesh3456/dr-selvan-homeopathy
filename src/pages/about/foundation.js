@@ -4,6 +4,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Layout from "../../components/layout/Layout";
 import AppointmentButton from "../../components/common/AppointmentButton";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const FoundationPage = () => {
   const initiatives = [
@@ -141,11 +143,10 @@ const FoundationPage = () => {
 
   return (
     <Layout title="Dr. Selvan Foundation | Dr. Selvan's Homeopathy">
-      {/* Hero Section with Foundation Logo - Styled similarly to Medic Talk */}
+      {/* Hero Section */}
       <div className="bg-gradient-to-b from-blue-50 to-white py-12 md:py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            {/* Logo with animation - Similar to Medic Talk */}
             <motion.div
               className="mb-6 flex justify-center"
               initial={{ opacity: 0, y: -20 }}
@@ -245,6 +246,7 @@ const FoundationPage = () => {
               </p>
             </motion.div>
 
+            {/* Replaced Image with Slideshow */}
             <motion.div
               className="relative"
               initial={{ opacity: 0, scale: 0.9 }}
@@ -259,6 +261,24 @@ const FoundationPage = () => {
                   fill
                   className="object-cover"
                 />
+
+                <Swiper
+                  spaceBetween={10}
+                  slidesPerView={1}
+                  autoplay={{ delay: 3000 }}
+                  loop
+                >
+                  {[...Array(5)].map((_, i) => (
+                    <SwiperSlide key={i}>
+                      <Image
+                        src={`/images/gallery${i + 1}.jpg`}
+                        alt={`Foundation Slide ${i + 1}`}
+                        fill
+                        className="object-cover"
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 p-6 text-white">
                   <h3 className="text-xl font-bold mb-2">Community First</h3>
@@ -300,6 +320,45 @@ const FoundationPage = () => {
                 </div>
               </motion.div>
             </motion.div>
+          </div>
+        </section>
+
+        {/* Image Gallery Section */}
+        <section className="mb-16">
+          <motion.div
+            className="mb-8"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              Glimpses of Our Work
+            </h2>
+            <p className="text-gray-600">
+              Here are some moments captured from our fieldwork, medical camps,
+              and community efforts.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {[...Array(15)].map((_, idx) => (
+              <motion.div
+                key={idx}
+                className="relative h-36 md:h-40 rounded-lg overflow-hidden"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: idx * 0.05 }}
+                viewport={{ once: true }}
+              >
+                <Image
+                  src={`/images/gallery${idx + 1}.jpg`}
+                  alt={`Foundation Work ${idx + 1}`}
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
+            ))}
           </div>
         </section>
 
