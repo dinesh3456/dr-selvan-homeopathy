@@ -245,8 +245,20 @@ _Sent from Dr. Selvan's Homeopathy website_
               </svg>
             </button>
 
-            {/* Content container with better padding for mobile */}
-            <div className="p-4 sm:p-6 max-h-[90vh] overflow-y-auto">
+            {/* Content container with hidden scrollbar */}
+            <div
+              className="p-4 sm:p-6 max-h-[90vh] overflow-y-auto"
+              style={{
+                scrollbarWidth: "none",
+                msOverflowStyle: "none",
+              }}
+            >
+              <style jsx>{`
+                div::-webkit-scrollbar {
+                  display: none;
+                }
+              `}</style>
+
               {!isSubmitted ? (
                 <>
                   <div className="text-center mb-4 sm:mb-6">
