@@ -4,8 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Layout from "../../components/layout/Layout";
 import AppointmentButton from "../../components/common/AppointmentButton";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import { useEffect, useState } from "react";
 
 const FoundationPage = () => {
   const initiatives = [
@@ -118,28 +117,167 @@ const FoundationPage = () => {
     },
   ];
 
-  // Commented out upcoming events
-  // const upcomingEvents = [
-  //   {
-  //     date: "June 15, 2025",
-  //     title: "Mega Medical Camp - Mumbai",
-  //     location: "Dharavi Community Center",
-  //     description:
-  //       "Comprehensive health check-ups and homeopathic consultations",
-  //   },
-  //   {
-  //     date: "July 20, 2025",
-  //     title: "Children's Health Initiative",
-  //     location: "Hope Orphanage, Pune",
-  //     description: "Specialized pediatric care and nutrition program",
-  //   },
-  //   {
-  //     date: "August 10, 2025",
-  //     title: "Senior Citizens Wellness Camp",
-  //     location: "Aashirwad Retirement Home, Chennai",
-  //     description: "Focused on chronic disease management for the elderly",
-  //   },
-  // ];
+  const FoundationGallery = () => {
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const images = [
+      "/images/doctor-2.jpg",
+      "/images/gallery2.jpg",
+      "/images/gallery3.jpg",
+      "/images/gallery4.jpg",
+      "/images/gallery5.jpg",
+    ];
+
+    // Auto-rotate images
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 4000);
+
+      return () => clearInterval(interval);
+    }, [images.length]);
+
+    // Manual navigation
+    const goToNext = () => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    };
+
+    const goToPrev = () => {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      );
+    };
+
+    return (
+      <motion.div
+        className="relative"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+      >
+        <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-lg">
+          {/* Main image display */}
+          <div className="relative w-full h-full">
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className="absolute w-full h-full transition-opacity duration-500 ease-in-out"
+                style={{ opacity: currentImageIndex === index ? 1 : 0 }}
+              >
+                <Image
+                  src={image}
+                  alt={`Dr. Selvan Foundation - Image ${index + 1}`}
+                  fill
+                  className="object-cover"
+                  priority={index === 0}
+                />
+              </div>
+            ))}
+
+            {/* Gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+
+            {/* Caption */}
+            <div className="absolute bottom-0 left-0 p-6 text-white">
+              <h3 className="text-xl font-bold mb-2">Community First</h3>
+              <p className="text-sm opacity-90">
+                Our foundation's primary focus is on serving the community
+                through healthcare initiatives
+              </p>
+            </div>
+
+            {/* Navigation buttons */}
+            <button
+              onClick={goToPrev}
+              className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-2 text-white"
+              aria-label="Previous image"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </button>
+
+            <button
+              onClick={goToNext}
+              className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-2 text-white"
+              aria-label="Next image"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+
+            {/* Indicators */}
+            <div className="absolute bottom-2 left-0 right-0 flex justify-center space-x-2">
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentImageIndex(index)}
+                  className={`w-2 h-2 rounded-full ${
+                    currentImageIndex === index ? "bg-white" : "bg-white/50"
+                  }`}
+                  aria-label={`Go to image ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Floating caption - kept as is */}
+        <motion.div
+          className="absolute -top-8 -right-8 bg-white p-4 rounded-lg shadow-md max-w-xs"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex">
+            <div className="bg-accent text-white p-2 rounded-md mr-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"
+                />
+              </svg>
+            </div>
+            <p className="text-sm font-handwritten text-gray-700">
+              Making a difference in communities across India
+            </p>
+          </div>
+        </motion.div>
+      </motion.div>
+    );
+  };
 
   return (
     <Layout title="Dr. Selvan Foundation | Dr. Selvan's Homeopathy">
@@ -246,80 +384,7 @@ const FoundationPage = () => {
               </p>
             </motion.div>
 
-            {/* Replaced Image with Slideshow */}
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-            >
-              <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-lg">
-                <Image
-                  src="/images/doctor-2.jpg"
-                  alt="Dr. Selvan Foundation community work"
-                  fill
-                  className="object-cover"
-                />
-
-                <Swiper
-                  spaceBetween={10}
-                  slidesPerView={1}
-                  autoplay={{ delay: 3000 }}
-                  loop
-                >
-                  {[...Array(5)].map((_, i) => (
-                    <SwiperSlide key={i}>
-                      <Image
-                        src={`/images/gallery${i + 1}.jpg`}
-                        alt={`Foundation Slide ${i + 1}`}
-                        fill
-                        className="object-cover"
-                      />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-6 text-white">
-                  <h3 className="text-xl font-bold mb-2">Community First</h3>
-                  <p className="text-sm opacity-90">
-                    Our foundation's primary focus is on serving the community
-                    through healthcare initiatives
-                  </p>
-                </div>
-              </div>
-
-              {/* Floating caption */}
-              <motion.div
-                className="absolute -top-8 -right-8 bg-white p-4 rounded-lg shadow-md max-w-xs"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <div className="flex">
-                  <div className="bg-accent text-white p-2 rounded-md mr-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"
-                      />
-                    </svg>
-                  </div>
-                  <p className="text-sm font-handwritten text-gray-700">
-                    Making a difference in communities across India
-                  </p>
-                </div>
-              </motion.div>
-            </motion.div>
+            <FoundationGallery />
           </div>
         </section>
 
