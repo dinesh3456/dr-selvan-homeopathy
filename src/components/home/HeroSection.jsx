@@ -352,10 +352,31 @@ const HeroSection = () => {
               transition={{ delay: 1.2 }}
             >
               <div className="flex -space-x-2 mr-4">
-                {[1, 2, 3, 4].map((i) => (
+                {[
+                  {
+                    src: "/images/patient-avatar-1.jpg",
+                    alt: "Patient testimonial 1",
+                    name: "Sarah M.",
+                  },
+                  {
+                    src: "/images/patient-avatar-2.jpg",
+                    alt: "Patient testimonial 2",
+                    name: "Raj K.",
+                  },
+                  {
+                    src: "/images/patient-avatar-3.jpg",
+                    alt: "Patient testimonial 3",
+                    name: "Priya S.",
+                  },
+                  {
+                    src: "/images/patient-avatar-4.jpg",
+                    alt: "Patient testimonial 4",
+                    name: "John D.",
+                  },
+                ].map((avatar, i) => (
                   <motion.div
                     key={i}
-                    className="w-10 h-10 rounded-full bg-white border-2 border-white overflow-hidden"
+                    className="w-10 h-10 rounded-full bg-white border-2 border-white overflow-hidden shadow-sm"
                     initial={{ scale: 0, x: -10 }}
                     animate={{ scale: 1, x: 0 }}
                     transition={{
@@ -363,10 +384,45 @@ const HeroSection = () => {
                       type: "spring",
                       stiffness: 200,
                     }}
+                    whileHover={{
+                      scale: 1.1,
+                      zIndex: 10,
+                      transition: { duration: 0.2 },
+                    }}
+                    title={`${avatar.name} - Satisfied Patient`}
                   >
-                    <div className="w-full h-full bg-blue-100 flex items-center justify-center text-blue-500 text-xs font-bold">
-                      {i}
-                    </div>
+                    <Image
+                      src={avatar.src}
+                      alt={avatar.alt}
+                      width={40}
+                      height={40}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        try {
+                          if (e.target && e.target.parentElement) {
+                            e.target.style.display = "none";
+                            const initials = avatar.name
+                              .split(" ")
+                              .map((n) => n[0])
+                              .join("");
+
+                            const fallbackDiv = document.createElement("div");
+                            fallbackDiv.className =
+                              "w-full h-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-xs font-bold";
+                            fallbackDiv.textContent = initials;
+
+                            // Clear and append the new element
+                            e.target.parentElement.innerHTML = "";
+                            e.target.parentElement.appendChild(fallbackDiv);
+                          }
+                        } catch (error) {
+                          console.error(
+                            "Error handling image fallback:",
+                            error
+                          );
+                        }
+                      }}
+                    />
                   </motion.div>
                 ))}
               </div>
