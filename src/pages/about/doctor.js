@@ -17,6 +17,7 @@ const AboutDoctor = () => {
     "/images/doctor-speaking-3.jpg",
     "/images/doctor-clinic-1.jpg",
     "/images/doctor-clinic-2.jpg",
+    "/images/gallery6.jpg",
   ];
 
   // Auto-advance the slides every 4 seconds
@@ -101,7 +102,7 @@ const AboutDoctor = () => {
             ? "Dr. Selvan S. - Homeopathic Physician & Researcher"
             : currentImageIndex === 1 || currentImageIndex === 2
             ? "Dr. Selvan delivering educational presentations on homeopathic medicine"
-            : "Dr. Selvan with patients during consultations at his clinic"}
+            : "Dr. Selvan with patients during consultations"}
         </p>
       </motion.div>
     </div>
