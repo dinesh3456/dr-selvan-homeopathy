@@ -7,7 +7,7 @@ const openPositions = [
   {
     title: "Homeopathic Physician",
     type: "Full-time",
-    location: "Chennai, India",
+    location: "Mumbai, India",
     description:
       "We're seeking an experienced homeopathic physician to join our clinical team. The ideal candidate will have expertise in treating chronic conditions and a passion for patient-centered care.",
     requirements: [
@@ -29,7 +29,7 @@ const openPositions = [
   {
     title: "Patient Care Coordinator",
     type: "Full-time",
-    location: "Chennai, India",
+    location: "Mumbai, India",
     description:
       "Join our team as a Patient Care Coordinator to ensure smooth patient experiences from initial contact through treatment completion.",
     requirements: [
@@ -51,7 +51,7 @@ const openPositions = [
   {
     title: "Homeopathic Research Assistant",
     type: "Part-time",
-    location: "Remote / Chennai",
+    location: "Remote / Mumbai",
     description:
       "Support our ongoing research initiatives to document and validate homeopathic treatment outcomes.",
     requirements: [
@@ -517,7 +517,7 @@ const Careers = () => {
                 that truly makes a difference in patients' lives through natural
                 healing approaches."
                 <footer className="mt-3 text-gray-500 not-italic font-medium">
-                  — Dr. Nazia Shaikh., Homeopathic Physician
+                  — Dr. Nazia Ansari., Homeopathic Physician
                 </footer>
               </blockquote>
               <blockquote className="italic text-gray-600 border-l-4 border-primary pl-4 py-2">

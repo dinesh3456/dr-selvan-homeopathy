@@ -14,7 +14,7 @@ const AboutDoctor = () => {
   const doctorImages = [
     "/images/doctor-selvan.jpg",
     "/images/doctor-speaking-1.jpg",
-    "/images/doctor-speaking-2.jpg",
+    "/images/doctor-speaking-3.jpg",
     "/images/doctor-clinic-1.jpg",
     "/images/doctor-clinic-2.jpg",
   ];
@@ -473,7 +473,7 @@ const AboutDoctor = () => {
                         </svg>
                       </div>
                       <span className="text-gray-700">
-                        <strong>Dr. Nazia Shaikh</strong> — Clinical Research
+                        <strong>Dr. Nazia Ansari</strong> — Clinical Research
                         Co-ordinator
                       </span>
                     </li>
@@ -606,7 +606,7 @@ const AboutDoctor = () => {
                     specialty: "ENT",
                   },
                   {
-                    name: "Dr. Ashvini Kumar Pound",
+                    name: "Dr. Ashvini Kumar Dound",
                     qualification: "MBBS, MS",
                     specialty: "Ophthalmologist",
                   },
@@ -1029,7 +1029,7 @@ const AboutDoctor = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-primary mb-1">
-                    1,000+
+                    7,000+
                   </div>
                   <div className="text-gray-600">Patients Served</div>
                 </div>

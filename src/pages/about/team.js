@@ -71,7 +71,7 @@ const AboutTeam = () => {
       education: ["BHMS", "PG-Hom (London)", "MD"],
     },
     {
-      name: "Dr. Nazia Shaikh",
+      name: "Dr. Nazia Ansari",
       role: "Associate Doctor",
       image: "/images/team-member-2.jpg",
       specialty: "Homeopathic Medicine",

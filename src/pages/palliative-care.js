@@ -435,7 +435,7 @@ const PalliativeCarePage = () => {
       specialty: "ENT",
     },
     {
-      name: "Dr. Ashvini Kumar Pound",
+      name: "Dr. Ashvini Kumar Dound",
       qualification: "MBBS, MS",
       specialty: "Ophthalmologist",
     },
@@ -873,7 +873,7 @@ const PalliativeCarePage = () => {
   return (
     <Layout title="Palliative Care | Dr. Selvan's Homeopathy">
       {/* Hero Section */}
-      <div className="bg-gradient-to-b from-blue-50 to-white py-12 md:py-16">
+      <div className="bg-gradient-to-b from-blue-50 to-white py-12 md:py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -888,9 +888,43 @@ const PalliativeCarePage = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* I Need Home Care Button */}
-        <div className="flex justify-center mb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        {/* Tamil Text and I Need Home Care Button */}
+        <div className="flex flex-col items-center mb-16">
+          {/* Tamil Text */}
+          <motion.div
+            className="text-center mb-10"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <motion.h2
+              className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2"
+              style={{
+                fontFamily: "serif",
+                background: "linear-gradient(135deg, #3B82F6 0%, #FF6B35 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+              whileHover={{
+                scale: 1.02,
+                transition: { duration: 0.2 },
+              }}
+            >
+              கை விட பட்ட நோயாளிகளுக்கு சிறந்த மருத்துவம்
+            </motion.h2>
+            <motion.div
+              className="h-1 w-32 bg-gradient-to-r from-primary to-accent rounded-full mx-auto"
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+            />
+          </motion.div>
+
+          {/* I Need Home Care Button */}
           <motion.button
             className="bg-accent text-white px-8 py-4 text-lg font-medium rounded-full shadow-lg hover:bg-accent-dark transition flex items-center space-x-2"
             whileHover={{
@@ -1017,7 +1051,7 @@ const PalliativeCarePage = () => {
                 <span className="text-accent">Approach</span>
               </>
             }
-            subtitle="Enhancing quality of life for patients with serious illnesses through natural homeopathic approaches that complement conventional care."
+            subtitle=" natural homeopathic approaches that complement conventional care."
             alignment="center"
             withLine={true}
             lineColor="gradient-blue-orange"
