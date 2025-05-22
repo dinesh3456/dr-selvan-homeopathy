@@ -59,7 +59,7 @@ const TeamMember = ({
 };
 
 const AboutTeam = () => {
-  // Updated team data with actual team members
+  // Updated team data with new team members added
   const teamMembers = [
     {
       name: "Asst. Prof. Dr. Selvan Senthil Kumar",
@@ -170,6 +170,41 @@ const AboutTeam = () => {
       specialty: "Social Media Advisor",
       description:
         "Manages social media strategy and provides IT support to enhance the clinic's online presence.",
+    },
+    // NEW TEAM MEMBERS ADDED BELOW
+    {
+      name: "Mr. Hemant Kumar",
+      role: "Clinical Research Associate & Pharmacy Department",
+      image: "/images/team-member-14.jpg",
+      specialty: "Clinical Research & Pharmacy",
+      description:
+        "Oversees clinical research activities and pharmacy operations, ensuring quality control and regulatory compliance.",
+      education: ["B.Pharma"],
+    },
+    {
+      name: "Pradeep Kannan",
+      role: "Pharmacy Department",
+      image: "/images/team-member-15.jpg",
+      specialty: "Pharmaceutical Operations",
+      description:
+        "Manages pharmacy operations and ensures proper dispensing of homeopathic medications and remedies.",
+      education: ["D.Pharm"],
+    },
+    {
+      name: "Mr. Yogesh Supekar",
+      role: "Head of Pharmacy & Sales Department",
+      image: "/images/team-member-16.jpg",
+      specialty: "Pharmacy Leadership & Sales",
+      description:
+        "Leads the pharmacy department and oversees sales operations, ensuring efficient service delivery and customer satisfaction.",
+    },
+    {
+      name: "Aman Pal",
+      role: "Clinical Research Coordinator",
+      image: "/images/team-member-17.jpg",
+      specialty: "Clinical Research Coordination",
+      description:
+        "Coordinates clinical research activities, manages study protocols, and ensures compliance with research standards.",
     },
   ];
 
