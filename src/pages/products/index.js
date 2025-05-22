@@ -7,7 +7,7 @@ import Layout from "../../components/layout/Layout";
 import AppointmentButton from "../../components/common/AppointmentButton";
 import ComingSoonOverlay from "../../components/ui/ComingSoonOverlay";
 
-// Product data with updated image paths
+// Product data with updated categories
 const products = [
   {
     name: "Vitamin D Plus",
@@ -15,10 +15,10 @@ const products = [
     price: "₹599",
     description:
       "Multivitamin, Multimineral & Calcium Tablets for all age groups. Helps with healthy bones, immunity boost and increased strength.",
-    attributes: ["All Age Groups", "Dietary Supplement", "No Side Effects"],
+    attributes: ["All Age Groups", "Nutraceutical", "No Side Effects"],
     badges: ["Bestseller"],
     id: "01",
-    category: "Dietary Supplement",
+    category: "Nutraceutical", // Updated category
   },
   {
     name: "Ortho Grade",
@@ -26,10 +26,10 @@ const products = [
     price: "₹499",
     description:
       "Ayurvedic Pain Relief Oil with powerful muscle relaxant and anti-inflammatory properties. Provides quick pain relief.",
-    attributes: ["External Use Only", "Ayurvedic", "Natural Ingredients"],
+    attributes: ["External Use Only", "Ayurvedic Oil", "Natural Ingredients"],
     badges: ["New"],
     id: "02",
-    category: "Ayurvedic Oil",
+    category: "Ayurvedic Oil", // Updated category
   },
   {
     name: "Home Remedy Cough Syrup",
@@ -37,10 +37,10 @@ const products = [
     price: "₹349",
     description:
       "Natural cough syrup effective for all kinds of cough (dry, wet, spasmodic). Provides quick relief with immune support.",
-    attributes: ["Non-Drowsy", "Natural Ingredients", "All Ages"],
+    attributes: ["Non-Drowsy", "Herbal", "All Ages"],
     badges: ["Popular"],
     id: "03",
-    category: "Cough Syrup",
+    category: "Herbal", // Updated category
   },
   {
     name: "Gastrodigx Acidity Syrup",
@@ -48,20 +48,19 @@ const products = [
     price: "₹399",
     description:
       "Herbal Homeopathic Acidity Syrup formulated with natural ingredients to relieve gastric acidity, indigestion and acid reflux.",
-    attributes: ["Homeopathic", "Natural Ingredients", "All Ages"],
+    attributes: ["Herbal", "Natural Ingredients", "All Ages"],
     badges: ["New"],
     id: "04",
-    category: "Homeopathic",
+    category: "Herbal", // Updated category
   },
 ];
 
-// Categories derived from products
+// Categories updated to match your requirements
 const categories = [
   { name: "All Products", value: "all" },
-  { name: "Homeopathic", value: "Homeopathic" },
-  { name: "Dietary Supplement", value: "Dietary Supplement" },
+  { name: "Nutraceutical", value: "Nutraceutical" },
   { name: "Ayurvedic Oil", value: "Ayurvedic Oil" },
-  { name: "Cough Syrup", value: "Cough Syrup" },
+  { name: "Herbal", value: "Herbal" },
 ];
 
 const ProductsPage = () => {
@@ -99,8 +98,9 @@ const ProductsPage = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Discover our comprehensive range of Herbal and Nutraceutical
-              products formulated by Dr. Selvan for various health conditions.
+              Discover our comprehensive range of Nutraceutical, Ayurvedic Oil
+              and Herbal products formulated by Dr. Selvan for various health
+              conditions.
             </motion.p>
           </div>
         </div>

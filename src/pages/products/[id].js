@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import Layout from "../../components/layout/Layout";
 import ComingSoonOverlay from "../../components/ui/ComingSoonOverlay";
 
-// Product database with detailed descriptions - only the three Dr. Selvan's Naturals products
+// Product database with updated categories
 const productData = [
   {
     id: "01",
@@ -63,9 +63,9 @@ const productData = [
     presentation: "30 Tablets",
     storage:
       "Protect from heat, moisture & direct sunlight. Replace cap immediately after use.",
-    category: "Dietary Supplement",
+    category: "Nutraceutical", // Updated category
     badge: "Bestseller",
-    attributes: ["All Age Groups", "Dietary Supplement", "No Side Effects"],
+    attributes: ["All Age Groups", "Nutraceutical", "No Side Effects"],
   },
   {
     id: "02",
@@ -108,9 +108,9 @@ const productData = [
     presentation: "100 ML",
     storage:
       "Store in a cool, dry place away from direct sunlight. Keep tightly closed after use.",
-    category: "Ayurvedic Oil",
+    category: "Ayurvedic Oil", // Updated category
     badge: "New",
-    attributes: ["External Use Only", "Ayurvedic", "Natural Ingredients"],
+    attributes: ["External Use Only", "Ayurvedic Oil", "Natural Ingredients"],
   },
   {
     id: "03",
@@ -163,9 +163,9 @@ Acute conditions: Double the amount of medicine in some luke warm water should b
     presentation: "100 ML",
     storage:
       "Protect from heat, moisture and direct sunlight. Replace cap immediately after use. Shake well before use.",
-    category: "Cough Syrup",
+    category: "Herbal", // Updated category
     badge: "Popular",
-    attributes: ["Non-Drowsy", "Natural Ingredients", "All Ages"],
+    attributes: ["Non-Drowsy", "Herbal", "All Ages"],
   },
   {
     id: "04",
@@ -216,14 +216,14 @@ Infants: Consult a doctor before use.`,
       "Relieves heartburn and indigestion",
       "Soothes acid reflux and gastric discomfort",
       "Promotes digestive health",
-      "Made with natural and homeopathic ingredients",
+      "Made with natural and herbal ingredients",
     ],
     presentation: "100 ML",
     storage:
       "Replace cap immediately after use. Protect from heat, moisture and direct sunlight. Shake well before use.",
-    category: "Homeopathic",
+    category: "Herbal", // Updated category
     badge: "New",
-    attributes: ["Homeopathic", "Natural Ingredients", "All Ages"],
+    attributes: ["Herbal", "Natural Ingredients", "All Ages"],
   },
 ];
 
@@ -311,7 +311,7 @@ const ProductDetailPage = () => {
                     objectFit="cover"
                   />
 
-                  {/* Thumbnail Coming Soon Overlay - using a slightly different style for thumbnails */}
+                  {/* Thumbnail Coming Soon Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/50 to-accent/50 flex items-center justify-center">
                     <span className="text-xs font-bold text-white px-1">
                       COMING SOON
@@ -689,25 +689,3 @@ const ProductDetailPage = () => {
 };
 
 export default ProductDetailPage;
-
-// This function gets called at build time on server-side.
-export async function getStaticPaths() {
-  // Generate paths for all products
-  const paths = productData.map((product) => ({
-    params: { id: product.id },
-  }));
-
-  return { paths, fallback: false };
-}
-
-// This function gets called at build time on server-side.
-export async function getStaticProps({ params }) {
-  // Find the product data
-  const product = productData.find((p) => p.id === params.id);
-
-  return {
-    props: {
-      product,
-    },
-  };
-}

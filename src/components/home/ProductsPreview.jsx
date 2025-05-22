@@ -11,7 +11,7 @@ const ProductsPreview = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
-  // Product data with updated image paths
+  // Product data with updated categories
   const products = [
     {
       name: "Vitamin D Plus",
@@ -19,10 +19,10 @@ const ProductsPreview = () => {
       price: "₹599",
       description:
         "Multivitamin, Multimineral & Calcium Tablets for all age groups. Helps with healthy bones, immunity boost and increased strength.",
-      attributes: ["All Age Groups", "Dietary Supplement", "No Side Effects"],
+      attributes: ["All Age Groups", "Nutraceutical", "No Side Effects"],
       badges: ["Bestseller"],
       id: "01",
-      category: "Dietary Supplement",
+      category: "Nutraceutical", // Updated category
     },
     {
       name: "Ortho Grade",
@@ -30,10 +30,10 @@ const ProductsPreview = () => {
       price: "₹499",
       description:
         "Ayurvedic Pain Relief Oil with powerful muscle relaxant and anti-inflammatory properties. Provides quick pain relief.",
-      attributes: ["External Use Only", "Ayurvedic", "Natural Ingredients"],
+      attributes: ["External Use Only", "Ayurvedic Oil", "Natural Ingredients"],
       badges: ["New"],
       id: "02",
-      category: "Ayurvedic Oil",
+      category: "Ayurvedic Oil", // Updated category
     },
     {
       name: "Home Remedy Cough Syrup",
@@ -41,10 +41,10 @@ const ProductsPreview = () => {
       price: "₹349",
       description:
         "Natural cough syrup effective for all kinds of cough (dry, wet, spasmodic). Provides quick relief with immune support.",
-      attributes: ["Non-Drowsy", "Natural Ingredients", "All Ages"],
+      attributes: ["Non-Drowsy", "Herbal", "All Ages"],
       badges: ["Popular"],
       id: "03",
-      category: "Cough Syrup",
+      category: "Herbal", // Updated category
     },
     {
       name: "Gastrodigx Acidity Syrup",
@@ -52,10 +52,10 @@ const ProductsPreview = () => {
       price: "₹399",
       description:
         "Herbal Homeopathic Acidity Syrup formulated with natural ingredients to relieve gastric acidity, indigestion and acid reflux.",
-      attributes: ["Homeopathic", "Natural Ingredients", "All Ages"],
+      attributes: ["Herbal", "Natural Ingredients", "All Ages"],
       badges: ["New"],
       id: "04",
-      category: "Homeopathic",
+      category: "Herbal", // Updated category
     },
   ];
 
@@ -139,7 +139,7 @@ const ProductsPreview = () => {
           </motion.p>
         </motion.div>
 
-        {/* Products grid - Improved responsive behavior */}
+        {/* Products grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
           {products.map((product, index) => (
             <motion.div
