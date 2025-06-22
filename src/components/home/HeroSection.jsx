@@ -194,7 +194,7 @@ const HeroSection = () => {
             scale: [1, 1.05, 1],
           }}
           transition={{
-            duration: 12, // Increased from 6 for slower animation
+            duration: 12,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -202,8 +202,12 @@ const HeroSection = () => {
 
         {/* Secondary background bubble - hidden on mobile, shown on desktop */}
         <motion.div
-          className="absolute -bottom-[-5%] -left-[-10%] hidden md:block"
-          style={{ width: "35rem", height: "35rem" }}
+          className="absolute bottom-[10%] left-[10%] hidden md:block"
+          style={{
+            width: "30rem",
+            height: "30rem",
+            transform: "translate(-40%, 40%)",
+          }}
           animate={{
             x: [0, 10, 0],
             scale: [1, 1.03, 1],
@@ -224,7 +228,7 @@ const HeroSection = () => {
           />
         </motion.div>
 
-        {/* Floating bubbles with SLOW animation */}
+        {/* Floating bubbles with responsive sizing */}
         {decorativeBubbles.map((bubble) => (
           <motion.div
             key={bubble.id}
@@ -258,24 +262,23 @@ const HeroSection = () => {
       </AnimatePresence>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-10 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-10 relative z-10 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center min-h-[calc(100vh-12rem)] md:min-h-[calc(100vh-8rem)]">
+          {/* Text Content */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="max-w-2xl relative"
+            className="relative order-1 md:order-1"
           >
-            {/* Mobile-only logo overlay that appears behind the heading */}
-            <div className="absolute inset-0 w-full h-full flex justify-center items-center md:hidden z-0">
-              <div className="relative w-96 h-96">
-                {" "}
-                {/* Increased from w-64 h-64 to w-80 h-80 */}
+            {/* Mobile-only logo overlay - improved responsive positioning */}
+            <div className="absolute inset-0 w-full h-full flex justify-center items-center md:hidden z-0 pointer-events-none">
+              <div className="relative w-80 h-80 opacity-25">
                 <Image
                   src="/images/Dr. Selvan Logo-symbol.png"
                   alt="Dr. Selvan Symbol"
                   fill
-                  className="object-contain opacity-25"
+                  className="object-contain"
                   priority
                 />
               </div>
@@ -289,7 +292,7 @@ const HeroSection = () => {
             </motion.span>
 
             <motion.h1
-              className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-tight mb-6 relative z-10"
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 leading-tight mb-6 relative z-10"
               variants={itemVariants}
             >
               <span className="block">Gentle healing,</span>
@@ -344,14 +347,15 @@ const HeroSection = () => {
               </motion.button>
             </motion.div>
 
+            {/* Patient testimonials section - improved responsive layout */}
             <motion.div
-              className="mt-12 flex items-center"
+              className="mt-12 flex items-center gap-4 relative z-10"
               variants={itemVariants}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.2 }}
             >
-              <div className="flex -space-x-2 mr-4">
+              <div className="flex -space-x-2">
                 {[
                   {
                     src: "/images/patient-avatar-1.jpg",
@@ -376,7 +380,7 @@ const HeroSection = () => {
                 ].map((avatar, i) => (
                   <motion.div
                     key={i}
-                    className="w-10 h-10 rounded-full bg-white border-2 border-white overflow-hidden shadow-sm"
+                    className="w-10 h-10 rounded-full bg-white border-2 border-white overflow-hidden shadow-sm flex-shrink-0"
                     initial={{ scale: 0, x: -10 }}
                     animate={{ scale: 1, x: 0 }}
                     transition={{
@@ -411,7 +415,6 @@ const HeroSection = () => {
                               "w-full h-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-xs font-bold";
                             fallbackDiv.textContent = initials;
 
-                            // Clear and append the new element
                             e.target.parentElement.innerHTML = "";
                             e.target.parentElement.appendChild(fallbackDiv);
                           }
@@ -426,7 +429,7 @@ const HeroSection = () => {
                   </motion.div>
                 ))}
               </div>
-              <div>
+              <div className="flex-shrink-0">
                 <p className="text-slate-700 font-medium">
                   <span className="text-blue-600 font-bold">7,000+</span>{" "}
                   satisfied patients
@@ -456,14 +459,15 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
 
+          {/* Image Section */}
           <motion.div
-            className="relative z-10"
+            className="relative z-10 order-2 md:order-2"
             variants={imageContainerVariants}
             initial="hidden"
             animate="visible"
           >
             {/* Main image with geometric frame and animated effects */}
-            <div className="relative">
+            <div className="relative max-w-lg mx-auto md:max-w-none">
               {/* Animated glow effect behind image */}
               <motion.div
                 className="absolute -inset-4 border-2 border-blue-200 rounded-2xl bg-blue-50 opacity-60"
@@ -527,9 +531,9 @@ const HeroSection = () => {
                 </div>
               </motion.div>
 
-              {/* Feature highlights with animation */}
+              {/* Feature highlights with responsive positioning */}
               <motion.div
-                className="absolute -bottom-6 -left-6 bg-white rounded-lg shadow-lg p-4 max-w-xs"
+                className="absolute -bottom-6 -left-6 bg-white rounded-lg shadow-lg p-4 max-w-xs z-20"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -543,7 +547,7 @@ const HeroSection = () => {
                 }}
               >
                 <div className="flex items-center space-x-3">
-                  <div className="p-2 bg-blue-100 text-blue-600 rounded-full">
+                  <div className="p-2 bg-blue-100 text-blue-600 rounded-full flex-shrink-0">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-6 w-6"
@@ -571,7 +575,7 @@ const HeroSection = () => {
               </motion.div>
 
               <motion.div
-                className="absolute -top-6 -right-6 bg-white rounded-lg shadow-lg p-4 max-w-xs"
+                className="absolute -top-6 -right-6 bg-white rounded-lg shadow-lg p-4 max-w-xs z-20"
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -585,7 +589,7 @@ const HeroSection = () => {
                 }}
               >
                 <div className="flex items-center space-x-3">
-                  <div className="p-2 bg-blue-100 text-blue-600 rounded-full">
+                  <div className="p-2 bg-blue-100 text-blue-600 rounded-full flex-shrink-0">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-6 w-6"
