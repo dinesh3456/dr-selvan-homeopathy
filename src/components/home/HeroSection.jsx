@@ -202,7 +202,7 @@ const HeroSection = () => {
 
         {/* Secondary background bubble - hidden on mobile, shown on desktop */}
         <motion.div
-          className="absolute bottom-[10%] left-[10%] hidden md:block"
+          className="absolute bottom-[10%] left-[10%] hidden lg:block"
           style={{
             width: "30rem",
             height: "30rem",
