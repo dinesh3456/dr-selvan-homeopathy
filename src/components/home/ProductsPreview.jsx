@@ -325,7 +325,7 @@ const ProductsPreview = () => {
 
           {/* Arrow annotation - now responsive */}
           <motion.div
-            className="absolute -top-11 left-[35%] sm:left-[45%] md:left-[23%] hidden md:block"
+            className="absolute -top-21 left-[35%] sm:left-[45%] md:left-[23%] hidden md:block"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
