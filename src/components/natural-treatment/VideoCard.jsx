@@ -1,10 +1,15 @@
 // src/components/natural-treatment/VideoCard.jsx
 import React from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import LazyYouTubeVideo from "../common/LazyYouTubeVideo";
 
 const VideoCard = ({ video, index }) => {
+  // Function to open YouTube video in new tab
+  const handleWatchVideo = () => {
+    const youtubeUrl = `https://www.youtube.com/watch?v=${video.id}`;
+    window.open(youtubeUrl, "_blank", "noopener,noreferrer");
+  };
+
   // Animation variants
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -71,28 +76,27 @@ const VideoCard = ({ video, index }) => {
           </p>
 
           <div className="mt-4 flex justify-between items-center">
-            <Link href={`/natural-treatment/video/${video.id}`} passHref>
-              <motion.div
-                className="text-blue-600 font-medium flex items-center group-hover:text-blue-700 transition-colors cursor-pointer"
-                whileHover={{ x: 3 }}
+            <motion.button
+              onClick={handleWatchVideo}
+              className="text-blue-600 font-medium flex items-center hover:text-blue-700 transition-colors cursor-pointer"
+              whileHover={{ x: 3 }}
+            >
+              Watch Video
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                View Details
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-1"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </motion.div>
-            </Link>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h1m4 0h1m-6-8h8a2 2 0 012 2v8a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2z"
+                />
+              </svg>
+            </motion.button>
           </div>
         </div>
       </div>
