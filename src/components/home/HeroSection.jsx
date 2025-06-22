@@ -182,7 +182,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative overflow-hidden min-h-screen flex items-center bg-gradient-to-b from-blue-50 to-white">
+    <section className="relative overflow-hidden bg-gradient-to-b from-blue-50 to-white">
       {/* Decorative elements */}
       <div className="absolute w-full h-full overflow-hidden z-0">
         {/* Primary background bubble */}
@@ -262,8 +262,8 @@ const HeroSection = () => {
       </AnimatePresence>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-10 relative z-10 w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center min-h-[calc(100vh-12rem)] md:min-h-[calc(100vh-8rem)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 md:py-16 relative z-10 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
           {/* Text Content */}
           <motion.div
             variants={containerVariants}
@@ -285,14 +285,14 @@ const HeroSection = () => {
             </div>
 
             <motion.span
-              className="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-sm font-medium mb-4 relative z-10"
+              className="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-sm font-medium mb-3 relative z-10"
               variants={itemVariants}
             >
               Natural Healing Solutions
             </motion.span>
 
             <motion.h1
-              className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 leading-tight mb-6 relative z-10"
+              className="text-3xl sm:text-4xl md:text-6xl font-bold text-slate-900 leading-tight mb-4 relative z-10"
               variants={itemVariants}
             >
               <span className="block">Gentle healing,</span>
@@ -301,7 +301,7 @@ const HeroSection = () => {
             </motion.h1>
 
             <motion.p
-              className="text-lg md:text-xl text-slate-600 mb-8 max-w-xl relative z-10"
+              className="text-base md:text-xl text-slate-600 mb-6 max-w-xl relative z-10"
               variants={itemVariants}
             >
               Experience the power of homeopathy with our personalized approach
@@ -349,7 +349,7 @@ const HeroSection = () => {
 
             {/* Patient testimonials section - improved responsive layout */}
             <motion.div
-              className="mt-12 flex items-center gap-4 relative z-10"
+              className="mt-8 flex items-center gap-4 relative z-10"
               variants={itemVariants}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -491,7 +491,7 @@ const HeroSection = () => {
                   transition: { duration: 0.3 },
                 }}
               >
-                <div className="w-full h-72 md:h-96 lg:h-[450px] relative">
+                <div className="w-full h-64 md:h-96 lg:h-[450px] relative">
                   {/* Image carousel with AnimatePresence for smooth transitions */}
                   <AnimatePresence mode="wait">
                     <motion.div
