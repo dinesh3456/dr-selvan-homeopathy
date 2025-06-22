@@ -140,13 +140,14 @@ const AboutTeam = () => {
         "Handles patient inquiries and appointment scheduling, providing friendly and efficient customer service.",
     },
     {
-      name: "Pooja",
-      role: "Call Centre Team",
+      name: "Anjali Yadav",
+      role: "BSc. Zoology (Clinical Research Coordinator)",
       image: "/images/team-member-10.jpg",
-      specialty: "Patient Communication",
+      specialty: "Clinical Research & Patient Coordination",
       description:
-        "Assists patients with information and appointments, ensuring clear and helpful communication.",
+        "Supports clinical research operations and assists patients throughout the trial process, ensuring accurate documentation and communication.",
     },
+
     {
       name: "Sudan",
       role: "Content Creator and Advisor",
