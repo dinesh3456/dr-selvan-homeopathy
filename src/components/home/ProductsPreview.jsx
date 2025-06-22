@@ -139,12 +139,12 @@ const ProductsPreview = () => {
           </motion.p>
         </motion.div>
 
-        {/* Products grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
+        {/* Products grid - Fixed responsive layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {products.map((product, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.333%-1rem)] lg:w-[300px] flex flex-col"
+              className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 w-full max-w-sm mx-auto flex flex-col"
               custom={index}
               variants={cardVariants}
               initial="hidden"
@@ -155,7 +155,7 @@ const ProductsPreview = () => {
             >
               <div className="relative">
                 {/* ID tag */}
-                <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg text-xs text-gray-500 font-medium">
+                <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg text-xs text-gray-500 font-medium z-10">
                   / {product.id}
                 </div>
 
@@ -164,9 +164,7 @@ const ProductsPreview = () => {
                   product.badges.map((badge, i) => (
                     <div
                       key={i}
-                      className={`absolute top-3 ${
-                        i === 0 ? "ml-16" : "ml-24"
-                      } ${
+                      className={`absolute top-3 right-16 z-10 ${
                         badge === "Bestseller"
                           ? "bg-blue-100 text-blue-600"
                           : badge === "New"
@@ -181,7 +179,7 @@ const ProductsPreview = () => {
                   ))}
 
                 {/* Price tag */}
-                <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg text-blue-600 font-bold text-sm">
+                <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg text-blue-600 font-bold text-sm z-10">
                   {product.price}
                 </div>
 
@@ -202,18 +200,18 @@ const ProductsPreview = () => {
                 </div>
               </div>
 
-              <div className="p-5 text-left flex flex-col flex-grow">
-                <h3 className="text-xl font-bold text-slate-900 mb-2">
+              <div className="p-4 text-left flex flex-col flex-grow">
+                <h3 className="text-lg font-bold text-slate-900 mb-2 line-clamp-2">
                   {product.name}
                 </h3>
 
-                <p className="text-slate-600 text-sm mb-6">
+                <p className="text-slate-600 text-sm mb-4 line-clamp-3">
                   {product.description}
                 </p>
 
                 {/* Product attributes */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {product.attributes.map((attr, i) => (
+                <div className="flex flex-wrap gap-1 mb-4">
+                  {product.attributes.slice(0, 2).map((attr, i) => (
                     <span
                       key={i}
                       className="inline-flex items-center text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded"
@@ -235,17 +233,22 @@ const ProductsPreview = () => {
                       {attr}
                     </span>
                   ))}
+                  {product.attributes.length > 2 && (
+                    <span className="text-xs text-gray-500 px-2 py-1">
+                      +{product.attributes.length - 2} more
+                    </span>
+                  )}
                 </div>
 
                 <div className="mt-auto flex justify-between items-center">
                   <Link
                     href={`/products/${product.id}`}
-                    className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors group"
+                    className="inline-flex items-center text-blue-600 font-medium hover:text-blue-700 transition-colors group text-sm"
                   >
                     <span>View Details</span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 ml-1 group-hover:transform group-hover:translate-x-1 transition-transform"
+                      className="h-4 w-4 ml-1 group-hover:transform group-hover:translate-x-1 transition-transform"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -260,7 +263,7 @@ const ProductsPreview = () => {
                   </Link>
 
                   <button
-                    className={`w-10 h-10 rounded-full flex items-center justify-center ${
+                    className={`w-8 h-8 rounded-full flex items-center justify-center ${
                       product.id === "01"
                         ? "bg-blue-100 text-blue-600"
                         : product.id === "02"
@@ -272,7 +275,7 @@ const ProductsPreview = () => {
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5"
+                      className="h-4 w-4"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -322,7 +325,7 @@ const ProductsPreview = () => {
 
           {/* Arrow annotation - now responsive */}
           <motion.div
-            className="absolute -top--11 left-[35%] sm:left-[45%] md:left-[23%] hidden md:block"
+            className="absolute -top-11 left-[35%] sm:left-[45%] md:left-[23%] hidden md:block"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
