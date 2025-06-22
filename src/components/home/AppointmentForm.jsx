@@ -22,7 +22,7 @@ const AppointmentForm = () => {
 
   // Initialize EmailJS once when component mounts
   useEffect(() => {
-    emailjs.init("yfO-8t4GWAqHGIiED");
+    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
   }, []);
 
   const handleChange = (e) => {
@@ -52,10 +52,10 @@ const AppointmentForm = () => {
 
       // Use EmailJS to send the email
       const response = await emailjs.send(
-        "service_60h1gve",
-        "template_8n5y70q",
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         templateParams,
-        "yfO-8t4GWAqHGIiED"
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       );
 
       if (response.status === 200) {
