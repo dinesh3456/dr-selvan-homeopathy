@@ -235,7 +235,7 @@ const Footer = () => {
                     href="mailto:drselvanhomeopathy@gmail.com"
                     className="text-gray-600 hover:text-accent"
                   >
-                    drselvanhomeopathy@gmail.com
+                    care@drselvanshomeopathy.com
                   </a>
                 </div>
                 <div className="flex items-center mb-4">
