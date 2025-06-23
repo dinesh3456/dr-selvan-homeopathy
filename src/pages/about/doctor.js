@@ -9,6 +9,7 @@ const AboutDoctor = () => {
   // Add state for managing the image carousel
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [showBookstorePopup, setShowBookstorePopup] = useState(false);
 
   // Array of doctor images including the new ones
   const doctorImages = [
@@ -759,6 +760,341 @@ const AboutDoctor = () => {
               </motion.div>
             </div>
           </section>
+
+          <section className="mb-12">
+            <motion.div
+              className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-6 md:p-8 border border-green-200"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <div className="grid md:grid-cols-3 gap-6 items-center">
+                {/* Book Image Placeholder */}
+                <motion.div
+                  className="flex justify-center"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="relative">
+                    <motion.div
+                      className="relative transform hover:scale-105 transition-transform duration-300"
+                      whileHover={{ y: -5 }}
+                    >
+                      <Image
+                        src="/images/heal-with-homeopathy-book.jpg" // Update this path to match your image location
+                        alt="Heal With Homeopathy Book by Dr. Selvan"
+                        width={240}
+                        height={320}
+                        className="rounded-lg shadow-2xl border border-gray-200"
+                        priority
+                      />
+
+                      {/* Book reflection effect */}
+                      <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-transparent via-transparent to-white/20 pointer-events-none"></div>
+
+                      {/* Subtle glow effect */}
+                      <div className="absolute -inset-1 bg-gradient-to-r from-green-400 to-blue-500 rounded-lg blur opacity-20 -z-10"></div>
+                    </motion.div>
+
+                    {/* Award badge */}
+                    <motion.div
+                      className="absolute -top-3 -right-3 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-sm font-bold text-yellow-800 shadow-lg"
+                      initial={{ scale: 0, rotate: -180 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      transition={{
+                        delay: 0.5,
+                        type: "spring",
+                        stiffness: 200,
+                      }}
+                    >
+                      ★
+                    </motion.div>
+
+                    {/* Recognition badge */}
+                    <motion.div
+                      className="absolute -bottom-2 -left-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full font-medium shadow-lg"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.7 }}
+                    >
+                      NCH Recognized
+                    </motion.div>
+                  </div>
+                </motion.div>
+
+                {/* Book Content */}
+                <div className="md:col-span-2">
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="flex items-center mb-4">
+                      <div className="bg-green-100 p-3 rounded-full text-green-600 mr-4">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-6 w-6"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                          />
+                        </svg>
+                      </div>
+                      <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+                        <span className="text-blue-600">
+                          "Heal With Homeopathy"
+                        </span>{" "}
+                        -<span className="text-accent"> Acclaimed Book</span>
+                      </h2>
+                    </div>
+
+                    <p className="text-gray-700 mb-4 leading-relaxed">
+                      Dr. Selvan's acclaimed book,{" "}
+                      <strong>"Heal With Homeopathy,"</strong> has received
+                      official recognition from the{" "}
+                      <strong>National Commission for Homoeopathy (NCH)</strong>{" "}
+                      and the <strong>Maharashtra Council of Homeopathy</strong>
+                      . The foreword has been penned by{" "}
+                      <strong>
+                        Dr. Raj K. Manchanda, Former Director of CCRH
+                      </strong>
+                      , and the book was proudly released by{" "}
+                      <strong>
+                        Hon'ble Cabinet Minister Mr. Mangal Prabhat Lodha
+                      </strong>
+                      .
+                    </p>
+
+                    <p className="text-gray-700 mb-4 leading-relaxed">
+                      Published by <strong>B. Jain Publications</strong>—India's
+                      leading publishing house in the field of Homeopathy—this
+                      book is a reflection of Dr. Selvan and his team's
+                      extraordinary <strong>Travelo-Campaign</strong>, which
+                      aimed to spread awareness and education about Homeopathy
+                      across the northern and northeastern regions of India.
+                    </p>
+
+                    <div className="bg-white p-4 rounded-lg mb-4 border-l-4 border-green-500">
+                      <h4 className="font-bold text-gray-900 mb-2">
+                        The Epic Journey
+                      </h4>
+                      <p className="text-gray-700 text-sm mb-2">
+                        The campaign covered a total of{" "}
+                        <strong>5,657 kilometres</strong>, including 1,818 km by
+                        train and 3,839 km by motorcycle, using 7 motorcycles
+                        and 9 riders.
+                      </p>
+                      <p className="text-gray-700 text-sm">
+                        The journey spanned across multiple states:{" "}
+                        <strong>
+                          Maharashtra, Punjab, Ladakh, Himachal Pradesh, Jammu &
+                          Kashmir, Haryana, Rajasthan, and Gujarat
+                        </strong>
+                        , reaching even the most remote areas.
+                      </p>
+                    </div>
+
+                    <div className="bg-green-100 p-4 rounded-lg mb-4">
+                      <p className="text-gray-700 text-sm">
+                        <strong>Impact:</strong> Through this noble mission, the
+                        team provided health education and distributed
+                        homeopathic medicines to over{" "}
+                        <strong>20,000 citizens</strong>, making a significant
+                        impact in underserved communities.
+                      </p>
+                    </div>
+
+                    <div className="flex flex-wrap gap-3">
+                      <motion.a
+                        href="https://amzn.in/d/3I9uDKO"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors text-sm font-medium"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <svg
+                          className="w-4 h-4 mr-2"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M21.31 7.98c.02-.24.04-.49.04-.73 0-1.1-.9-2-2-2H4.75c-1.1 0-2 .9-2 2v10.5c0 1.1.9 2 2 2h14.56c1.1 0 2-.9 2-2V8.71l-.02-.73z" />
+                        </svg>
+                        Buy on Amazon
+                      </motion.a>
+                      <motion.a
+                        href="https://dl.flipkart.com/s/_!2izTNNNN"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <svg
+                          className="w-4 h-4 mr-2"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M21.31 7.98c.02-.24.04-.49.04-.73 0-1.1-.9-2-2-2H4.75c-1.1 0-2 .9-2 2v10.5c0 1.1.9 2 2 2h14.56c1.1 0 2-.9 2-2V8.71l-.02-.73z" />
+                        </svg>
+                        Buy on Flipkart
+                      </motion.a>
+                      <motion.button
+                        onClick={() => setShowBookstorePopup(true)}
+                        className="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors text-sm font-medium"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <svg
+                          className="w-4 h-4 mr-2"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                        </svg>
+                        Find in Bookstore for More Discount
+                      </motion.button>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          </section>
+
+          <AnimatePresence>
+            {showBookstorePopup && (
+              <motion.div
+                className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setShowBookstorePopup(false)}
+              >
+                <motion.div
+                  className="bg-white rounded-xl shadow-xl max-w-md w-full p-6 relative"
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Close button */}
+                  <button
+                    onClick={() => setShowBookstorePopup(false)}
+                    className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100 transition"
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+
+                  {/* Content */}
+                  <div className="text-center">
+                    <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                      <svg
+                        className="w-8 h-8 text-blue-600"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                        />
+                      </svg>
+                    </div>
+
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      Get Your Book with Discount!
+                    </h3>
+
+                    <p className="text-gray-600 mb-6">
+                      Contact us directly to get "Heal With Homeopathy" with
+                      special discounts from bookstores.
+                    </p>
+
+                    {/* Contact Information */}
+                    <div className="bg-gray-50 rounded-lg p-4 mb-6">
+                      <p className="text-sm text-gray-600 mb-2">
+                        Contact Number
+                      </p>
+                      <div className="flex items-center justify-center space-x-2">
+                        <svg
+                          className="w-5 h-5 text-green-600"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                          />
+                        </svg>
+                        <a
+                          href="tel:+917208719646"
+                          className="text-lg font-bold text-gray-900 hover:text-green-600 transition"
+                        >
+                          +91 7208719646
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex space-x-3">
+                      <motion.a
+                        href="tel:+917208719646"
+                        className="flex-1 bg-green-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-green-700 transition text-center"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        Call Now
+                      </motion.a>
+                      <motion.a
+                        href="https://wa.me/917208719646?text=Hi%2C%20I%20would%20like%20to%20purchase%20the%20book%20%22Heal%20With%20Homeopathy%22%20with%20discount.%20Please%20provide%20details."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 bg-green-500 text-white py-2 px-4 rounded-lg font-medium hover:bg-green-600 transition text-center flex items-center justify-center"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <svg
+                          className="w-4 h-4 mr-2"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                        </svg>
+                        WhatsApp
+                      </motion.a>
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Dr. Selvan Foundation Section - NEW */}
           <section className="mb-12">

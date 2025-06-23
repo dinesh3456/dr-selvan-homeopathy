@@ -210,7 +210,7 @@ const Footer = () => {
                     href="tel:+917208719646"
                     className="text-gray-600 hover:text-accent text-base"
                   >
-                    +91 7208719646
+                    India: +91 7208719646
                   </a>
                 </div>
               </div>
