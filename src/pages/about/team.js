@@ -149,7 +149,7 @@ const AboutTeam = () => {
     },
 
     {
-      name: "Sudan",
+      name: "Sudhan",
       role: "Content Creator and Advisor",
       image: "/images/team-member-11.jpg",
       specialty: "Homoeopathic Drug Shots",
