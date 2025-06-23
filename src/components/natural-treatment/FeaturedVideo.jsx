@@ -13,6 +13,14 @@ const FeaturedVideo = () => {
       "Learn about Dr. Selvan's approach to homeopathic treatment and how it differs from conventional medicine. In this comprehensive video, Dr. Selvan explains the principles behind our natural treatment methods and how they can help address a wide range of health conditions.",
   };
 
+  // Function to open YouTube video in new tab
+  const openYouTubeVideo = () => {
+    window.open(
+      `https://www.youtube.com/watch?v=${featuredVideo.id}`,
+      "_blank"
+    );
+  };
+
   return (
     <div className="mb-16">
       <motion.div
@@ -44,32 +52,28 @@ const FeaturedVideo = () => {
               </h2>
               <p className="text-gray-600 mb-6">{featuredVideo.description}</p>
               <div className="flex flex-wrap gap-3">
-                <Link
-                  href={`/natural-treatment/video/${featuredVideo.id}`}
-                  passHref
+                <motion.button
+                  onClick={openYouTubeVideo}
+                  className="inline-flex items-center justify-center px-5 py-2.5 bg-primary text-white font-medium rounded-full hover:bg-primary-dark transition cursor-pointer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <motion.div
-                    className="inline-flex items-center justify-center px-5 py-2.5 bg-primary text-white font-medium rounded-full hover:bg-primary-dark transition cursor-pointer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                  Watch Full Video
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 ml-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
-                    Watch Full Video
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-5 w-5 ml-2"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M14 5l7 7m0 0l-7 7m7-7H3"
-                      />
-                    </svg>
-                  </motion.div>
-                </Link>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </motion.button>
                 <AppointmentButton
                   text="Book Consultation"
                   variant="accent"
