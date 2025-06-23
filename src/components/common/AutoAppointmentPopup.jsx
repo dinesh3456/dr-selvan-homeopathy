@@ -6,6 +6,7 @@ import emailjs from "@emailjs/browser";
 
 const AutoAppointmentPopup = ({ isOpen, onClose }) => {
   const formRef = useRef();
+  const contentRef = useRef();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -19,6 +20,7 @@ const AutoAppointmentPopup = ({ isOpen, onClose }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitMethod, setSubmitMethod] = useState("email"); // 'email' or 'whatsapp'
   const [error, setError] = useState("");
+  const [showScrollIndicator, setShowScrollIndicator] = useState(false);
 
   // Initialize EmailJS once when component mounts
   useEffect(() => {
@@ -44,6 +46,44 @@ const AutoAppointmentPopup = ({ isOpen, onClose }) => {
       setError("");
     }
   }, [isOpen]);
+
+  // Check if content is scrollable and show scroll indicator
+  useEffect(() => {
+    const checkScrollable = () => {
+      if (contentRef.current) {
+        const { scrollHeight, clientHeight, scrollTop } = contentRef.current;
+        const isScrollable = scrollHeight > clientHeight;
+        const isAtBottom = scrollTop + clientHeight >= scrollHeight - 10;
+
+        setShowScrollIndicator(isScrollable && !isAtBottom);
+      }
+    };
+
+    if (isOpen) {
+      // Check initially and on window resize
+      checkScrollable();
+      window.addEventListener("resize", checkScrollable);
+
+      // Check when content changes
+      const observer = new ResizeObserver(checkScrollable);
+      if (contentRef.current) {
+        observer.observe(contentRef.current);
+      }
+
+      return () => {
+        window.removeEventListener("resize", checkScrollable);
+        observer.disconnect();
+      };
+    }
+  }, [isOpen, isSubmitted, error]);
+
+  const handleScroll = () => {
+    if (contentRef.current) {
+      const { scrollHeight, clientHeight, scrollTop } = contentRef.current;
+      const isAtBottom = scrollTop + clientHeight >= scrollHeight - 10;
+      setShowScrollIndicator(!isAtBottom && scrollHeight > clientHeight);
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -208,7 +248,7 @@ _Sent from Dr. Selvan's Homeopathy website_
     <AnimatePresence mode="wait">
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/50 backdrop-blur-sm overflow-y-auto"
+          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/50 backdrop-blur-sm"
           variants={backdropVariants}
           initial="hidden"
           animate="visible"
@@ -216,82 +256,100 @@ _Sent from Dr. Selvan's Homeopathy website_
           onClick={onClose}
         >
           <motion.div
-            className="relative w-full max-w-lg bg-white rounded-xl shadow-xl overflow-hidden"
+            className="relative w-full max-w-lg bg-white rounded-xl shadow-xl overflow-hidden max-h-[95vh] sm:max-h-[90vh] flex flex-col"
             variants={popupVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Universal close button that works on all screen sizes */}
-            <button
-              className="absolute top-3 right-3 p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100 transition z-10"
-              onClick={onClose}
-              aria-label="Close popup"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+            {/* Header with close button - Fixed at top */}
+            <div className="relative flex-shrink-0 p-4 sm:p-6 pb-2 sm:pb-3">
+              <button
+                className="absolute top-3 right-3 p-2 text-gray-400 hover:text-gray-600 rounded-full hover:bg-gray-100 transition z-10"
+                onClick={onClose}
+                aria-label="Close popup"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
 
-            {/* Content container with hidden scrollbar */}
+              {!isSubmitted && (
+                <div className="text-center">
+                  <motion.span
+                    className="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-sm font-medium mb-2 sm:mb-3"
+                    variants={formItemVariants}
+                    custom={0}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    Get Started
+                  </motion.span>
+                  <motion.h2
+                    className="text-xl sm:text-2xl font-bold text-gray-900 mb-1 sm:mb-2"
+                    variants={formItemVariants}
+                    custom={1}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    Book Your Appointment
+                  </motion.h2>
+                  <motion.p
+                    className="text-sm sm:text-base text-gray-600"
+                    variants={formItemVariants}
+                    custom={2}
+                    initial="hidden"
+                    animate="visible"
+                  >
+                    Fill out the form below to schedule your consultation with
+                    Dr. Selvan
+                  </motion.p>
+                </div>
+              )}
+            </div>
+
+            {/* Scrollable content area */}
             <div
-              className="p-4 sm:p-6 max-h-[90vh] overflow-y-auto"
+              ref={contentRef}
+              className="flex-1 overflow-y-auto px-4 sm:px-6 pb-4 sm:pb-6 scroll-smooth"
+              onScroll={handleScroll}
               style={{
-                scrollbarWidth: "none",
-                msOverflowStyle: "none",
+                scrollbarWidth: "thin",
+                scrollbarColor: "#cbd5e1 #f1f5f9",
               }}
             >
+              {/* Custom scrollbar styles */}
               <style jsx>{`
                 div::-webkit-scrollbar {
-                  display: none;
+                  width: 6px;
+                }
+                div::-webkit-scrollbar-track {
+                  background: #f1f5f9;
+                  border-radius: 3px;
+                }
+                div::-webkit-scrollbar-thumb {
+                  background: #cbd5e1;
+                  border-radius: 3px;
+                }
+                div::-webkit-scrollbar-thumb:hover {
+                  background: #94a3b8;
                 }
               `}</style>
 
               {!isSubmitted ? (
                 <>
-                  <div className="text-center mb-4 sm:mb-6">
-                    <motion.span
-                      className="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-600 text-sm font-medium mb-2 sm:mb-3"
-                      variants={formItemVariants}
-                      custom={0}
-                      initial="hidden"
-                      animate="visible"
-                    >
-                      Get Started
-                    </motion.span>
-                    <motion.h2
-                      className="text-xl sm:text-2xl font-bold text-gray-900 mb-1 sm:mb-2"
-                      variants={formItemVariants}
-                      custom={1}
-                      initial="hidden"
-                      animate="visible"
-                    >
-                      Book Your Appointment
-                    </motion.h2>
-                    <motion.p
-                      className="text-sm sm:text-base text-gray-600"
-                      variants={formItemVariants}
-                      custom={2}
-                      initial="hidden"
-                      animate="visible"
-                    >
-                      Fill out the form below to schedule your consultation with
-                      Dr. Selvan
-                    </motion.p>
-                  </div>
-
                   {/* Submit Method Selection - Responsive buttons */}
                   <motion.div
                     className="mb-4"
@@ -307,7 +365,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                       <button
                         type="button"
                         onClick={() => handleSubmitMethod("email")}
-                        className={`flex-1 py-2 px-3 sm:px-4 rounded-md border text-xs sm:text-sm ${
+                        className={`flex-1 py-2 px-3 sm:px-4 rounded-md border text-xs sm:text-sm transition-colors ${
                           submitMethod === "email"
                             ? "bg-blue-50 border-blue-300 text-blue-600"
                             : "border-gray-300 text-gray-700 hover:bg-gray-50"
@@ -329,7 +387,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                       <button
                         type="button"
                         onClick={() => handleSubmitMethod("whatsapp")}
-                        className={`flex-1 py-2 px-3 sm:px-4 rounded-md border text-xs sm:text-sm ${
+                        className={`flex-1 py-2 px-3 sm:px-4 rounded-md border text-xs sm:text-sm transition-colors ${
                           submitMethod === "whatsapp"
                             ? "bg-green-50 border-green-300 text-green-600"
                             : "border-gray-300 text-gray-700 hover:bg-gray-50"
@@ -351,9 +409,14 @@ _Sent from Dr. Selvan's Homeopathy website_
                   </motion.div>
 
                   {error && (
-                    <div className="mb-4 p-2 sm:p-3 bg-red-50 border border-red-200 text-red-700 rounded-md text-xs sm:text-sm">
+                    <motion.div
+                      className="mb-4 p-2 sm:p-3 bg-red-50 border border-red-200 text-red-700 rounded-md text-xs sm:text-sm"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
                       {error}
-                    </div>
+                    </motion.div>
                   )}
 
                   <motion.form
@@ -380,7 +443,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                        className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                         placeholder="Your name"
                       />
                     </div>
@@ -401,7 +464,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                           required
                           value={formData.email}
                           onChange={handleChange}
-                          className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                          className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                           placeholder="Your email"
                         />
                       </div>
@@ -420,7 +483,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                           required
                           value={formData.phone}
                           onChange={handleChange}
-                          className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                          className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                           placeholder="Your phone"
                         />
                       </div>
@@ -442,7 +505,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                         value={formData.location}
                         onChange={handleChange}
                         placeholder="City"
-                        className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-accent focus:border-accent"
+                        className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                       />
                     </div>
 
@@ -460,7 +523,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                         rows="3"
                         value={formData.message}
                         onChange={handleChange}
-                        className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-primary focus:border-primary"
+                        className="w-full px-3 sm:px-4 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none"
                         placeholder="Please describe your condition briefly..."
                       ></textarea>
                     </div>
@@ -469,14 +532,14 @@ _Sent from Dr. Selvan's Homeopathy website_
                     <div className="pt-2">
                       <motion.button
                         type="submit"
-                        className={`w-full py-2 sm:py-3 px-4 sm:px-6 rounded-md flex items-center justify-center text-white font-medium text-sm transition ${
+                        className={`w-full py-2 sm:py-3 px-4 sm:px-6 rounded-md flex items-center justify-center text-white font-medium text-sm transition-colors ${
                           submitMethod === "whatsapp"
-                            ? "bg-green-600 hover:bg-green-700"
-                            : "bg-blue-600 hover:bg-blue-700"
+                            ? "bg-green-600 hover:bg-green-700 disabled:bg-green-400"
+                            : "bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400"
                         }`}
                         disabled={isSubmitting}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
+                        whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                        whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                       >
                         {isSubmitting ? (
                           <>
@@ -558,7 +621,7 @@ _Sent from Dr. Selvan's Homeopathy website_
                   </p>
                   <Link
                     href="/contact"
-                    className="text-primary hover:text-primary-dark font-medium text-sm sm:text-base"
+                    className="text-blue-600 hover:text-blue-700 font-medium text-sm sm:text-base transition-colors"
                   >
                     Contact us for any questions
                   </Link>
