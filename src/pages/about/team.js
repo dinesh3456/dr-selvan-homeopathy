@@ -174,7 +174,7 @@ const AboutTeam = () => {
     },
     // NEW TEAM MEMBERS ADDED BELOW
     {
-      name: "Mr. Hemant Kumar",
+      name: "Hemant Kumar",
       role: "Clinical Research Associate & Pharmacy Department",
       image: "/images/team-member-14.jpg",
       specialty: "Clinical Research & Pharmacy",
@@ -192,7 +192,7 @@ const AboutTeam = () => {
       education: ["D.Pharm"],
     },
     {
-      name: "Mr. Yogesh Supekar",
+      name: "Yogesh Supekar",
       role: "Head of Pharmacy & Sales Department",
       image: "/images/team-member-16.jpg",
       specialty: "Pharmacy Leadership & Sales",

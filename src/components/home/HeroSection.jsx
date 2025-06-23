@@ -44,6 +44,8 @@ const HeroSection = () => {
     "/images/doctor-conference-2.jpg",
     "/images/doctor-3.jpg",
     "/images/doctor-4.jpg",
+    "/images/doctor-5.jpg",
+    "/images/doctor-6.jpg",
   ];
 
   // Generate decorative bubbles only once using useMemo
