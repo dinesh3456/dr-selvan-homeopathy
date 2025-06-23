@@ -8,7 +8,7 @@ const WhyChooseSectionLight = () => {
     {
       title: "> 8 Years",
       description:
-        "Two decades of expertise in providing effective homeopathic treatments for a wide range of conditions.",
+        "A decades of expertise in providing effective homeopathic treatments for a wide range of conditions.",
       color: "primary",
     },
     {
